@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Requirements – Prompt Injection Protection</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container topbar">
+    <a class="brand" href="index.html">
+      <div>
+        <div class="brand-title">Prompt Injection Protection</div>
+        <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
+      </div>
+    </a>
+
+    <div class="brand-logos" aria-hidden="true">
+      <img src="assets/img/logo-ucl.svg" alt="">
+      <img src="assets/img/logo-avanade.svg" alt="">
+    </div>
+  </div>
+
+  <div class="container">
+    <label class="burger" for="nav-toggle">Menu</label>
+  </div>
+  <input id="nav-toggle" type="checkbox" />
+
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-left">
+
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link active" href="requirements.html">Requirements</a>
+          <a class="nav-link" href="research.html">Research</a>
+          <a class="nav-link" href="algorithms.html">Algorithms</a>
+          <a class="nav-link" href="ui-design.html">UI Design</a>
+          <a class="nav-link" href="system-design.html">System Design</a>
+          <a class="nav-link" href="implementation.html">Implementation</a>
+          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a class="nav-link" href="conclusion.html">Conclusion</a>
+
+          <div class="nav-item">
+            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <div class="dropdown" role="menu">
+              <a href="appendices.html#user-manual">User manual & deployment manual</a>
+              <a href="appendices.html#gdpr">GDPR & Privacy of Data</a>
+              <a href="appendices.html#dev-blog">Development blog</a>
+              <a href="appendices.html#monthly-video">Monthly video</a>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">Systems Engineering · IXN</div>
+    <h1>Requirements</h1>
+    <p>
+      This section defines the functional and non-functional requirements for the
+      Prompt Injection Protection platform, prioritised using the MoSCoW method.
+    </p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="container">
+
+    <!-- ================= OVERVIEW ================= -->
+    <section class="section" id="overview">
+      <h2>Requirements Overview</h2>
+      <p>
+        The requirements were defined to guide the design and implementation of a
+        web-based platform for exploring prompt injection vulnerabilities, mitigations,
+        and testing methodologies. Requirements are categorised as functional and
+        non-functional, and prioritised using the MoSCoW method.
+      </p>
+    </section>
+
+    <!-- ================= FUNCTIONAL ================= -->
+    <section class="section" id="functional">
+      <h2>Functional Requirements</h2>
+
+      <h3>Must Have</h3>
+
+      <h4>Home Page</h4>
+      <ul>
+        <li>The system must provide a home page introducing prompt injection, its associated risks, and a high-level explanation of how it works.</li>
+        <li>The home page must display a list of known prompt injection vulnerabilities.</li>
+        <li>Each vulnerability must be clickable and include a short summary.</li>
+      </ul>
+
+      <h4>In-Depth Vulnerability View</h4>
+      <ul>
+        <li>Selecting a vulnerability must navigate to an in-depth vulnerability view.</li>
+        <li>The view must include a technical explanation of the vulnerability.</li>
+        <li>A working example demonstrating the vulnerability must be provided.</li>
+        <li>At least one mitigation strategy must be clearly explained.</li>
+        <li>A comparison panel must show model behaviour with and without mitigation.</li>
+      </ul>
+
+      <h4>Knowledge Base</h4>
+      <ul>
+        <li>The system must provide a knowledge base of prompt injection vulnerabilities.</li>
+        <li>Each entry must include technical explanations and working attack examples.</li>
+        <li>Clear explanations of mitigation techniques must be provided.</li>
+      </ul>
+
+      <h4>Testing View</h4>
+      <ul>
+        <li>A testing view must be accessible from the main navigation bar.</li>
+        <li>Users must be able to create named custom tests for individual mitigations.</li>
+        <li>Tests must be run through a chat-style interface processing a single prompt.</li>
+        <li>Mitigations must be individually enabled or disabled per test.</li>
+        <li>Tests must return a clear pass/fail result based on security expectations.</li>
+        <li>Test data must be preserved locally using an SQL database.</li>
+        <li>All tests must run on a fixed model (GPT-5.0).</li>
+      </ul>
+
+      <h3>Should Have</h3>
+      <ul>
+        <li>Sandbox input allowing prompt testing with and without mitigations.</li>
+        <li>Mitigation implementations presented in pseudocode.</li>
+        <li>References and external sources for further reading.</li>
+        <li>Export of vulnerability views and tests as PDFs.</li>
+        <li>Support for multi-prompt tests and multiple agents.</li>
+        <li>A chatbot trained on the knowledge base to answer theoretical and practical questions.</li>
+      </ul>
+
+      <h3>Could Have</h3>
+      <ul>
+        <li>Mitigation examples in multiple programming languages.</li>
+        <li>Internal navigation links suggested by the chatbot.</li>
+        <li>An AI-powered prompt enhancer based on selected vulnerabilities and mitigations.</li>
+        <li>Support for automated testing pipelines using frameworks such as NVIDIA Garak and Microsoft PyRIT.</li>
+      </ul>
+
+      <h3>Won’t Have</h3>
+      <ul>
+        <li>No authentication system.</li>
+        <li>No automatic fixing of detected prompt injection attacks.</li>
+        <li>No modification of custom or non-standard models.</li>
+      </ul>
+    </section>
+
+    <!-- ================= NON-FUNCTIONAL ================= -->
+    <section class="section" id="non-functional">
+      <h2>Non-Functional Requirements</h2>
+
+      <h3>Must Have</h3>
+      <ul>
+        <li>The system must be delivered as a web application.</li>
+        <li>The interface must be clear and understandable for technical and semi-technical users.</li>
+        <li>The chatbot and testing views must provide acceptable interactive response times.</li>
+        <li>The interface must be intuitive and logically structured.</li>
+        <li>The system must support a dark mode interface.</li>
+      </ul>
+
+      <h3>Should Have</h3>
+      <ul>
+        <li>Consistent colour schemes aligned with Avanade branding.</li>
+        <li>Standardised iconography and layout conventions.</li>
+        <li>Use of red to represent vulnerabilities or failing tests.</li>
+        <li>Use of green to represent mitigations or passing tests.</li>
+      </ul>
+
+      <h3>Could Have</h3>
+      <ul>
+        <li>Mapping of vulnerabilities and mitigations to standards such as OWASP Top 10 for LLMs and MITRE ATLAS.</li>
+      </ul>
+
+      <h3>Won’t Have</h3>
+      <ul>
+        <li>No persistent backend server.</li>
+        <li>No guaranteed compatibility with all LLM providers.</li>
+        <li>No fully custom automated testing pipelines.</li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container foot">
+    <div>© Team 28 · UCL COMP0016 · Client: Avanade</div>
+    <div><a href="appendices.html#dev-blog">Development Blog</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

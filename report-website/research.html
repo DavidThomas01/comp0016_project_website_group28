@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research – Prompt Injection Protection</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container topbar">
+    <a class="brand" href="index.html">
+      <div>
+        <div class="brand-title">Prompt Injection Protection</div>
+        <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
+      </div>
+    </a>
+
+    <div class="brand-logos" aria-hidden="true">
+      <img src="assets/img/logo-ucl.svg" alt="">
+      <img src="assets/img/logo-avanade.svg" alt="">
+    </div>
+  </div>
+
+  <div class="container">
+    <label class="burger" for="nav-toggle">Menu</label>
+  </div>
+  <input id="nav-toggle" type="checkbox" />
+
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-left">
+
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="requirements.html">Requirements</a>
+          <a class="nav-link active" href="research.html">Research</a>
+          <a class="nav-link" href="algorithms.html">Algorithms</a>
+          <a class="nav-link" href="ui-design.html">UI Design</a>
+          <a class="nav-link" href="system-design.html">System Design</a>
+          <a class="nav-link" href="implementation.html">Implementation</a>
+          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a class="nav-link" href="conclusion.html">Conclusion</a>
+
+          <div class="nav-item">
+            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <div class="dropdown" role="menu">
+              <a href="appendices.html#user-manual">User manual & deployment manual</a>
+              <a href="appendices.html#gdpr">GDPR & Privacy of Data</a>
+              <a href="appendices.html#dev-blog">Development blog</a>
+              <a href="appendices.html#monthly-video">Monthly video</a>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">Research Foundation</div>
+    <h1>Prompt Injection: Vulnerabilities, Mitigations, and Testing</h1>
+    <p>
+      This section summarises the research conducted by Team 28 into prompt injection
+      attacks, drawing directly from our report produced in collaboration with Avanade.
+      It provides the theoretical and empirical foundation for the platform design.
+    </p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="container">
+
+    <!-- ================= INTRODUCTION ================= -->
+    <section class="section" id="introduction">
+      <h2>Introduction and Background</h2>
+      <p>
+        The rapid adoption of large language models (LLMs) in enterprise systems has
+        introduced new security challenges. Unlike traditional software, LLMs interpret
+        all inputs as natural language, making it difficult to distinguish between trusted
+        instructions and untrusted data.
+      </p>
+      <p>
+        Prompt injection exploits this ambiguity by embedding adversarial instructions
+        into user input, retrieved content, or tool outputs, potentially causing models
+        to bypass safeguards or perform unintended actions. This research focuses on
+        understanding these attacks and their implications for real-world AI deployments,
+        particularly in enterprise contexts. :contentReference[oaicite:1]{index=1}
+      </p>
+    </section>
+
+    <!-- ================= VULNERABILITIES ================= -->
+    <section class="section" id="vulnerabilities">
+      <h2>Prompt Injection Vulnerabilities</h2>
+      <p>
+        Prompt injection vulnerabilities arise from fundamental characteristics of LLMs,
+        rather than from conventional implementation bugs. Our research identifies
+        several major classes of vulnerabilities observed in modern AI systems. :contentReference[oaicite:2]{index=2}
+      </p>
+
+      <ul>
+        <li><strong>Direct Prompt Injection:</strong> Explicit attempts by users to override system instructions (e.g. “ignore previous instructions”).</li>
+        <li><strong>Indirect Prompt Injection:</strong> Malicious instructions embedded in external data such as documents, webpages, or emails.</li>
+        <li><strong>Instruction–Data Boundary Confusion:</strong> Lack of a strict separation between instructions and data within the model context.</li>
+        <li><strong>Obfuscation and Encoding Attacks:</strong> Use of Base64, Unicode homoglyphs, or multilingual prompts to bypass filters.</li>
+        <li><strong>Tool-Use and Action Injection:</strong> Manipulation of tool calls or API arguments generated by the model.</li>
+        <li><strong>Memory and Long-Horizon Vulnerabilities:</strong> Gradual injection across multiple turns leading to behavioural drift.</li>
+        <li><strong>Multimodal Prompt Injection:</strong> Hidden instructions embedded in images or other non-text modalities.</li>
+        <li><strong>Multi-Agent Contamination:</strong> Propagation of malicious instructions across agent workflows.</li>
+      </ul>
+    </section>
+
+    <!-- ================= MITIGATIONS ================= -->
+    <section class="section" id="mitigations">
+      <h2>Mitigation Strategies</h2>
+      <p>
+        Our research shows that no single mitigation can fully eliminate prompt injection.
+        Instead, effective defence requires a layered, defence-in-depth approach combining
+        multiple complementary strategies. :contentReference[oaicite:3]{index=3}
+      </p>
+
+      <ul>
+        <li><strong>Input Validation and Sanitisation:</strong> Treating all inputs as untrusted and filtering malicious instructions before model execution.</li>
+        <li><strong>Robust Prompt Design:</strong> Structuring prompts to clearly separate trusted instructions from untrusted data.</li>
+        <li><strong>Output Filtering and Guardrails:</strong> Validating model outputs before returning them or executing actions.</li>
+        <li><strong>Multi-Agent Defence Pipelines:</strong> Distributing responsibility across specialised agents to reduce single-point failures.</li>
+        <li><strong>Context Sanitisation:</strong> Analysing and filtering long or externally sourced context before use.</li>
+        <li><strong>Sandboxing and Permission Control:</strong> Restricting tool access and enforcing strict execution boundaries.</li>
+        <li><strong>Model-Level Alignment:</strong> Improving baseline robustness through fine-tuning and alignment techniques.</li>
+      </ul>
+    </section>
+
+    <!-- ================= TESTING ================= -->
+    <section class="section" id="testing">
+      <h2>Testing Against Prompt Injection</h2>
+      <p>
+        Testing is essential for identifying prompt injection vulnerabilities before
+        deployment. Our research surveys both academic and industry testing methodologies
+        designed to probe the full attack surface of modern AI systems. :contentReference[oaicite:4]{index=4}
+      </p>
+
+      <h3>Testing Approaches</h3>
+      <ul>
+        <li>Attacker-model testing using adversarial LLMs.</li>
+        <li>Evolutionary search to generate novel adversarial prompts.</li>
+        <li>Black-box and white-box testing methodologies.</li>
+        <li>Red-team templates for social and behavioural manipulation.</li>
+        <li>Testing of RAG pipelines, tool interfaces, and MCP servers.</li>
+        <li>Long-horizon and memory-persistence testing.</li>
+      </ul>
+
+      <h3>Testing Frameworks</h3>
+      <p>
+        The report evaluates several established frameworks, including NVIDIA garak,
+        Microsoft PromptBench and PyRIT, OWASP PromptMe, and OpenAI Evals. These
+        tools enable systematic benchmarking, adversarial testing, and integration into
+        CI/CD pipelines. :contentReference[oaicite:5]{index=5}
+      </p>
+    </section>
+
+    <!-- ================= KEY FINDINGS ================= -->
+    <section class="section" id="findings">
+      <h2>Key Research Findings</h2>
+      <ul>
+        <li>Modern LLMs are relatively robust to simple direct injections.</li>
+        <li>Obfuscated and indirect prompt injection remains significantly harder to defend against.</li>
+        <li>Tool-mediated and MCP-based systems substantially expand the attack surface.</li>
+        <li>Prompt injection is primarily an architectural and operational challenge rather than a model-selection problem.</li>
+      </ul>
+      <p>
+        These findings directly inform the design decisions and evaluation criteria
+        used in the Prompt Injection Protection platform. :contentReference[oaicite:6]{index=6}
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container foot">
+    <div>© Team 28 · UCL COMP0016 · Client: Avanade</div>
+    <div><a href="appendices.html#dev-blog">Development Blog</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
