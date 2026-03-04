@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="UI design process for the Prompt Injection Protection platform — design goals, personas, wireframes, and accessibility." />
   <title>UI Design – Prompt Injection Protection</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
@@ -18,23 +19,19 @@
         <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
       </div>
     </a>
-
     <div class="brand-logos" aria-hidden="true">
       <img src="assets/img/logo-ucl.svg" alt="">
       <img src="assets/img/logo-avanade.svg" alt="">
     </div>
   </div>
-
   <div class="container">
     <label class="burger" for="nav-toggle">Menu</label>
   </div>
   <input id="nav-toggle" type="checkbox" />
-
   <div class="nav-wrap">
     <div class="container">
       <nav class="site-nav" aria-label="Primary">
         <div class="nav-left">
-
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="requirements.html">Requirements</a>
           <a class="nav-link" href="research.html">Research</a>
@@ -44,17 +41,15 @@
           <a class="nav-link" href="implementation.html">Implementation</a>
           <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
           <a class="nav-link" href="conclusion.html">Conclusion</a>
-
           <div class="nav-item">
             <span class="drop-toggle" tabindex="0">Appendices ▾</span>
             <div class="dropdown" role="menu" aria-label="Appendices">
-              <a href="appendices.html#user-manual">User manual & deployment manual</a>
-              <a href="appendices.html#gdpr">GDPR & Privacy of Data</a>
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
               <a href="appendices.html#dev-blog">Development blog (external)</a>
               <a href="appendices.html#monthly-video">Monthly video</a>
             </div>
           </div>
-
         </div>
       </nav>
     </div>
@@ -66,8 +61,8 @@
     <div class="kicker">Systems Engineering · IXN</div>
     <h1>UI Design</h1>
     <p>
-      This section outlines the user interface design process, including design goals,
-      user personas, wireframes, and accessibility considerations.
+      The user interface design process, from initial design goals and user personas
+      through to wireframes, prototyping, and accessibility-first development.
     </p>
   </div>
 </section>
@@ -75,33 +70,159 @@
 <main id="main">
   <div class="container">
 
-    <section class="section" id="design-goals">
+    <section class="section fade-in" id="design-goals">
       <h2>Design Goals</h2>
+      <div class="callout callout--note">
+        <p><strong>Coming soon:</strong> Detailed design rationale and visual design principles will be documented here once the design system is finalised.</p>
+      </div>
       <p>
-        Placeholder content for design goals.
+        The UI design is guided by a set of core principles that prioritise clarity,
+        usability, and educational value. The platform must serve both technical security
+        professionals and semi-technical users exploring prompt injection for the first time.
       </p>
+      <div class="card-grid cols-3 stagger">
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x2728;</div>
+          <h3>Clarity First</h3>
+          <p>Complex security concepts presented through clean, intuitive interfaces with clear visual hierarchy.</p>
+        </div>
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x1F9ED;</div>
+          <h3>Guided Exploration</h3>
+          <p>Users can navigate freely between vulnerabilities, mitigations, and testing tools with logical flow.</p>
+        </div>
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x267F;</div>
+          <h3>Accessible by Default</h3>
+          <p>WCAG AA compliance, keyboard navigation, screen reader support, and high-contrast mode built in.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="section" id="personas">
-      <h2>Personas & User Needs</h2>
+    <section class="section fade-in" id="personas">
+      <h2>Personas &amp; User Needs</h2>
       <p>
-        Placeholder content for personas and user needs.
+        User personas were developed through stakeholder interviews and analysis of the
+        target audience to ensure the platform meets the needs of its primary user groups.
       </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F468;&#x200D;&#x1F4BB;</div>
+          <h3>Security Engineer</h3>
+          <p>Experienced professional evaluating MCP server deployments. Needs detailed technical analysis, advanced testing tools, and exportable reports.</p>
+          <div class="tag-list">
+            <span class="badge badge--brand">Technical</span>
+            <span class="badge badge--blue">Testing Focus</span>
+          </div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F469;&#x200D;&#x1F393;</div>
+          <h3>CS Student / Researcher</h3>
+          <p>Learning about AI security. Needs clear explanations, working examples, and educational walkthroughs of attack techniques and defences.</p>
+          <div class="tag-list">
+            <span class="badge badge--green">Educational</span>
+            <span class="badge badge--blue">Examples Focus</span>
+          </div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F468;&#x200D;&#x1F4BC;</div>
+          <h3>Technical Manager</h3>
+          <p>Overseeing AI integration. Needs high-level risk summaries, mitigation guidance, and compliance-aligned reporting.</p>
+          <div class="tag-list">
+            <span class="badge badge--amber">Strategic</span>
+            <span class="badge badge--brand">Compliance</span>
+          </div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F469;&#x200D;&#x1F52C;</div>
+          <h3>AI Developer</h3>
+          <p>Building applications with LLMs. Needs practical mitigation code, testing APIs, and integration guidance.</p>
+          <div class="tag-list">
+            <span class="badge badge--brand">Practical</span>
+            <span class="badge badge--green">Integration</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="section" id="wireframes">
-      <h2>Wireframes & Prototypes</h2>
+    <section class="section fade-in" id="wireframes">
+      <h2>Wireframes &amp; Prototypes</h2>
       <p>
-        Placeholder content for wireframes and prototypes.
+        Wireframes were developed iteratively, progressing from low-fidelity sketches through
+        to high-fidelity interactive prototypes tested with representative users.
       </p>
+      <div class="card-grid cols-2">
+        <div class="img-placeholder">
+          <span class="placeholder-icon">&#x1F5BC;&#xFE0F;</span>
+          <span class="placeholder-label">Home Page Wireframe</span>
+          Dashboard layout showing vulnerability overview, navigation, and search
+        </div>
+        <div class="img-placeholder">
+          <span class="placeholder-icon">&#x1F5BC;&#xFE0F;</span>
+          <span class="placeholder-label">Vulnerability View Wireframe</span>
+          Detailed view with explanation, example, mitigation, and comparison panel
+        </div>
+        <div class="img-placeholder">
+          <span class="placeholder-icon">&#x1F5BC;&#xFE0F;</span>
+          <span class="placeholder-label">Testing Interface Wireframe</span>
+          Chat-style testing view with prompt input, mitigation toggles, and results
+        </div>
+        <div class="img-placeholder">
+          <span class="placeholder-icon">&#x1F5BC;&#xFE0F;</span>
+          <span class="placeholder-label">Knowledge Base Wireframe</span>
+          Searchable knowledge base with categorised entries and filtering
+        </div>
+      </div>
     </section>
 
-    <section class="section" id="accessibility">
+    <section class="section fade-in" id="accessibility">
       <h2>Accessibility Considerations</h2>
       <p>
-        Placeholder content for accessibility considerations.
+        Accessibility is treated as a fundamental design requirement, not an afterthought.
+        The platform is built to meet WCAG 2.1 AA standards throughout.
       </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="feature-item">
+          <div class="feature-icon">&#x2328;&#xFE0F;</div>
+          <div class="feature-content">
+            <h3>Keyboard Navigation</h3>
+            <p>All interactive elements accessible via keyboard with visible focus indicators and logical tab order.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F4F1;</div>
+          <div class="feature-content">
+            <h3>Responsive Design</h3>
+            <p>Fully responsive layouts tested across mobile, tablet, and desktop viewport sizes.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F441;&#xFE0F;</div>
+          <div class="feature-content">
+            <h3>Colour &amp; Contrast</h3>
+            <p>Colour is never the sole indicator of meaning; all text meets WCAG AA contrast ratios.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F50A;</div>
+          <div class="feature-content">
+            <h3>Screen Reader Support</h3>
+            <p>Semantic HTML, ARIA labels, and meaningful alt text for full screen reader compatibility.</p>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <nav class="page-nav fade-in" aria-label="Page navigation">
+      <a href="algorithms.html">
+        <span class="page-nav-label">Previous</span>
+        <span class="page-nav-title">← Algorithms</span>
+      </a>
+      <a href="system-design.html">
+        <span class="page-nav-label">Next</span>
+        <span class="page-nav-title">System Design →</span>
+      </a>
+    </nav>
 
   </div>
 </main>
@@ -109,9 +230,13 @@
 <footer>
   <div class="container foot">
     <div>© Team 28 · UCL COMP0016 · Client: Avanade</div>
-    <div><a href="appendices.html#dev-blog">Development Blog</a></div>
+    <div class="footer-links">
+      <a href="appendices.html#dev-blog">Development Blog</a>
+    </div>
   </div>
 </footer>
 
+<button class="back-to-top" aria-label="Back to top">↑</button>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

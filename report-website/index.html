@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="COMP0016 Team 28 — Exploring prompt injection vulnerabilities, mitigations, and testing for MCP server security. Built with Avanade." />
   <title>Team 28 – Prompt Injection Protection</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
@@ -18,15 +19,12 @@
         <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
       </div>
     </a>
-
-    <!-- Optional logos (place files in assets/img/) -->
     <div class="brand-logos" aria-hidden="true">
       <img src="assets/img/logo-ucl.svg" alt="">
       <img src="assets/img/logo-avanade.svg" alt="">
     </div>
   </div>
 
-  <!-- Mobile toggle (CSS-only) -->
   <div class="container">
     <label class="burger" for="nav-toggle">Menu</label>
   </div>
@@ -36,7 +34,6 @@
     <div class="container">
       <nav class="site-nav" aria-label="Primary">
         <div class="nav-left">
-
           <a class="nav-link active" href="index.html">Home</a>
           <a class="nav-link" href="requirements.html">Requirements</a>
           <a class="nav-link" href="research.html">Research</a>
@@ -46,111 +43,207 @@
           <a class="nav-link" href="implementation.html">Implementation</a>
           <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
           <a class="nav-link" href="conclusion.html">Conclusion</a>
-
           <div class="nav-item">
             <span class="drop-toggle" tabindex="0">Appendices ▾</span>
             <div class="dropdown" role="menu" aria-label="Appendices">
-              <a href="appendices.html#user-manual">User manual & deployment manual</a>
-              <a href="appendices.html#gdpr">GDPR & Privacy of Data</a>
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
               <a href="appendices.html#dev-blog">Development blog (external)</a>
               <a href="appendices.html#monthly-video">Monthly video</a>
             </div>
           </div>
-
         </div>
       </nav>
     </div>
   </div>
 </header>
 
-<section class="hero">
+<section class="hero hero--home">
   <div class="container">
-    <div class="kicker">UCL Computer Science · Avanade</div>
-    <h1>Exploring vulnerabilities, mitigations and testing</h1>
-    <p>
-      Team 28 is working with Avanade on a security-focused project exploring prompt injection attacks,
-      their impact on AI-driven applications, and how mitigations can be tested and applied—particularly
-      in tool-connected systems such as Model Context Protocol (MCP) servers.
+    <div class="hero-badge"><span>UCL COMP0016</span> · 2025–26 · Team 28</div>
+    <h1>Prompt Injection<br><span class="text-gradient">Protection</span></h1>
+    <p class="hero-lead">
+      Exploring vulnerabilities, mitigations, and testing methodologies for AI-driven
+      applications — with a focus on securing Model Context Protocol (MCP) servers
+      against prompt injection attacks.
     </p>
+    <div class="hero-actions">
+      <a href="requirements.html" class="btn btn-primary">View Requirements →</a>
+      <a href="research.html" class="btn btn-outline">Read Research</a>
+    </div>
   </div>
 </section>
 
 <main id="main">
   <div class="container">
 
-    <section class="section" id="overview">
+    <!-- ===== Overview ===== -->
+    <section class="section fade-in" id="overview">
       <h2>Project Overview</h2>
       <p>
         Prompt injection is an emerging attack vector where malicious instructions are embedded in user inputs
-        to influence an AI model’s behaviour—potentially bypassing safeguards or causing the model to expose
+        to influence an AI model's behaviour — potentially bypassing safeguards or causing the model to expose
         sensitive information.
       </p>
+      <div class="callout">
+        <p>
+          <strong>Why it matters:</strong> As organisations connect LLMs to tools, APIs, and knowledge sources via protocols
+          like MCP, the attack surface expands significantly. Our project maps these risks, evaluates defences,
+          and builds testing tools to help secure these systems.
+        </p>
+      </div>
       <p>
-        Our project explores current prompt injection techniques, documents their impact, and evaluates mitigation
-        strategies. A key focus is the security posture of MCP servers, which connect AI models to tools, APIs, and
-        knowledge sources and may be exposed to injection vectors—especially when publicly accessible. :contentReference[oaicite:1]{index=1}
+        Working in collaboration with Avanade and supervised by Dr Yun Fu at UCL Computer Science,
+        Team 28 is building a comprehensive platform for understanding and combating prompt injection threats.
       </p>
     </section>
 
-    <section class="section" id="objectives">
+    <!-- ===== Objectives ===== -->
+    <section class="section fade-in" id="objectives">
       <h2>Objectives</h2>
-      <ul>
-        <li>Evaluate current prompt injection techniques and document their impact.</li>
-        <li>Evaluate mitigation strategies and their effectiveness.</li>
-        <li>Assess AI-application-specific vulnerabilities, with emphasis on MCP servers.</li>
-        <li>Design and implement a testing framework to assess MCP servers for susceptibility to prompt injection and related attacks (e.g., attempts to exfiltrate confidential data or API keys).</li>
-        <li>Investigate AI-driven automated testing for discovering and exploiting vulnerabilities.</li>
-        <li>Compare prompt injection security testing with traditional application security testing.</li>
-        <li>Produce technical recommendations and tooling approaches to help secure MCP servers against these threats.</li>
-      </ul>
-      :contentReference[oaicite:2]{index=2}
+      <div class="card-grid cols-2 stagger">
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F6E1;&#xFE0F;</div>
+          <h3>Evaluate Prompt Injection Techniques</h3>
+          <p>Document current prompt injection attack vectors and assess their real-world impact on AI systems and enterprise deployments.</p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F50D;</div>
+          <h3>Assess MCP Vulnerabilities</h3>
+          <p>Investigate AI-application-specific vulnerabilities with particular emphasis on Model Context Protocol servers and tool-connected systems.</p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F9EA;</div>
+          <h3>Build a Testing Framework</h3>
+          <p>Design and implement a testing framework to assess MCP servers for susceptibility to prompt injection and related exploits.</p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F4CB;</div>
+          <h3>Produce Technical Guidance</h3>
+          <p>Deliver actionable recommendations and tooling approaches to help organisations secure their MCP servers against these threats.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="section" id="context">
+    <!-- ===== Context ===== -->
+    <section class="section fade-in" id="context">
       <h2>Context</h2>
-
-      <h3>Prompt Injection Attacks</h3>
-      <p>
-        Prompt injection occurs when malicious instructions are embedded within user inputs to trick the model into
-        ignoring intended instructions or revealing information it should not. Examples include attempts to extract
-        system prompts or API keys, redirect actions to malicious endpoints, or bypass content and access controls. :contentReference[oaicite:3]{index=3}
-      </p>
-
-      <h3>Model Context Protocol (MCP) Servers</h3>
-      <p>
-        MCP is designed to standardise how AI models access external tools, APIs, and knowledge sources. MCP servers
-        mediate access between the model and external systems—making them an important surface for security evaluation,
-        particularly in public deployments. :contentReference[oaicite:4]{index=4}
-      </p>
+      <div class="card-grid cols-2">
+        <div class="card">
+          <h3>&#x26A0;&#xFE0F; Prompt Injection Attacks</h3>
+          <p>
+            Prompt injection occurs when malicious instructions are embedded within user inputs to trick
+            an AI model into ignoring intended instructions or revealing information it should not. Examples
+            include extracting system prompts, redirecting actions to malicious endpoints, or bypassing
+            content and access controls.
+          </p>
+          <div class="tag-list">
+            <span class="badge badge--brand">Direct Injection</span>
+            <span class="badge badge--brand">Indirect Injection</span>
+            <span class="badge badge--amber">Obfuscation</span>
+            <span class="badge badge--blue">Tool-Use Attacks</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>&#x1F517; Model Context Protocol (MCP)</h3>
+          <p>
+            MCP standardises how AI models access external tools, APIs, and knowledge sources. MCP servers
+            mediate access between the model and external systems — making them a critical surface for
+            security evaluation, especially in public or enterprise deployments.
+          </p>
+          <div class="tag-list">
+            <span class="badge badge--blue">Tool Access</span>
+            <span class="badge badge--blue">API Mediation</span>
+            <span class="badge badge--green">Standardised Protocol</span>
+            <span class="badge badge--amber">Security Surface</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="section" id="deliverables">
+    <!-- ===== Deliverables ===== -->
+    <section class="section fade-in" id="deliverables">
       <h2>Planned Deliverables</h2>
-      <ul>
-        <li>Proof-of-concept demonstrations of prompt injection techniques in realistic conditions.</li>
-        <li>A structured evaluation of mitigation strategies and practical guidance on when to use them.</li>
-        <li>A testing framework for assessing MCP servers against prompt injection and related exploits.</li>
-        <li>Technical recommendations and tooling approaches for securing MCP servers.</li>
-      </ul>
-      :contentReference[oaicite:5]{index=5}
+      <div class="card-grid cols-2 stagger">
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F4A5;</div>
+          <div class="feature-content">
+            <h3>Attack Demonstrations</h3>
+            <p>Proof-of-concept demonstrations of prompt injection techniques in realistic conditions.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F6E1;&#xFE0F;</div>
+          <div class="feature-content">
+            <h3>Mitigation Evaluation</h3>
+            <p>A structured evaluation of defence strategies with practical guidance on when to apply them.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F9EA;</div>
+          <div class="feature-content">
+            <h3>MCP Testing Framework</h3>
+            <p>Automated testing tools for assessing MCP servers against injection and related exploits.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F4D6;</div>
+          <div class="feature-content">
+            <h3>Security Recommendations</h3>
+            <p>Technical guidance and best-practice tooling approaches for securing MCP server deployments.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="section" id="team">
-      <h2>Team & Contacts</h2>
-      <ul>
-        <li><strong>Team:</strong> Team 28 (UCL Computer Science, COMP0016)</li>
-        <li><strong>Client:</strong> Avanade</li>
-        <li><strong>Academic Supervisor:</strong> Dr Yun Fu</li>
-        <li><strong>Industry Partner:</strong> Josh McDonald (Security Leader, Avanade)</li>
-      </ul>
-
-      <p class="kicker">Project contacts (from brief)</p>
-      <ul>
-        <li>Martin Harper (UK Innovation Lead, Avanade)</li>
-        <li>Jovana Milosevic (Avanade)</li>
-      </ul>
-      :contentReference[oaicite:6]{index=6}
+    <!-- ===== Project Video ===== -->
+    <section class="section fade-in" id="video">
+      <h2>Project Video</h2>
+      <div class="video-placeholder">
+        <div class="video-placeholder-inner">
+          <div class="play-icon">&#x25B6;</div>
+          <span>Project video will be available here</span>
+        </div>
+      </div>
     </section>
+
+    <!-- ===== Team ===== -->
+    <section class="section fade-in" id="team">
+      <h2>Team &amp; Contacts</h2>
+      <div class="card-grid cols-3 stagger">
+        <div class="card card--feature">
+          <div class="card-icon">&#x1F393;</div>
+          <h3>Team 28</h3>
+          <p>UCL Computer Science<br>COMP0016 · 2025–26</p>
+        </div>
+        <div class="card card--feature">
+          <div class="card-icon">&#x1F3E2;</div>
+          <h3>Avanade</h3>
+          <p>Industry Client<br>Josh McDonald · Security Leader</p>
+        </div>
+        <div class="card card--feature">
+          <div class="card-icon">&#x1F4DA;</div>
+          <h3>Dr Yun Fu</h3>
+          <p>Academic Supervisor<br>UCL Computer Science</p>
+        </div>
+      </div>
+
+      <div class="callout callout--note mt-3">
+        <p>
+          <strong>Industry contacts:</strong> Martin Harper (UK Innovation Lead, Avanade)
+          and Jovana Milosevic (Avanade) provide ongoing project guidance and domain expertise.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Page Nav ===== -->
+    <nav class="page-nav fade-in" aria-label="Page navigation">
+      <div></div>
+      <a href="requirements.html">
+        <span class="page-nav-label">Next</span>
+        <span class="page-nav-title">Requirements →</span>
+      </a>
+    </nav>
 
   </div>
 </main>
@@ -158,9 +251,13 @@
 <footer>
   <div class="container foot">
     <div>© Team 28 · UCL COMP0016 · Client: Avanade</div>
-    <div><a href="appendices.html#dev-blog">Development Blog</a></div>
+    <div class="footer-links">
+      <a href="appendices.html#dev-blog">Development Blog</a>
+    </div>
   </div>
 </footer>
 
+<button class="back-to-top" aria-label="Back to top">↑</button>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

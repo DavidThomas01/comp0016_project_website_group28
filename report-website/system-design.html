@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="System architecture and design of the Prompt Injection Protection platform — components, data flow, and security considerations." />
   <title>System Design – Prompt Injection Protection</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
@@ -18,23 +19,19 @@
         <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
       </div>
     </a>
-
     <div class="brand-logos" aria-hidden="true">
       <img src="assets/img/logo-ucl.svg" alt="">
       <img src="assets/img/logo-avanade.svg" alt="">
     </div>
   </div>
-
   <div class="container">
     <label class="burger" for="nav-toggle">Menu</label>
   </div>
   <input id="nav-toggle" type="checkbox" />
-
   <div class="nav-wrap">
     <div class="container">
       <nav class="site-nav" aria-label="Primary">
         <div class="nav-left">
-
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="requirements.html">Requirements</a>
           <a class="nav-link" href="research.html">Research</a>
@@ -44,17 +41,15 @@
           <a class="nav-link" href="implementation.html">Implementation</a>
           <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
           <a class="nav-link" href="conclusion.html">Conclusion</a>
-
           <div class="nav-item">
             <span class="drop-toggle" tabindex="0">Appendices ▾</span>
             <div class="dropdown" role="menu" aria-label="Appendices">
-              <a href="appendices.html#user-manual">User manual & deployment manual</a>
-              <a href="appendices.html#gdpr">GDPR & Privacy of Data</a>
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
               <a href="appendices.html#dev-blog">Development blog (external)</a>
               <a href="appendices.html#monthly-video">Monthly video</a>
             </div>
           </div>
-
         </div>
       </nav>
     </div>
@@ -66,8 +61,8 @@
     <div class="kicker">Systems Engineering · IXN</div>
     <h1>System Design</h1>
     <p>
-      This section presents the high-level architecture and system design of the platform,
-      including component overview, data flow, and security considerations.
+      The high-level architecture and system design of the platform, including component
+      overview, data flow patterns, technology stack, and security architecture.
     </p>
   </div>
 </section>
@@ -75,33 +70,189 @@
 <main id="main">
   <div class="container">
 
-    <section class="section" id="architecture">
+    <section class="section fade-in" id="architecture">
       <h2>High-Level Architecture</h2>
+      <div class="callout callout--note">
+        <p><strong>Coming soon:</strong> The full architecture diagram and detailed component descriptions will be added once the system design is finalised.</p>
+      </div>
       <p>
-        Placeholder content for high-level architecture.
+        The platform follows a modular architecture that separates concerns between the
+        user interface, business logic, data management, and external integrations. This
+        design enables independent development and testing of each component.
       </p>
+      <div class="img-placeholder">
+        <span class="placeholder-icon">&#x1F3D7;&#xFE0F;</span>
+        <span class="placeholder-label">System Architecture Diagram</span>
+        High-level architecture diagram showing all major components and their interactions
+      </div>
     </section>
 
-    <section class="section" id="components">
+    <section class="section fade-in" id="components">
       <h2>Component Overview</h2>
       <p>
-        Placeholder content for component overview.
+        The system is composed of several key components, each responsible for a distinct
+        aspect of the platform's functionality.
       </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F5A5;&#xFE0F;</div>
+          <h3>Frontend Application</h3>
+          <p>Web-based interface providing the vulnerability explorer, knowledge base, and testing views. Delivers responsive, accessible UI across devices.</p>
+          <div class="tag-list">
+            <span class="badge badge--blue">UI Layer</span>
+            <span class="badge badge--green">Responsive</span>
+          </div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">&#x2699;&#xFE0F;</div>
+          <h3>Analysis Engine</h3>
+          <p>Core processing logic for prompt analysis, vulnerability detection, and mitigation evaluation. Implements the algorithmic pipeline.</p>
+          <div class="tag-list">
+            <span class="badge badge--brand">Core Logic</span>
+            <span class="badge badge--amber">Processing</span>
+          </div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F9EA;</div>
+          <h3>Testing Framework</h3>
+          <p>Automated testing infrastructure for running prompt injection tests against MCP servers with configurable mitigation strategies.</p>
+          <div class="tag-list">
+            <span class="badge badge--brand">Testing</span>
+            <span class="badge badge--blue">Automation</span>
+          </div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F4BE;</div>
+          <h3>Data Layer</h3>
+          <p>Local SQL database for preserving test data, knowledge base content, and user configurations. No persistent backend server required.</p>
+          <div class="tag-list">
+            <span class="badge badge--green">Local Storage</span>
+            <span class="badge badge--blue">SQL</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="section" id="data-flow">
+    <section class="section fade-in" id="data-flow">
       <h2>Data Flow</h2>
       <p>
-        Placeholder content for data flow.
+        Data flows through the system in a well-defined pipeline, from user input
+        through analysis and testing to results presentation.
       </p>
+      <div class="img-placeholder">
+        <span class="placeholder-icon">&#x1F504;</span>
+        <span class="placeholder-label">Data Flow Diagram</span>
+        Sequence diagram showing how data moves between components during key operations
+      </div>
+      <div class="card-grid cols-3 stagger">
+        <div class="card card--feature">
+          <h3>1. Input</h3>
+          <p>User provides prompts, selects vulnerabilities, or configures tests via the frontend.</p>
+        </div>
+        <div class="card card--feature">
+          <h3>2. Process</h3>
+          <p>The analysis engine evaluates inputs, applies detection logic, and runs mitigations.</p>
+        </div>
+        <div class="card card--feature">
+          <h3>3. Output</h3>
+          <p>Results are formatted and presented with clear pass/fail indicators and detailed analysis.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="section" id="security">
-      <h2>Security Considerations</h2>
+    <section class="section fade-in" id="tech-stack">
+      <h2>Technology Stack</h2>
       <p>
-        Placeholder content for security considerations.
+        Technology choices are driven by the project requirements: web delivery,
+        local-first data, and no persistent backend server.
       </p>
+      <div class="table-wrap">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Technology</th>
+              <th>Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Frontend</td>
+              <td>To be confirmed</td>
+              <td>Responsive web UI meeting accessibility requirements</td>
+            </tr>
+            <tr>
+              <td>Logic</td>
+              <td>To be confirmed</td>
+              <td>Analysis engine and detection pipeline</td>
+            </tr>
+            <tr>
+              <td>Data</td>
+              <td>SQL (local)</td>
+              <td>Local-first storage per non-functional requirements</td>
+            </tr>
+            <tr>
+              <td>LLM Integration</td>
+              <td>GPT-5.0 (fixed)</td>
+              <td>Standardised model as specified in requirements</td>
+            </tr>
+            <tr>
+              <td>Protocol</td>
+              <td>MCP</td>
+              <td>Target protocol for security testing and evaluation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
+
+    <section class="section fade-in" id="security">
+      <h2>Security Architecture</h2>
+      <div class="callout callout--warning">
+        <p><strong>Security by design:</strong> Given that the platform analyses security vulnerabilities, its own security architecture is critical. Defence-in-depth principles are applied throughout.</p>
+      </div>
+      <div class="card-grid cols-2 stagger">
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F512;</div>
+          <div class="feature-content">
+            <h3>Sandboxed Execution</h3>
+            <p>All prompt testing runs in isolated environments with strict resource and permission controls.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F6E1;&#xFE0F;</div>
+          <div class="feature-content">
+            <h3>Input Boundaries</h3>
+            <p>Clear separation between user-provided content and system instructions at every layer.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F4DD;</div>
+          <div class="feature-content">
+            <h3>Audit Logging</h3>
+            <p>Comprehensive logging of all test operations and analysis results for traceability.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F510;</div>
+          <div class="feature-content">
+            <h3>Minimal Permissions</h3>
+            <p>Principle of least privilege applied to all tool and API interactions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="page-nav fade-in" aria-label="Page navigation">
+      <a href="ui-design.html">
+        <span class="page-nav-label">Previous</span>
+        <span class="page-nav-title">← UI Design</span>
+      </a>
+      <a href="implementation.html">
+        <span class="page-nav-label">Next</span>
+        <span class="page-nav-title">Implementation →</span>
+      </a>
+    </nav>
 
   </div>
 </main>
@@ -109,9 +260,13 @@
 <footer>
   <div class="container foot">
     <div>© Team 28 · UCL COMP0016 · Client: Avanade</div>
-    <div><a href="appendices.html#dev-blog">Development Blog</a></div>
+    <div class="footer-links">
+      <a href="appendices.html#dev-blog">Development Blog</a>
+    </div>
   </div>
 </footer>
 
+<button class="back-to-top" aria-label="Back to top">↑</button>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

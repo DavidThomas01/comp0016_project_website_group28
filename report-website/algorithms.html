@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Algorithmic approaches for detecting and evaluating prompt injection vulnerabilities, including threat modelling and detection logic." />
   <title>Algorithms – Prompt Injection Protection</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
@@ -18,23 +19,19 @@
         <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
       </div>
     </a>
-
     <div class="brand-logos" aria-hidden="true">
       <img src="assets/img/logo-ucl.svg" alt="">
       <img src="assets/img/logo-avanade.svg" alt="">
     </div>
   </div>
-
   <div class="container">
     <label class="burger" for="nav-toggle">Menu</label>
   </div>
   <input id="nav-toggle" type="checkbox" />
-
   <div class="nav-wrap">
     <div class="container">
       <nav class="site-nav" aria-label="Primary">
         <div class="nav-left">
-
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="requirements.html">Requirements</a>
           <a class="nav-link" href="research.html">Research</a>
@@ -44,17 +41,15 @@
           <a class="nav-link" href="implementation.html">Implementation</a>
           <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
           <a class="nav-link" href="conclusion.html">Conclusion</a>
-
           <div class="nav-item">
             <span class="drop-toggle" tabindex="0">Appendices ▾</span>
             <div class="dropdown" role="menu" aria-label="Appendices">
-              <a href="appendices.html#user-manual">User manual & deployment manual</a>
-              <a href="appendices.html#gdpr">GDPR & Privacy of Data</a>
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
               <a href="appendices.html#dev-blog">Development blog (external)</a>
               <a href="appendices.html#monthly-video">Monthly video</a>
             </div>
           </div>
-
         </div>
       </nav>
     </div>
@@ -66,8 +61,8 @@
     <div class="kicker">Systems Engineering · IXN</div>
     <h1>Algorithms</h1>
     <p>
-      This section describes the algorithmic approaches used for detecting and evaluating
-      prompt injection vulnerabilities, including threat modelling and detection logic.
+      The algorithmic approaches used for detecting and evaluating prompt injection
+      vulnerabilities, including threat modelling, classification logic, and scoring mechanisms.
     </p>
   </div>
 </section>
@@ -75,33 +70,105 @@
 <main id="main">
   <div class="container">
 
-    <section class="section" id="overview">
-      <h2>Overview</h2>
+    <section class="section fade-in" id="overview">
+      <h2>Algorithmic Overview</h2>
+      <div class="callout callout--note">
+        <p><strong>Coming soon:</strong> This section will detail the full algorithmic pipeline — from input analysis through threat classification to risk scoring — once implementation is finalised.</p>
+      </div>
       <p>
-        Placeholder content for algorithms overview.
+        The platform employs a multi-stage algorithmic pipeline to analyse prompts, identify potential
+        injection patterns, and evaluate the severity of detected threats. This section will cover the
+        core detection strategies, scoring rubrics, and decision logic used throughout the system.
       </p>
+      <div class="card-grid cols-3 stagger">
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x1F50D;</div>
+          <h3>Input Analysis</h3>
+          <p>Pattern recognition and heuristic-based scanning of incoming prompts.</p>
+        </div>
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x1F3AF;</div>
+          <h3>Classification</h3>
+          <p>Categorising detected threats against the vulnerability taxonomy.</p>
+        </div>
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x1F4CA;</div>
+          <h3>Risk Scoring</h3>
+          <p>Quantitative assessment of threat severity and potential impact.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="section" id="threat-modelling">
+    <section class="section fade-in" id="threat-modelling">
       <h2>Threat Modelling Approach</h2>
       <p>
-        Placeholder content for threat modelling approach.
+        The threat modelling process identifies potential attack vectors, evaluates their likelihood
+        and impact, and informs the design of detection and mitigation strategies. It draws on the
+        vulnerability taxonomy established in the research phase.
       </p>
+      <div class="img-placeholder">
+        <span class="placeholder-icon">&#x1F5FA;&#xFE0F;</span>
+        <span class="placeholder-label">Threat Model Diagram</span>
+        Visualisation of the threat modelling framework will be added here
+      </div>
+      <div class="card-grid cols-2 stagger">
+        <div class="card">
+          <h3>&#x26A0;&#xFE0F; Attack Vectors</h3>
+          <p>Enumeration of entry points where prompt injection can occur, including direct input, retrieved context, tool responses, and multi-turn conversations.</p>
+        </div>
+        <div class="card">
+          <h3>&#x1F4C8; Risk Assessment</h3>
+          <p>Evaluation of each vector's likelihood and potential impact, taking into account the specific architecture and deployment context of MCP servers.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="section" id="detection-evaluation">
-      <h2>Detection / Evaluation Logic</h2>
+    <section class="section fade-in" id="detection-evaluation">
+      <h2>Detection &amp; Evaluation Logic</h2>
       <p>
-        Placeholder content for detection and evaluation logic.
+        The detection system combines multiple analysis techniques to identify injection attempts
+        with high accuracy while minimising false positives. The evaluation logic then determines
+        the appropriate response based on the severity and type of detected threat.
       </p>
+      <div class="img-placeholder">
+        <span class="placeholder-icon">&#x2699;&#xFE0F;</span>
+        <span class="placeholder-label">Detection Pipeline Flowchart</span>
+        Detailed flowchart of the detection and evaluation pipeline will be added here
+      </div>
+      <ul class="styled-list">
+        <li><strong>Pattern matching:</strong> Rule-based detection of known injection signatures and templates.</li>
+        <li><strong>Semantic analysis:</strong> Contextual understanding of prompt intent beyond surface-level patterns.</li>
+        <li><strong>Anomaly detection:</strong> Identification of statistically unusual prompt structures or content.</li>
+        <li><strong>Ensemble scoring:</strong> Aggregation of multiple detection signals into a unified risk score.</li>
+      </ul>
     </section>
 
-    <section class="section" id="limitations">
+    <section class="section fade-in" id="limitations">
       <h2>Limitations</h2>
-      <p>
-        Placeholder content for algorithmic limitations.
-      </p>
+      <div class="callout callout--warning">
+        <p>
+          <strong>Important:</strong> No detection algorithm can guarantee 100% accuracy against prompt injection.
+          The evolving nature of adversarial techniques means continuous evaluation and updates are necessary.
+        </p>
+      </div>
+      <ul class="styled-list">
+        <li><strong>Evasion risk:</strong> Sophisticated obfuscation techniques may bypass pattern-based detection.</li>
+        <li><strong>False positives:</strong> Legitimate prompts with unusual structure may be flagged incorrectly.</li>
+        <li><strong>Context dependence:</strong> Detection accuracy varies based on application domain and model configuration.</li>
+        <li><strong>Computational cost:</strong> Multi-stage analysis adds latency that may affect real-time applications.</li>
+      </ul>
     </section>
+
+    <nav class="page-nav fade-in" aria-label="Page navigation">
+      <a href="research.html">
+        <span class="page-nav-label">Previous</span>
+        <span class="page-nav-title">← Research</span>
+      </a>
+      <a href="ui-design.html">
+        <span class="page-nav-label">Next</span>
+        <span class="page-nav-title">UI Design →</span>
+      </a>
+    </nav>
 
   </div>
 </main>
@@ -109,9 +176,13 @@
 <footer>
   <div class="container foot">
     <div>© Team 28 · UCL COMP0016 · Client: Avanade</div>
-    <div><a href="appendices.html#dev-blog">Development Blog</a></div>
+    <div class="footer-links">
+      <a href="appendices.html#dev-blog">Development Blog</a>
+    </div>
   </div>
 </footer>
 
+<button class="back-to-top" aria-label="Back to top">↑</button>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
