@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Implementation details of the Prompt Injection Protection platform — technology stack, core components, challenges, and limitations." />
+  <title>Implementation – Prompt Injection Protection</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container topbar">
+    <a class="brand" href="index.html">
+      <div>
+        <div class="brand-title">Prompt Injection Protection</div>
+        <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
+      </div>
+    </a>
+    <div class="brand-logos" aria-hidden="true">
+      <img src="assets/img/logo-ucl.png" alt="UCL">
+      <img src="assets/img/logo-avanade.webp" alt="Avanade">
+    </div>
+  </div>
+  <div class="container">
+    <label class="burger" for="nav-toggle">Menu</label>
+  </div>
+  <input id="nav-toggle" type="checkbox" />
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-left">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="requirements.html">Requirements</a>
+          <a class="nav-link" href="research.html">Research</a>
+          <a class="nav-link" href="algorithms.html">Algorithms</a>
+          <a class="nav-link" href="ui-design.html">UI Design</a>
+          <a class="nav-link" href="system-design.html">System Design</a>
+          <a class="nav-link active" href="implementation.html">Implementation</a>
+          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a class="nav-link" href="conclusion.html">Conclusion</a>
+          <div class="nav-item">
+            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <div class="dropdown" role="menu" aria-label="Appendices">
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
+              <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly video</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">Systems Engineering · IXN</div>
+    <h1>Implementation</h1>
+    <p>
+      Technical details of the platform implementation, including the technology stack,
+      core components, development challenges, and current limitations.
+    </p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="container">
+
+    <section class="section fade-in" id="technology-stack">
+      <h2>Technology Stack</h2>
+      <div class="callout callout--note">
+        <p><strong>Coming soon:</strong> Detailed technology stack documentation with version numbers, configuration details, and rationale will be added as implementation progresses.</p>
+      </div>
+      <p>
+        The technology stack was selected to balance performance, developer productivity,
+        and alignment with project constraints — particularly the requirement for local-first
+        data storage and web-based delivery.
+      </p>
+      <div class="card-grid cols-3 stagger">
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x1F310;</div>
+          <h3>Web Frontend</h3>
+          <p>Responsive web application delivering the vulnerability explorer, knowledge base, and testing interface.</p>
+        </div>
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x2699;&#xFE0F;</div>
+          <h3>Processing Engine</h3>
+          <p>Backend logic handling prompt analysis, vulnerability detection, and mitigation evaluation.</p>
+        </div>
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x1F4BE;</div>
+          <h3>Local Database</h3>
+          <p>SQL-based local storage for test results, configurations, and knowledge base content.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="core-components">
+      <h2>Core Components</h2>
+      <p>
+        The implementation is organised around several core components, each handling a
+        specific domain of functionality.
+      </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="card">
+          <div class="card-icon">&#x1F50D;</div>
+          <h3>Vulnerability Explorer</h3>
+          <p>Interactive interface for browsing, searching, and inspecting known prompt injection vulnerabilities with technical explanations and working examples.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#x1F4DA;</div>
+          <h3>Knowledge Base</h3>
+          <p>Structured repository of vulnerability data, mitigation techniques, and educational content with search and filtering capabilities.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#x1F9EA;</div>
+          <h3>Testing Engine</h3>
+          <p>Chat-style interface for creating, configuring, and executing prompt injection tests with individual mitigation toggles and pass/fail results.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#x1F4CA;</div>
+          <h3>Results Dashboard</h3>
+          <p>Visualisation of test results, historical data, and comparative analysis of mitigation effectiveness across different attack vectors.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="challenges">
+      <h2>Implementation Challenges</h2>
+      <p>
+        Several technical challenges were encountered during development, requiring
+        creative solutions and iterative refinement.
+      </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="feature-item">
+          <div class="feature-icon">&#x26A1;</div>
+          <div class="feature-content">
+            <h3>LLM Response Variability</h3>
+            <p>Managing non-deterministic model responses while maintaining consistent and reproducible test outcomes.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x23F1;&#xFE0F;</div>
+          <div class="feature-content">
+            <h3>Latency Management</h3>
+            <p>Balancing comprehensive analysis with acceptable response times for interactive testing workflows.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F512;</div>
+          <div class="feature-content">
+            <h3>Safe Test Execution</h3>
+            <p>Ensuring that vulnerability demonstrations and tests run safely without unintended side effects.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F4B0;</div>
+          <div class="feature-content">
+            <h3>API Cost Control</h3>
+            <p>Implementing efficient prompt design and caching strategies to manage LLM API usage costs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="limitations">
+      <h2>Current Limitations</h2>
+      <div class="callout callout--warning">
+        <p><strong>Work in progress:</strong> The platform is under active development. The following limitations reflect the current state and are being addressed iteratively.</p>
+      </div>
+      <ul class="styled-list">
+        <li><strong>Single model:</strong> Testing is currently limited to GPT-5.0 as specified in requirements; cross-model comparison is not yet supported.</li>
+        <li><strong>Local storage:</strong> All data is stored locally with no cloud synchronisation or multi-device access.</li>
+        <li><strong>Real-time detection:</strong> The analysis pipeline is optimised for batch testing rather than real-time production monitoring.</li>
+        <li><strong>Coverage:</strong> The vulnerability database is comprehensive but will require ongoing updates as new attack techniques emerge.</li>
+      </ul>
+    </section>
+
+    <nav class="page-nav fade-in" aria-label="Page navigation">
+      <a href="system-design.html">
+        <span class="page-nav-label">Previous</span>
+        <span class="page-nav-title">← System Design</span>
+      </a>
+      <a href="evaluation-testing.html">
+        <span class="page-nav-label">Next</span>
+        <span class="page-nav-title">Evaluation &amp; Testing →</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__block site-footer__pages">
+        <h3 class="site-footer__heading">Pages</h3>
+        <nav class="site-footer__nav" aria-label="Report pages">
+          <a href="index.html">Home</a>
+          <a href="requirements.html">Requirements</a>
+          <a href="research.html">Research</a>
+          <a href="algorithms.html">Algorithms</a>
+          <a href="ui-design.html">UI Design</a>
+          <a href="system-design.html">System Design</a>
+          <a href="implementation.html">Implementation</a>
+          <a href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a href="conclusion.html">Conclusion</a>
+          <a href="appendices.html">Appendices</a>
+        </nav>
+      </div>
+      <div class="site-footer__block site-footer__project">
+        <h3 class="site-footer__heading">Project</h3>
+        <p class="site-footer__title">Prompt Injection Protection</p>
+        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
+        <a href="appendices.html#dev-blog">Development Blog</a>
+      </div>
+    </div>
+    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

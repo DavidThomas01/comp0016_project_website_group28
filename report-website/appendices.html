@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Appendices for the Prompt Injection Protection project — user manual, GDPR documentation, development blog, and monthly videos." />
+  <title>Appendices – Prompt Injection Protection</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container topbar">
+    <a class="brand" href="index.html">
+      <div>
+        <div class="brand-title">Prompt Injection Protection</div>
+        <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
+      </div>
+    </a>
+    <div class="brand-logos" aria-hidden="true">
+      <img src="assets/img/logo-ucl.png" alt="UCL">
+      <img src="assets/img/logo-avanade.webp" alt="Avanade">
+    </div>
+  </div>
+  <div class="container">
+    <label class="burger" for="nav-toggle">Menu</label>
+  </div>
+  <input id="nav-toggle" type="checkbox" />
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-left">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="requirements.html">Requirements</a>
+          <a class="nav-link" href="research.html">Research</a>
+          <a class="nav-link" href="algorithms.html">Algorithms</a>
+          <a class="nav-link" href="ui-design.html">UI Design</a>
+          <a class="nav-link" href="system-design.html">System Design</a>
+          <a class="nav-link" href="implementation.html">Implementation</a>
+          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a class="nav-link" href="conclusion.html">Conclusion</a>
+          <div class="nav-item">
+            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <div class="dropdown" role="menu" aria-label="Appendices">
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
+              <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly video</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">Systems Engineering · IXN</div>
+    <h1>Appendices</h1>
+    <p>
+      Supplementary materials including user manuals, deployment guides, GDPR documentation,
+      development blog links, and monthly video progress updates.
+    </p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="container">
+
+    <section class="section fade-in" id="user-manual">
+      <h2>User &amp; Deployment Manuals</h2>
+      <div class="callout callout--note">
+        <p><strong>Coming soon:</strong> The user manual and deployment guide will be finalised alongside the platform implementation.</p>
+      </div>
+      <p>
+        The user manual provides step-by-step guidance for all platform features,
+        while the deployment guide covers installation, configuration, and
+        environment setup requirements.
+      </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F4D6;</div>
+          <h3>User Manual</h3>
+          <p>Comprehensive guide covering the vulnerability explorer, knowledge base, testing interface, and results dashboard. Written for both technical and semi-technical users.</p>
+          <div class="tag-list">
+            <span class="badge badge--green">End Users</span>
+            <span class="badge badge--blue">Step-by-Step</span>
+          </div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F527;</div>
+          <h3>Deployment Guide</h3>
+          <p>Technical guide for setting up the platform, including system requirements, installation steps, configuration options, and troubleshooting.</p>
+          <div class="tag-list">
+            <span class="badge badge--brand">Technical</span>
+            <span class="badge badge--amber">DevOps</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="gdpr">
+      <h2>GDPR &amp; Data Privacy</h2>
+      <p>
+        This section documents data privacy considerations and GDPR compliance
+        measures implemented in the platform.
+      </p>
+      <div class="card-grid cols-3 stagger">
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x1F512;</div>
+          <h3>Data Minimisation</h3>
+          <p>The platform collects only the minimum data necessary for testing and does not store personal information.</p>
+        </div>
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x1F4BE;</div>
+          <h3>Local-First Storage</h3>
+          <p>All test data is stored locally on the user's device with no transmission to external servers.</p>
+        </div>
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x1F5D1;&#xFE0F;</div>
+          <h3>Right to Erasure</h3>
+          <p>Users can delete all stored test data and configurations at any time through the platform interface.</p>
+        </div>
+      </div>
+      <div class="callout callout--tip mt-3">
+        <p>
+          <strong>Privacy by design:</strong> The platform's local-first architecture inherently minimises
+          data privacy risks by keeping all test data on the user's device. No persistent backend
+          server means no centralised data collection.
+        </p>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="dev-blog">
+      <h2>Development Blog</h2>
+      <p>
+        The team maintains a development blog documenting progress, technical decisions,
+        challenges encountered, and insights gained throughout the project.
+      </p>
+      <div class="card card-accent">
+        <div class="card-icon">&#x270D;&#xFE0F;</div>
+        <h3>Visit the Development Blog</h3>
+        <p>
+          Read about our weekly progress, technical deep-dives, and project reflections.
+          The blog is updated regularly throughout the project lifecycle.
+        </p>
+        <div class="mt-2">
+          <a href="#" class="btn btn-outline">Open Development Blog →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="monthly-video">
+      <h2>Monthly Video</h2>
+      <p>
+        Monthly video updates summarising progress, demonstrating features, and
+        reflecting on the project's direction.
+      </p>
+      <div class="video-placeholder">
+        <div class="video-placeholder-inner">
+          <div class="play-icon">&#x25B6;</div>
+          <span>Monthly progress video will be available here</span>
+        </div>
+      </div>
+      <div class="callout mt-3">
+        <p>Additional monthly videos will be linked here as they are produced throughout the project timeline.</p>
+      </div>
+    </section>
+
+    <nav class="page-nav fade-in" aria-label="Page navigation">
+      <a href="conclusion.html">
+        <span class="page-nav-label">Previous</span>
+        <span class="page-nav-title">← Conclusion</span>
+      </a>
+      <div></div>
+    </nav>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__block site-footer__pages">
+        <h3 class="site-footer__heading">Pages</h3>
+        <nav class="site-footer__nav" aria-label="Report pages">
+          <a href="index.html">Home</a>
+          <a href="requirements.html">Requirements</a>
+          <a href="research.html">Research</a>
+          <a href="algorithms.html">Algorithms</a>
+          <a href="ui-design.html">UI Design</a>
+          <a href="system-design.html">System Design</a>
+          <a href="implementation.html">Implementation</a>
+          <a href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a href="conclusion.html">Conclusion</a>
+          <a href="appendices.html">Appendices</a>
+        </nav>
+      </div>
+      <div class="site-footer__block site-footer__project">
+        <h3 class="site-footer__heading">Project</h3>
+        <p class="site-footer__title">Prompt Injection Protection</p>
+        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
+        <a href="appendices.html#dev-blog">Development Blog</a>
+      </div>
+    </div>
+    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

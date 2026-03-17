@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <circle cx="200" cy="200" r="200" fill="#FFF5F2"/>
+  <circle cx="200" cy="200" r="200" fill="none" stroke="#e6e6e6" stroke-width="2"/>
+  <text x="200" y="195" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="600" fill="#444">David</text>
+  <text x="200" y="230" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="600" fill="#444">Thomas</text>
+  <text x="200" y="270" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#666">Photo placeholder</text>
+</svg>
