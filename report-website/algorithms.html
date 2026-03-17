@@ -20,8 +20,8 @@
       </div>
     </a>
     <div class="brand-logos" aria-hidden="true">
-      <img src="assets/img/logo-ucl.svg" alt="">
-      <img src="assets/img/logo-avanade.svg" alt="">
+      <img src="assets/img/logo-ucl.png" alt="UCL">
+      <img src="assets/img/logo-avanade.webp" alt="Avanade">
     </div>
   </div>
   <div class="container">
@@ -173,16 +173,40 @@
   </div>
 </main>
 
-<footer>
-  <div class="container foot">
-    <div>© Team 28 · UCL COMP0016 · Client: Avanade</div>
-    <div class="footer-links">
-      <a href="appendices.html#dev-blog">Development Blog</a>
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__block site-footer__pages">
+        <h3 class="site-footer__heading">Pages</h3>
+        <nav class="site-footer__nav" aria-label="Report pages">
+          <a href="index.html">Home</a>
+          <a href="requirements.html">Requirements</a>
+          <a href="research.html">Research</a>
+          <a href="algorithms.html">Algorithms</a>
+          <a href="ui-design.html">UI Design</a>
+          <a href="system-design.html">System Design</a>
+          <a href="implementation.html">Implementation</a>
+          <a href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a href="conclusion.html">Conclusion</a>
+          <a href="appendices.html">Appendices</a>
+        </nav>
+      </div>
+      <div class="site-footer__block site-footer__project">
+        <h3 class="site-footer__heading">Project</h3>
+        <p class="site-footer__title">Prompt Injection Protection</p>
+        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
+        <a href="appendices.html#dev-blog">Development Blog</a>
+      </div>
     </div>
+    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
   </div>
 </footer>
 
-<button class="back-to-top" aria-label="Back to top">↑</button>
+<button class="back-to-top" aria-label="Back to top">
+  <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
