@@ -63,14 +63,22 @@
     <div class="hero-badge"><span>UCL COMP0016</span> · 2025–26 · Team 28</div>
     <h1>Prompt Injection<br><span class="text-gradient">Protection</span></h1>
     <p class="hero-lead">
-      Exploring vulnerabilities, mitigations, and testing methodologies for AI-driven
-      applications — with a focus on securing Model Context Protocol (MCP) servers
-      against prompt injection attacks.
+      This project delivers an educational web platform for understanding, exploring, and testing prompt
+      injection attacks against large language models, with a particular focus on tool-using and MCP-style
+      systems.
     </p>
     <div class="hero-actions">
       <a href="requirements.html" class="btn btn-primary">View Requirements →</a>
       <a href="research.html" class="btn btn-outline">Read Research</a>
     </div>
+    <figure class="hero-media">
+      <img src="assets/img/hero-platform-overview.png"
+           alt="Overview of the Prompt Injection Protection platform interface"
+           loading="lazy" />
+      <figcaption class="text-muted">
+        Placeholder hero image showing the platform home view; replace with a real screenshot.
+      </figcaption>
+    </figure>
   </div>
 </section>
 
@@ -80,22 +88,92 @@
     <!-- ===== Overview ===== -->
     <section class="section fade-in" id="overview">
       <h2>Project Overview</h2>
-      <p>
-        Prompt injection is an emerging attack vector where malicious instructions are embedded in user inputs
-        to influence an AI model's behaviour — potentially bypassing safeguards or causing the model to expose
-        sensitive information.
-      </p>
-      <div class="callout">
-        <p>
-          <strong>Why it matters:</strong> As organisations connect LLMs to tools, APIs, and knowledge sources via protocols
-          like MCP, the attack surface expands significantly. Our project maps these risks, evaluates defences,
-          and builds testing tools to help secure these systems.
-        </p>
+      <div class="card-grid cols-2">
+        <div class="card">
+          <h3>Why prompt injection matters</h3>
+          <p>
+            Prompt injection is an emerging class of vulnerability where adversarial instructions buried in user
+            input or external data cause an LLM to ignore its original task, leak sensitive information, or misuse
+            attached tools.
+          </p>
+          <p>
+            This risk is especially acute in agentic systems and MCP-style architectures, where models act as
+            orchestrators of tools, APIs, and external services and can therefore cause real-world side effects
+            when compromised.
+          </p>
+        </div>
+        <div class="card">
+          <h3>What this platform provides</h3>
+          <ul>
+            <li>An accessible catalogue of prompt injection vulnerabilities and mitigation strategies.</li>
+            <li>Technical explanations, worked attack examples, and side-by-side “with vs without mitigation” demos.</li>
+            <li>A testing environment for defining prompts, choosing models and mitigations, and running structured experiments.</li>
+            <li>A self-contained lab for learning about, experimenting with, and evaluating defences in tool-using LLM systems.</li>
+          </ul>
+        </div>
       </div>
-      <p>
-        Working in collaboration with Avanade and supervised by Dr Yun Fu at UCL Computer Science,
-        Team 28 is building a comprehensive platform for understanding and combating prompt injection threats.
-      </p>
+    </section>
+
+    <!-- ===== Problem Statement ===== -->
+    <section class="section fade-in" id="problem">
+      <h2>Problem Statement</h2>
+      <div class="card-grid cols-2">
+        <div class="card">
+          <h3>The security risk</h3>
+          <p>
+            Prompt injection attacks occur when malicious instructions are smuggled into the inputs or context seen
+            by an LLM, causing it to override its original instructions, reveal hidden information, or execute
+            actions it should refuse.
+          </p>
+          <p>
+            In systems where the model can call tools, access documents, or route requests via MCP-style servers,
+            a single successful injection can lead to data exfiltration, incorrect tool calls, or unsafe changes in
+            downstream systems.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Gaps we identified</h3>
+          <ul>
+            <li>Few resources connect high-level theory to concrete, step-by-step prompt injection attack scenarios.</li>
+            <li>Existing testing approaches are often bespoke scripts that are hard to compare, reuse, or track over time.</li>
+            <li>Developers lack visual support for seeing where mitigations are applied and how they can fail.</li>
+            <li>Teams struggle to harden system prompts without accidentally changing behaviour or introducing new risks.</li>
+          </ul>
+          <p>
+            Our main stakeholders are developers, security engineers, and organisations building tool-using LLM
+            applications, along with students and researchers who need a practical environment to study these attacks.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Platform Overview ===== -->
+    <section class="section fade-in" id="platform">
+      <h2>Our Platform</h2>
+      <div class="card-grid cols-3 stagger">
+        <div class="card card--feature">
+          <h3>Full-stack lab</h3>
+          <p>
+            A full-stack web platform combining an interactive frontend with a FastAPI backend and persistent
+            storage, centred around a vulnerability catalogue that introduces different classes of prompt
+            injection attacks with concise summaries and deep-dive views.
+          </p>
+        </div>
+        <div class="card card--feature">
+          <h3>Exploration views</h3>
+          <p>
+            Vulnerability and mitigation pages explain each attack, show realistic prompts and “bad responses”,
+            and present recommended defences with clear “with vs without mitigation” flows.
+          </p>
+        </div>
+        <div class="card card--feature">
+          <h3>Hands-on tooling</h3>
+          <p>
+            A testing workbench, prompt enhancer, and security knowledge assistant let users configure experiments,
+            harden their own system prompts, and reason about attack surfaces and mitigation choices in one place.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- ===== Objectives ===== -->
@@ -161,39 +239,35 @@
       </div>
     </section>
 
-    <!-- ===== Deliverables ===== -->
+    <!-- ===== Key Features & Future Work ===== -->
     <section class="section fade-in" id="deliverables">
-      <h2>Planned Deliverables</h2>
-      <div class="card-grid cols-2 stagger">
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F4A5;</div>
-          <div class="feature-content">
-            <h3>Attack Demonstrations</h3>
-            <p>Proof-of-concept demonstrations of prompt injection techniques in realistic conditions.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F6E1;&#xFE0F;</div>
-          <div class="feature-content">
-            <h3>Mitigation Evaluation</h3>
-            <p>A structured evaluation of defence strategies with practical guidance on when to apply them.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F9EA;</div>
-          <div class="feature-content">
-            <h3>MCP Testing Framework</h3>
-            <p>Automated testing tools for assessing MCP servers against injection and related exploits.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F4D6;</div>
-          <div class="feature-content">
-            <h3>Security Recommendations</h3>
-            <p>Technical guidance and best-practice tooling approaches for securing MCP server deployments.</p>
-          </div>
-        </div>
-      </div>
+      <h2>Key Features &amp; Future Directions</h2>
+      <p>
+        The platform provides a set of concrete tools for exploring and defending against prompt injection
+        today, while also opening space for future extensions and deeper integrations.
+      </p>
+      <h3>Current Key Features</h3>
+      <ul>
+        <li><strong>Explore real-world prompt injection vulnerabilities</strong> through an interactive catalogue with explanations, example attack prompts, and “what went wrong” narratives.</li>
+        <li><strong>Dive into mitigation strategies</strong> with dedicated pages that explain defensive patterns and show implementation-style snippets in pseudo-code, Python, and Java.</li>
+        <li><strong>Run structured tests against LLMs</strong> in a testing workbench where you can configure prompts, models, and mitigations, then review saved results in one place.</li>
+        <li><strong>See layered defences in action</strong> as the backend applies pre-input checks, prompt-level guidelines, post-output filtering, and monitoring when running each test.</li>
+        <li><strong>Automatically evaluate injection success</strong> using an analyser model that flags likely successful attacks, assigns a risk score, and explains its reasoning.</li>
+        <li><strong>Harden your own system prompts</strong> with a three-stage prompt enhancer that improves wording, prepends selected mitigations, and verifies that intent is preserved.</li>
+        <li><strong>Ask a security knowledge assistant</strong> questions about prompt injection and mitigations, with responses grounded in the platform’s curated knowledge base.</li>
+        <li><strong>Work with multiple LLM providers</strong> via a pluggable backend that routes requests through a registry of OpenAI, Anthropic, and compatible models.</li>
+      </ul>
+      <h3>Future Directions</h3>
+      <ul>
+        <li><strong>Integrate with MCP servers and tool registries</strong> so tests can directly target tool-using agents and evaluate how prompt injection affects real tool calls.</li>
+        <li><strong>Add richer visual analytics for test runs</strong>, such as timelines or risk heatmaps that highlight which prompts, models, or mitigation combinations fail most often.</li>
+        <li><strong>Support collaborative test suites</strong>, allowing teams to share, tag, and version prompt injection tests across projects and environments.</li>
+        <li><strong>Introduce scenario-based “attack campaigns”</strong> that chain multiple prompts and contexts to simulate complex, multi-step injection attempts.</li>
+        <li><strong>Extend the mitigation catalogue</strong> with more language-specific code examples and ready-to-adapt middleware patterns for common frameworks.</li>
+        <li><strong>Export reports in richer formats</strong>, such as branded PDF or HTML summaries that organisations can attach to internal security reviews.</li>
+        <li><strong>Provide guided “wizards” for new users</strong>, walking them through defining their first tests, choosing mitigations, and interpreting the analyser’s output.</li>
+        <li><strong>Add plug-in runners for external LLM gateways</strong>, enabling side-by-side comparison of different model providers or hosted agent platforms under the same tests.</li>
+      </ul>
     </section>
 
     <!-- ===== Project Timeline (Gantt) ===== -->
@@ -619,6 +693,48 @@
         <p class="gantt-legend text-muted">
           Solid orange cells indicate primary work weeks; lighter cells show planning and polish.
         </p>
+      </div>
+    </section>
+
+    <!-- ===== Platform Screenshots ===== -->
+    <section class="section fade-in" id="screenshots">
+      <h2>Platform Screenshots &amp; Visuals</h2>
+      <p>
+        These placeholders describe the images we plan to include on the platform home page; replace them with
+        real screenshots and diagrams as the system evolves.
+      </p>
+      <div class="card-grid cols-3 stagger">
+        <figure class="card">
+          <img src="assets/img/feature-testing-workbench.png"
+               alt="Testing workbench showing prompt configuration and analysis results"
+               loading="lazy" />
+          <figcaption>
+            <strong>Testing workbench and analysis.</strong>
+            The testing page displays a form for defining a test alongside a results panel with transcripts,
+            clear “Injection flagged” indicators, and numerical risk scores, making the layered defence model
+            easy to interpret.
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <img src="assets/img/feature-vulnerability-detail.png"
+               alt="Detailed view of a prompt injection vulnerability and its mitigations"
+               loading="lazy" />
+          <figcaption>
+            <strong>Vulnerability and mitigation detail.</strong>
+            A single vulnerability page shows the attack description, an example prompt and unsafe response,
+            and recommended mitigations with “with vs without” comparisons to connect theory to practice.
+          </figcaption>
+        </figure>
+        <figure class="card">
+          <img src="assets/img/feature-enhancer-architecture.png"
+               alt="Prompt enhancer interface and a simplified architecture diagram"
+               loading="lazy" />
+          <figcaption>
+            <strong>Prompt enhancer and architecture overview.</strong>
+            The enhancer UI lets users refine system prompts and attach mitigations, while an accompanying
+            diagram illustrates how prompts flow through the backend, providers, and test runners.
+          </figcaption>
+        </figure>
       </div>
     </section>
 
