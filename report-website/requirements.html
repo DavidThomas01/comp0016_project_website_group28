@@ -61,8 +61,7 @@
     <div class="kicker">Systems Engineering · IXN</div>
     <h1>Requirements</h1>
     <p>
-      Functional and non-functional requirements for the Prompt Injection Protection platform,
-      defined collaboratively with Avanade and prioritised using the MoSCoW method.
+      Detailed information about the requirements gathering process, including the project background, goals, personas, use cases, and MoSCoW style prioritisation of requirements.
     </p>
   </div>
 </section>
@@ -70,143 +69,237 @@
 <main id="main">
   <div class="container">
 
-    <section class="section fade-in" id="overview">
-      <h2>Requirements Overview</h2>
-      <p>
-        The requirements were defined to guide the design and implementation of a
-        web-based platform for exploring prompt injection vulnerabilities, mitigations,
-        and testing methodologies. Requirements are categorised as functional and
-        non-functional, and prioritised using the MoSCoW method.
-      </p>
-      <div class="stat-grid stagger">
-        <div class="stat">
-          <div class="stat-number">4</div>
-          <div class="stat-label">Priority Tiers</div>
+    <section class="section fade-in" id="project-background">
+      <h2>Project Background</h2>
+      <div class="project-bg-layout">
+        <div class="project-bg-text">
+          <p>The modern rise in AI adoption has led to increased concerns about the security and robustness of AI systems, particularly in the context of prompt injection attacks. AI has become increasingly prevalent in various applications, but with this speed many organisations have not fully considered the challenges it presents, making it a critical area for security research. Our project partner from Avanade, Josh McDonald an AI Security Lead, has worked with us to explore this issue and develop a solution that informs Avanade's clients about the risks and mitigation strategies for prompt injection attacks. Avanade is a company formed by Accenture and Microsoft, they work with organisations to provide IT consulting and services focused on utilising Microsoft technology in a number of different domains including artificial intelligence, business analytics, digital transformation and cloud computing.</p>
         </div>
-        <div class="stat">
-          <div class="stat-number">15+</div>
-          <div class="stat-label">Functional Reqs</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">10+</div>
-          <div class="stat-label">Non-Functional Reqs</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">4</div>
-          <div class="stat-label">Core Views</div>
+        <div class="project-bg-logo">
+          <img src="assets/img/logo-avanade.svg" alt="Avanade logo" />
         </div>
       </div>
     </section>
 
-    <section class="section fade-in" id="functional">
-      <h2>Functional Requirements</h2>
+    <section class="section fade-in" id="project-goals">
+      <h2>Project Goals</h2>
+      <p>With this project we aim to support Avanade's clients in both a technical and non-technical capacity, providing those without extensive AI security knowledge with the core information about the risks and mitigations as well as tools that both support less technical users and present more advanced features for users with experience in AI security.</p>
+    </section>
 
-      <h3>&#x2705; Must Have</h3>
+    <section class="section fade-in" id="requirements-gathering">
+      <h2>Requirements Gathering</h2>
+      <p>Initially, our project partners from Avanade presented us the problem without a clear solution in mind, this allow us to explore existing information about prompt injection attacks and identify key areas for development. We started by conducting research into the vulnerabilities, mitigations, impacts and existing solutions, we used this information to form a report on the current state of prompt injection security. Our research informed the development of our platform and its features by discovering the current gaps in AI security. We decided that the area of our focus should be giving our users space to test their AI models with various mitigations and attacks to understand the potential risks and effectiveness of different mitigation strategies.</p>
+      <p>We wanted our platform to be accessible to users with varying levels of AI security knowledge, ensuring that both technical and non-technical users could effectively utilize the tools and information provided. Therefore we believed the platform should contain information about the vulnerabilities and mitigations, as well as testing environments where users can construct tests on popular AI models or supply their own. While testing frameworks already exist like Microsoft's PyRIT and NVIDIA's Garak these are primarily aimed at technical users and may not be accessible to those without extensive AI security knowledge. The solution we've decided upon is easily customisable and far more accessible, which we believe is incredibly important in a world where AI is becoming increasingly prevalent.</p>
+      <h3>Client Requirements</h3>
+      <p>After creating the initial report, we had various meetings with our client to discuss and refine the requirements for the platform. This included focusing on the needs of the company and the typical requirements of Avanade's clients. We developed and refined these requirements throughout the early development process with feedback from our client on our first prototypes. The majority of our final requirements were derived from these discussions.</p>
+      <h3>Interview</h3>
+      <p>We also conducted a semi-structured interview with a Senior Research Scientist in Agentic AI working for Holistic AI, Zekun Wu. Holistic AI is an organisation that works in AI security and compliance so we consulted Zekun Wu to ask where he felt AI security was most lacking and where he experienced pain points in his research.</p>
+    </section>
+
+    <section class="section fade-in" id="personas">
+      <h2>Personas</h2>
+      <p>We constructed personas to represent the different types of users who would interact with our platform, considering both the non-technical and technical user groups. This helped us to better understand the different requirements and features that would be necessary to meet the needs of all of our users.</p>
+      <div class="personas" aria-hidden="true">
+        <img src="assets/img/personas/sales_representative.webp" alt="Sales Representative persona" />
+        <img src="assets/img/personas/security_tester.webp" alt="Security Tester persona" />
+      </div>
+    </section>
+
+    <section class="section fade-in" id="use-cases">
+      <h2>Use Cases</h2>
+      <p>
+        The workflow below breaks down how users interact with our platform.
+        It is structured so it can be converted directly into a use-case diagram.
+      </p>
+
+      <h3>Workflow Breakdown (Diagram Input)</h3>
+      <ul class="styled-list">
+        <li><strong>Start:</strong> User lands on the Home page and chooses a role-based goal (learn, evaluate, test, or report).</li>
+        <li><strong>Discover vulnerabilities:</strong> User reviews the list of known prompt injection vulnerabilities and selects one item.</li>
+        <li><strong>Inspect vulnerability:</strong> System shows technical explanation, attack example, and observed model behaviour.</li>
+        <li><strong>Review mitigation:</strong> User reads mitigation strategy, pseudocode, and references for the selected vulnerability.</li>
+        <li><strong>Compare outcomes:</strong> User checks side-by-side model behaviour with and without mitigation.</li>
+        <li><strong>Create test:</strong> User opens Testing view, names a test, enables mitigation settings, and submits prompts in chat-style flow.</li>
+        <li><strong>Evaluate result:</strong> System returns pass/fail status using predefined security expectations and stores results in local SQL.</li>
+        <li><strong>Refine and rerun:</strong> User adjusts mitigation choices or prompt wording and repeats tests until desired reliability is reached.</li>
+        <li><strong>Report and share:</strong> User exports findings as PDF and uses them for internal documentation, client communication, or implementation planning.</li>
+      </ul>
+
+      <p class="text-muted mt-1"><strong>Suggested branches for your diagram:</strong> Learning path (Home → Vulnerability View), Testing path (Testing View → Pass/Fail), and Reporting path (Export PDF → Stakeholder review).</p>
+
+      <h3>Example Use Case Scenarios</h3>
+      <div class="card-grid cols-2">
+        <article class="card">
+          <h3>AI Security Tester (Ama Adeyemi)</h3>
+          <ul class="styled-list">
+            <li><strong>Who:</strong> Internal AI security researcher validating model safety before release.</li>
+            <li><strong>When:</strong> During pre-deployment security reviews and incident follow-up analysis.</li>
+            <li><strong>Why:</strong> To identify prompt injection weaknesses and verify whether mitigations are effective.</li>
+            <li><strong>How:</strong> Uses the vulnerability pages to understand attack patterns, then runs targeted tests in the testing view and compares pass/fail outcomes.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Worried Client (Emma Schutte)</h3>
+          <ul class="styled-list">
+            <li><strong>Who:</strong> Non-technical operations stakeholder evaluating whether AI adoption is safe.</li>
+            <li><strong>When:</strong> Before approving AI-enabled workflow changes within business operations.</li>
+            <li><strong>Why:</strong> To understand risks, gain confidence, and see practical safeguards in plain language.</li>
+            <li><strong>How:</strong> Starts on the home page for high-level context, reviews selected vulnerabilities, and uses chatbot guidance to interpret mitigations and outcomes.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Technology Sales Representative (Alex Mulwayne)</h3>
+          <ul class="styled-list">
+            <li><strong>Who:</strong> Client-facing sales consultant explaining AI assurance capabilities.</li>
+            <li><strong>When:</strong> During client demos, workshops, and proposal discussions.</li>
+            <li><strong>Why:</strong> To clearly communicate how security controls reduce business risk and support trust.</li>
+            <li><strong>How:</strong> Navigates from vulnerability summaries to in-depth mitigation examples and exports PDF reports as supporting material for stakeholders.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>AI Systems Developer (Jordan Reyes)</h3>
+          <ul class="styled-list">
+            <li><strong>Who:</strong> Technical stakeholder implementing or refining mitigation logic in production systems.</li>
+            <li><strong>When:</strong> During design iterations, validation cycles, and hardening phases.</li>
+            <li><strong>Why:</strong> To translate security findings into deployable engineering decisions.</li>
+            <li><strong>How:</strong> Uses technical explanations, pseudocode, and testing outputs to compare mitigation combinations and prioritise implementation steps.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Compliance &amp; Risk Officer (Priya Nair)</h3>
+          <ul class="styled-list">
+            <li><strong>Who:</strong> Governance stakeholder responsible for AI assurance evidence.</li>
+            <li><strong>When:</strong> During audit preparation, policy reviews, and risk committee reporting cycles.</li>
+            <li><strong>Why:</strong> To verify that key prompt injection controls are tested and traceable.</li>
+            <li><strong>How:</strong> Reviews vulnerability coverage, checks test pass/fail history, and exports PDF evidence for governance documentation.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Product Manager (Daniel Foster)</h3>
+          <ul class="styled-list">
+            <li><strong>Who:</strong> Product decision-maker balancing usability, risk, and delivery timelines.</li>
+            <li><strong>When:</strong> During sprint planning and release readiness reviews for AI-enabled features.</li>
+            <li><strong>Why:</strong> To prioritise mitigation work based on practical impact and residual risk.</li>
+            <li><strong>How:</strong> Uses summaries from the home and vulnerability views, then consults testing outcomes to decide which mitigation improvements enter the next release.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="requirements">
+      <h2>Requirements</h2>
+
+      <p>After gathering information about the project goals and stakeholders' needs, we identified the following requirements for the prompt injection protection platform. We used a MoSCoW style prioritisation to organise these requirements and divided them into functional and non-functional categories.</p>
+
+      <h3>Functional Requirements</h3>
+
+      <h4>Must Have</h4>
 
       <h4>Home Page</h4>
-      <ul>
-        <li>The system must provide a home page introducing prompt injection, its associated risks, and a high-level explanation of how it works.</li>
-        <li>The home page must display a list of known prompt injection vulnerabilities.</li>
-        <li>Each vulnerability must be clickable and include a short summary.</li>
+      <ul class="styled-list">
+        <li>✅ The system provides a home page introducing prompt injection, associated risks, and a high-level explanation of how prompt injection works.</li>
+        <li>✅ The home page displays a clickable list of known prompt injection vulnerabilities.</li>
+        <li>✅ The home page includes a short summary for each vulnerability.</li>
       </ul>
 
       <h4>In-Depth Vulnerability View</h4>
-      <ul>
-        <li>Selecting a vulnerability must navigate to an in-depth vulnerability view.</li>
-        <li>The view must include a technical explanation of the vulnerability.</li>
-        <li>A working example demonstrating the vulnerability must be provided.</li>
-        <li>At least one mitigation strategy must be clearly explained.</li>
-        <li>A comparison panel must show model behaviour with and without mitigation.</li>
+      <ul class="styled-list">
+        <li>✅ Selecting a vulnerability from the home page navigates to an in-depth vulnerability view.</li>
+        <li>✅ Each in-depth vulnerability view includes a technical vulnerability information panel containing a technical explanation.</li>
+        <li>✅ The in-depth vulnerability view includes an example panel showing model behaviour when faced with that vulnerability.</li>
+        <li>✅ The in-depth vulnerability view includes a clear explanation of at least one mitigation strategy.</li>
+        <li>✅ Each vulnerability includes a technical explanation and a working example demonstrating the vulnerability.</li>
+        <li>✅ A comparison panel shows model behaviour without mitigation and with mitigation applied.</li>
       </ul>
 
       <h4>Knowledge Base</h4>
-      <ul>
-        <li>The system must provide a knowledge base of prompt injection vulnerabilities.</li>
-        <li>Each entry must include technical explanations and working attack examples.</li>
-        <li>Clear explanations of mitigation techniques must be provided.</li>
+      <ul class="styled-list">
+        <li>✅ The system provides a knowledge base containing clear examples of prompt injection vulnerabilities.</li>
+        <li>✅ The knowledge base includes technical explanations for each vulnerability.</li>
+        <li>✅ The knowledge base includes working attack examples.</li>
+        <li>✅ The knowledge base includes clear explanations of prompt injection mitigations.</li>
+        <li>✅ The knowledge base includes technical explanations for each mitigation.</li>
       </ul>
 
       <h4>Testing View</h4>
-      <ul>
-        <li>A testing view must be accessible from the main navigation bar.</li>
-        <li>Users must be able to create named custom tests for individual mitigations.</li>
-        <li>Tests must be run through a chat-style interface processing a single prompt.</li>
-        <li>Mitigations must be individually enabled or disabled per test.</li>
-        <li>Tests must return a clear pass/fail result based on security expectations.</li>
-        <li>Test data must be preserved locally using an SQL database.</li>
-        <li>All tests must run on a fixed model (GPT-5.0).</li>
-      </ul>
-
-      <h3>&#x1F4CC; Should Have</h3>
-      <div class="card-grid cols-2 stagger">
-        <div class="card">
-          <h3>Sandbox Input</h3>
-          <p>Allow prompt testing with and without mitigations applied in a sandboxed environment.</p>
-        </div>
-        <div class="card">
-          <h3>Pseudocode Mitigations</h3>
-          <p>Present mitigation implementations in pseudocode for educational clarity.</p>
-        </div>
-        <div class="card">
-          <h3>PDF Export</h3>
-          <p>Export vulnerability views and test results as downloadable PDF reports.</p>
-        </div>
-        <div class="card">
-          <h3>Knowledge Base Chatbot</h3>
-          <p>A chatbot trained on the knowledge base to answer theoretical and practical questions.</p>
-        </div>
-      </div>
-
-      <h3>&#x1F4A1; Could Have</h3>
       <ul class="styled-list">
-        <li>Mitigation examples in multiple programming languages.</li>
-        <li>Internal navigation links suggested by the chatbot.</li>
-        <li>An AI-powered prompt enhancer based on selected vulnerabilities and mitigations.</li>
-        <li>Support for automated testing pipelines using frameworks such as NVIDIA Garak and Microsoft PyRIT.</li>
+        <li>✅ A testing view is accessible from the main navigation bar.</li>
+        <li>✅ Users can create custom tests for individual mitigations.</li>
+        <li>✅ Users interact with the system via a chat-style interface that processes a single prompt.</li>
+        <li>✅ Users can enable or disable mitigations identified during research (one per test).</li>
+        <li>✅ Custom tests are named by the user.</li>
+        <li>✅ Custom tests are stored in memory during the session.</li>
+        <li>✅ Custom tests clearly indicate a pass/fail result based on predefined security expectations.</li>
+        <li>✅ Test data is preserved locally in an SQL database.</li>
+        <li>✅ All tests run on a fixed model (GPT 5.0).</li>
       </ul>
 
-      <h3>&#x1F6AB; Won't Have</h3>
-      <div class="callout callout--warning">
-        <p>No authentication system. No automatic fixing of detected prompt injection attacks. No modification of custom or non-standard models.</p>
-      </div>
-    </section>
-
-    <section class="section fade-in" id="non-functional">
-      <h2>Non-Functional Requirements</h2>
-
-      <h3>&#x2705; Must Have</h3>
+      <h4>Should Have</h4>
       <ul class="styled-list">
-        <li><strong>Web delivery:</strong> The system must be delivered as a web application.</li>
-        <li><strong>Clear interface:</strong> The interface must be understandable for technical and semi-technical users.</li>
-        <li><strong>Responsive interactions:</strong> The chatbot and testing views must provide acceptable interactive response times.</li>
-        <li><strong>Intuitive navigation:</strong> The interface must be logically structured and easy to use.</li>
-        <li><strong>Dark mode:</strong> The system must support a dark mode interface.</li>
+        <li>➖ The in-depth vulnerability view includes a sandbox input field for testing prompts with and without mitigation enabled.*</li>
+        <li>✅ The in-depth vulnerability view includes mitigation implementation templates presented in pseudocode.</li>
+        <li>✅ The in-depth vulnerability view includes references or external sources for further reading.</li>
+        <li>✅ The in-depth vulnerability view supports exporting as a PDF.</li>
+        <li>✅ The testing view supports multi-prompt tests with conversation history.</li>
+        <li>✅ The testing view supports multiple agents.</li>
+        <li>✅ The testing view supports exporting of tests as PDFs.</li>
+        <li>✅ Multiple mitigations can be applied simultaneously in a custom test.</li>
+        <li>✅ The knowledge-base chatbot can answer theoretical prompt injection questions.</li>
+        <li>✅ The knowledge-base chatbot can answer practical prompt injection scenario questions and provide guidance.</li>
       </ul>
 
-      <h3>&#x1F4CC; Should Have</h3>
-      <div class="card-grid cols-2 stagger">
-        <div class="card">
-          <div class="card-icon">&#x1F3A8;</div>
-          <h3>Avanade Branding</h3>
-          <p>Consistent colour schemes aligned with Avanade visual identity and standardised iconography.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#x1F7E2;</div>
-          <h3>Status Indicators</h3>
-          <p>Red for vulnerabilities or failing tests; green for mitigations or passing tests.</p>
-        </div>
-      </div>
+      <h4>Could Have</h4>
+      <ul class="styled-list">
+        <li>✅ The in-depth vulnerability view presents mitigations in multiple programming languages with a tabbed interface.</li>
+        <li>✅ The chatbot can provide links that redirect users to relevant pages within the system.</li>
+        <li>✅ The AI prompt enhancer view includes a fine-tuned model to refine prompts based on selected vulnerabilities and mitigations.</li>
+        <li>✅ The testing view can run interactive tests on custom models connected via API.</li>
+        <li>✅ The testing view can run interactive tests on models with custom system prompts.</li>
+        <li>✅ The testing view can run automated testing pipelines based on NVIDIA Garak and Microsoft PyRIT frameworks.</li>
+      </ul>
 
-      <h3>&#x1F4A1; Could Have</h3>
-      <div class="callout callout--note">
-        <p>Mapping of vulnerabilities and mitigations to standards such as <strong>OWASP Top 10 for LLMs</strong> and <strong>MITRE ATLAS</strong>.</p>
-      </div>
+      <h4>Won't Have</h4>
+      <ul class="styled-list">
+        <li>✅ The system does not include authentication.</li>
+        <li>✅ The system does not automatically fix detected prompt injection vulnerabilities or attacks.</li>
+        <li>✅ The system does not modify custom or non-standard models.</li>
+      </ul>
 
-      <h3>&#x1F6AB; Won't Have</h3>
-      <ul>
-        <li>No persistent backend server.</li>
-        <li>No guaranteed compatibility with all LLM providers.</li>
-        <li>No fully custom automated testing pipelines.</li>
+      <h3>Non-Functional Requirements</h3>
+
+      <h4>Must Have</h4>
+      <ul class="styled-list">
+        <li>✅ The system is delivered as a web application.</li>
+        <li>✅ The system presents vulnerabilities, mitigations, and test results in a clear and understandable manner for technical and semi-technical users.</li>
+        <li>✅ The chatbot and testing interfaces provide acceptable interactive response times.</li>
+        <li>✅ The interface is intuitive, clear, and logically structured to conform to standards.</li>
+        <li>✅ The system supports a dark mode interface.</li>
+      </ul>
+
+      <h4>Should Have</h4>
+      <ul class="styled-list">
+        <li>✅ The system uses consistent colour schemes with Avanade style.</li>
+        <li>✅ The system uses standardised icons.</li>
+        <li>✅ The system uses uniform layout conventions across all views.</li>
+        <li>✅ Red is used to represent vulnerabilities and failing tests.</li>
+        <li>✅ Green is used to represent mitigations and passing tests.</li>
+      </ul>
+
+      <h4>Could Have</h4>
+      <ul class="styled-list">
+        <li>✅ Vulnerabilities and mitigations are mapped to established standards such as OWASP Top 10 for LLMs and MITRE ATLAS.</li>
+      </ul>
+
+      <h4>Won't Have</h4>
+      <ul class="styled-list">
+        <li>✅ The system is not run on a persistent backend server.</li>
+        <li>✅ The system does not ensure compatibility with all LLM providers.</li>
+        <li>✅ The system does not support fully custom automated testing pipelines.</li>
       </ul>
     </section>
 
