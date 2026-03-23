@@ -191,27 +191,41 @@
       var panel = wrap.querySelector('.req-status-tooltip__panel');
       if (!panel) return;
 
+      var row = wrap.closest('tr.req-row--incomplete');
+      var anchor = row || wrap;
+
       function place() {
-        var rect = wrap.getBoundingClientRect();
-        var gap = 6;
+        var rect = anchor.getBoundingClientRect();
+        var gap = 8;
         var margin = 8;
         var maxW = Math.min(320, window.innerWidth - margin * 2);
         var left = rect.left + rect.width / 2 - maxW / 2;
         left = Math.max(margin, Math.min(left, window.innerWidth - maxW - margin));
-        var top = rect.bottom + gap;
         panel.style.left = left + 'px';
-        panel.style.top = top + 'px';
         panel.style.width = maxW + 'px';
 
-        requestAnimationFrame(function () {
-          var pr = panel.getBoundingClientRect();
-          if (pr.bottom > window.innerHeight - margin) {
-            var flip = rect.top - gap - pr.height;
-            if (flip >= margin) {
-              panel.style.top = flip + 'px';
-            }
+        function applyVertical() {
+          var ph = panel.getBoundingClientRect().height;
+          var top = rect.top - gap - ph;
+          if (top < margin) {
+            top = rect.bottom + gap;
           }
-        });
+          panel.style.top = top + 'px';
+
+          requestAnimationFrame(function () {
+            var pr = panel.getBoundingClientRect();
+            if (pr.bottom > window.innerHeight - margin) {
+              var above = rect.top - gap - pr.height;
+              if (above >= margin) {
+                panel.style.top = above + 'px';
+              } else {
+                panel.style.top = Math.max(margin, window.innerHeight - margin - pr.height) + 'px';
+              }
+            }
+          });
+        }
+
+        requestAnimationFrame(applyVertical);
       }
 
       function clearPlacement() {
@@ -220,21 +234,21 @@
         panel.style.width = '';
       }
 
-      wrap.addEventListener('mouseenter', place);
-      wrap.addEventListener('mouseleave', function () {
-        if (!wrap.contains(document.activeElement)) {
+      anchor.addEventListener('mouseenter', place);
+      anchor.addEventListener('mouseleave', function () {
+        if (!anchor.contains(document.activeElement)) {
           clearPlacement();
         }
       });
-      wrap.addEventListener('focusin', place);
-      wrap.addEventListener('focusout', function (e) {
-        if (!wrap.contains(e.relatedTarget)) {
+      anchor.addEventListener('focusin', place);
+      anchor.addEventListener('focusout', function (e) {
+        if (!anchor.contains(e.relatedTarget)) {
           clearPlacement();
         }
       });
 
       function placeIfActive() {
-        if (wrap.matches(':hover') || wrap.contains(document.activeElement)) {
+        if (anchor.matches(':hover') || anchor.contains(document.activeElement)) {
           place();
         }
       }

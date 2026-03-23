@@ -111,7 +111,7 @@
               <div class="achievement-block">
                 <h4>Testing</h4>
                 <ul class="styled-list">
-                  <li>Custom named tests, chat-style runs with per-test mitigations, pass/fail expectations, session storage in SQL, fixed model (GPT 5.0).</li>
+                  <li>Custom named tests, chat-style runs with per-test mitigations, pass/fail expectations, server-side SQL storage, default platform models in the GPT-5.x family (see evaluation notes for naming vs &ldquo;GPT 5.0&rdquo; in the spec).</li>
                 </ul>
               </div>
             </div>
@@ -162,9 +162,12 @@
       <p>
         Full MoSCoW requirements for the Prompt Injection Protection platform (Systems Engineering, IXN, Group 28, Avanade),
         excluding <strong>Won&rsquo;t have</strong> items. Each row shows delivery status against the specification.
+        <strong>Contributors</strong> reflect git history and file ownership on the platform repository (merge messages,
+        paths, and commits). Git identities <strong>DavidThomas01</strong>, <strong>Visualinea</strong>, and
+        <strong>David Thomas</strong> are merged as <strong>David</strong>.
       </p>
       <p class="traceability-hint">
-        <strong>Note:</strong> For any requirement marked not completed, hover or focus the red ✗ — a short explanation appears next to it.
+        <strong>Note:</strong> For any requirement marked not completed, hover or focus anywhere on that row — a short explanation appears next to the status.
       </p>
 
       <div class="evaluation-accordion" role="region" aria-label="Requirements by priority and type">
@@ -186,139 +189,139 @@
                     <td>Home page introduces prompt injection, associated risks, and a high-level explanation of how prompt injection works.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel</td>
+                    <td class="req-contributors">David, Teo, Mario</td>
                   </tr>
                   <tr>
                     <td>Home page displays a list of known prompt injection vulnerabilities.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">David, Mario</td>
+                    <td class="req-contributors">David, Mario, Teo</td>
                   </tr>
                   <tr>
                     <td>Each vulnerability is clickable and includes a short summary.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">David, Mario</td>
+                    <td class="req-contributors">David, Mario, Teo</td>
                   </tr>
                   <tr>
                     <td>Selecting a vulnerability from the home page navigates to an in-depth vulnerability view.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">David, Mario</td>
+                    <td class="req-contributors">David, Mario, Teo</td>
                   </tr>
                   <tr>
                     <td>In-depth view includes a vulnerability information panel with a technical explanation.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">Mario, Teo, David</td>
                   </tr>
                   <tr>
                     <td>In-depth view includes an example panel showing how a model behaves when faced with the vulnerability.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">Mario, Teo, David</td>
                   </tr>
                   <tr>
                     <td>Clear explanation of at least one mitigation strategy for each vulnerability.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">Mario, Teo, David</td>
                   </tr>
                   <tr>
                     <td>Each vulnerability includes a technical explanation.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">Mario, Teo, David</td>
                   </tr>
                   <tr>
                     <td>Each vulnerability includes a working example demonstrating the vulnerability.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">David, Mario, Teo</td>
                   </tr>
                   <tr>
                     <td>Comparison panel shows model behaviour without mitigation.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Mario</td>
+                    <td class="req-contributors">David, Mario</td>
                   </tr>
                   <tr>
                     <td>Comparison panel shows model behaviour with mitigation applied.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Mario</td>
+                    <td class="req-contributors">David, Mario</td>
                   </tr>
                   <tr>
                     <td>Knowledge base: clear examples of prompt injection vulnerabilities.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">Mario, Teo, David</td>
                   </tr>
                   <tr>
                     <td>Knowledge base: technical explanations for each vulnerability.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">Mario, Teo</td>
                   </tr>
                   <tr>
                     <td>Knowledge base: working attack examples.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">Mario, Teo</td>
                   </tr>
                   <tr>
                     <td>Knowledge base: clear explanations of prompt injection mitigations.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">Mario, Teo</td>
                   </tr>
                   <tr>
                     <td>Knowledge base: technical explanations for each mitigation.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">Mario, Teo</td>
                   </tr>
                   <tr>
                     <td>Testing view is accessible from the main navigation bar.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">David, Mario</td>
+                    <td class="req-contributors">David, Mario, Teo</td>
                   </tr>
                   <tr>
                     <td>Users can create custom tests for individual mitigations.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel</td>
+                    <td class="req-contributors">Teo, Mario, David</td>
                   </tr>
                   <tr>
                     <td>Chat-style interface processes a single prompt.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel, Mario</td>
+                    <td class="req-contributors">Teo, Mario, David</td>
                   </tr>
                   <tr>
                     <td>Users can enable or disable mitigations identified during research (one per test).</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel</td>
+                    <td class="req-contributors">Teo, Mario, David</td>
                   </tr>
                   <tr>
                     <td>Custom tests are named by the user.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel</td>
+                    <td class="req-contributors">Teo, Mario</td>
                   </tr>
                   <tr>
                     <td>Custom tests are stored in memory during the session.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel</td>
+                    <td class="req-contributors">Teo, Mario</td>
                   </tr>
                   <tr>
                     <td>Tests clearly indicate pass/fail based on predefined security expectations.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel</td>
+                    <td class="req-contributors">Teo, Mario</td>
                   </tr>
                   <tr>
                     <td>Test data is preserved locally in an SQL database.</td>
@@ -330,7 +333,7 @@
                     <td>All tests run on a fixed model (GPT 5.0).</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Mario</td>
+                    <td class="req-contributors">Teo</td>
                   </tr>
                 </tbody>
               </table>
@@ -352,72 +355,79 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr class="req-row req-row--incomplete">
                     <td>In-depth vulnerability view: sandbox input field to test prompts with and without mitigation enabled.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status">
                       <span class="req-status-tooltip" tabindex="0" aria-describedby="req-reason-sandbox">
                         <span class="req-status req-status--not" aria-hidden="true">✗</span>
                         <span class="req-status-tooltip__panel" id="req-reason-sandbox" role="tooltip">
-                          Not completed — [Placeholder] In-view sandbox deferred: we prioritised other vulnerability and testing features within the delivery window; final rationale will appear in the written report.
+                          Not completed — the in-depth view uses a scripted demo terminal rather than a freeform sandbox that calls the live model with arbitrary user input; we prioritised the testing workbench and catalogue for interactive runs.
                         </span>
                       </span>
                     </td>
-                    <td class="req-contributors">Teo, Mario</td>
+                    <td class="req-contributors"><span class="visually-hidden">No contributors</span></td>
                   </tr>
                   <tr>
                     <td>In-depth vulnerability view: mitigation implementation presented in pseudocode.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">Mario</td>
                   </tr>
                   <tr>
                     <td>In-depth vulnerability view: references or external sources for further reading.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">David, Mario</td>
                   </tr>
                   <tr>
                     <td>In-depth vulnerability view: ability to export the view as PDF.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">David, Mario</td>
+                    <td class="req-contributors">David</td>
                   </tr>
                   <tr>
                     <td>Testing view: support multi-prompt tests with conversation history.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel</td>
+                    <td class="req-contributors">Teo, David</td>
                   </tr>
-                  <tr>
+                  <tr class="req-row req-row--incomplete">
                     <td>Testing view: support for multiple agents.</td>
                     <td class="req-priority">Should</td>
-                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel</td>
+                    <td class="req-cell-status">
+                      <span class="req-status-tooltip" tabindex="0" aria-describedby="req-reason-multi-agent">
+                        <span class="req-status req-status--not" aria-hidden="true">✗</span>
+                        <span class="req-status-tooltip__panel" id="req-reason-multi-agent" role="tooltip">
+                          Not completed — multi-agent orchestration is not implemented in the testing UI; educational copy may reference multi-agent risks without a runnable multi-agent workflow.
+                        </span>
+                      </span>
+                    </td>
+                    <td class="req-contributors"><span class="visually-hidden">No contributors</span></td>
                   </tr>
                   <tr>
                     <td>Testing view: ability to export tests as PDFs.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Mario</td>
+                    <td class="req-contributors">David</td>
                   </tr>
                   <tr>
                     <td>Testing view: multiple mitigations can be applied simultaneously in a custom test.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel</td>
+                    <td class="req-contributors">Teo</td>
                   </tr>
                   <tr>
                     <td>Chatbot trained on knowledge base: answers theoretical questions on prompt injection.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo, Mario</td>
+                    <td class="req-contributors">David, Teo</td>
                   </tr>
                   <tr>
                     <td>Chatbot trained on knowledge base: answers practical questions on scenarios and gives guidance.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo, Mario</td>
+                    <td class="req-contributors">David, Teo</td>
                   </tr>
                 </tbody>
               </table>
@@ -443,37 +453,44 @@
                     <td>In-depth vulnerability view: mitigations in multiple programming languages with a tabbed interface.</td>
                     <td class="req-priority">Could</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">David, Mario</td>
+                    <td class="req-contributors">Mario</td>
                   </tr>
                   <tr>
                     <td>Chatbot provides links to redirect users to relevant pages within the system.</td>
                     <td class="req-priority">Could</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">David, Mario</td>
+                    <td class="req-contributors">David</td>
                   </tr>
                   <tr>
                     <td>AI prompt enhancer view: fine-tuned model refines input prompt based on target vulnerabilities and mitigations to include.</td>
                     <td class="req-priority">Could</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Mario</td>
+                    <td class="req-contributors">Nathaniel, David</td>
                   </tr>
                   <tr>
                     <td>Testing view: run interactive tests on custom models connected via API.</td>
                     <td class="req-priority">Could</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel</td>
+                    <td class="req-contributors">Teo</td>
                   </tr>
                   <tr>
                     <td>Testing view: run interactive tests on a model with a custom system prompt.</td>
                     <td class="req-priority">Could</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel</td>
+                    <td class="req-contributors">Teo</td>
                   </tr>
-                  <tr>
+                  <tr class="req-row req-row--incomplete">
                     <td>Testing view: run automated testing pipeline based on Nvidia Garak and Microsoft PyRIT frameworks.</td>
                     <td class="req-priority">Could</td>
-                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel</td>
+                    <td class="req-cell-status">
+                      <span class="req-status-tooltip" tabindex="0" aria-describedby="req-reason-garak-pyrit">
+                        <span class="req-status req-status--not" aria-hidden="true">✗</span>
+                        <span class="req-status-tooltip__panel" id="req-reason-garak-pyrit" role="tooltip">
+                          Partially completed — Garak is integrated for automated scans in the testing workbench. A PyRIT runner exists only as a stub and is not wired into the framework delegate, so the PyRIT half of this requirement is not delivered.
+                        </span>
+                      </span>
+                    </td>
+                    <td class="req-contributors">Teo</td>
                   </tr>
                 </tbody>
               </table>
@@ -499,31 +516,31 @@
                     <td>System is delivered as a web application.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, David, Nathaniel, Mario</td>
+                    <td class="req-contributors">David, Teo, Mario</td>
                   </tr>
                   <tr>
                     <td>Vulnerabilities, mitigations, and test results are clear and understandable for technical users.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">Mario, David, Teo</td>
                   </tr>
                   <tr>
                     <td>Vulnerabilities, mitigations, and test results are clear and understandable for semi-technical users.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">Mario, David, Teo</td>
                   </tr>
                   <tr>
                     <td>Chatbot and testing interfaces provide acceptable interactive response time.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Teo, Nathaniel</td>
+                    <td class="req-contributors">Teo, David</td>
                   </tr>
                   <tr>
                     <td>Intuitive, clear, and logical interface that conforms to standards.</td>
                     <td class="req-priority">Must</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">David, Mario</td>
+                    <td class="req-contributors">Mario, David, Teo</td>
                   </tr>
                   <tr>
                     <td>System supports a dark mode interface.</td>
@@ -555,31 +572,31 @@
                     <td>Consistent colour schemes with Avanade style.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">David, Mario</td>
+                    <td class="req-contributors">Mario, David</td>
                   </tr>
                   <tr>
                     <td>Standardised icons.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">David, Mario</td>
+                    <td class="req-contributors">Mario, David</td>
                   </tr>
                   <tr>
                     <td>Uniform layout conventions across all views.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">David, Mario</td>
+                    <td class="req-contributors">Mario, David</td>
                   </tr>
                   <tr>
                     <td>Red used to represent vulnerabilities and failing tests.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">David, Mario</td>
+                    <td class="req-contributors">Mario, Teo, David</td>
                   </tr>
                   <tr>
                     <td>Green used to represent mitigations and passing tests.</td>
                     <td class="req-priority">Should</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">David, Mario</td>
+                    <td class="req-contributors">Mario, Teo, David</td>
                   </tr>
                 </tbody>
               </table>
@@ -605,7 +622,7 @@
                     <td>Mapping of vulnerabilities and mitigations to OWASP Top 10 for LLMs and MITRE ATLAS.</td>
                     <td class="req-priority">Could</td>
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
-                    <td class="req-contributors">Nathaniel, Teo</td>
+                    <td class="req-contributors">Mario, David, Teo</td>
                   </tr>
                 </tbody>
               </table>
@@ -618,7 +635,9 @@
     <section class="section fade-in" id="individual-contributions">
       <h2>Individual Contributions</h2>
       <p>
-        Contribution across work packages by team member. Percentages indicate relative effort within each area.
+        Contribution across work packages by team member. Percentages are team-estimated from git history and merge
+        ownership on the platform repository (not a line-count measure). Where coursework or meetings are not in git,
+        splits are approximate.
       </p>
       <div class="table-wrap contribution-table-wrap">
         <table class="styled-table contribution-table">
@@ -634,87 +653,80 @@
           <tbody>
             <tr>
               <td>Project partner liaison</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
+              <td>30%</td>
+              <td>25%</td>
+              <td>20%</td>
+              <td>25%</td>
             </tr>
             <tr>
               <td>Requirements analysis</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
             </tr>
             <tr>
               <td>HCI / user research</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
             </tr>
             <tr>
               <td>Research and experiments</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
+              <td>40%</td>
+              <td>20%</td>
+              <td>15%</td>
+              <td>25%</td>
             </tr>
             <tr>
               <td>UI design</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
+              <td>20%</td>
+              <td>25%</td>
+              <td>15%</td>
+              <td>40%</td>
             </tr>
             <tr>
-              <td>Backend &amp; MCP</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
+              <td>Backend (FastAPI &amp; SQLite)</td>
+              <td>50%</td>
+              <td>10%</td>
+              <td>15%</td>
+              <td>25%</td>
             </tr>
             <tr>
-              <td>Frontend — application</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-            </tr>
-            <tr>
-              <td>Frontend — report website</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
+              <td>Frontend &mdash; application</td>
+              <td>25%</td>
+              <td>35%</td>
+              <td>20%</td>
+              <td>20%</td>
             </tr>
             <tr>
               <td>Organising user testing</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
             </tr>
             <tr>
               <td>Testing</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
+              <td>55%</td>
+              <td>15%</td>
+              <td>15%</td>
+              <td>15%</td>
             </tr>
             <tr>
               <td>Report website</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
+              <td>10%</td>
+              <td>70%</td>
+              <td>10%</td>
+              <td>10%</td>
             </tr>
             <tr>
               <td>Blog and monthly video</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
             </tr>
             <tr class="contribution-total">
               <td><strong>Overall contribution</strong></td>

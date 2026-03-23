@@ -278,11 +278,8 @@
 
     <!-- ===== Project Timeline (Gantt) ===== -->
     <section class="section fade-in" id="timeline">
+      <div class="gantt-bleed">
       <h2>Project Timeline</h2>
-      <p>
-        A high-level view of our planned activities across the academic year, from early research and requirements
-        analysis through design, implementation, testing, and final reporting.
-      </p>
 
       <div class="gantt-card" aria-label="Project timeline">
         <div class="gantt-scroll">
@@ -308,62 +305,28 @@
               </div>
             </div>
 
-            <!-- Stage 1 -->
+            <!-- Stage 1: Project initialisation & research -->
             <div class="gantt-row gantt-row--stage-header">
-              <div class="gantt-stage-header-label">Stage 1: Project Initiation</div>
+              <div class="gantt-stage-header-label">Stage 1: Project initialisation &amp; research</div>
               <div class="gantt-stage-header-track" aria-hidden="true"></div>
             </div>
 
             <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-stakeholder">
-                <div class="gantt-row-task">Stakeholder Research</div>
-                <div id="gantt-tip-stakeholder" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Stakeholder Research</strong>
-                  Mapped client needs with Avanade; aligned scope on prompt injection, MCP tooling, and how we would evaluate the platform.
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-init-stakeholder">
+                <div class="gantt-row-task">Stakeholder research</div>
+                <div id="gantt-tip-init-stakeholder" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Stakeholder research</strong>
+                  Client alignment with Avanade on scope, prompt injection risks, MCP-style tooling, and how we would
+                  evaluate the platform before build work ramped up.
                 </div>
               </div>
               <div class="gantt-row-track">
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-              </div>
-            </div>
-
-            <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-requirements">
-                <div class="gantt-row-task">Requirements Analysis</div>
-                <div id="gantt-tip-requirements" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Requirements Analysis</strong>
-                  MoSCoW prioritisation, functional and non-functional requirements, personas, and use cases for the main platform areas.
-                </div>
-              </div>
-              <div class="gantt-row-track">
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -385,22 +348,23 @@
             </div>
 
             <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-hci">
-                <div class="gantt-row-task">HCI &amp; UX Exploration</div>
-                <div id="gantt-tip-hci" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>HCI &amp; UX Exploration</strong>
-                  Wireframes, interaction patterns, and design-system choices for a clear, accessible security-testing workflow.
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-init-project-research">
+                <div class="gantt-row-task">Project research</div>
+                <div id="gantt-tip-init-project-research" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Project research</strong>
+                  Background reading on LLM security, prompt injection taxonomies, and testing approaches to inform
+                  requirements and architecture choices.
                 </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -420,22 +384,201 @@
             </div>
 
             <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-planning">
-                <div class="gantt-row-task">Planning &amp; Milestones</div>
-                <div id="gantt-tip-planning" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Planning &amp; Milestones</strong>
-                  Milestones, weekly client syncs, and documentation checkpoints across initiation and early development.
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-init-requirements">
+                <div class="gantt-row-task">Requirements analysis</div>
+                <div id="gantt-tip-init-requirements" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Requirements analysis</strong>
+                  Drafting functional and non-functional requirements, personas, and use cases for the catalogue,
+                  vulnerability views, knowledge base, and testing workbench.
                 </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+              </div>
+            </div>
+
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-init-prototypes">
+                <div class="gantt-row-task">Developing prototypes</div>
+                <div id="gantt-tip-init-prototypes" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Developing prototypes</strong>
+                  Early UI flows and spike code to validate navigation, content structure, and how users would move
+                  between vulnerabilities, mitigations, and tests.
+                </div>
+              </div>
+              <div class="gantt-row-track">
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+              </div>
+            </div>
+
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-init-hci">
+                <div class="gantt-row-task">HCI &amp; UX exploration</div>
+                <div id="gantt-tip-init-hci" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>HCI &amp; UX exploration</strong>
+                  Wireframes and interaction patterns for a clear, accessible security-testing workflow ahead of the
+                  main implementation sprints.
+                </div>
+              </div>
+              <div class="gantt-row-track">
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+              </div>
+            </div>
+
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-init-moscow">
+                <div class="gantt-row-task">MoSCoW list &amp; client sign-off</div>
+                <div id="gantt-tip-init-moscow" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>MoSCoW list &amp; client sign-off</strong>
+                  Prioritised requirements (Must / Should / Could / Won&rsquo;t) and agreement with the client on
+                  deliverables before full development.
+                </div>
+              </div>
+              <div class="gantt-row-track">
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+              </div>
+            </div>
+
+            <!-- Stage 2: Foundation & content -->
+            <div class="gantt-row gantt-row--stage-header">
+              <div class="gantt-stage-header-label">Stage 2: Foundation &amp; content</div>
+              <div class="gantt-stage-header-track" aria-hidden="true"></div>
+            </div>
+
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-scaffold">
+                <div class="gantt-row-task">Repository &amp; frontend scaffold</div>
+                <div id="gantt-tip-scaffold" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Repository &amp; frontend scaffold</strong>
+                  Initial Vite/React app, routing, header/home layout, and first vulnerability flow &mdash; kicked off once
+                  requirements and MoSCoW sign-off gave a stable scope for the build.
+                </div>
+              </div>
+              <div class="gantt-row-track">
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+              </div>
+            </div>
+
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-nav">
+                <div class="gantt-row-task">UX &amp; navigation model</div>
+                <div id="gantt-tip-nav" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>UX &amp; navigation model</strong>
+                  Routes for catalogue, detail, testing, and mitigations; motion and page transitions; responsive header
+                  and mobile navigation &mdash; reflected across early PRs rather than a separate &ldquo;HCI&rdquo; branch in git.
+                </div>
+              </div>
+              <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -449,6 +592,50 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+              </div>
+            </div>
+
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-content">
+                <div class="gantt-row-task">Vulnerability &amp; mitigation content</div>
+                <div id="gantt-tip-content" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Vulnerability &amp; mitigation content</strong>
+                  Long-form copy, demo scripts, and OWASP/MITRE-style references in static data and mirrored knowledge
+                  modules &mdash; the material that feeds the catalogue, detail views, and assistant search.
+                </div>
+              </div>
+              <div class="gantt-row-track">
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
               </div>
@@ -456,16 +643,18 @@
 
             <!-- Stage 2 -->
             <div class="gantt-row gantt-row--stage-header">
-              <div class="gantt-stage-header-label">Stage 2: Development</div>
+              <div class="gantt-stage-header-label">Stage 3: Platform &amp; testing core</div>
               <div class="gantt-stage-header-track" aria-hidden="true"></div>
             </div>
 
             <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-backend">
-                <div class="gantt-row-task">Backend &amp; MCP Integration</div>
-                <div id="gantt-tip-backend" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Backend &amp; MCP Integration</strong>
-                  MCP connectivity, server sandboxing, and core APIs supporting test runs and evaluation flows.
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-backend-api">
+                <div class="gantt-row-task">Backend persistence &amp; API (FastAPI + SQLite)</div>
+                <div id="gantt-tip-backend-api" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Backend persistence &amp; API</strong>
+                  FastAPI application layer, SQLite via SQLAlchemy, test CRUD and run storage &mdash; evolved from an earlier
+                  Node/Express spike. MCP is not a first-class integration in this repository; the label focuses on what
+                  shipped in code.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -473,34 +662,35 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
               </div>
             </div>
 
             <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-ui">
-                <div class="gantt-row-task">UI &amp; Vulnerability Views</div>
-                <div id="gantt-tip-ui" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>UI &amp; Vulnerability Views</strong>
-                  Vulnerability explorer and knowledge-base views with consistent navigation and responsive layouts for the prototype.
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-testing-svc">
+                <div class="gantt-row-task">Testing service (UI, scoring, pass/fail)</div>
+                <div id="gantt-tip-testing-svc" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Testing service</strong>
+                  Testing page, prompt runner, analysers, and pass/fail semantics against expectations &mdash; backed by
+                  server-stored tests rather than only in-memory session state.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -509,68 +699,71 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+              </div>
+            </div>
+
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-models">
+                <div class="gantt-row-task">Models, mitigations &amp; external APIs</div>
+                <div id="gantt-tip-models" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Models, mitigations &amp; external APIs</strong>
+                  Dynamic model and mitigation loading, provider abstraction, and optional external HTTP endpoints for
+                  custom models during testing.
+                </div>
+              </div>
+              <div class="gantt-row-track">
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
               </div>
             </div>
 
             <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-testing-core">
-                <div class="gantt-row-task">Testing Framework Core</div>
-                <div id="gantt-tip-testing-core" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Testing Framework Core</strong>
-                  Test harness, scenario definitions, and analysis pipeline for prompt-injection experiments and comparisons.
-                </div>
-              </div>
-              <div class="gantt-row-track">
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-              </div>
-            </div>
-
-            <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-a11y">
-                <div class="gantt-row-task">Accessibility &amp; Polish</div>
-                <div id="gantt-tip-a11y" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Accessibility &amp; Polish</strong>
-                  WCAG-minded styling, visible focus, keyboard paths, and responsive refinements across the UI.
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-garak">
+                <div class="gantt-row-task">Automated framework scanning (Garak)</div>
+                <div id="gantt-tip-garak" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Garak integration</strong>
+                  Garak-backed framework runs in the testing workbench (probe lists, runner glue, UI), once the core
+                  testing flow and persistence were stable. A PyRIT runner file exists as a stub and is not wired into the
+                  main framework delegate.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -581,37 +774,37 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
               </div>
             </div>
 
             <!-- Stage 3 -->
             <div class="gantt-row gantt-row--stage-header">
-              <div class="gantt-stage-header-label">Stage 3: Finalisation</div>
+              <div class="gantt-stage-header-label">Stage 4: Integration, evaluation &amp; delivery</div>
               <div class="gantt-stage-header-track" aria-hidden="true"></div>
             </div>
 
             <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-eval">
-                <div class="gantt-row-task">Evaluation &amp; Testing</div>
-                <div id="gantt-tip-eval" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Evaluation &amp; Testing</strong>
-                  Unit, integration, and system tests; security evaluation and traceability back to requirements.
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-assistant">
+                <div class="gantt-row-task">Security assistant</div>
+                <div id="gantt-tip-assistant" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Security assistant</strong>
+                  Streaming chat with KB grounding; later hardening (e.g. links into vulnerability pages).
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -623,13 +816,118 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
+              </div>
+            </div>
+
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-enhancer">
+                <div class="gantt-row-task">Prompt enhancer</div>
+                <div id="gantt-tip-enhancer" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Prompt enhancer</strong>
+                  Enhancement pipeline, persistence, and UI wiring for model choice and flows.
+                </div>
+              </div>
+              <div class="gantt-row-track">
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+              </div>
+            </div>
+
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-visual">
+                <div class="gantt-row-task">Branding &amp; dark mode</div>
+                <div id="gantt-tip-visual" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Branding &amp; dark mode</strong>
+                  Theme tokens, dark mode, motion, and Avanade-aligned branding on key screens.
+                </div>
+              </div>
+              <div class="gantt-row-track">
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+              </div>
+            </div>
+
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-docs-jan">
+                <div class="gantt-row-task">README &amp; architecture (Jan)</div>
+                <div id="gantt-tip-docs-jan" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>January</strong>
+                  First README and high-level architecture after the scaffold.
+                </div>
+              </div>
+              <div class="gantt-row-track">
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -642,81 +940,11 @@
             </div>
 
             <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-uat">
-                <div class="gantt-row-task">User Testing &amp; Demo Prep</div>
-                <div id="gantt-tip-uat" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>User Testing &amp; Demo Prep</strong>
-                  Stakeholder demos for Avanade, feedback sessions, and iteration before final delivery.
-                </div>
-              </div>
-              <div class="gantt-row-track">
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-              </div>
-            </div>
-
-            <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-deploy">
-                <div class="gantt-row-task">Deployment &amp; Handover</div>
-                <div id="gantt-tip-deploy" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Deployment &amp; Handover</strong>
-                  Deployment steps, configuration notes, and handover guidance for maintainers and future work.
-                </div>
-              </div>
-              <div class="gantt-row-track">
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-              </div>
-            </div>
-
-            <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-report">
-                <div class="gantt-row-task">Report &amp; Documentation</div>
-                <div id="gantt-tip-report" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Report &amp; Documentation</strong>
-                  This report site, technical documentation, and appendices for coursework and client handover.
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-docs-final">
+                <div class="gantt-row-task">Report &amp; handover (Mar)</div>
+                <div id="gantt-tip-docs-final" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>March</strong>
+                  Report website and client handover: run, extend, maintain.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -733,24 +961,27 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
               </div>
             </div>
           </div>
         </div>
         <p class="gantt-legend text-muted">
-          Solid orange cells indicate primary work weeks; lighter cells show planning and polish.
-          Click a phase name to read what we did in that period.
+          Stages group workstreams: <strong>Project initialisation &amp; research</strong> (stakeholders, requirements,
+          prototypes, HCI, MoSCoW), then <strong>Foundation &amp; content</strong>, <strong>Platform &amp; testing core</strong>
+          (FastAPI, SQLite, testing UI, models, Garak), and <strong>Integration, evaluation &amp; delivery</strong>
+          (assistant, enhancer, branding, README in January, report and handover in March). Click a row label for detail.
         </p>
+      </div>
       </div>
     </section>
 

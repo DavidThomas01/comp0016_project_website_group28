@@ -672,6 +672,14 @@ main { padding: 2.5rem 0 3rem; }
   background: transparent;
 }
 
+/* Project timeline: full-width gantt block — no section hover tint or layout shift */
+#timeline.section:hover {
+  background: transparent;
+  margin: 0;
+  padding: 2rem 0;
+  border-radius: 0;
+}
+
 h2 {
   margin: 0 0 1rem;
   font-size: 1.45rem;
@@ -1216,6 +1224,9 @@ ul:not(.styled-list):not(.tag-list) li strong {
 #requirements-traceability .evaluation-item {
   overflow: visible;
 }
+.requirements-table tr.req-row--incomplete {
+  cursor: help;
+}
 .req-status-tooltip {
   position: relative;
   display: inline-flex;
@@ -1225,7 +1236,6 @@ ul:not(.styled-list):not(.tag-list) li strong {
   min-height: 2rem;
   margin: -0.35rem;
   padding: 0.35rem;
-  cursor: help;
   vertical-align: middle;
   border-radius: 0.35rem;
   outline: none;
@@ -1257,6 +1267,8 @@ ul:not(.styled-list):not(.tag-list) li strong {
   pointer-events: none;
   transition: opacity 0.18s var(--ease), visibility 0.18s var(--ease);
 }
+.requirements-table tr.req-row--incomplete:hover .req-status-tooltip__panel,
+.requirements-table tr.req-row--incomplete:focus-within .req-status-tooltip__panel,
 .req-status-tooltip:hover .req-status-tooltip__panel,
 .req-status-tooltip:focus-within .req-status-tooltip__panel {
   opacity: 1;
@@ -1266,7 +1278,8 @@ ul:not(.styled-list):not(.tag-list) li strong {
 html:not(.js) .req-status-tooltip__panel {
   position: absolute;
   left: 50%;
-  top: calc(100% + 6px);
+  bottom: calc(100% + 6px);
+  top: auto;
   transform: translateX(-50%);
   max-width: min(18rem, 70vw);
 }
@@ -1455,8 +1468,21 @@ html:not(.js) .req-status-tooltip__panel {
 }
 
 /* ====== Gantt Timeline (Grid) ====== */
+/* Wider than main column: centre a max-width block so phase labels fit on one line */
+.gantt-bleed {
+  width: min(1240px, calc(100vw - 2rem));
+  margin-left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.gantt-bleed > h2 {
+  margin-top: 0;
+}
+
 .gantt-card {
-  margin: 1.5rem 0;
+  margin: 0;
   padding: 1.25rem 1.5rem;
   border-radius: var(--radius-lg);
   background: linear-gradient(135deg, rgba(255,245,242,0.85), #fff);
@@ -1474,12 +1500,12 @@ html:not(.js) .req-status-tooltip__panel {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  min-width: 720px;
+  min-width: 1046px;
 }
 
 .gantt-header {
   display: grid;
-  grid-template-columns: minmax(180px, 230px) 1fr;
+  grid-template-columns: minmax(235px, 328px) 1fr;
   column-gap: 0.75rem;
   margin-bottom: 0.35rem;
   font-size: 0.78rem;
@@ -1536,7 +1562,7 @@ html:not(.js) .req-status-tooltip__panel {
 
 .gantt-row {
   display: grid;
-  grid-template-columns: minmax(180px, 230px) 1fr;
+  grid-template-columns: minmax(235px, 328px) 1fr;
   column-gap: 0.75rem;
   align-items: stretch;
   font-size: 0.82rem;
@@ -1560,6 +1586,7 @@ html:not(.js) .req-status-tooltip__panel {
   font-size: 0.83rem;
   color: var(--text);
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .gantt-stage-header-track {
@@ -1654,11 +1681,12 @@ html.js .gantt-phase-tooltip {
 .gantt-row-task {
   font-weight: 500;
   color: var(--text-secondary);
+  white-space: nowrap;
 }
 
 .gantt-row-track {
   display: grid;
-  grid-template-columns: repeat(23, minmax(28px, 1fr));
+  grid-template-columns: repeat(23, minmax(30px, 1fr));
   position: relative;
   border-radius: var(--radius-md);
   background-image: linear-gradient(
@@ -1724,17 +1752,31 @@ html.js .gantt-phase-tooltip {
 }
 
 @media (max-width: 768px) {
+  .gantt-bleed {
+    width: 100%;
+    margin-left: 0;
+    transform: none;
+  }
+
   .gantt-card {
     padding: 1rem 1.1rem;
   }
 
   .gantt-grid {
-    min-width: 600px;
+    min-width: 669px;
   }
 
   .gantt-header,
   .gantt-row {
-    grid-template-columns: minmax(160px, 200px) 1fr;
+    grid-template-columns: minmax(172px, 219px) 1fr;
+  }
+
+  .gantt-stage-header-label {
+    white-space: normal;
+  }
+
+  .gantt-row-task {
+    white-space: normal;
   }
 
   .gantt-header-label,
