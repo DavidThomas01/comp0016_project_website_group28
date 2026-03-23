@@ -187,6 +187,15 @@ nav.site-nav {
   flex-wrap: wrap;
 }
 
+/* Primary links scroll horizontally on wide viewports; Appendices stays outside so its dropdown is not clipped by overflow. */
+.nav-scroll {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
 .nav-item { position: relative; }
 
 .nav-link, .drop-toggle {
@@ -248,6 +257,7 @@ nav.site-nav {
   position: absolute;
   top: calc(100% + 0.35rem);
   left: 0;
+  z-index: 20;
   min-width: 260px;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -321,6 +331,13 @@ nav.site-nav {
     padding-bottom: 0.75rem;
   }
 
+  .nav-scroll {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.2rem;
+  }
+
   #nav-toggle:checked ~ .nav-wrap .nav-left { display: flex; }
 
   .nav-item { width: 100%; }
@@ -340,14 +357,30 @@ nav.site-nav {
 @media (min-width: 901px) {
   .nav-left {
     flex-wrap: nowrap;
+  }
+
+  .nav-left > .nav-item {
+    flex-shrink: 0;
+  }
+
+  .nav-scroll {
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: nowrap;
     overflow-x: auto;
     scrollbar-width: thin;
   }
-  .nav-left::-webkit-scrollbar { height: 4px; }
-  .nav-left::-webkit-scrollbar-track { background: transparent; }
-  .nav-left::-webkit-scrollbar-thumb {
+
+  .nav-scroll::-webkit-scrollbar { height: 4px; }
+  .nav-scroll::-webkit-scrollbar-track { background: transparent; }
+  .nav-scroll::-webkit-scrollbar-thumb {
     background: var(--brand-light);
     border-radius: 4px;
+  }
+
+  .nav-item:focus-within,
+  .nav-item:hover {
+    z-index: 30;
   }
 }
 
@@ -411,48 +444,41 @@ nav.site-nav {
   line-height: 1.7;
 }
 
-/* Enhanced home hero */
+/* Enhanced home hero — stacked: title → lead → large screenshot (centered) → CTAs */
 .hero--home {
-  padding: 5.5rem 0 4rem;
-  text-align: left;
+  padding: 5.5rem 1rem 3.5rem;
+  text-align: center;
 }
-.hero-home__layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, min(36vw, 380px));
-  gap: 2rem 2.5rem;
-  align-items: center;
-}
-.hero-home__content {
-  min-width: 0;
+.hero-home__intro {
+  max-width: 62ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 .hero--home h1 {
   font-size: clamp(2rem, 4.5vw, 3.25rem);
-  max-width: 18ch;
-  margin-left: 0;
-  margin-right: 0;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero--home .hero-lead {
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 .hero--home p {
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 1.1rem;
 }
 .hero--home .kicker {
   margin-bottom: 1rem;
 }
-.hero-home__layout .hero-actions {
-  margin-top: 1.75rem;
-  justify-content: flex-start;
+.hero-home__cta {
+  margin-top: 2rem;
 }
-.hero-home__layout .hero-media {
-  margin: 0;
-  max-width: 100%;
-  padding: 8px 0;
-  justify-self: end;
-}
-.hero-home__layout .hero-media figcaption {
-  text-align: left;
-  font-size: 0.82rem;
-  line-height: 1.45;
+.hero-home__cta .hero-actions {
+  margin-top: 0;
+  justify-content: center;
 }
 
 .hero-badge {
@@ -494,6 +520,16 @@ nav.site-nav {
   max-width: min(920px, 100%);
   padding: 12px 0;
 }
+/* Home: wide centered image (overrides .hero-media limits above) */
+.hero-media.hero-media--home {
+  display: block;
+  margin: 2.5rem auto 0;
+  width: 100%;
+  /* ~20% smaller than previous cap (1320px / 100% → 1056px / 80%) */
+  max-width: min(1056px, 80%);
+  padding: 0;
+  box-sizing: border-box;
+}
 .hero-media__frame {
   border-radius: 1rem;
   overflow: hidden;
@@ -503,6 +539,10 @@ nav.site-nav {
     0 12px 40px rgba(17, 17, 17, 0.06);
   animation: heroMediaFloat 5.5s ease-in-out infinite;
   transition: box-shadow 0.35s ease;
+}
+.hero-media--home .hero-media__frame {
+  border-radius: 1.125rem;
+  animation: heroMediaFloatHome 6s ease-in-out infinite;
 }
 .hero-media:hover .hero-media__frame {
   box-shadow:
@@ -517,7 +557,10 @@ nav.site-nav {
   transition: transform 0.35s ease;
 }
 .hero-media:hover .hero-media__img {
-  transform: scale(1.045);
+  transform: scale(1.03);
+}
+.hero-media--home:hover .hero-media__img {
+  transform: scale(1.015);
 }
 .hero-media figcaption {
   margin-top: 0.85rem;
@@ -527,6 +570,11 @@ nav.site-nav {
 @keyframes heroMediaFloat {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
+}
+
+@keyframes heroMediaFloatHome {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 .text-gradient {
@@ -1087,6 +1135,53 @@ ul:not(.styled-list):not(.tag-list) li strong {
   font-size: 0.94rem;
   line-height: 1.7;
   color: var(--text-secondary);
+}
+
+.home-feature-expand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.home-feature-expand p {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.home-feature-expand p + p {
+  margin-top: 0.35rem;
+}
+.home-feature-expand .feature-actions {
+  margin: 0.25rem 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.home-feature-expand .feature-actions li {
+  margin-bottom: 0.35rem;
+}
+
+/* Key feature screenshots inside home page dropdowns */
+.key-feature-screenshot {
+  margin: 0;
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.evaluation-item[open] .key-feature-screenshot {
+  border-color: rgba(255, 107, 53, 0.35);
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.1);
+}
+.key-feature-screenshot img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 /* ====== Gantt Timeline (Grid) ====== */
@@ -1942,30 +2037,9 @@ footer .container {
 
 /* ====== Responsive refinements ====== */
 @media (max-width: 880px) {
-  .hero-home__layout {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .hero--home {
-    text-align: center;
-  }
-  .hero--home h1 {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .hero--home p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .hero-home__layout .hero-actions {
-    justify-content: center;
-  }
-  .hero-home__layout .hero-media {
-    justify-self: center;
-    max-width: min(520px, 100%);
-  }
-  .hero-home__layout .hero-media figcaption {
-    text-align: center;
+  .hero-media--home {
+    width: 100%;
+    margin-top: 2rem;
   }
 }
 
