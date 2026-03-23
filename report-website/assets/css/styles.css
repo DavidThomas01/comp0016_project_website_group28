@@ -70,6 +70,22 @@ h1, h2, h3, h4 { color: var(--text); line-height: 1.3; }
   margin: 0 auto;
 }
 
+/* Legacy URL: old combined Evaluation & Testing page */
+.page-moved {
+  padding: 3rem 1rem;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+.page-moved h1 {
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.page-moved p {
+  margin: 0;
+}
+
 .skip-link {
   position: absolute;
   left: -999px;
@@ -1064,6 +1080,28 @@ ul:not(.styled-list):not(.tag-list) li strong {
 }
 .achievement-block .styled-list li:last-child { margin-bottom: 0; }
 
+.achievements-section-lead {
+  max-width: 52rem;
+}
+.achievements-card .achievements-expand {
+  margin-top: 1rem;
+}
+.achievements-card .achievements-expand.evaluation-item {
+  border-left-width: 2px;
+  box-shadow: var(--shadow-sm);
+}
+.achievements-card .achievements-expand .evaluation-content .achievement-block:first-of-type {
+  margin-top: 0;
+}
+
+.traceability-hint {
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin: 0.75rem 0 0;
+  max-width: 48rem;
+  line-height: 1.55;
+}
+
 /* ====== Critical evaluation accordion ====== */
 .evaluation-accordion {
   margin-top: 1.25rem;
@@ -1135,6 +1173,238 @@ ul:not(.styled-list):not(.tag-list) li strong {
   font-size: 0.94rem;
   line-height: 1.7;
   color: var(--text-secondary);
+}
+
+/* Requirements traceability tables (evaluation page) */
+.evaluation-content .table-wrap {
+  margin: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.requirements-table {
+  font-size: 0.88rem;
+}
+.requirements-table th,
+.requirements-table td {
+  vertical-align: top;
+}
+.requirements-table .req-priority {
+  white-space: nowrap;
+  width: 5.5rem;
+}
+.requirements-table .req-cell-status {
+  text-align: center;
+  width: 4.5rem;
+}
+.req-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+.req-status--done {
+  color: #2e7d32;
+}
+.req-status--not {
+  color: #c62828;
+}
+
+/* Visible tooltip for incomplete requirements (native title="" is slow / unreliable) */
+#requirements-traceability .evaluation-item {
+  overflow: visible;
+}
+.req-status-tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  min-height: 2rem;
+  margin: -0.35rem;
+  padding: 0.35rem;
+  cursor: help;
+  vertical-align: middle;
+  border-radius: 0.35rem;
+  outline: none;
+}
+.req-status-tooltip:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+.req-status-tooltip__panel {
+  /* position + inset set via JS so the note is not clipped by table/accordion overflow */
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  width: max-content;
+  max-width: min(18rem, calc(100vw - 1.5rem));
+  padding: 0.55rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: left;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s var(--ease), visibility 0.18s var(--ease);
+}
+.req-status-tooltip:hover .req-status-tooltip__panel,
+.req-status-tooltip:focus-within .req-status-tooltip__panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+html:not(.js) .req-status-tooltip__panel {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 6px);
+  transform: translateX(-50%);
+  max-width: min(18rem, 70vw);
+}
+
+.requirements-table .req-contributors {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  min-width: 8rem;
+}
+
+/* Testing page (testing.html) */
+.testing-prompt-hint {
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+  margin-top: 0.75rem;
+}
+.testing-prompt-hint code {
+  font-size: 0.88em;
+  background: var(--bg-soft);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+}
+.section-optional {
+  font-weight: 500;
+  color: var(--muted);
+  font-size: 0.92em;
+}
+.section-lead {
+  margin-top: 0.35rem;
+  color: var(--text-secondary);
+  font-size: 0.96rem;
+}
+.testing-subsection-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 1.25rem 0 0.5rem;
+  color: var(--text);
+}
+.testing-subsection-title:first-of-type {
+  margin-top: 0.5rem;
+}
+.testing-outcome {
+  margin-bottom: 0.5rem;
+}
+.testing-outcome--spaced {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+.testing-field-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 1rem 0 0.35rem;
+  color: var(--brand-dark);
+}
+.testing-outcome > .testing-field-title:first-child {
+  margin-top: 0;
+}
+.testing-outcome p {
+  margin: 0 0 0.85rem;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.uat-block {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.uat-block:first-of-type {
+  margin-top: 0.75rem;
+  padding-top: 0;
+  border-top: none;
+}
+.uat-block > h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.65rem;
+}
+
+.testing-snapshot {
+  background: var(--bg-gradient);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.35rem;
+  margin-bottom: 0.25rem;
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--brand);
+}
+.testing-snapshot-heading {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand-dark);
+  margin: 0 0 0.5rem;
+}
+.testing-snapshot-note {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0 0 1rem;
+  line-height: 1.55;
+}
+.testing-snapshot-note code {
+  font-size: 0.86em;
+  background: var(--bg-soft);
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+}
+.testing-snapshot .stat-grid {
+  margin: 0;
+}
+.stat-number--ver {
+  font-size: 1.55rem;
+  letter-spacing: -0.02em;
+}
+.testing-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+@media (max-width: 720px) {
+  .testing-two-col {
+    grid-template-columns: 1fr;
+  }
+}
+.testing-point-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.testing-point-list li {
+  margin-bottom: 0.45rem;
+}
+.testing-point-list strong {
+  color: var(--text);
 }
 
 .home-feature-expand {

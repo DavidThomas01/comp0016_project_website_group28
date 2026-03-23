@@ -2,7 +2,7 @@
   'use strict';
   document.documentElement.classList.add('js');
 
-  var SITE_FOOTER_HTML = "<footer class=\"site-footer fade-in site-footer--motion\" id=\"site-footer\" aria-label=\"Site\">\n  <div class=\"container site-footer__inner\">\n    <div class=\"site-footer__grid site-footer__grid--3 stagger\">\n      <div class=\"site-footer__block site-footer__about\">\n        <h3 class=\"site-footer__heading\">Site info</h3>\n        <p class=\"site-footer__blurb\">We\u2019re Team 28 (COMP0016). This site is for <strong class=\"text-brand\">Prompt Injection Protection</strong>\u2014our project on prompt injection when LLMs use tools, the mitigations we tried, and how we tested everything.</p>\n      </div>\n      <div class=\"site-footer__block site-footer__pages\">\n        <h3 class=\"site-footer__heading\">Pages</h3>\n        <nav class=\"site-footer__nav\" aria-label=\"Report pages\">\n          <a href=\"index.html\">Home</a>\n          <a href=\"requirements.html\">Requirements</a>\n          <a href=\"research.html\">Research</a>\n          <a href=\"algorithms.html\">Algorithms</a>\n          <a href=\"ui-design.html\">UI Design</a>\n          <a href=\"system-design.html\">System Design</a>\n          <a href=\"implementation.html\">Implementation</a>\n          <a href=\"evaluation-testing.html\">Evaluation &amp; Testing</a>\n          <a href=\"conclusion.html\">Conclusion</a>\n          <a href=\"appendices.html\">Appendices</a>\n        </nav>\n      </div>\n      <div class=\"site-footer__block site-footer__project\">\n        <h3 class=\"site-footer__heading\">Project</h3>\n        <p class=\"site-footer__title\">Prompt Injection Protection</p>\n        <p class=\"site-footer__meta\">Team 28 \u00b7 UCL COMP0016 \u00b7 2025\u201326</p>\n        <a class=\"site-footer__blog-link\" href=\"appendices.html#dev-blog\">Development Blog</a>\n        <p class=\"site-footer__subheading\">Supporters</p>\n        <ul class=\"site-footer__sponsors\" role=\"list\">\n          <li>\n            <a class=\"site-footer__sponsor\" href=\"https://www.ucl.ac.uk/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"UCL (opens in a new tab)\">\n              <img src=\"assets/img/logo-ucl.png\" alt=\"\" class=\"site-footer__sponsor-img site-footer__sponsor-img--ucl\" width=\"160\" height=\"48\" decoding=\"async\" />\n            </a>\n          </li>\n          <li>\n            <a class=\"site-footer__sponsor\" href=\"https://www.avanade.com/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Avanade (opens in a new tab)\">\n              <img src=\"assets/img/logo-avanade.webp\" alt=\"\" class=\"site-footer__sponsor-img site-footer__sponsor-img--avanade\" width=\"160\" height=\"48\" decoding=\"async\" />\n            </a>\n          </li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"site-footer__bottom\">\n      <p class=\"site-footer__credit\">\u00a9 2025\u201326 Team 28 \u00b7 UCL COMP0016</p>\n    </div>\n  </div>\n</footer>";
+  var SITE_FOOTER_HTML = "<footer class=\"site-footer fade-in site-footer--motion\" id=\"site-footer\" aria-label=\"Site\">\n  <div class=\"container site-footer__inner\">\n    <div class=\"site-footer__grid site-footer__grid--3 stagger\">\n      <div class=\"site-footer__block site-footer__about\">\n        <h3 class=\"site-footer__heading\">Site info</h3>\n        <p class=\"site-footer__blurb\">We\u2019re Team 28 (COMP0016). This site is for <strong class=\"text-brand\">Prompt Injection Protection</strong>\u2014our project on prompt injection when LLMs use tools, the mitigations we tried, and how we tested everything.</p>\n      </div>\n      <div class=\"site-footer__block site-footer__pages\">\n        <h3 class=\"site-footer__heading\">Pages</h3>\n        <nav class=\"site-footer__nav\" aria-label=\"Report pages\">\n          <a href=\"index.html\">Home</a>\n          <a href=\"requirements.html\">Requirements</a>\n          <a href=\"research.html\">Research</a>\n          <a href=\"algorithms.html\">Algorithms</a>\n          <a href=\"ui-design.html\">UI Design</a>\n          <a href=\"system-design.html\">System Design</a>\n          <a href=\"implementation.html\">Implementation</a>\n          <a href=\"evaluation.html\">Evaluation</a>\n          <a href=\"testing.html\">Testing</a>\n          <a href=\"conclusion.html\">Conclusion</a>\n          <a href=\"appendices.html\">Appendices</a>\n        </nav>\n      </div>\n      <div class=\"site-footer__block site-footer__project\">\n        <h3 class=\"site-footer__heading\">Project</h3>\n        <p class=\"site-footer__title\">Prompt Injection Protection</p>\n        <p class=\"site-footer__meta\">Team 28 \u00b7 UCL COMP0016 \u00b7 2025\u201326</p>\n        <a class=\"site-footer__blog-link\" href=\"appendices.html#dev-blog\">Development Blog</a>\n        <p class=\"site-footer__subheading\">Supporters</p>\n        <ul class=\"site-footer__sponsors\" role=\"list\">\n          <li>\n            <a class=\"site-footer__sponsor\" href=\"https://www.ucl.ac.uk/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"UCL (opens in a new tab)\">\n              <img src=\"assets/img/logo-ucl.png\" alt=\"\" class=\"site-footer__sponsor-img site-footer__sponsor-img--ucl\" width=\"160\" height=\"48\" decoding=\"async\" />\n            </a>\n          </li>\n          <li>\n            <a class=\"site-footer__sponsor\" href=\"https://www.avanade.com/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Avanade (opens in a new tab)\">\n              <img src=\"assets/img/logo-avanade.webp\" alt=\"\" class=\"site-footer__sponsor-img site-footer__sponsor-img--avanade\" width=\"160\" height=\"48\" decoding=\"async\" />\n            </a>\n          </li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"site-footer__bottom\">\n      <p class=\"site-footer__credit\">\u00a9 2025\u201326 Team 28 \u00b7 UCL COMP0016</p>\n    </div>\n  </div>\n</footer>";
 
   (function injectSiteFooter() {
     var mount = document.getElementById('footer-root');
@@ -181,6 +181,65 @@
           if (other !== detail && other.open) other.open = false;
         });
       });
+    });
+  }
+
+  /* Evaluation: incomplete-requirement notes use fixed positioning (escapes overflow/scroll clipping) */
+  var reqTrace = document.querySelector('#requirements-traceability');
+  if (reqTrace) {
+    reqTrace.querySelectorAll('.req-status-tooltip').forEach(function (wrap) {
+      var panel = wrap.querySelector('.req-status-tooltip__panel');
+      if (!panel) return;
+
+      function place() {
+        var rect = wrap.getBoundingClientRect();
+        var gap = 6;
+        var margin = 8;
+        var maxW = Math.min(320, window.innerWidth - margin * 2);
+        var left = rect.left + rect.width / 2 - maxW / 2;
+        left = Math.max(margin, Math.min(left, window.innerWidth - maxW - margin));
+        var top = rect.bottom + gap;
+        panel.style.left = left + 'px';
+        panel.style.top = top + 'px';
+        panel.style.width = maxW + 'px';
+
+        requestAnimationFrame(function () {
+          var pr = panel.getBoundingClientRect();
+          if (pr.bottom > window.innerHeight - margin) {
+            var flip = rect.top - gap - pr.height;
+            if (flip >= margin) {
+              panel.style.top = flip + 'px';
+            }
+          }
+        });
+      }
+
+      function clearPlacement() {
+        panel.style.left = '';
+        panel.style.top = '';
+        panel.style.width = '';
+      }
+
+      wrap.addEventListener('mouseenter', place);
+      wrap.addEventListener('mouseleave', function () {
+        if (!wrap.contains(document.activeElement)) {
+          clearPlacement();
+        }
+      });
+      wrap.addEventListener('focusin', place);
+      wrap.addEventListener('focusout', function (e) {
+        if (!wrap.contains(e.relatedTarget)) {
+          clearPlacement();
+        }
+      });
+
+      function placeIfActive() {
+        if (wrap.matches(':hover') || wrap.contains(document.activeElement)) {
+          place();
+        }
+      }
+      window.addEventListener('scroll', placeIfActive, true);
+      window.addEventListener('resize', placeIfActive);
     });
   }
 })();
