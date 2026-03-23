@@ -92,63 +92,70 @@
 <main id="main">
   <div class="container">
 
-    <!-- ===== Overview (problem + context condensed) ===== -->
-    <section class="section fade-in" id="overview">
-      <h2>Project overview</h2>
-      <div class="card-grid cols-2">
-        <div class="card">
-          <h3>Why this matters</h3>
-          <p>
-            Prompt injection means hidden instructions in user input or other context can make a model ignore its
-            task, leak data, or misuse tools. That is especially serious when the model calls APIs or MCP-style
-            servers and can affect real systems.
-          </p>
-          <p>
-            There is still a gap between theory and clear, repeatable attack examples, and teams need better ways
-            to run tests, compare mitigations, and harden system prompts without breaking intended behaviour.
-          </p>
-        </div>
-        <div class="card">
-          <h3>What the platform offers</h3>
-          <ul>
-            <li>A vulnerability catalogue with deep-dive pages, demos, and links to mitigations.</li>
-            <li>Mitigation guides with structured explanations and optional code-style snippets.</li>
-            <li>A testing workbench, prompt enhancer, and in-app security assistant.</li>
-          </ul>
-          <div class="tag-list">
-            <span class="badge badge--brand">Prompt injection</span>
-            <span class="badge badge--blue">MCP &amp; tool use</span>
-            <span class="badge badge--amber">Testing &amp; mitigations</span>
+    <!-- ===== Abstract: three titled blocks, each with multiple short paragraphs ===== -->
+    <section class="section fade-in" id="abstract">
+      <h2>Project abstract</h2>
+      <div class="abstract-stack">
+        <article class="abstract-chunk" aria-labelledby="abstract-h-problem">
+          <h3 id="abstract-h-problem">Problem and motivation</h3>
+          <div class="abstract-chunk__body">
+            <p>
+              Large language models can be manipulated through prompt-injection attacks. Hidden instructions in user
+              input or other context can make a model ignore its task, leak data, or misuse tools.
+            </p>
+            <p>
+              That risk is especially serious when the model calls APIs or MCP-style servers, because failures can
+              propagate into real systems and client environments. There is still a gap between theory and clear,
+              repeatable attack examples.
+            </p>
+            <p>
+              Teams need practical ways to learn how attacks work, what mitigations exist, how to run tests, compare
+              mitigations, and harden system prompts without breaking intended behaviour. We treat prompt-injection
+              risk as something to study systematically—through structured content on vulnerabilities and mitigations,
+              and through tooling that runs prompts against real models and inspects the results.
+            </p>
           </div>
-        </div>
+        </article>
+        <article class="abstract-chunk" aria-labelledby="abstract-h-platform">
+          <h3 id="abstract-h-platform">Platform and technical approach</h3>
+          <div class="abstract-chunk__body">
+            <p>
+              We built an educational web application with a React single-page front end and a FastAPI back end
+              backed by SQLite. The platform presents a vulnerability catalogue with detail pages, interactive demos,
+              knowledge-check quizzes, and links to mitigations.
+            </p>
+            <p>
+              Mitigation guides give structured explanations and optional code-style snippets. A testing workbench lets
+              users configure and run tests against routed LLM providers. A three-stage prompt-enhancement pipeline
+              (improve, prepend mitigation rules, verify) and a streaming security-assistant chat, with keyword search
+              over the same catalogue, round out the user-facing surface.
+            </p>
+            <p>
+              The backend centralises model access through a provider router, applies configurable mitigation layers
+              around test execution where appropriate, and analyses model outputs for injection-related risk.
+            </p>
+          </div>
+        </article>
+        <article class="abstract-chunk" aria-labelledby="abstract-h-impact">
+          <h3 id="abstract-h-impact">Outcomes and intended impact</h3>
+          <div class="abstract-chunk__body">
+            <p>
+              Developed in collaboration with Avanade, the platform supports technical and non-technical users in
+              understanding prompt injection and reducing risk when delivering client solutions.
+            </p>
+            <p>
+              It combines structured learning with interactive testing: teams can study the material and run realistic
+              checks so that client work can be made more secure, and Avanade employees can learn and practise
+              alongside their day-to-day work with AI systems.
+            </p>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- ===== Objectives ===== -->
-    <section class="section fade-in" id="objectives">
-      <h2>Objectives</h2>
-      <div class="card-grid cols-2 stagger">
-        <div class="card card-accent">
-          <div class="card-icon">&#x1F6E1;&#xFE0F;</div>
-          <h3>Evaluate Prompt Injection Techniques</h3>
-          <p>Document current prompt injection attack vectors and assess their real-world impact on AI systems and enterprise deployments.</p>
-        </div>
-        <div class="card card-accent">
-          <div class="card-icon">&#x1F9EA;</div>
-          <h3>Build a Testing Framework</h3>
-          <p>Design and implement a testing framework to assess MCP servers for susceptibility to prompt injection and related exploits.</p>
-        </div>
-        <div class="card card-accent">
-          <div class="card-icon">&#x1F4CB;</div>
-          <h3>Produce Technical Guidance</h3>
-          <p>Deliver actionable recommendations and tooling approaches to help organisations secure their MCP servers against these threats.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Our key features (dropdowns + screenshots) ===== -->
+    <!-- ===== Platform features (dropdowns + screenshots) ===== -->
     <section class="section fade-in" id="key-features">
-      <h2>Our key features</h2>
+      <h2>Platform features</h2>
       <div class="evaluation-accordion">
         <details class="evaluation-item">
           <summary>Vulnerabilities</summary>
@@ -276,10 +283,10 @@
       </div>
     </section>
 
-    <!-- ===== Project Timeline (Gantt) ===== -->
+    <!-- ===== Delivery timeline (Gantt) ===== -->
     <section class="section fade-in" id="timeline">
       <div class="gantt-bleed">
-      <h2>Project Timeline</h2>
+      <h2>Delivery timeline</h2>
 
       <div class="gantt-card" aria-label="Project timeline">
         <div class="gantt-scroll">
@@ -985,9 +992,9 @@
       </div>
     </section>
 
-    <!-- ===== Project Video ===== -->
+    <!-- ===== Demo video ===== -->
     <section class="section fade-in" id="video">
-      <h2>Project Video</h2>
+      <h2>Demo video</h2>
       <div class="project-video-embed">
         <iframe
           src="https://www.youtube-nocookie.com/embed/8TZMtslA3UY"
@@ -1001,7 +1008,7 @@
 
     <!-- ===== Team ===== -->
     <section class="section fade-in" id="team">
-      <h2>Team &amp; Contacts</h2>
+      <h2>Team and contacts</h2>
 
       <h3 class="team-subtitle">Our Team</h3>
       <p class="team-lead">Meet the students behind this project.</p>

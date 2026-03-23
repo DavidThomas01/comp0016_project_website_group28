@@ -709,6 +709,75 @@ h3 {
   letter-spacing: -0.01em;
 }
 
+/* Home abstract: full container width, left-aligned — same column as Platform features */
+.abstract-stack {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.35rem;
+}
+@media (min-width: 768px) {
+  .abstract-stack {
+    gap: 1.6rem;
+  }
+}
+.abstract-chunk {
+  margin: 0;
+  padding: 1.35rem 1.25rem 1.4rem;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  border-top: 3px solid var(--brand);
+  box-shadow: 0 2px 12px rgba(17, 17, 17, 0.04);
+  transition:
+    transform var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease),
+    border-color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease);
+}
+.abstract-chunk:hover {
+  transform: translateY(-2px);
+  background-color: var(--bg-soft);
+  border-color: rgba(255, 107, 53, 0.18);
+  border-top-color: var(--brand);
+  box-shadow: 0 6px 22px rgba(17, 17, 17, 0.07), 0 2px 8px rgba(255, 107, 53, 0.06);
+}
+@media (min-width: 640px) {
+  .abstract-chunk {
+    padding: 1.5rem 1.65rem 1.55rem;
+  }
+}
+.abstract-chunk h3 {
+  margin: 0 0 0.85rem;
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-align: left;
+}
+.abstract-chunk__body p {
+  margin: 0;
+  font-size: 1.045rem;
+  line-height: 1.78;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  text-wrap: pretty;
+}
+.abstract-chunk__body p + p {
+  margin-top: 1.1rem;
+}
+@media (min-width: 768px) {
+  .abstract-chunk__body p {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+  .abstract-chunk__body p + p {
+    margin-top: 1.2rem;
+  }
+}
+
 h4 {
   margin: 1rem 0 0.4rem;
   font-size: 0.95rem;
