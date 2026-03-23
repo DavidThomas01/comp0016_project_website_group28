@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="description" content="COMP0016 Team 28 — Exploring prompt injection vulnerabilities, mitigations, and testing for MCP server security. Built with Avanade." />
   <title>Team 28 – Prompt Injection Protection</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
@@ -59,24 +60,30 @@
 </header>
 
 <section class="hero hero--home">
-  <div class="container">
-    <div class="hero-badge"><span>UCL COMP0016</span> · 2025–26 · Team 28</div>
-    <h1>Prompt Injection<br><span class="text-gradient">Protection</span></h1>
-    <p class="hero-lead">
-      This project delivers an educational web platform for understanding, exploring, and testing prompt
-      injection attacks against large language models, with a particular focus on tool-using and MCP-style
-      systems.
-    </p>
-    <div class="hero-actions">
-      <a href="requirements.html" class="btn btn-primary">View Requirements →</a>
-      <a href="research.html" class="btn btn-outline">Read Research</a>
+  <div class="container hero-home__layout">
+    <div class="hero-home__content">
+      <h1>Prompt Injection<br><span class="text-gradient">Protection</span></h1>
+      <p class="hero-lead">
+        This project delivers an educational web platform for understanding, exploring, and testing prompt
+        injection attacks against large language models, with a particular focus on tool-using and MCP-style
+        systems.
+      </p>
+      <div class="hero-actions">
+        <a href="requirements.html" class="btn btn-primary">View Requirements →</a>
+        <a href="research.html" class="btn btn-outline">Read Research</a>
+      </div>
     </div>
     <figure class="hero-media">
-      <img src="assets/img/hero-platform-overview.png"
-           alt="Overview of the Prompt Injection Protection platform interface"
-           loading="lazy" />
+      <div class="hero-media__frame">
+        <img class="hero-media__img"
+             src="assets/img/avanade-platform-main-img.png"
+             alt="Screenshot of the Prompt Injection Protection platform home view, showing the hero and vulnerability catalogue"
+             width="1908"
+             height="961"
+             loading="lazy" />
+      </div>
       <figcaption class="text-muted">
-        Placeholder hero image showing the platform home view; replace with a real screenshot.
+        Platform home view: vulnerability catalogue and navigation as implemented for Avanade.
       </figcaption>
     </figure>
   </div>
@@ -303,10 +310,18 @@
             </div>
 
             <!-- Stage 1 -->
-            <div class="gantt-row">
-              <div class="gantt-row-label">
-                <div class="gantt-row-stage">Stage 1: Project Initiation</div>
+            <div class="gantt-row gantt-row--stage-header">
+              <div class="gantt-stage-header-label">Stage 1: Project Initiation</div>
+              <div class="gantt-stage-header-track" aria-hidden="true"></div>
+            </div>
+
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-stakeholder">
                 <div class="gantt-row-task">Stakeholder Research</div>
+                <div id="gantt-tip-stakeholder" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Stakeholder Research</strong>
+                  Mapped client needs with Avanade; aligned scope on prompt injection, MCP tooling, and how we would evaluate the platform.
+                </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell gantt-cell--active"></div>
@@ -335,10 +350,13 @@
               </div>
             </div>
 
-            <div class="gantt-row">
-              <div class="gantt-row-label">
-                <div class="gantt-row-stage">Stage 1: Project Initiation</div>
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-requirements">
                 <div class="gantt-row-task">Requirements Analysis</div>
+                <div id="gantt-tip-requirements" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Requirements Analysis</strong>
+                  MoSCoW prioritisation, functional and non-functional requirements, personas, and use cases for the main platform areas.
+                </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
@@ -367,10 +385,13 @@
               </div>
             </div>
 
-            <div class="gantt-row">
-              <div class="gantt-row-label">
-                <div class="gantt-row-stage">Stage 1: Project Initiation</div>
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-hci">
                 <div class="gantt-row-task">HCI &amp; UX Exploration</div>
+                <div id="gantt-tip-hci" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>HCI &amp; UX Exploration</strong>
+                  Wireframes, interaction patterns, and design-system choices for a clear, accessible security-testing workflow.
+                </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
@@ -399,10 +420,13 @@
               </div>
             </div>
 
-            <div class="gantt-row gantt-row--stage-gap">
-              <div class="gantt-row-label">
-                <div class="gantt-row-stage">Stage 1: Project Initiation</div>
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-planning">
                 <div class="gantt-row-task">Planning &amp; Milestones</div>
+                <div id="gantt-tip-planning" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Planning &amp; Milestones</strong>
+                  Milestones, weekly client syncs, and documentation checkpoints across initiation and early development.
+                </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
@@ -432,10 +456,18 @@
             </div>
 
             <!-- Stage 2 -->
-            <div class="gantt-row">
-              <div class="gantt-row-label">
-                <div class="gantt-row-stage">Stage 2: Development</div>
+            <div class="gantt-row gantt-row--stage-header">
+              <div class="gantt-stage-header-label">Stage 2: Development</div>
+              <div class="gantt-stage-header-track" aria-hidden="true"></div>
+            </div>
+
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-backend">
                 <div class="gantt-row-task">Backend &amp; MCP Integration</div>
+                <div id="gantt-tip-backend" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Backend &amp; MCP Integration</strong>
+                  MCP connectivity, server sandboxing, and core APIs supporting test runs and evaluation flows.
+                </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
@@ -464,10 +496,13 @@
               </div>
             </div>
 
-            <div class="gantt-row">
-              <div class="gantt-row-label">
-                <div class="gantt-row-stage">Stage 2: Development</div>
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-ui">
                 <div class="gantt-row-task">UI &amp; Vulnerability Views</div>
+                <div id="gantt-tip-ui" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>UI &amp; Vulnerability Views</strong>
+                  Vulnerability explorer and knowledge-base views with consistent navigation and responsive layouts for the prototype.
+                </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
@@ -496,10 +531,13 @@
               </div>
             </div>
 
-            <div class="gantt-row">
-              <div class="gantt-row-label">
-                <div class="gantt-row-stage">Stage 2: Development</div>
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-testing-core">
                 <div class="gantt-row-task">Testing Framework Core</div>
+                <div id="gantt-tip-testing-core" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Testing Framework Core</strong>
+                  Test harness, scenario definitions, and analysis pipeline for prompt-injection experiments and comparisons.
+                </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
@@ -528,10 +566,13 @@
               </div>
             </div>
 
-            <div class="gantt-row gantt-row--stage-gap">
-              <div class="gantt-row-label">
-                <div class="gantt-row-stage">Stage 2: Development</div>
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-a11y">
                 <div class="gantt-row-task">Accessibility &amp; Polish</div>
+                <div id="gantt-tip-a11y" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Accessibility &amp; Polish</strong>
+                  WCAG-minded styling, visible focus, keyboard paths, and responsive refinements across the UI.
+                </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
@@ -561,10 +602,18 @@
             </div>
 
             <!-- Stage 3 -->
-            <div class="gantt-row">
-              <div class="gantt-row-label">
-                <div class="gantt-row-stage">Stage 3: Finalisation</div>
+            <div class="gantt-row gantt-row--stage-header">
+              <div class="gantt-stage-header-label">Stage 3: Finalisation</div>
+              <div class="gantt-stage-header-track" aria-hidden="true"></div>
+            </div>
+
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-eval">
                 <div class="gantt-row-task">Evaluation &amp; Testing</div>
+                <div id="gantt-tip-eval" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Evaluation &amp; Testing</strong>
+                  Unit, integration, and system tests; security evaluation and traceability back to requirements.
+                </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
@@ -593,10 +642,13 @@
               </div>
             </div>
 
-            <div class="gantt-row">
-              <div class="gantt-row-label">
-                <div class="gantt-row-stage">Stage 3: Finalisation</div>
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-uat">
                 <div class="gantt-row-task">User Testing &amp; Demo Prep</div>
+                <div id="gantt-tip-uat" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>User Testing &amp; Demo Prep</strong>
+                  Stakeholder demos for Avanade, feedback sessions, and iteration before final delivery.
+                </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
@@ -625,10 +677,13 @@
               </div>
             </div>
 
-            <div class="gantt-row">
-              <div class="gantt-row-label">
-                <div class="gantt-row-stage">Stage 3: Finalisation</div>
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-deploy">
                 <div class="gantt-row-task">Deployment &amp; Handover</div>
+                <div id="gantt-tip-deploy" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Deployment &amp; Handover</strong>
+                  Deployment steps, configuration notes, and handover guidance for maintainers and future work.
+                </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
@@ -657,10 +712,13 @@
               </div>
             </div>
 
-            <div class="gantt-row gantt-row--stage-gap">
-              <div class="gantt-row-label">
-                <div class="gantt-row-stage">Stage 3: Finalisation</div>
-                <div class="gantt-row-task">Report Website &amp; Documentation</div>
+            <div class="gantt-row gantt-row--task">
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-report">
+                <div class="gantt-row-task">Report &amp; Documentation</div>
+                <div id="gantt-tip-report" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Report &amp; Documentation</strong>
+                  This report site, technical documentation, and appendices for coursework and client handover.
+                </div>
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
@@ -692,6 +750,8 @@
         </div>
         <p class="gantt-legend text-muted">
           Solid orange cells indicate primary work weeks; lighter cells show planning and polish.
+          Click a phase name to read what we did in that period; click the name again, move the pointer out of the
+          description box, click elsewhere, or press Escape to close.
         </p>
       </div>
     </section>
@@ -741,11 +801,14 @@
     <!-- ===== Project Video ===== -->
     <section class="section fade-in" id="video">
       <h2>Project Video</h2>
-      <div class="video-placeholder">
-        <div class="video-placeholder-inner">
-          <div class="play-icon">&#x25B6;</div>
-          <span>Project video will be available here</span>
-        </div>
+      <div class="project-video-embed">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/8TZMtslA3UY"
+          title="Team 28 Prompt Injection Protection — project video"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"></iframe>
       </div>
     </section>
 
@@ -773,7 +836,7 @@
           </div>
         </div>
         <div class="team-member">
-          <img src="assets/img/david-thomas.svg" alt="David Thomas" class="team-member__photo" width="160" height="160" />
+          <img src="assets/img/david-thomas.png" alt="David Thomas" class="team-member__photo" width="160" height="160" />
           <h4 class="team-member__name">David Thomas</h4>
           <p class="team-member__role">React/Vite frontend, Security Knowledge Chatbot, PDF export, dark mode &amp; vulnerability refs</p>
           <div class="team-member__links">
@@ -803,7 +866,7 @@
           </div>
         </div>
         <div class="team-member">
-          <img src="assets/img/mario-mojarro.svg" alt="Mario Mojarro" class="team-member__photo" width="160" height="160" />
+          <img src="assets/img/mario-mojarro.jpg" alt="Mario Mojarro" class="team-member__photo" width="160" height="160" />
           <h4 class="team-member__name">Mario Mojarro</h4>
           <p class="team-member__role">Initial backend (Express/SQLite, CRUD), TestingPage backend, mitigation registry &amp; runner</p>
           <div class="team-member__links">
@@ -817,32 +880,6 @@
             </a>
           </div>
         </div>
-      </div>
-
-      <h3 class="team-subtitle mt-4">Partners &amp; Supervision</h3>
-      <div class="card-grid cols-3 stagger">
-        <div class="card card--feature">
-          <div class="card-icon">&#x1F393;</div>
-          <h3>Team 28</h3>
-          <p>UCL Computer Science<br>COMP0016 · 2025–26</p>
-        </div>
-        <div class="card card--feature">
-          <div class="card-icon">&#x1F3E2;</div>
-          <h3>Avanade</h3>
-          <p>Industry Client<br>Josh McDonald · Security Leader</p>
-        </div>
-        <div class="card card--feature">
-          <div class="card-icon">&#x1F4DA;</div>
-          <h3>Dr Yun Fu</h3>
-          <p>Academic Supervisor<br>UCL Computer Science</p>
-        </div>
-      </div>
-
-      <div class="callout callout--note mt-3">
-        <p>
-          <strong>Industry contacts:</strong> Martin Harper (UK Innovation Lead, Avanade)
-          and Jovana Milosevic (Avanade) provide ongoing project guidance and domain expertise.
-        </p>
       </div>
     </section>
 
@@ -858,9 +895,13 @@
   </div>
 </main>
 
-<footer class="site-footer">
+<footer class="site-footer fade-in site-footer--motion" id="site-footer" aria-label="Site">
   <div class="container site-footer__inner">
-    <div class="site-footer__grid">
+    <div class="site-footer__grid site-footer__grid--3 stagger">
+      <div class="site-footer__block site-footer__about">
+        <h3 class="site-footer__heading">Site info</h3>
+        <p class="site-footer__blurb">We’re Team 28 (COMP0016). <strong class="text-brand">Prompt Injection Protection</strong> is our project in plain terms: how prompt injection shows up when language models call tools, what we tried to do about it, and how we tested things—with MCP servers woven through the whole story.</p>
+      </div>
       <div class="site-footer__block site-footer__pages">
         <h3 class="site-footer__heading">Pages</h3>
         <nav class="site-footer__nav" aria-label="Report pages">
@@ -879,11 +920,26 @@
       <div class="site-footer__block site-footer__project">
         <h3 class="site-footer__heading">Project</h3>
         <p class="site-footer__title">Prompt Injection Protection</p>
-        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
-        <a href="appendices.html#dev-blog">Development Blog</a>
+        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26</p>
+        <a class="site-footer__blog-link" href="appendices.html#dev-blog">Development Blog</a>
+        <p class="site-footer__subheading">Supporters</p>
+        <ul class="site-footer__sponsors" role="list">
+          <li>
+            <a class="site-footer__sponsor" href="https://www.ucl.ac.uk/" target="_blank" rel="noopener noreferrer" aria-label="UCL (opens in a new tab)">
+              <img src="assets/img/logo-ucl.png" alt="" class="site-footer__sponsor-img site-footer__sponsor-img--ucl" width="160" height="48" decoding="async" />
+            </a>
+          </li>
+          <li>
+            <a class="site-footer__sponsor" href="https://www.avanade.com/" target="_blank" rel="noopener noreferrer" aria-label="Avanade (opens in a new tab)">
+              <img src="assets/img/logo-avanade.webp" alt="" class="site-footer__sponsor-img site-footer__sponsor-img--avanade" width="160" height="48" decoding="async" />
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
-    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
+    <div class="site-footer__bottom">
+      <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
+    </div>
   </div>
 </footer>
 

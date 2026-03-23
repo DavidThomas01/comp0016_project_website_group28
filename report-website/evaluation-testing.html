@@ -490,9 +490,13 @@
   </div>
 </main>
 
-<footer class="site-footer">
+<footer class="site-footer fade-in site-footer--motion" id="site-footer" aria-label="Site">
   <div class="container site-footer__inner">
-    <div class="site-footer__grid">
+    <div class="site-footer__grid site-footer__grid--3 stagger">
+      <div class="site-footer__block site-footer__about">
+        <h3 class="site-footer__heading">Site info</h3>
+        <p class="site-footer__blurb">We’re Team 28 (COMP0016). <strong class="text-brand">Prompt Injection Protection</strong> is our project in plain terms: how prompt injection shows up when language models call tools, what we tried to do about it, and how we tested things—with MCP servers woven through the whole story.</p>
+      </div>
       <div class="site-footer__block site-footer__pages">
         <h3 class="site-footer__heading">Pages</h3>
         <nav class="site-footer__nav" aria-label="Report pages">
@@ -511,11 +515,26 @@
       <div class="site-footer__block site-footer__project">
         <h3 class="site-footer__heading">Project</h3>
         <p class="site-footer__title">Prompt Injection Protection</p>
-        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
-        <a href="appendices.html#dev-blog">Development Blog</a>
+        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26</p>
+        <a class="site-footer__blog-link" href="appendices.html#dev-blog">Development Blog</a>
+        <p class="site-footer__subheading">Supporters</p>
+        <ul class="site-footer__sponsors" role="list">
+          <li>
+            <a class="site-footer__sponsor" href="https://www.ucl.ac.uk/" target="_blank" rel="noopener noreferrer" aria-label="UCL (opens in a new tab)">
+              <img src="assets/img/logo-ucl.png" alt="" class="site-footer__sponsor-img site-footer__sponsor-img--ucl" width="160" height="48" decoding="async" />
+            </a>
+          </li>
+          <li>
+            <a class="site-footer__sponsor" href="https://www.avanade.com/" target="_blank" rel="noopener noreferrer" aria-label="Avanade (opens in a new tab)">
+              <img src="assets/img/logo-avanade.webp" alt="" class="site-footer__sponsor-img site-footer__sponsor-img--avanade" width="160" height="48" decoding="async" />
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
-    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
+    <div class="site-footer__bottom">
+      <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
+    </div>
   </div>
 </footer>
 
