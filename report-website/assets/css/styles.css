@@ -1110,7 +1110,11 @@ ul:not(.styled-list):not(.tag-list) li strong {
   padding: 0.9rem 1rem;
 }
 .contribution-table .contribution-total:hover td { background: rgba(255,107,53,0.08); }
-.contribution-table td:not(:first-child) { text-align: center; min-width: 3.5rem; }
+.contribution-table th:not(:first-child),
+.contribution-table td:not(:first-child) {
+  text-align: center;
+  min-width: 3.5rem;
+}
 
 /* ====== Achievements summary grid ====== */
 .achievements-grid {

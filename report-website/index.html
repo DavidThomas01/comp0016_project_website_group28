@@ -323,8 +323,8 @@
                 <div class="gantt-row-task">Stakeholder research</div>
                 <div id="gantt-tip-init-stakeholder" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Stakeholder research</strong>
-                  Client alignment with Avanade on scope, prompt injection risks, MCP-style tooling, and how we would
-                  evaluate the platform before build work ramped up.
+                  Meetings with Avanade to agree the scope, main risks, how tools would behave, and how we would test the
+                  platform before development grew.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -359,8 +359,8 @@
                 <div class="gantt-row-task">Project research</div>
                 <div id="gantt-tip-init-project-research" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Project research</strong>
-                  Background reading on LLM security, prompt injection taxonomies, and testing approaches to inform
-                  requirements and architecture choices.
+                  Reading on LLM security, types of prompt injection, and testing methods. This supported requirements
+                  and early architecture decisions.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -395,8 +395,8 @@
                 <div class="gantt-row-task">Requirements analysis</div>
                 <div id="gantt-tip-init-requirements" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Requirements analysis</strong>
-                  Drafting functional and non-functional requirements, personas, and use cases for the catalogue,
-                  vulnerability views, knowledge base, and testing workbench.
+                  Writing what the system must do, user profiles, and example journeys for the catalogue, vulnerability
+                  views, knowledge base, and testing area.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -431,8 +431,8 @@
                 <div class="gantt-row-task">Developing prototypes</div>
                 <div id="gantt-tip-init-prototypes" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Developing prototypes</strong>
-                  Early UI flows and spike code to validate navigation, content structure, and how users would move
-                  between vulnerabilities, mitigations, and tests.
+                  Early screens and trial code to check navigation, structure, and movement between vulnerabilities,
+                  mitigations, and tests.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -467,8 +467,8 @@
                 <div class="gantt-row-task">HCI &amp; UX exploration</div>
                 <div id="gantt-tip-init-hci" class="gantt-phase-tooltip" role="tooltip">
                   <strong>HCI &amp; UX exploration</strong>
-                  Wireframes and interaction patterns for a clear, accessible security-testing workflow ahead of the
-                  main implementation sprints.
+                  Sketches and interaction patterns for a clear, accessible security-testing workflow before the main
+                  build.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -503,8 +503,8 @@
                 <div class="gantt-row-task">MoSCoW list &amp; client sign-off</div>
                 <div id="gantt-tip-init-moscow" class="gantt-phase-tooltip" role="tooltip">
                   <strong>MoSCoW list &amp; client sign-off</strong>
-                  Prioritised requirements (Must / Should / Could / Won&rsquo;t) and agreement with the client on
-                  deliverables before full development.
+                  Requirements ranked as Must, Should, Could, or Won&rsquo;t, and client agreement on what we would deliver
+                  before full development.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -545,8 +545,8 @@
                 <div class="gantt-row-task">Repository &amp; frontend scaffold</div>
                 <div id="gantt-tip-scaffold" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Repository &amp; frontend scaffold</strong>
-                  Initial Vite/React app, routing, header/home layout, and first vulnerability flow &mdash; kicked off once
-                  requirements and MoSCoW sign-off gave a stable scope for the build.
+                  First Vite and React app with routing, header, home page, and an initial vulnerability flow. This began
+                  after requirements and MoSCoW sign-off fixed the scope.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -581,8 +581,8 @@
                 <div class="gantt-row-task">UX &amp; navigation model</div>
                 <div id="gantt-tip-nav" class="gantt-phase-tooltip" role="tooltip">
                   <strong>UX &amp; navigation model</strong>
-                  Routes for catalogue, detail, testing, and mitigations; motion and page transitions; responsive header
-                  and mobile navigation &mdash; reflected across early PRs rather than a separate &ldquo;HCI&rdquo; branch in git.
+                  Routes for the catalogue, detail pages, tests, and mitigations. Page transitions, responsive header, and
+                  mobile navigation, delivered in early pull requests.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -617,8 +617,8 @@
                 <div class="gantt-row-task">Vulnerability &amp; mitigation content</div>
                 <div id="gantt-tip-content" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Vulnerability &amp; mitigation content</strong>
-                  Long-form copy, demo scripts, and OWASP/MITRE-style references in static data and mirrored knowledge
-                  modules &mdash; the material that feeds the catalogue, detail views, and assistant search.
+                  Text, demo scripts, and security references held in data. This material feeds the catalogue, detail
+                  views, and the assistant search.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -659,9 +659,8 @@
                 <div class="gantt-row-task">Backend persistence &amp; API (FastAPI + SQLite)</div>
                 <div id="gantt-tip-backend-api" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Backend persistence &amp; API</strong>
-                  FastAPI application layer, SQLite via SQLAlchemy, test CRUD and run storage &mdash; evolved from an earlier
-                  Node/Express spike. MCP is not a first-class integration in this repository; the label focuses on what
-                  shipped in code.
+                  FastAPI service, SQLite database through SQLAlchemy, and storage for tests and runs. Earlier work used
+                  Node.js; this is what we shipped. MCP is not integrated in this repository.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -696,8 +695,8 @@
                 <div class="gantt-row-task">Testing service (UI, scoring, pass/fail)</div>
                 <div id="gantt-tip-testing-svc" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Testing service</strong>
-                  Testing page, prompt runner, analysers, and pass/fail semantics against expectations &mdash; backed by
-                  server-stored tests rather than only in-memory session state.
+                  Testing page, prompt runner, checks, and pass or fail against expectations. Tests live on the server,
+                  not only in memory.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -732,8 +731,8 @@
                 <div class="gantt-row-task">Models, mitigations &amp; external APIs</div>
                 <div id="gantt-tip-models" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Models, mitigations &amp; external APIs</strong>
-                  Dynamic model and mitigation loading, provider abstraction, and optional external HTTP endpoints for
-                  custom models during testing.
+                  Loading models and mitigations from configuration, a shared layer for providers, and optional HTTP
+                  endpoints for custom models during tests.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -768,9 +767,8 @@
                 <div class="gantt-row-task">Automated framework scanning (Garak)</div>
                 <div id="gantt-tip-garak" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Garak integration</strong>
-                  Garak-backed framework runs in the testing workbench (probe lists, runner glue, UI), once the core
-                  testing flow and persistence were stable. A PyRIT runner file exists as a stub and is not wired into the
-                  main framework delegate.
+                  Garak runs in the testing area with probe lists and UI, after the core testing flow and storage were
+                  stable. A PyRIT file exists but is not connected to the main framework runner.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -811,7 +809,8 @@
                 <div class="gantt-row-task">Security assistant</div>
                 <div id="gantt-tip-assistant" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Security assistant</strong>
-                  Streaming chat with KB grounding; later hardening (e.g. links into vulnerability pages).
+                  Chat that streams and uses the knowledge base. Later work added stronger behaviour, including links to
+                  vulnerability pages.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -846,7 +845,7 @@
                 <div class="gantt-row-task">Prompt enhancer</div>
                 <div id="gantt-tip-enhancer" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Prompt enhancer</strong>
-                  Enhancement pipeline, persistence, and UI wiring for model choice and flows.
+                  Pipeline to improve prompts, saving of results, and UI for model choice and flows.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -881,7 +880,7 @@
                 <div class="gantt-row-task">Branding &amp; dark mode</div>
                 <div id="gantt-tip-visual" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Branding &amp; dark mode</strong>
-                  Theme tokens, dark mode, motion, and Avanade-aligned branding on key screens.
+                  Colour tokens, dark mode, subtle motion, and Avanade-aligned branding on main screens.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -903,20 +902,20 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
               </div>
             </div>
 
             <div class="gantt-row gantt-row--task">
               <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-docs-jan">
-                <div class="gantt-row-task">README &amp; architecture (Jan)</div>
+                <div class="gantt-row-task">README &amp; architecture</div>
                 <div id="gantt-tip-docs-jan" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>January</strong>
-                  First README and high-level architecture after the scaffold.
+                  <strong>README &amp; architecture</strong>
+                  First README and high-level architecture document after the scaffold.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -948,10 +947,10 @@
 
             <div class="gantt-row gantt-row--task">
               <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-docs-final">
-                <div class="gantt-row-task">Report &amp; handover (Mar)</div>
+                <div class="gantt-row-task">Report &amp; handover</div>
                 <div id="gantt-tip-docs-final" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>March</strong>
-                  Report website and client handover: run, extend, maintain.
+                  <strong>Report &amp; handover</strong>
+                  Report website and client handover materials on how to run, extend, and maintain the system.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -986,7 +985,7 @@
           Stages group workstreams: <strong>Project initialisation &amp; research</strong> (stakeholders, requirements,
           prototypes, HCI, MoSCoW), then <strong>Foundation &amp; content</strong>, <strong>Platform &amp; testing core</strong>
           (FastAPI, SQLite, testing UI, models, Garak), and <strong>Integration, evaluation &amp; delivery</strong>
-          (assistant, enhancer, branding, README in January, report and handover in March). Click a row label for detail.
+          (assistant, enhancer, README in January, branding in late February, report and handover in March). Click a row label for detail.
         </p>
       </div>
       </div>
@@ -1017,7 +1016,7 @@
         <div class="team-member">
           <img src="assets/img/teo-montero.svg" alt="Teo Montero" class="team-member__photo" width="160" height="160" />
           <h4 class="team-member__name">Teo Montero</h4>
-          <p class="team-member__role">Backend core (providers, Garak runner, test execution), testing page &amp; framework integration</p>
+          <p class="team-member__role">Client liaison, programmer, and tester.</p>
           <div class="team-member__links">
             <a href="https://www.linkedin.com/in/teomontero/" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Teo Montero on LinkedIn">
               <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -1032,7 +1031,7 @@
         <div class="team-member">
           <img src="assets/img/david-thomas.png" alt="David Thomas" class="team-member__photo" width="160" height="160" />
           <h4 class="team-member__name">David Thomas</h4>
-          <p class="team-member__role">React/Vite frontend, Security Knowledge Chatbot, PDF export, dark mode &amp; vulnerability refs</p>
+          <p class="team-member__role">Report editor, programmer, and UI design.</p>
           <div class="team-member__links">
             <a href="https://www.linkedin.com/in/davidthomasg/" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="David Thomas on LinkedIn">
               <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -1047,7 +1046,7 @@
         <div class="team-member">
           <img src="assets/img/nathaniel-gibbon.svg" alt="Nathaniel Gibbon" class="team-member__photo" width="160" height="160" />
           <h4 class="team-member__name">Nathaniel Gibbon</h4>
-          <p class="team-member__role">Prompt Enhancer (page &amp; backend), dynamic mitigations, prompt-level mitigations</p>
+          <p class="team-member__role">Programmer and researcher.</p>
           <div class="team-member__links">
             <a href="https://www.linkedin.com/in/nathaniel-gibbon-323ba9387/" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Nathaniel Gibbon on LinkedIn">
               <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -1062,7 +1061,7 @@
         <div class="team-member">
           <img src="assets/img/mario-mojarro.jpg" alt="Mario Mojarro" class="team-member__photo" width="160" height="160" />
           <h4 class="team-member__name">Mario Mojarro</h4>
-          <p class="team-member__role">Initial backend (Express/SQLite, CRUD), TestingPage backend, mitigation registry &amp; runner</p>
+          <p class="team-member__role">UI design, programmer, and researcher.</p>
           <div class="team-member__links">
             <a href="https://www.linkedin.com/in/mario-mojarro-ruiz-b6b249366/" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Mario Mojarro on LinkedIn">
               <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>

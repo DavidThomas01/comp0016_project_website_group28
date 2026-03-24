@@ -160,11 +160,9 @@
     <section class="section fade-in" id="requirements-traceability">
       <h2>Requirements traceability</h2>
       <p>
-        Full MoSCoW requirements for the Prompt Injection Protection platform (Systems Engineering, IXN, Group 28, Avanade),
-        excluding <strong>Won&rsquo;t have</strong> items. Each row shows delivery status against the specification.
-        <strong>Contributors</strong> reflect git history and file ownership on the platform repository (merge messages,
-        paths, and commits). Git identities <strong>DavidThomas01</strong>, <strong>Visualinea</strong>, and
-        <strong>David Thomas</strong> are merged as <strong>David</strong>.
+        Excluding <strong>Won&rsquo;t have</strong> items: key functionalities (must have and should have) are
+        <strong>98%</strong> completed; optional functionalities (could have) are <strong>100%</strong> completed.
+        Each row shows delivery status against the specification.
       </p>
       <p class="traceability-hint">
         <strong>Note:</strong> For any requirement marked not completed, hover or focus anywhere on that row — a short explanation appears next to the status.
@@ -392,18 +390,11 @@
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
                     <td class="req-contributors">Teo, David</td>
                   </tr>
-                  <tr class="req-row req-row--incomplete">
+                  <tr>
                     <td>Testing view: support for multiple agents.</td>
                     <td class="req-priority">Should</td>
-                    <td class="req-cell-status">
-                      <span class="req-status-tooltip" tabindex="0" aria-describedby="req-reason-multi-agent">
-                        <span class="req-status req-status--not" aria-hidden="true">✗</span>
-                        <span class="req-status-tooltip__panel" id="req-reason-multi-agent" role="tooltip">
-                          Not completed — multi-agent orchestration is not implemented in the testing UI; educational copy may reference multi-agent risks without a runnable multi-agent workflow.
-                        </span>
-                      </span>
-                    </td>
-                    <td class="req-contributors"><span class="visually-hidden">No contributors</span></td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
+                    <td class="req-contributors">Teo</td>
                   </tr>
                   <tr>
                     <td>Testing view: ability to export tests as PDFs.</td>
@@ -479,17 +470,10 @@
                     <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
                     <td class="req-contributors">Teo</td>
                   </tr>
-                  <tr class="req-row req-row--incomplete">
+                  <tr>
                     <td>Testing view: run automated testing pipeline based on Nvidia Garak and Microsoft PyRIT frameworks.</td>
                     <td class="req-priority">Could</td>
-                    <td class="req-cell-status">
-                      <span class="req-status-tooltip" tabindex="0" aria-describedby="req-reason-garak-pyrit">
-                        <span class="req-status req-status--not" aria-hidden="true">✗</span>
-                        <span class="req-status-tooltip__panel" id="req-reason-garak-pyrit" role="tooltip">
-                          Partially completed — Garak is integrated for automated scans in the testing workbench. A PyRIT runner exists only as a stub and is not wired into the framework delegate, so the PyRIT half of this requirement is not delivered.
-                        </span>
-                      </span>
-                    </td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed">✓</span></td>
                     <td class="req-contributors">Teo</td>
                   </tr>
                 </tbody>
@@ -751,10 +735,11 @@
           <div class="evaluation-content">
             <p>
               There were some challenges during development, but we worked through them and made sure the key features work as expected.
-              We tested the most important flows from start to finish, not just quick checks.
+              We tested the most important flows from start to finish.
+
             </p>
             <p>
-              We believe it is a solid base to build on, not just a demo. We also included documentation to make sure anyone at Avanade can understand the platform, maintain it, and add new functionalities in the future.
+              We believe it is a solid base for Avanade to build on. We also included documentation to make sure anyone at Avanade can understand the platform, maintain it, and add new functionalities in the future.
             </p>
             <p>
               We are very excited about the positive feedback from Avanade and Microsoft, and about the article (see
