@@ -44,10 +44,11 @@
           <div class="nav-item">
             <span class="drop-toggle" tabindex="0">Appendices ▾</span>
             <div class="dropdown" role="menu" aria-label="Appendices">
-              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
-              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
-              <a href="appendices.html#dev-blog">Development blog (external)</a>
-              <a href="appendices.html#monthly-video">Monthly video</a>
+              <a href="appendices.html#user-and-deployment-manuals">User &amp; Deployment Manuals</a>
+              <a href="appendices.html#license">License (MIT Open)</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Legal Compliance</a>
+              <a href="appendices.html#dev-blog">Development Blog</a>
+              <a href="appendices.html#monthly-video">Monthly Videos</a>
             </div>
           </div>
         </div>
@@ -70,31 +71,33 @@
 <main id="main">
   <div class="container">
 
-    <section class="section fade-in" id="user-manual">
+    <section class="section fade-in" id="user-and-deployment-manuals">
       <h2>User &amp; Deployment Manuals</h2>
-      <div class="callout callout--note">
-        <p><strong>Coming soon:</strong> The user manual and deployment guide will be finalised alongside the platform implementation.</p>
-      </div>
       <p>
-        The user manual provides step-by-step guidance for all platform features,
-        while the deployment guide covers installation, configuration, and
-        environment setup requirements.
+        Detailed guides for both end users and technical operators setting up and using the
+        Prompt Injection Protection platform.
       </p>
       <div class="card-grid cols-2 stagger">
         <div class="card card-accent">
           <div class="card-icon">&#x1F4D6;</div>
           <h3>User Manual</h3>
-          <p>Comprehensive guide covering the vulnerability explorer, knowledge base, testing interface, and results dashboard. Written for both technical and semi-technical users.</p>
-          <div class="tag-list">
+          <p>Step-by-step walkthrough for exploring vulnerabilities, understanding mitigations, running security tests, using the prompt enhancer, and exporting findings.</p>
+          <div class="mt-2">
+            <a href="user-manual.html" class="btn btn-outline">Read User Manual →</a>
+          </div>
+          <div class="tag-list mt-2">
             <span class="badge badge--green">End Users</span>
             <span class="badge badge--blue">Step-by-Step</span>
           </div>
         </div>
         <div class="card card-accent">
           <div class="card-icon">&#x1F527;</div>
-          <h3>Deployment Guide</h3>
-          <p>Technical guide for setting up the platform, including system requirements, installation steps, configuration options, and troubleshooting.</p>
-          <div class="tag-list">
+          <h3>Deployment Manual</h3>
+          <p>Technical guide for system requirements, local development setup, environment configuration, production deployment, and troubleshooting.</p>
+          <div class="mt-2">
+            <a href="deployment-manual.html" class="btn btn-outline">Read Deployment Manual →</a>
+          </div>
+          <div class="tag-list mt-2">
             <span class="badge badge--brand">Technical</span>
             <span class="badge badge--amber">DevOps</span>
           </div>
@@ -102,8 +105,21 @@
       </div>
     </section>
 
+    <section class="section fade-in" id="license">
+      <h2>License</h2>
+      <p>
+        This project is released under the MIT License. The license permits
+        use, copy, modification, merge, publication, distribution, sublicense,
+        and/or sale of the software, subject to inclusion of the copyright and
+        license notice.
+      </p>
+      <div class="callout callout--tip">
+        <p><strong>License note:</strong> Include the full MIT License text in project distributions and derivative works.</p>
+      </div>
+    </section>
+
     <section class="section fade-in" id="gdpr">
-      <h2>GDPR &amp; Data Privacy</h2>
+      <h2>GDPR &amp; Legal Compliance</h2>
       <p>
         This section documents data privacy considerations and GDPR compliance
         measures implemented in the platform.
@@ -129,7 +145,7 @@
         <p>
           <strong>Privacy by design:</strong> The platform's local-first architecture inherently minimises
           data privacy risks by keeping all test data on the user's device. No persistent backend
-          server means no centralised data collection.
+          server means no centralised data collection. As such we are completely compliant with GDPR.
         </p>
       </div>
     </section>
@@ -154,7 +170,7 @@
     </section>
 
     <section class="section fade-in" id="monthly-video">
-      <h2>Monthly Video</h2>
+      <h2>Monthly Videos</h2>
       <p>
         Monthly video updates summarising progress, demonstrating features, and
         reflecting on the project's direction.
