@@ -2,7 +2,7 @@
   'use strict';
   document.documentElement.classList.add('js');
 
-  var SITE_FOOTER_HTML = "<footer class=\"site-footer fade-in site-footer--motion\" id=\"site-footer\" aria-label=\"Site\">\n  <div class=\"container site-footer__inner\">\n    <div class=\"site-footer__grid site-footer__grid--3 stagger\">\n      <div class=\"site-footer__block site-footer__about\">\n        <h3 class=\"site-footer__heading\">Site info</h3>\n        <p class=\"site-footer__blurb\">We\u2019re Team 28 (COMP0016). This site is for <strong class=\"text-brand\">Prompt Injection Protection</strong>\u2014our project on prompt injection when LLMs use tools, the mitigations we tried, and how we tested everything.</p>\n      </div>\n      <div class=\"site-footer__block site-footer__pages\">\n        <h3 class=\"site-footer__heading\">Pages</h3>\n        <nav class=\"site-footer__nav\" aria-label=\"Report pages\">\n          <a href=\"index.html\">Home</a>\n          <a href=\"requirements.html\">Requirements</a>\n          <a href=\"research.html\">Research</a>\n          <a href=\"algorithms.html\">Algorithms</a>\n          <a href=\"ui-design.html\">UI Design</a>\n          <a href=\"system-design.html\">System Design</a>\n          <a href=\"implementation.html\">Implementation</a>\n          <a href=\"evaluation.html\">Evaluation</a>\n          <a href=\"testing.html\">Testing</a>\n          <a href=\"conclusion.html\">Conclusion</a>\n          <a href=\"appendices.html\">Appendices</a>\n        </nav>\n      </div>\n      <div class=\"site-footer__block site-footer__project\">\n        <h3 class=\"site-footer__heading\">Project</h3>\n        <p class=\"site-footer__title\">Prompt Injection Protection</p>\n        <p class=\"site-footer__meta\">Team 28 \u00b7 UCL COMP0016 \u00b7 2025\u201326</p>\n        <a class=\"site-footer__blog-link\" href=\"appendices.html#dev-blog\">Development Blog</a>\n        <p class=\"site-footer__subheading\">Supporters</p>\n        <ul class=\"site-footer__sponsors\" role=\"list\">\n          <li>\n            <a class=\"site-footer__sponsor\" href=\"https://www.ucl.ac.uk/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"UCL (opens in a new tab)\">\n              <img src=\"assets/img/logo-ucl.png\" alt=\"\" class=\"site-footer__sponsor-img site-footer__sponsor-img--ucl\" width=\"160\" height=\"48\" decoding=\"async\" />\n            </a>\n          </li>\n          <li>\n            <a class=\"site-footer__sponsor\" href=\"https://www.avanade.com/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Avanade (opens in a new tab)\">\n              <img src=\"assets/img/logo-avanade.webp\" alt=\"\" class=\"site-footer__sponsor-img site-footer__sponsor-img--avanade\" width=\"160\" height=\"48\" decoding=\"async\" />\n            </a>\n          </li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"site-footer__bottom\">\n      <p class=\"site-footer__credit\">\u00a9 2025\u201326 Team 28 \u00b7 UCL COMP0016</p>\n    </div>\n  </div>\n</footer>";
+  var SITE_FOOTER_HTML = "<footer class=\"site-footer fade-in site-footer--motion\" id=\"site-footer\" aria-label=\"Site\">\n  <div class=\"container site-footer__inner\">\n    <div class=\"site-footer__grid site-footer__grid--3 stagger\">\n      <div class=\"site-footer__block site-footer__about\">\n        <h3 class=\"site-footer__heading\">Site info</h3>\n        <p class=\"site-footer__blurb\">We\u2019re Team 28 (COMP0016). This site is for <strong class=\"text-brand\">Prompt Injection Protection</strong>\u2014our project on prompt injection when LLMs use tools, the mitigations we tried, and how we tested everything.</p>\n      </div>\n      <div class=\"site-footer__block site-footer__pages\">\n        <h3 class=\"site-footer__heading\">Pages</h3>\n        <nav class=\"site-footer__nav\" aria-label=\"Report pages\">\n          <a href=\"index.html\">Home</a>\n          <a href=\"requirements.html\">Requirements</a>\n          <a href=\"research.html\">Research</a>\n          <a href=\"algorithms.html\">Algorithms</a>\n          <a href=\"ui-design.html\">UI Design</a>\n          <a href=\"system-design.html\">System Design</a>\n          <a href=\"implementation.html\">Implementation</a>\n          <a href=\"evaluation.html\">Evaluation</a>\n          <a href=\"testing.html\">Testing</a>\n          <a href=\"conclusion.html\">Conclusion</a>\n          <a href=\"appendices.html\">Appendices</a>\n        </nav>\n      </div>\n      <div class=\"site-footer__block site-footer__project\">\n        <h3 class=\"site-footer__heading\">Project</h3>\n        <p class=\"site-footer__title\">Prompt Injection Protection</p>\n        <p class=\"site-footer__meta\">Team 28 \u00b7 UCL COMP0016 \u00b7 2025\u201326</p>\n        <a class=\"site-footer__blog-link\" href=\"https://team-28.hashnode.dev/\" target=\"_blank\" rel=\"noopener noreferrer\">Development Blog</a>\n        <p class=\"site-footer__subheading\">Supporters</p>\n        <ul class=\"site-footer__sponsors\" role=\"list\">\n          <li>\n            <a class=\"site-footer__sponsor\" href=\"https://www.ucl.ac.uk/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"UCL (opens in a new tab)\">\n              <img src=\"assets/img/logo-ucl.png\" alt=\"\" class=\"site-footer__sponsor-img site-footer__sponsor-img--ucl\" width=\"160\" height=\"48\" decoding=\"async\" />\n            </a>\n          </li>\n          <li>\n            <a class=\"site-footer__sponsor\" href=\"https://www.avanade.com/\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Avanade (opens in a new tab)\">\n              <img src=\"assets/img/logo-avanade.webp\" alt=\"\" class=\"site-footer__sponsor-img site-footer__sponsor-img--avanade\" width=\"160\" height=\"48\" decoding=\"async\" />\n            </a>\n          </li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"site-footer__bottom\">\n      <p class=\"site-footer__credit\">\u00a9 2025\u201326 Team 28 \u00b7 UCL COMP0016</p>\n    </div>\n  </div>\n</footer>";
 
   (function injectSiteFooter() {
     var mount = document.getElementById('footer-root');
@@ -184,6 +184,23 @@
     });
   }
 
+  /* Accordion dropdowns: scroll opened <details> so its top sits just below the sticky header (measured, not fixed rem) */
+  document.addEventListener('toggle', function (e) {
+    var el = e.target;
+    if (!el.matches || !el.matches('details.evaluation-item')) return;
+    if (!el.open) return;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        var header = document.querySelector('.site-header');
+        var gap = 14;
+        var hh = header ? header.getBoundingClientRect().height : 0;
+        var rect = el.getBoundingClientRect();
+        var targetY = rect.top + window.scrollY - hh - gap;
+        window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+      });
+    });
+  });
+
   /* Evaluation: incomplete-requirement notes use fixed positioning (escapes overflow/scroll clipping) */
   var reqTrace = document.querySelector('#requirements-traceability');
   if (reqTrace) {
@@ -256,4 +273,45 @@
       window.addEventListener('resize', placeIfActive);
     });
   }
+
+  /* Glossary popovers: click/tap toggles (hover alone fails on touch); Escape closes */
+  function glossaryEventEl(target) {
+    return target && target.nodeType === 3 ? target.parentElement : target;
+  }
+  document.querySelectorAll('.glossary-pop').forEach(function (anchor) {
+    if (!anchor.hasAttribute('aria-expanded')) {
+      anchor.setAttribute('aria-expanded', 'false');
+    }
+    anchor.addEventListener('click', function (e) {
+      var t = glossaryEventEl(e.target);
+      if (t && t.closest && t.closest('.glossary-pop__panel')) {
+        return;
+      }
+      e.preventDefault();
+      var wasOpen = anchor.classList.contains('is-open');
+      document.querySelectorAll('.glossary-pop.is-open').forEach(function (el) {
+        el.classList.remove('is-open');
+        el.setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        anchor.classList.add('is-open');
+        anchor.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  document.addEventListener('click', function (e) {
+    var t = glossaryEventEl(e.target);
+    if (t && t.closest && t.closest('.glossary-pop')) return;
+    document.querySelectorAll('.glossary-pop.is-open').forEach(function (el) {
+      el.classList.remove('is-open');
+      el.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.glossary-pop.is-open').forEach(function (el) {
+      el.classList.remove('is-open');
+      el.setAttribute('aria-expanded', 'false');
+    });
+  });
 })();

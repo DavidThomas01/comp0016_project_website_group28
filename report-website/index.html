@@ -52,7 +52,7 @@
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
-              <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development blog (external)</a>
               <a href="appendices.html#monthly-video">Monthly videos</a>
             </div>
           </div>
@@ -100,19 +100,36 @@
           <h3 id="abstract-h-problem">Problem and motivation</h3>
           <div class="abstract-chunk__body">
             <p>
-              Large language models can be manipulated through prompt-injection attacks. Hidden instructions in user
-              input or other context can make a model ignore its task, leak data, or misuse tools.
+              More and more clients are asking for applications that use large language models. Avanade needed clearer,
+              practical information on how to keep those systems secure so delivery teams can meet client expectations
+              and build trust. A core risk is prompt injection: hidden instructions in user input or other context can
+              make a model ignore its task, leak data, or misuse tools.
             </p>
             <p>
-              That risk is especially serious when the model calls APIs or MCP-style servers, because failures can
-              propagate into real systems and client environments. There is still a gap between theory and clear,
-              repeatable attack examples.
+              That risk is especially serious when the model calls APIs or
+              <span class="glossary-pop" tabindex="0" aria-describedby="mcp-tip-abstract" aria-expanded="false">
+                MCP
+                <span id="mcp-tip-abstract" class="glossary-pop__panel" role="region" aria-label="What is MCP?">
+                  <span class="glossary-pop__title">MCP</span>
+                  <span class="glossary-pop__body">
+                    <strong>Model Context Protocol</strong>: an open way to connect LLMs to tools and data (often via
+                    small servers). When a model can call out like this, prompt-injection failures can reach real systems.
+                  </span>
+                  <a
+                    class="glossary-pop__link"
+                    href="https://modelcontextprotocol.io/"
+                    target="_blank"
+                    rel="noopener noreferrer">Model Context Protocol</a>
+                </span>
+              </span>
+              -style servers, because failures can propagate into real systems and client environments. There is still a
+              gap between theory and clear, repeatable attack examples.
             </p>
             <p>
               Teams need practical ways to learn how attacks work, what mitigations exist, how to run tests, compare
-              mitigations, and harden system prompts without breaking intended behaviour. We treat prompt-injection
-              risk as something to study systematically—through structured content on vulnerabilities and mitigations,
-              and through tooling that runs prompts against real models and inspects the results.
+              mitigations, and harden system prompts without breaking intended behaviour. Abstract guidance alone is not
+              enough: teams also need readable material on vulnerabilities and mitigations and a way to run prompts
+              against real models and review what comes back.
             </p>
           </div>
         </article>
@@ -121,18 +138,60 @@
           <div class="abstract-chunk__body">
             <p>
               We built an educational web application with a React single-page front end and a FastAPI back end
-              backed by SQLite. The platform presents a vulnerability catalogue with detail pages, interactive demos,
-              knowledge-check quizzes, and links to mitigations.
+              backed by SQLite. Users can work through a vulnerability catalogue with detail pages and interactive
+              demos, take quizzes to check what they have learned, and open a mitigation catalogue when they need
+              practical fixes—mitigation pages give structured explanations and optional code-style snippets.
             </p>
             <p>
-              Mitigation guides give structured explanations and optional code-style snippets. A testing workbench lets
-              users configure and run tests against routed LLM providers. A three-stage prompt-enhancement pipeline
-              (improve, prepend mitigation rules, verify) and a streaming security-assistant chat, with keyword search
-              over the same catalogue, round out the user-facing surface.
+              A
+              <span class="glossary-pop" tabindex="0" aria-describedby="ka-tip-abstract" aria-expanded="false">
+                knowledge assistant
+                <span id="ka-tip-abstract" class="glossary-pop__panel" role="region" aria-label="What is the knowledge assistant?">
+                  <span class="glossary-pop__title">Knowledge assistant</span>
+                  <span class="glossary-pop__body">
+                    Catalogue-aware chat: answers on prompt injection and the platform, with suggested questions—not a
+                    general web search.
+                  </span>
+                </span>
+              </span>
+              answers questions about prompt injection in plain language, with keyword search across the catalogue. The
+              testing area lets you run your own prompts against whichever models you configure (including custom
+              endpoints). You can also run
+              <span class="glossary-pop" tabindex="0" aria-describedby="garak-tip-abstract" aria-expanded="false">
+                Garak
+                <span id="garak-tip-abstract" class="glossary-pop__panel" role="region" aria-label="What is Garak?">
+                  <span class="glossary-pop__title">Garak</span>
+                  <span class="glossary-pop__body">
+                    NVIDIA&rsquo;s open-source <strong>Generative AI Red-teaming &amp; Assessment Kit</strong>: a probe-based
+                    scanner for LLMs that checks for prompt injection, jailbreaks, leaks, and other failure modes, similar in spirit to security tools like <em>nmap</em> but for language models.
+                  </span>
+                  <a
+                    class="glossary-pop__link"
+                    href="https://github.com/NVIDIA/garak"
+                    target="_blank"
+                    rel="noopener noreferrer">NVIDIA Garak on GitHub</a>
+                </span>
+              </span>
+              scans against those same models, with chat-style output and a short risk read-out. The
+              <span class="glossary-pop" tabindex="0" aria-describedby="pe-tip-abstract" aria-expanded="false">
+                prompt enhancer
+                <span id="pe-tip-abstract" class="glossary-pop__panel" role="region" aria-label="What is the prompt enhancer?">
+                  <span class="glossary-pop__title">Prompt enhancer</span>
+                  <span class="glossary-pop__body">
+                    Three steps: improve your system prompt, add mitigation rules you choose, verify—before the model
+                    uses it.
+                  </span>
+                </span>
+              </span>
+              walks through three steps on your system prompt—tidy it up, add mitigation rules, check the result—before
+              you rely on that prompt in production.
             </p>
             <p>
-              The backend centralises model access through a provider router, applies configurable mitigation layers
-              around test execution where appropriate, and analyses model outputs for injection-related risk.
+              On the server side, traffic goes through one routing layer to the right provider APIs; SQLite stores the
+              catalogue, saved tests, and past runs; optional mitigation layers can sit around each test run; and
+              simple scoring flags outputs that look risky. A small runner calls the external Garak tool and drops those
+              scan results into the same history and analysis views as manual tests. The assistant streams answers live,
+              like a chat, so replies appear as they are generated.
             </p>
           </div>
         </article>
@@ -140,13 +199,16 @@
           <h3 id="abstract-h-impact">Outcomes and intended impact</h3>
           <div class="abstract-chunk__body">
             <p>
-              Developed in collaboration with Avanade, the platform supports technical and non-technical users in
-              understanding prompt injection and reducing risk when delivering client solutions.
+              Developed in collaboration with Avanade, the platform is for anyone at the company—whether they are new
+              to prompt injection or already pushing deeper tests with custom models. It supports people at any stage of
+              familiarity, in a digestible format, as both an interactive learning space and a hands-on testing
+              environment.
             </p>
             <p>
-              It combines structured learning with interactive testing: teams can study the material and run realistic
-              checks so that client work can be made more secure, and Avanade employees can learn and practise
-              alongside their day-to-day work with AI systems.
+              The aim is for teams to align on risk and rehearse mitigations before problems surface in client systems,
+              and so people have tried mitigations, not just read about them. In turn, that can strengthen client
+              trust, raise capability across technical and non-technical roles, and give Avanade a lasting internal
+              resource that stays useful as models and tools change.
             </p>
           </div>
         </article>
@@ -198,12 +260,46 @@
               The “Test Prompt Injection” area is where you build tests, save setups, and run them against external
               models. You pick or create a test, set the model, system prompt, mitigations, and how to call the API
               (including OpenAI-style, Anthropic, or a custom endpoint). You can check the connection, run a normal
-              test, or run a Garak scan. Results show in chat, analysis, and framework history; tests and saved configs
+              test, or run a
+              <span class="glossary-pop" tabindex="0" aria-describedby="garak-tip-home-p">
+                Garak
+                <span id="garak-tip-home-p" class="glossary-pop__panel" role="region" aria-label="What is Garak?">
+                  <span class="glossary-pop__title">Garak</span>
+                  <span class="glossary-pop__body">
+                    NVIDIA&rsquo;s open-source <strong>Generative AI Red-teaming &amp; Assessment Kit</strong>: a probe-based
+                    scanner for LLMs that checks for prompt injection, jailbreaks, leaks, and other failure modes, similar in spirit to security tools like <em>nmap</em> but for language models.
+                  </span>
+                  <a
+                    class="glossary-pop__link"
+                    href="https://github.com/NVIDIA/garak"
+                    target="_blank"
+                    rel="noopener noreferrer">NVIDIA Garak on GitHub</a>
+                </span>
+              </span>
+              scan. Results show in chat, analysis, and framework history; tests and saved configs
               are stored on the backend.
             </p>
             <ul class="feature-actions">
               <li>Create, edit, duplicate, and delete tests; load and save named configurations.</li>
-              <li>Validate the API connection, then run a test or a Garak scan.</li>
+              <li>
+                Validate the API connection, then run a test or a
+                <span class="glossary-pop" tabindex="0" aria-describedby="garak-tip-home-li">
+                  Garak
+                  <span id="garak-tip-home-li" class="glossary-pop__panel" role="region" aria-label="What is Garak?">
+                    <span class="glossary-pop__title">Garak</span>
+                    <span class="glossary-pop__body">
+                      NVIDIA&rsquo;s open-source <strong>Generative AI Red-teaming &amp; Assessment Kit</strong>: a probe-based
+                      scanner for LLMs that checks for prompt injection, jailbreaks, leaks, and other failure modes, similar in spirit to security tools like <em>nmap</em> but for language models.
+                    </span>
+                    <a
+                      class="glossary-pop__link"
+                      href="https://github.com/NVIDIA/garak"
+                      target="_blank"
+                      rel="noopener noreferrer">NVIDIA Garak on GitHub</a>
+                  </span>
+                </span>
+                scan.
+              </li>
               <li>Review analysis and scan history; export a test report PDF where supported.</li>
             </ul>
           </div>
@@ -270,9 +366,9 @@
             </figure>
             <p>
               The Prompt Enhancer helps you harden a system prompt. You choose prompt-layer mitigations from a list,
-              paste your system prompt, pick a model, and run Generate. The app restructures the prompt, prepends
-              mitigations, and runs checks. The result panel shows original, improved, and enhanced text plus
-              verification (pass/fail style notes and which mitigations were applied). You can copy or reset.
+              paste your system prompt, pick a model, and run Generate. The app restructures the prompt, integrates
+              your chosen mitigations into it, and runs checks. The result panel shows original, improved, and enhanced
+              text plus verification (pass/fail style notes and which mitigations were applied). You can copy or reset.
             </p>
             <ul class="feature-actions">
               <li>Toggle mitigations, select a model, paste your prompt, then Generate or Reset.</li>
@@ -561,10 +657,10 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -598,13 +694,13 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -636,13 +732,13 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
               </div>
@@ -678,13 +774,13 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
               </div>
@@ -717,11 +813,11 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
               </div>
             </div>
@@ -751,12 +847,12 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
               </div>
@@ -790,10 +886,10 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
               </div>
             </div>
@@ -828,15 +924,15 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
               </div>
             </div>
 
@@ -863,15 +959,15 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
               </div>
             </div>
 
@@ -1115,7 +1211,7 @@
         <h3 class="site-footer__heading">Project</h3>
         <p class="site-footer__title">Prompt Injection Protection</p>
         <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26</p>
-        <a class="site-footer__blog-link" href="appendices.html#dev-blog">Development Blog</a>
+        <a class="site-footer__blog-link" href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development Blog</a>
         <p class="site-footer__subheading">Supporters</p>
         <ul class="site-footer__sponsors" role="list">
           <li>

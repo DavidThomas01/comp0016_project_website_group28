@@ -734,6 +734,7 @@ h3 {
   border-radius: var(--radius-md);
   border-top: 3px solid var(--brand);
   box-shadow: 0 2px 12px rgba(17, 17, 17, 0.04);
+  overflow: visible; /* glossary popovers extend above terms */
   transition:
     transform var(--duration) var(--ease),
     box-shadow var(--duration) var(--ease),
@@ -1600,6 +1601,131 @@ html:not(.js) .req-status-tooltip__panel {
 }
 .home-feature-expand .feature-actions li {
   margin-bottom: 0.35rem;
+}
+
+/* Allow glossary popovers to extend outside the accordion card (parent has overflow: hidden).
+   #key-features fallback: :has() is not needed, so clipping is fixed even in older browsers. */
+.evaluation-item[open]:has(.home-feature-expand),
+#key-features .evaluation-item[open] {
+  overflow: visible;
+}
+
+/* Inline term + hover/focus definition card (e.g. Garak on Testing page feature) */
+.glossary-pop {
+  position: relative;
+  display: inline-block;
+  color: var(--brand);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: rgba(255, 107, 53, 0.55);
+  text-underline-offset: 0.15em;
+  transition: color 0.2s var(--ease), text-decoration-color 0.2s var(--ease);
+  outline: none;
+  z-index: 2;
+}
+
+.glossary-pop:hover,
+.glossary-pop:focus-visible {
+  color: var(--brand-dark);
+  text-decoration-color: var(--brand-dark);
+}
+
+.glossary-pop:focus-visible {
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--brand);
+  border-radius: 0.2rem;
+}
+
+/* Invisible hover bridge between the term and the panel */
+.glossary-pop::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100%;
+  width: max(100%, 10rem);
+  height: 0.4rem;
+  z-index: 3;
+}
+
+.glossary-pop__panel {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.35rem);
+  transform: translateX(-50%) translateY(4px);
+  width: max-content;
+  max-width: min(17.5rem, calc(100vw - 2rem));
+  padding: 0.65rem 0.85rem 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 107, 53, 0.08);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text);
+  text-align: left;
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s var(--ease), visibility 0.2s var(--ease), transform 0.2s var(--ease);
+  z-index: 4;
+}
+
+.glossary-pop__panel::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top-color: var(--surface);
+  filter: drop-shadow(0 1px 0 var(--border));
+}
+
+.glossary-pop:hover .glossary-pop__panel,
+.glossary-pop:focus-within .glossary-pop__panel,
+.glossary-pop.is-open .glossary-pop__panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.glossary-pop__title {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.glossary-pop__body {
+  display: block;
+  margin-bottom: 0.55rem;
+}
+
+.glossary-pop__body strong {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.glossary-pop__link {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--brand);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 107, 53, 0.35);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.glossary-pop__link:hover {
+  color: var(--brand-dark);
+  border-bottom-color: var(--brand-dark);
 }
 
 /* Key feature screenshots inside home page dropdowns */
