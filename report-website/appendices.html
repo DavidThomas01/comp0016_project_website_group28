@@ -20,8 +20,8 @@
       </div>
     </a>
     <div class="brand-logos" aria-hidden="true">
-      <img src="assets/img/logo-ucl.svg" alt="">
-      <img src="assets/img/logo-avanade.svg" alt="">
+      <img src="assets/img/logo-ucl.png" alt="UCL">
+      <img src="assets/img/logo-avanade.webp" alt="Avanade">
     </div>
   </div>
   <div class="container">
@@ -32,6 +32,7 @@
     <div class="container">
       <nav class="site-nav" aria-label="Primary">
         <div class="nav-left">
+          <div class="nav-scroll">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="requirements.html">Requirements</a>
           <a class="nav-link" href="research.html">Research</a>
@@ -39,16 +40,17 @@
           <a class="nav-link" href="ui-design.html">UI Design</a>
           <a class="nav-link" href="system-design.html">System Design</a>
           <a class="nav-link" href="implementation.html">Implementation</a>
-          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a class="nav-link" href="evaluation.html">Evaluation</a>
+          <a class="nav-link" href="testing.html">Testing</a>
           <a class="nav-link" href="conclusion.html">Conclusion</a>
+          </div>
           <div class="nav-item">
-            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <a class="drop-toggle active" href="appendices.html" aria-current="page">Appendices ▾</a>
             <div class="dropdown" role="menu" aria-label="Appendices">
-              <a href="appendices.html#user-and-deployment-manuals">User &amp; Deployment Manuals</a>
-              <a href="appendices.html#license">License (MIT Open)</a>
-              <a href="appendices.html#gdpr">GDPR &amp; Legal Compliance</a>
-              <a href="appendices.html#dev-blog">Development Blog</a>
-              <a href="appendices.html#monthly-video">Monthly Videos</a>
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
+              <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly videos</a>
             </div>
           </div>
         </div>
@@ -170,19 +172,101 @@
     </section>
 
     <section class="section fade-in" id="monthly-video">
-      <h2>Monthly Videos</h2>
-      <p>
-        Monthly video updates summarising progress, demonstrating features, and
-        reflecting on the project's direction.
-      </p>
-      <div class="video-placeholder">
-        <div class="video-placeholder-inner">
-          <div class="play-icon">&#x25B6;</div>
-          <span>Monthly progress video will be available here</span>
-        </div>
-      </div>
-      <div class="callout mt-3">
-        <p>Additional monthly videos will be linked here as they are produced throughout the project timeline.</p>
+      <h2>Monthly videos</h2>
+      <div class="monthly-video-stack mt-2">
+        <article class="monthly-video-row monthly-video-row--media-left">
+          <div class="monthly-video-row__media">
+            <div class="project-video-embed project-video-embed--monthly">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/U3-BXYPew1E"
+                title="Team 28 monthly progress video — December 2025"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="monthly-video-row__text">
+            <h3 class="monthly-video-row__title">December 2025</h3>
+            <p class="monthly-video-row__blurb">
+              Early scope with Avanade: goals for the prompt-injection explorer,
+              first threat-model sketches, and how MCP fits into the platform
+              story.
+            </p>
+            <p class="monthly-video-row__footnote">
+              <a href="https://www.youtube.com/watch?v=U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+            </p>
+          </div>
+        </article>
+        <article class="monthly-video-row monthly-video-row--media-right">
+          <div class="monthly-video-row__media">
+            <div class="project-video-embed project-video-embed--monthly">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/U3-BXYPew1E"
+                title="Team 28 monthly progress video — January 2026"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="monthly-video-row__text">
+            <h3 class="monthly-video-row__title">January 2026</h3>
+            <p class="monthly-video-row__blurb">
+              First walkthrough of the vulnerability catalogue and testing
+              workbench, plus feedback from supervision on evaluation criteria.
+            </p>
+            <p class="monthly-video-row__footnote">
+              <a href="https://www.youtube.com/watch?v=U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+            </p>
+          </div>
+        </article>
+        <article class="monthly-video-row monthly-video-row--media-left">
+          <div class="monthly-video-row__media">
+            <div class="project-video-embed project-video-embed--monthly">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/U3-BXYPew1E"
+                title="Team 28 monthly progress video — February 2026"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="monthly-video-row__text">
+            <h3 class="monthly-video-row__title">February 2026</h3>
+            <p class="monthly-video-row__blurb">
+              February project update: mitigations coverage, Garak integration
+              progress, and a demo of the Test Prompt Injection flow.
+            </p>
+            <p class="monthly-video-row__footnote">
+              <a href="https://www.youtube.com/watch?v=U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+            </p>
+          </div>
+        </article>
+        <article class="monthly-video-row monthly-video-row--media-right">
+          <div class="monthly-video-row__media">
+            <div class="project-video-embed project-video-embed--monthly">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/U3-BXYPew1E"
+                title="Team 28 monthly progress video — March 2026"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="monthly-video-row__text">
+            <h3 class="monthly-video-row__title">March 2026</h3>
+            <p class="monthly-video-row__blurb">
+              Final polish before handover: evaluation results, report website
+              walkthrough, and lessons learned for future MCP security tooling.
+            </p>
+            <p class="monthly-video-row__footnote">
+              <a href="https://www.youtube.com/watch?v=U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+            </p>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -197,16 +281,13 @@
   </div>
 </main>
 
-<footer>
-  <div class="container foot">
-    <div>© Team 28 · UCL COMP0016 · Client: Avanade</div>
-    <div class="footer-links">
-      <a href="appendices.html#dev-blog">Development Blog</a>
-    </div>
-  </div>
-</footer>
+<div id="footer-root"></div>
 
-<button class="back-to-top" aria-label="Back to top">↑</button>
+<button class="back-to-top" aria-label="Back to top">
+  <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

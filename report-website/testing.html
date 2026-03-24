@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Testing strategy, pytest results, and gaps for the Prompt Injection Protection platform." />
+  <title>Testing – Prompt Injection Protection</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container topbar">
+    <a class="brand" href="index.html">
+      <div>
+        <div class="brand-title">Prompt Injection Protection</div>
+        <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
+      </div>
+    </a>
+    <div class="brand-logos" aria-hidden="true">
+      <img src="assets/img/logo-ucl.png" alt="UCL">
+      <img src="assets/img/logo-avanade.webp" alt="Avanade">
+    </div>
+  </div>
+  <div class="container">
+    <label class="burger" for="nav-toggle">Menu</label>
+  </div>
+  <input id="nav-toggle" type="checkbox" />
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-left">
+          <div class="nav-scroll">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="requirements.html">Requirements</a>
+          <a class="nav-link" href="research.html">Research</a>
+          <a class="nav-link" href="algorithms.html">Algorithms</a>
+          <a class="nav-link" href="ui-design.html">UI Design</a>
+          <a class="nav-link" href="system-design.html">System Design</a>
+          <a class="nav-link" href="implementation.html">Implementation</a>
+          <a class="nav-link" href="evaluation.html">Evaluation</a>
+          <a class="nav-link active" href="testing.html">Testing</a>
+          <a class="nav-link" href="conclusion.html">Conclusion</a>
+          </div>
+          <div class="nav-item">
+            <a class="drop-toggle" href="appendices.html">Appendices ▾</a>
+            <div class="dropdown" role="menu" aria-label="Appendices">
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
+              <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly videos</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">Systems Engineering · IXN</div>
+    <h1>Testing</h1>
+    <p>
+      What we ran in code (mostly the Python backend), what passed, what failed, and what we never wrote down in the repo.
+    </p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="container">
+
+    <section class="section fade-in" id="pytest-snapshot" aria-labelledby="pytest-snapshot-heading">
+      <div class="testing-snapshot">
+        <p class="testing-snapshot-heading" id="pytest-snapshot-heading">Backend pytest — one local run</p>
+        <p class="testing-snapshot-note">
+          From <code>backend/</code> with <code>pip install -e &quot;.[dev]&quot;</code> and <code>PYTHONPATH=src pytest</code>.
+          Re-run before hand-in; numbers can shift if dependencies change.
+        </p>
+        <div class="stat-grid stagger">
+          <div class="stat">
+            <div class="stat-number">316</div>
+            <div class="stat-label">Tests collected</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">301</div>
+            <div class="stat-label">Passed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Failed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">10</div>
+            <div class="stat-label">Skipped (integration)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number stat-number--ver">9.0.2</div>
+            <div class="stat-label">pytest (local resolve)</div>
+          </div>
+        </div>
+      </div>
+      <div class="callout callout--warning">
+        <p><strong>Not fully green:</strong> five tests failed, mainly around risk-score expectations and mitigation <code>apply</code> mocks. That usually means the tests and the current scoring code (for example weights in <code>scoring.py</code>) have drifted apart. Treat &ldquo;all tests pass&rdquo; as something to confirm after a fresh run and any fixes.</p>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="testing-strategy">
+      <h2>Testing strategy</h2>
+      <p>
+        The app repo does not ship a formal testing strategy doc or a line-by-line link to MoSCoW &mdash; that lives on the <a href="requirements.html">requirements</a> side of this report. In practice, effort went into <strong>backend correctness</strong> so the flows in the README stay believable: catalogue and content, the Testing API (<code>POST /api/tests</code>, runs, analysis), Security Assistant chat (SSE), Prompt enhancer, and Garak-style scans via <code>GarakRunner</code> calling the external <code>garak</code> CLI.
+      </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="card card-accent">
+          <h3>What we lean on</h3>
+          <ul class="testing-point-list">
+            <li><strong>Automated:</strong> pytest in <code>backend/</code> (pytest-asyncio for async code).</li>
+            <li><strong>Optional live calls:</strong> integration tests need API keys and <code>--run-integration</code> (see below).</li>
+            <li><strong>Frontend:</strong> no <code>test</code> script in <code>frontend/package.json</code> &mdash; only <code>dev</code> and <code>build</code>.</li>
+            <li><strong>CI:</strong> no GitHub Actions (or similar) found in the repo.</li>
+          </ul>
+        </div>
+        <div class="card card-accent">
+          <h3>How to run the backend suite</h3>
+          <ul class="testing-point-list">
+            <li><code>cd backend</code> then <code>pip install -e &quot;.[dev]&quot;</code></li>
+            <li><code>PYTHONPATH=src pytest</code> (see <code>backend/README.md</code>)</li>
+            <li>Integration tests are <strong>skipped by default</strong>. Use <code>pytest --run-integration</code> &mdash; note <code>backend/README.md</code> mentions <code>pytest -m integration</code>, which does not match how <code>conftest.py</code> gates things.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="unit-integration">
+      <h2>Unit and integration testing</h2>
+      <div class="testing-two-col">
+        <div class="card">
+          <h3>Unit tests</h3>
+          <p><strong>Why:</strong> Catch regressions without calling real LLMs most of the time &mdash; models, prompt compilation, mitigations, routes, SQLite repos, Garak/prompt runners, analysers.</p>
+          <p><strong>Tools:</strong> pytest &ge; 8, pytest-asyncio &ge; 0.23 (local run resolved to pytest 9.0.2, pytest-asyncio 1.3.0). Config in <code>backend/pyproject.toml</code> and <code>backend/pytest.ini</code>.</p>
+          <p><strong>Outcome:</strong> Large backend surface covered; <strong>no</strong> frontend unit pipeline. Pytest may warn about test classes named <code>Test</code> / <code>TestResult</code> in <code>src/</code> &mdash; noisy but harmless.</p>
+        </div>
+        <div class="card">
+          <h3>Integration tests</h3>
+          <p><strong>Why:</strong> Prove real HTTP calls to OpenAI, Anthropic, or OpenAI-compatible endpoints when keys exist.</p>
+          <p><strong>Where:</strong> e.g. <code>backend/tests/integration/models/</code> (live OpenAI, compatible, Anthropic modules).</p>
+          <p><strong>How:</strong> <code>pytest --run-integration</code> plus env vars for keys (<code>FOUNDRY_GPT52_KEY</code>, etc. per README). Many tests skip if a key is missing.</p>
+          <p><strong>Outcome:</strong> Supported in code, opt-in, key-dependent, not run in CI because there is no CI.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="ui-and-performance">
+      <h2>Browser, layout, and performance</h2>
+      <p class="section-lead">We did not record formal runs for these in the repo. Short version:</p>
+      <div class="card-grid cols-3 stagger">
+        <div class="card">
+          <h3>Compatibility</h3>
+          <p>No BrowserStack, Playwright, or Cypress. If you tried specific browsers, say so in the report text &mdash; it won&rsquo;t be coming from git.</p>
+        </div>
+        <div class="card">
+          <h3>Responsive</h3>
+          <p><code>FEATURES.md</code> mentions a <strong>768px</strong> breakpoint for a mobile header. That&rsquo;s design intent, not a logged test pass/fail.</p>
+        </div>
+        <div class="card">
+          <h3>Performance / stress</h3>
+          <p>No Lighthouse script, k6, or Locust in this snapshot. Nothing here proves load or chat throughput numbers.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="prompt-testing">
+      <h2>Prompt testing</h2>
+      <p>
+        This is where the product logic meets automated checks: risk scores, &ldquo;flagged&rdquo; lines, and Garak wrapping.
+      </p>
+      <div class="card card-accent">
+        <h3>Rules in code</h3>
+        <ul class="testing-point-list">
+          <li><strong>Prompt test path:</strong> <code>PromptTestAnalyser</code> treats output as <strong>flagged</strong> when <code>risk_score &ge; 0.4</code> (<code>_FLAGGED_THRESHOLD</code> in <code>prompt_test_analyser.py</code>).</li>
+          <li><strong>Garak:</strong> <code>GarakRunner</code> runs the <code>garak</code> binary; DEFCON is mapped to a 0&ndash;1 score; <strong>flagged</strong> if score &gt; 0 (with a special case when Azure content filtering blocks everything).</li>
+          <li><strong>PyRIT:</strong> <code>pyrit_runner.py</code> is a stub returning a canned JSON shape &mdash; not a real PyRIT harness.</li>
+          <li><strong>Tests:</strong> pytest covers analysers, scoring, Garak runner (mocked subprocess). Some cases were among the <strong>five failures</strong> &mdash; worth fixing before claiming a clean bill of health.</li>
+        </ul>
+      </div>
+      <p class="mt-2">
+        Garak run outputs are not checked in (e.g. <code>garak_runs/</code> gitignored). The Testing UI still lets people kick off framework scans from the front end.
+      </p>
+    </section>
+
+    <section class="section fade-in" id="user-acceptance">
+      <h2>User acceptance testing</h2>
+      <p>
+        There is <strong>no</strong> UAT plan, session notes, or partner feedback log in the application repo. Simulated testers, scripted cases, and Avanade comments &mdash; if you have them &mdash; live in meetings, Slack, or email. Avanade shows up in branding (header, theme), not as quoted feedback in code.
+      </p>
+      <div class="callout callout--note">
+        <p><strong>If you ran sessions:</strong> add a short paragraph yourself with what people struggled with and what you changed. This page only reports what the repo can prove.</p>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="evidence">
+      <h2>Where the evidence lives</h2>
+      <div class="table-wrap">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>What</th>
+              <th>Where</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>How to run backend tests</td>
+              <td><code>backend/README.md</code> (Tests section)</td>
+            </tr>
+            <tr>
+              <td>Pytest config</td>
+              <td><code>backend/pyproject.toml</code> (<code>[tool.pytest.ini_options]</code>), <code>backend/pytest.ini</code></td>
+            </tr>
+            <tr>
+              <td>Integration skip / <code>--run-integration</code></td>
+              <td><code>backend/tests/conftest.py</code></td>
+            </tr>
+            <tr>
+              <td>Tests tree</td>
+              <td><code>backend/tests/</code> (API, app, domain, infra, integration)</td>
+            </tr>
+            <tr>
+              <td>Frontend scripts</td>
+              <td><code>frontend/package.json</code> &mdash; no <code>test</code> entry</td>
+            </tr>
+            <tr>
+              <td>High-level architecture</td>
+              <td><code>backend/ARCHITECTURE.md</code>, root <code>README.md</code></td>
+            </tr>
+            <tr>
+              <td>UX / breakpoint note</td>
+              <td><code>FEATURES.md</code></td>
+            </tr>
+            <tr>
+              <td>CI workflow</td>
+              <td>Not found under <code>.github/workflows</code></td>
+            </tr>
+            <tr>
+              <td>Dedicated <code>docs/TESTING.md</code></td>
+              <td>Not present</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="test-setup">
+      <h2>Test setup and environment</h2>
+      <p>
+        Backend tests use mocks for most LLM calls; live integration is optional. The frontend is built with Vite (see lockfile) but not exercised by automated tests.
+      </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="card">
+          <h3>Environment</h3>
+          <p>Python env with dev extras; <code>PYTHONPATH=src</code> so imports match production layout.</p>
+        </div>
+        <div class="card">
+          <h3>Test data</h3>
+          <p>Examples and expectations live next to tests; Garak output dirs are ignored by git.</p>
+        </div>
+        <div class="card">
+          <h3>Configuration</h3>
+          <p>Scoring weights (e.g. deterministic vs AI) and thresholds are in source code &mdash; when they drift, tests fail.</p>
+        </div>
+        <div class="card">
+          <h3>Automation</h3>
+          <p>Local pytest only; no shared CI pipeline in this repo snapshot.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="metrics">
+      <h2>Metrics</h2>
+      <p>
+        Product-level KPIs (detection rate, SUS, etc.) are not stored in the repo. The table below is the honest split.
+      </p>
+      <div class="table-wrap">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Area</th>
+              <th>In this repo?</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Backend pytest health</td>
+              <td>Yes (local run)</td>
+              <td>301 passed / 5 failed / 10 skipped &mdash; re-verify</td>
+            </tr>
+            <tr>
+              <td>Security KPIs (detection, false positives, etc.)</td>
+              <td>No</td>
+              <td>Would need a defined experiment and stored results</td>
+            </tr>
+            <tr>
+              <td>Chat / API latency</td>
+              <td>No</td>
+              <td>No scripted performance suite found</td>
+            </tr>
+            <tr>
+              <td>User satisfaction (SUS)</td>
+              <td>No</td>
+              <td>No survey data in the repo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="results">
+      <h2>Results summary</h2>
+      <p>
+        The backend suite is broad, but the last run we recorded was <strong>not</strong> all green. Failures clustered around <code>test_prompt_injection_analyzer.py</code> and <code>test_prompt_runner.py</code>. Fix or update tests, or adjust implementation, then re-run and paste updated numbers before submission.
+      </p>
+      <div class="table-wrap mt-3">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Backend unit + integration (mocked path)</td>
+              <td>301 passed; 5 failed; 10 skipped without <code>--run-integration</code></td>
+            </tr>
+            <tr>
+              <td>Live model integration</td>
+              <td>Not exercised in the logged run</td>
+            </tr>
+            <tr>
+              <td>React frontend</td>
+              <td>No automated test script</td>
+            </tr>
+            <tr>
+              <td>CI</td>
+              <td>None in repo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="future-work">
+      <h2>Future directions</h2>
+      <p>Testing-wise, obvious next steps from this snapshot:</p>
+      <ul>
+        <li>Bring the five failing tests back in line with the current scoring and mitigation behaviour.</li>
+        <li>Align <code>backend/README.md</code> with how integration tests are actually gated (<code>--run-integration</code>).</li>
+        <li>Add at least smoke tests or a minimal CI job for the backend; consider frontend tests later.</li>
+        <li>Document UAT or partner feedback outside the repo if you want it on the record.</li>
+        <li>Product-level metrics and Garak/PyRIT storylines if you run formal experiments.</li>
+      </ul>
+      <p class="mt-2">
+        Broader product ideas (MCP tooling, richer analytics, etc.) stay on the table for later work &mdash; the app codebase we searched did not show MCP integration in the same way the <a href="research.html">research</a> report describes it.
+      </p>
+    </section>
+
+    <nav class="page-nav fade-in" aria-label="Page navigation">
+      <a href="evaluation.html">
+        <span class="page-nav-label">Previous</span>
+        <span class="page-nav-title">← Evaluation</span>
+      </a>
+      <a href="conclusion.html">
+        <span class="page-nav-label">Next</span>
+        <span class="page-nav-title">Conclusion →</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<div id="footer-root"></div>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

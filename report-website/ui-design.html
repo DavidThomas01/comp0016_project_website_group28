@@ -20,8 +20,8 @@
       </div>
     </a>
     <div class="brand-logos" aria-hidden="true">
-      <img src="assets/img/logo-ucl.svg" alt="">
-      <img src="assets/img/logo-avanade.svg" alt="">
+      <img src="assets/img/logo-ucl.png" alt="UCL">
+      <img src="assets/img/logo-avanade.webp" alt="Avanade">
     </div>
   </div>
   <div class="container">
@@ -32,6 +32,7 @@
     <div class="container">
       <nav class="site-nav" aria-label="Primary">
         <div class="nav-left">
+          <div class="nav-scroll">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="requirements.html">Requirements</a>
           <a class="nav-link" href="research.html">Research</a>
@@ -39,15 +40,17 @@
           <a class="nav-link active" href="ui-design.html">UI Design</a>
           <a class="nav-link" href="system-design.html">System Design</a>
           <a class="nav-link" href="implementation.html">Implementation</a>
-          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a class="nav-link" href="evaluation.html">Evaluation</a>
+          <a class="nav-link" href="testing.html">Testing</a>
           <a class="nav-link" href="conclusion.html">Conclusion</a>
+          </div>
           <div class="nav-item">
-            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <a class="drop-toggle" href="appendices.html">Appendices ▾</a>
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
               <a href="appendices.html#dev-blog">Development blog (external)</a>
-              <a href="appendices.html#monthly-video">Monthly video</a>
+              <a href="appendices.html#monthly-video">Monthly videos</a>
             </div>
           </div>
         </div>
@@ -227,16 +230,13 @@
   </div>
 </main>
 
-<footer>
-  <div class="container foot">
-    <div>© Team 28 · UCL COMP0016 · Client: Avanade</div>
-    <div class="footer-links">
-      <a href="appendices.html#dev-blog">Development Blog</a>
-    </div>
-  </div>
-</footer>
+<div id="footer-root"></div>
 
-<button class="back-to-top" aria-label="Back to top">↑</button>
+<button class="back-to-top" aria-label="Back to top">
+  <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
