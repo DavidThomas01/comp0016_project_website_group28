@@ -490,10 +490,10 @@
       </div>
     </section>
 
-    <!-- ===== Delivery timeline (Gantt) ===== -->
+    <!-- ===== Project timeline (Gantt) ===== -->
     <section class="section fade-in section--timeline" id="timeline">
       <div class="gantt-bleed">
-      <h2>Delivery timeline</h2>
+      <h2>Project timeline</h2>
 
       <div class="gantt-card" aria-label="Project timeline">
         <div class="gantt-scroll fade-in-left">
@@ -863,7 +863,7 @@
 
             <div class="gantt-row gantt-row--task">
               <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-backend-api">
-                <div class="gantt-row-task">Backend persistence &amp; API (FastAPI + SQLite)</div>
+                <div class="gantt-row-task">Backend persistence &amp; API</div>
                 <div id="gantt-tip-backend-api" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Backend persistence &amp; API</strong>
                   FastAPI service, SQLite database through SQLAlchemy, and storage for tests and runs. Earlier work used
@@ -971,7 +971,7 @@
 
             <div class="gantt-row gantt-row--task">
               <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-garak">
-                <div class="gantt-row-task">Automated framework scanning (Garak)</div>
+                <div class="gantt-row-task">Automated framework scanning</div>
                 <div id="gantt-tip-garak" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Garak integration</strong>
                   Garak runs in the testing area with probe lists and UI, after the core testing flow and storage were
@@ -1007,17 +1007,18 @@
 
             <!-- Stage 3 -->
             <div class="gantt-row gantt-row--stage-header">
-              <div class="gantt-stage-header-label">Stage 4: Integration, evaluation &amp; delivery</div>
+              <div class="gantt-stage-header-label">Stage 4: Integration &amp; delivery</div>
               <div class="gantt-stage-header-track" aria-hidden="true"></div>
             </div>
 
             <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-assistant">
-                <div class="gantt-row-task">Security assistant</div>
-                <div id="gantt-tip-assistant" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Security assistant</strong>
-                  Chat that streams and uses the knowledge base. Later work added stronger behaviour, including links to
-                  vulnerability pages.
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-assistant-enhancer">
+                <div class="gantt-row-task">Security assistant &amp; prompt enhancer</div>
+                <div id="gantt-tip-assistant-enhancer" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Security assistant &amp; prompt enhancer</strong>
+                  Security assistant &mdash; chat that streams and uses the knowledge base; later work added stronger
+                  behaviour and links to vulnerability pages. Prompt enhancer &mdash; pipeline to improve prompts, saving of
+                  results, and UI for model choice and flows.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -1037,80 +1038,11 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-              </div>
-            </div>
-
-            <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-enhancer">
-                <div class="gantt-row-task">Prompt enhancer</div>
-                <div id="gantt-tip-enhancer" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Prompt enhancer</strong>
-                  Pipeline to improve prompts, saving of results, and UI for model choice and flows.
-                </div>
-              </div>
-              <div class="gantt-row-track">
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-mid"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-              </div>
-            </div>
-
-            <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-visual">
-                <div class="gantt-row-task">Branding &amp; dark mode</div>
-                <div id="gantt-tip-visual" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Branding &amp; dark mode</strong>
-                  Colour tokens, dark mode, subtle motion, and Avanade-aligned branding on main screens.
-                </div>
-              </div>
-              <div class="gantt-row-track">
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -1213,10 +1145,7 @@
           </div>
         </div>
         <p class="gantt-legend text-muted">
-          Stages group workstreams: <strong>Project initialisation &amp; research</strong> (stakeholders, requirements,
-          prototypes, HCI, MoSCoW), then <strong>Foundation &amp; content</strong>, <strong>Platform &amp; testing core</strong>
-          (FastAPI, SQLite, testing UI, models, Garak), and <strong>Integration, evaluation &amp; delivery</strong>
-          (assistant, enhancer, README in January, branding in late February, report and handover in March). Click a row label for detail.
+          Click a row label for details.
         </p>
         <p class="gantt-timeframe text-muted">Time frame: 20 October 2025 to 27 March 2026.</p>
       </div>
