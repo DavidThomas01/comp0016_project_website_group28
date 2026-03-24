@@ -22,11 +22,8 @@
     observer.observe(el);
   });
 
-  var header = document.querySelector('.site-header');
   var btn = document.querySelector('.back-to-top');
   window.addEventListener('scroll', function () {
-    var scrolled = window.scrollY > 30;
-    if (header) header.classList.toggle('scrolled', scrolled);
     if (btn) btn.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
   if (btn) {

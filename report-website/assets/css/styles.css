@@ -107,11 +107,14 @@ h1, h2, h3, h4 { color: var(--text); line-height: 1.3; }
 /* ====== Header ====== */
 header.site-header {
   border-bottom: none;
-  background: #fff;
+  background: rgba(255, 252, 250, 0.75);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: none;
+  box-shadow: 0 4px 24px rgba(255, 107, 53, 0.06),
+              0 1px 3px rgba(0, 0, 0, 0.03);
   transition: background var(--duration-slow) var(--ease),
               box-shadow var(--duration-slow) var(--ease),
               backdrop-filter var(--duration-slow) var(--ease);
@@ -119,14 +122,6 @@ header.site-header {
 
 header.site-header .container {
   width: min(1250px, calc(100% - 2.5rem));
-}
-
-header.site-header.scrolled {
-  background: rgba(255, 252, 250, 0.75);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  box-shadow: 0 4px 24px rgba(255, 107, 53, 0.06),
-              0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .topbar {
@@ -663,6 +658,10 @@ main { padding: 2.5rem 0 3rem; }
   transition: all var(--duration-slow) var(--ease);
 }
 .section:last-child { border-bottom: none; }
+/* Last content section before page nav: avoid double line (section border-bottom + page-nav border-top) */
+.section:has(+ .page-nav) {
+  border-bottom: none;
+}
 .section:hover {
   background: rgba(255,245,242,0.5);
   margin: 0 -1.25rem;
@@ -748,6 +747,11 @@ h3 {
   border-top-color: var(--brand);
   box-shadow: 0 6px 22px rgba(17, 17, 17, 0.07), 0 2px 8px rgba(255, 107, 53, 0.06);
 }
+
+.abstract-chunk:hover .abstract-chunk__icon {
+  color: var(--brand-dark);
+  opacity: 1;
+}
 @media (min-width: 640px) {
   .abstract-chunk {
     padding: 1.5rem 1.65rem 1.55rem;
@@ -760,6 +764,29 @@ h3 {
   letter-spacing: -0.02em;
   color: var(--text);
   text-align: left;
+}
+
+.abstract-chunk__title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.abstract-chunk__icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  color: var(--brand);
+  opacity: 0.92;
+}
+
+.abstract-chunk__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .abstract-chunk__body p {
   margin: 0;
@@ -1988,43 +2015,69 @@ html.js .gantt-phase-tooltip {
 }
 
 .gantt-cell--active::before,
+.gantt-cell--active-mid::before,
 .gantt-cell--active-light::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 130, 80, 0.7),
-    rgba(255, 107, 53, 0.65)
-  );
-  box-shadow: 0 1px 3px rgba(255, 107, 53, 0.2);
   transition: background var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
 }
 
+/* Lightest: early in the phase */
 .gantt-cell--active-light::before {
   background: linear-gradient(
     135deg,
-    rgba(255, 160, 115, 0.5),
-    rgba(255, 140, 90, 0.45)
+    rgba(255, 168, 125, 0.48),
+    rgba(255, 150, 105, 0.42)
   );
-  box-shadow: 0 1px 2px rgba(255, 107, 53, 0.15);
+  box-shadow: 0 1px 2px rgba(255, 107, 53, 0.12);
+}
+
+/* Mid: more tasks done */
+.gantt-cell--active-mid::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 138, 88, 0.62),
+    rgba(255, 118, 68, 0.58)
+  );
+  box-shadow: 0 1px 3px rgba(255, 107, 53, 0.18);
+}
+
+/* Darkest: most complete within the phase */
+.gantt-cell--active::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 115, 65, 0.82),
+    rgba(255, 95, 45, 0.78)
+  );
+  box-shadow: 0 1px 3px rgba(255, 107, 53, 0.26);
 }
 
 .gantt-cell--active:hover::before {
   background: linear-gradient(
     135deg,
-    rgba(255, 120, 70, 0.8),
-    rgba(255, 107, 53, 0.75)
+    rgba(255, 108, 58, 0.9),
+    rgba(255, 90, 40, 0.85)
   );
-  box-shadow: 0 2px 5px rgba(255, 107, 53, 0.25);
+  box-shadow: 0 2px 5px rgba(255, 107, 53, 0.28);
 }
+
+.gantt-cell--active-mid:hover::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 128, 78, 0.75),
+    rgba(255, 110, 60, 0.7)
+  );
+  box-shadow: 0 2px 4px rgba(255, 107, 53, 0.22);
+}
+
 .gantt-cell--active-light:hover::before {
   background: linear-gradient(
     135deg,
-    rgba(255, 145, 100, 0.6),
-    rgba(255, 130, 80, 0.55)
+    rgba(255, 155, 115, 0.58),
+    rgba(255, 135, 95, 0.52)
   );
-  box-shadow: 0 2px 4px rgba(255, 107, 53, 0.18);
+  box-shadow: 0 2px 4px rgba(255, 107, 53, 0.16);
 }
 
 .gantt-legend {
@@ -2032,6 +2085,92 @@ html.js .gantt-phase-tooltip {
   z-index: 1;
   margin-top: 0.5rem;
   font-size: 0.78rem;
+}
+
+.gantt-timeframe {
+  margin: 0.5rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+/* Gantt fill scale: lighter → darker = fewer → more tasks done in that phase */
+.gantt-legend-scale {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0.85rem 0 0.35rem;
+  padding: 0.55rem 0.75rem;
+  max-width: 100%;
+  border-radius: var(--radius-md);
+  background: var(--bg-soft);
+  border: 1px solid var(--border-light);
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.gantt-legend-scale__hint {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.4rem;
+}
+
+.gantt-legend-scale__label {
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.gantt-legend-scale__dash {
+  color: var(--border);
+  font-weight: 400;
+}
+
+.gantt-legend-scale__text {
+  flex: 1 1 12rem;
+  min-width: min(100%, 12rem);
+}
+
+.gantt-legend-scale__sep {
+  color: rgba(255, 107, 53, 0.45);
+  font-size: 0.7rem;
+  user-select: none;
+}
+
+.gantt-legend-scale__swatches {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.gantt-legend-scale__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.gantt-legend-scale__swatch {
+  width: 1.35rem;
+  height: 0.65rem;
+  border-radius: 0.2rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.gantt-legend-scale__swatch--light {
+  background: linear-gradient(135deg, rgba(255, 168, 125, 0.55), rgba(255, 150, 105, 0.5));
+}
+
+.gantt-legend-scale__swatch--mid {
+  background: linear-gradient(135deg, rgba(255, 138, 88, 0.72), rgba(255, 118, 68, 0.68));
+}
+
+.gantt-legend-scale__swatch--dark {
+  background: linear-gradient(135deg, rgba(255, 115, 65, 0.88), rgba(255, 95, 45, 0.85));
 }
 
 @media (max-width: 768px) {
@@ -2261,7 +2400,7 @@ html.js .gantt-phase-tooltip {
   gap: 1rem;
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--border-light);
+  border-top: none;
 }
 .page-nav a {
   display: flex;
@@ -2619,6 +2758,38 @@ footer .container {
 .js .stagger.is-visible > *:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: translateY(0); }
 .js .stagger.is-visible > *:nth-child(7) { transition-delay: 0.48s; opacity: 1; transform: translateY(0); }
 .js .stagger.is-visible > *:nth-child(8) { transition-delay: 0.56s; opacity: 1; transform: translateY(0); }
+
+/* Team: slightly softer stagger on profile cards */
+.js #team .team-members.stagger > * {
+  transition-duration: 0.48s;
+  transition-timing-function: var(--ease-out);
+}
+
+/* Timeline: understated section fade + gentle horizontal settle on the chart strip */
+.js #timeline.section--timeline.fade-in {
+  transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
+}
+.js .gantt-scroll.fade-in-left {
+  transform: translateX(-12px);
+  transition: opacity 0.5s var(--ease-out), transform 0.52s var(--ease-out);
+}
+.js .gantt-scroll.fade-in-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .fade-in,
+  .js .fade-in-left,
+  .js .stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .js .stagger.is-visible > * {
+    transition-delay: 0s !important;
+  }
+}
 
 /* ====== Utility ====== */
 .text-brand { color: var(--brand); }
