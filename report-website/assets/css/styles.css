@@ -885,7 +885,6 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
   margin-bottom: 1rem;
   flex-shrink: 0;
 }
@@ -1142,18 +1141,93 @@ ul:not(.styled-list):not(.tag-list) li strong {
 
 /* Contribution table: emphasise total row */
 .contribution-table-wrap { margin-top: 1rem; }
-.contribution-table .contribution-total td {
+
+/* Two contribution tables share column widths so Teo/David/… line up vertically */
+.contribution-tables-group .contribution-table {
+  table-layout: fixed;
+  width: 100%;
+}
+.contribution-tables-group .contribution-table col.col-work-package {
+  width: 43%;
+}
+.contribution-tables-group .contribution-table col.col-member {
+  width: 14.25%;
+}
+.contribution-tables-group .contribution-table th:first-child,
+.contribution-tables-group .contribution-table td:first-child {
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+  hyphens: auto;
+  padding-right: 1.1rem;
+  vertical-align: top;
+}
+.contribution-tables-group .contribution-table th:not(:first-child),
+.contribution-tables-group .contribution-table td:not(:first-child) {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.contribution-table .contribution-total td,
+.contribution-table .contribution-total th {
   border-top: 2px solid var(--border);
   background: var(--bg-soft);
   font-weight: 700;
   color: var(--text);
   padding: 0.9rem 1rem;
 }
-.contribution-table .contribution-total:hover td { background: rgba(255,107,53,0.08); }
+.contribution-table .contribution-total th {
+  text-align: left;
+  font-weight: 800;
+}
+.contribution-table .contribution-total:hover td,
+.contribution-table .contribution-total:hover th {
+  background: rgba(255,107,53,0.08);
+}
 .contribution-table th:not(:first-child),
 .contribution-table td:not(:first-child) {
   text-align: center;
-  min-width: 3.5rem;
+  min-width: 0;
+}
+.contribution-total-note {
+  margin: 1rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 52rem;
+}
+
+.contribution-section-title {
+  margin-top: 2rem;
+  margin-bottom: 0.65rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.contribution-section-title:first-of-type {
+  margin-top: 0;
+}
+.contribution-tables-group .contribution-section-title {
+  margin-top: 2rem;
+}
+.contribution-section-lead {
+  margin-top: 0.35rem;
+  margin-bottom: 0;
+  font-size: 0.94rem;
+  color: var(--muted);
+}
+
+.evaluation-content p + p {
+  margin-top: 0.75rem;
+}
+.evaluation-content .evaluation-rating {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.6;
 }
 
 /* ====== Achievements summary grid ====== */
@@ -1403,15 +1477,29 @@ ul:not(.styled-list):not(.tag-list) li strong {
   align-items: center;
   justify-content: center;
   min-width: 1.5rem;
-  font-weight: 700;
-  font-size: 1.05rem;
   line-height: 1;
+  flex-shrink: 0;
 }
-.req-status--done {
-  color: #2e7d32;
+/* Vector status icons (not emoji / dingbat characters) */
+.req-status.req-status--done {
+  font-size: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  min-width: 1.1rem;
+  color: transparent;
+  background-color: #2e7d32;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E") center / contain no-repeat;
 }
-.req-status--not {
-  color: #c62828;
+.req-status.req-status--not {
+  font-size: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  min-width: 1.1rem;
+  color: transparent;
+  background-color: #c62828;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 /* Visible tooltip for incomplete requirements (native title="" is slow / unreliable) */
@@ -2263,10 +2351,16 @@ html.js .gantt-phase-tooltip {
   background: var(--bg-soft);
 }
 .img-placeholder .placeholder-icon {
-  font-size: 2.5rem;
-  margin-bottom: 0.75rem;
-  display: block;
-  opacity: 0.5;
+  margin: 0 auto 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.55;
+}
+.img-placeholder .placeholder-icon .ui-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--muted);
 }
 .img-placeholder .placeholder-label {
   font-weight: 600;
@@ -2328,8 +2422,49 @@ html.js .gantt-phase-tooltip {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
   flex-shrink: 0;
+}
+
+/* Stroke icons (replaces emoji site-wide) */
+.ui-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  color: var(--brand-dark);
+}
+.card-icon .ui-icon {
+  width: 1.65rem;
+  height: 1.65rem;
+}
+.feature-icon .ui-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.heading-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: nowrap;
+}
+.heading-with-icon .ui-icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  color: var(--brand);
+  flex-shrink: 0;
+}
+.card.card-accent h3.heading-with-icon {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+.section .heading-with-icon {
+  margin: 1.25rem 0 0.75rem;
+}
+.section > .heading-with-icon:first-child {
+  margin-top: 0;
+}
+.card h3.heading-with-icon {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
 }
 .feature-content h3 {
   margin: 0 0 0.3rem;
@@ -2766,7 +2901,8 @@ footer .container {
 }
 .js .fade-in.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  /* none — not translateY(0); identity transform still creates a fixed-position containing block and breaks tooltips */
+  transform: none;
 }
 
 .js .fade-in-left {
@@ -2776,7 +2912,7 @@ footer .container {
 }
 .js .fade-in-left.is-visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: none;
 }
 
 .js .stagger > * {
@@ -2784,14 +2920,14 @@ footer .container {
   transform: translateY(16px);
   transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
 }
-.js .stagger.is-visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
-.js .stagger.is-visible > *:nth-child(2) { transition-delay: 0.08s; opacity: 1; transform: translateY(0); }
-.js .stagger.is-visible > *:nth-child(3) { transition-delay: 0.16s; opacity: 1; transform: translateY(0); }
-.js .stagger.is-visible > *:nth-child(4) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
-.js .stagger.is-visible > *:nth-child(5) { transition-delay: 0.32s; opacity: 1; transform: translateY(0); }
-.js .stagger.is-visible > *:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: translateY(0); }
-.js .stagger.is-visible > *:nth-child(7) { transition-delay: 0.48s; opacity: 1; transform: translateY(0); }
-.js .stagger.is-visible > *:nth-child(8) { transition-delay: 0.56s; opacity: 1; transform: translateY(0); }
+.js .stagger.is-visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: none; }
+.js .stagger.is-visible > *:nth-child(2) { transition-delay: 0.08s; opacity: 1; transform: none; }
+.js .stagger.is-visible > *:nth-child(3) { transition-delay: 0.16s; opacity: 1; transform: none; }
+.js .stagger.is-visible > *:nth-child(4) { transition-delay: 0.24s; opacity: 1; transform: none; }
+.js .stagger.is-visible > *:nth-child(5) { transition-delay: 0.32s; opacity: 1; transform: none; }
+.js .stagger.is-visible > *:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: none; }
+.js .stagger.is-visible > *:nth-child(7) { transition-delay: 0.48s; opacity: 1; transform: none; }
+.js .stagger.is-visible > *:nth-child(8) { transition-delay: 0.56s; opacity: 1; transform: none; }
 
 /* Team: slightly softer stagger on profile cards */
 .js #team .team-members.stagger > * {
@@ -2809,7 +2945,7 @@ footer .container {
 }
 .js .gantt-scroll.fade-in-left.is-visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
