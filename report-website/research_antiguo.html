@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Research into prompt injection vulnerabilities, mitigation strategies, and testing frameworks for AI systems." />
+  <title>Research – Prompt Injection Protection</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container topbar">
+    <a class="brand" href="index.html">
+      <div>
+        <div class="brand-title">Prompt Injection Protection</div>
+        <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
+      </div>
+    </a>
+    <div class="brand-logos" aria-hidden="true">
+      <img src="assets/img/logo-ucl.png" alt="UCL">
+      <img src="assets/img/logo-avanade.webp" alt="Avanade">
+    </div>
+  </div>
+  <div class="container">
+    <label class="burger" for="nav-toggle">Menu</label>
+  </div>
+  <input id="nav-toggle" type="checkbox" />
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-left">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="requirements.html">Requirements</a>
+          <a class="nav-link active" href="research.html">Research</a>
+          <a class="nav-link" href="algorithms.html">Algorithms</a>
+          <a class="nav-link" href="ui-design.html">UI Design</a>
+          <a class="nav-link" href="system-design.html">System Design</a>
+          <a class="nav-link" href="implementation.html">Implementation</a>
+          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a class="nav-link" href="conclusion.html">Conclusion</a>
+          <div class="nav-item">
+            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <div class="dropdown" role="menu" aria-label="Appendices">
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
+              <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly video</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">Research Foundation</div>
+    <h1>Prompt Injection: Vulnerabilities, Mitigations &amp; Testing</h1>
+    <p>
+      A comprehensive summary of the research conducted by Team 28 into prompt injection
+      attacks, forming the theoretical and empirical foundation for the platform design.
+    </p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="container">
+
+    <section class="section fade-in" id="introduction">
+      <h2>Introduction and Background</h2>
+      <p>
+        The rapid adoption of large language models (LLMs) in enterprise systems has
+        introduced new security challenges. Unlike traditional software, LLMs interpret
+        all inputs as natural language, making it difficult to distinguish between trusted
+        instructions and untrusted data.
+      </p>
+      <div class="callout">
+        <p>
+          <strong>Key insight:</strong> Prompt injection exploits the fundamental ambiguity between
+          instructions and data in LLM systems — embedding adversarial instructions into user input,
+          retrieved content, or tool outputs to cause unintended actions.
+        </p>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="vulnerabilities">
+      <h2>Prompt Injection Vulnerabilities</h2>
+      <p>
+        Prompt injection vulnerabilities arise from fundamental characteristics of LLMs,
+        rather than from conventional implementation bugs. Our research identifies
+        several major classes of vulnerabilities observed in modern AI systems.
+      </p>
+
+      <div class="card-grid cols-2 stagger">
+        <div class="card card-accent">
+          <h3>&#x26A1; Direct Prompt Injection</h3>
+          <p>Explicit attempts by users to override system instructions (e.g. "ignore previous instructions").</p>
+          <div class="tag-list"><span class="badge badge--brand">User Input</span></div>
+        </div>
+        <div class="card card-accent">
+          <h3>&#x1F4E8; Indirect Prompt Injection</h3>
+          <p>Malicious instructions embedded in external data such as documents, webpages, or emails.</p>
+          <div class="tag-list"><span class="badge badge--amber">External Data</span></div>
+        </div>
+        <div class="card card-accent">
+          <h3>&#x1F500; Instruction–Data Confusion</h3>
+          <p>Lack of strict separation between instructions and data within the model context.</p>
+          <div class="tag-list"><span class="badge badge--blue">Architecture</span></div>
+        </div>
+        <div class="card card-accent">
+          <h3>&#x1F3AD; Obfuscation Attacks</h3>
+          <p>Use of Base64, Unicode homoglyphs, or multilingual prompts to bypass input filters.</p>
+          <div class="tag-list"><span class="badge badge--amber">Evasion</span></div>
+        </div>
+        <div class="card card-accent">
+          <h3>&#x1F527; Tool-Use Injection</h3>
+          <p>Manipulation of tool calls or API arguments generated by the model.</p>
+          <div class="tag-list"><span class="badge badge--brand">MCP Relevant</span></div>
+        </div>
+        <div class="card card-accent">
+          <h3>&#x1F4BE; Memory Vulnerabilities</h3>
+          <p>Gradual injection across multiple turns leading to behavioural drift.</p>
+          <div class="tag-list"><span class="badge badge--blue">Long-Horizon</span></div>
+        </div>
+        <div class="card card-accent">
+          <h3>&#x1F5BC;&#xFE0F; Multimodal Injection</h3>
+          <p>Hidden instructions embedded in images or other non-text modalities.</p>
+          <div class="tag-list"><span class="badge badge--amber">Cross-Modal</span></div>
+        </div>
+        <div class="card card-accent">
+          <h3>&#x1F310; Multi-Agent Contamination</h3>
+          <p>Propagation of malicious instructions across interconnected agent workflows.</p>
+          <div class="tag-list"><span class="badge badge--brand">Multi-Agent</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="mitigations">
+      <h2>Mitigation Strategies</h2>
+      <div class="callout callout--tip">
+        <p>
+          <strong>Defence in depth:</strong> No single mitigation can fully eliminate prompt injection.
+          Effective defence requires a layered approach combining multiple complementary strategies.
+        </p>
+      </div>
+
+      <div class="card-grid cols-2 stagger">
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F6E1;&#xFE0F;</div>
+          <div class="feature-content">
+            <h3>Input Validation &amp; Sanitisation</h3>
+            <p>Treating all inputs as untrusted and filtering malicious instructions before model execution.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F4DD;</div>
+          <div class="feature-content">
+            <h3>Robust Prompt Design</h3>
+            <p>Structuring prompts to clearly separate trusted instructions from untrusted data.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F50D;</div>
+          <div class="feature-content">
+            <h3>Output Filtering &amp; Guardrails</h3>
+            <p>Validating model outputs before returning them or executing downstream actions.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F916;</div>
+          <div class="feature-content">
+            <h3>Multi-Agent Defence</h3>
+            <p>Distributing responsibility across specialised agents to reduce single-point failures.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F9F9;</div>
+          <div class="feature-content">
+            <h3>Context Sanitisation</h3>
+            <p>Analysing and filtering long or externally sourced context before use.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F512;</div>
+          <div class="feature-content">
+            <h3>Sandboxing &amp; Permission Control</h3>
+            <p>Restricting tool access and enforcing strict execution boundaries.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="testing">
+      <h2>Testing Against Prompt Injection</h2>
+      <p>
+        Testing is essential for identifying prompt injection vulnerabilities before
+        deployment. Our research surveys both academic and industry testing methodologies
+        designed to probe the full attack surface of modern AI systems.
+      </p>
+
+      <h3>Testing Approaches</h3>
+      <ul class="styled-list">
+        <li>Attacker-model testing using adversarial LLMs.</li>
+        <li>Evolutionary search to generate novel adversarial prompts.</li>
+        <li>Black-box and white-box testing methodologies.</li>
+        <li>Red-team templates for social and behavioural manipulation.</li>
+        <li>Testing of RAG pipelines, tool interfaces, and MCP servers.</li>
+        <li>Long-horizon and memory-persistence testing.</li>
+      </ul>
+
+      <h3>Testing Frameworks</h3>
+      <div class="card-grid cols-3 stagger">
+        <div class="card card--feature">
+          <h3>NVIDIA Garak</h3>
+          <p>Open-source LLM vulnerability scanner with probe-based testing.</p>
+        </div>
+        <div class="card card--feature">
+          <h3>Microsoft PyRIT</h3>
+          <p>Python Risk Identification Tool for generative AI red-teaming.</p>
+        </div>
+        <div class="card card--feature">
+          <h3>PromptBench</h3>
+          <p>Unified benchmarking library for evaluating adversarial prompt robustness.</p>
+        </div>
+        <div class="card card--feature">
+          <h3>OWASP PromptMe</h3>
+          <p>Framework aligned with OWASP Top 10 for LLM Applications.</p>
+        </div>
+        <div class="card card--feature">
+          <h3>OpenAI Evals</h3>
+          <p>Evaluation framework for systematic model behaviour assessment.</p>
+        </div>
+        <div class="card card--feature">
+          <h3>Custom Pipelines</h3>
+          <p>Project-specific test suites targeting MCP server attack surfaces.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="findings">
+      <h2>Key Research Findings</h2>
+      <div class="card-grid cols-2 stagger">
+        <div class="card">
+          <div class="card-icon">&#x2705;</div>
+          <h3>Simple Injections Declining</h3>
+          <p>Modern LLMs are relatively robust to simple direct injections thanks to improved alignment and training.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#x26A0;&#xFE0F;</div>
+          <h3>Obfuscation Remains Dangerous</h3>
+          <p>Obfuscated and indirect prompt injection remains significantly harder to defend against.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#x1F517;</div>
+          <h3>MCP Expands Attack Surface</h3>
+          <p>Tool-mediated and MCP-based systems substantially expand the potential attack surface for injection.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#x1F3D7;&#xFE0F;</div>
+          <h3>Architectural Challenge</h3>
+          <p>Prompt injection is primarily an architectural and operational challenge rather than a model-selection problem.</p>
+        </div>
+      </div>
+
+      <div class="callout mt-3">
+        <p>These findings directly inform the design decisions and evaluation criteria used in the Prompt Injection Protection platform.</p>
+      </div>
+    </section>
+
+    <nav class="page-nav fade-in" aria-label="Page navigation">
+      <a href="requirements.html">
+        <span class="page-nav-label">Previous</span>
+        <span class="page-nav-title">← Requirements</span>
+      </a>
+      <a href="algorithms.html">
+        <span class="page-nav-label">Next</span>
+        <span class="page-nav-title">Algorithms →</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__block site-footer__pages">
+        <h3 class="site-footer__heading">Pages</h3>
+        <nav class="site-footer__nav" aria-label="Report pages">
+          <a href="index.html">Home</a>
+          <a href="requirements.html">Requirements</a>
+          <a href="research.html">Research</a>
+          <a href="algorithms.html">Algorithms</a>
+          <a href="ui-design.html">UI Design</a>
+          <a href="system-design.html">System Design</a>
+          <a href="implementation.html">Implementation</a>
+          <a href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a href="conclusion.html">Conclusion</a>
+          <a href="appendices.html">Appendices</a>
+        </nav>
+      </div>
+      <div class="site-footer__block site-footer__project">
+        <h3 class="site-footer__heading">Project</h3>
+        <p class="site-footer__title">Prompt Injection Protection</p>
+        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
+        <a href="appendices.html#dev-blog">Development Blog</a>
+      </div>
+    </div>
+    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -61,8 +61,8 @@
     <div class="kicker">Research and Technical Overview</div>
     <h1>Prompt Injection Research, Platform Research, and Technical Decisions</h1>
     <p>
-      This page is split into two parts: the prompt injection research that informed the project,
-      and the platform and technical decisions evidenced by the implemented codebase.
+      This page is organized into two clearly separated tracks: prompt injection research that
+      informed the project, and platform-level technical decisions evidenced by the implemented codebase.
     </p>
   </div>
 </section>
@@ -70,12 +70,15 @@
 <main id="main">
   <div class="container">
 
-    <section class="section fade-in" id="part-1">
-      <h2>Part 1 - Prompt Injection Research</h2>
+    <section class="section section-track fade-in" id="part-1">
+      <h2>Prompt Injection Research</h2>
+      <p class="section-track__lead">
+        Threat models, attack taxonomy, mitigation strategies, and evidence base that define the security problem space.
+      </p>
     </section>
 
     <section class="section fade-in" id="introduction">
-      <h2>1. Introduction and Background</h2>
+      <h2>Introduction and Background</h2>
       <p>
         Since the public release of ChatGPT in late 2022, LLMs have moved rapidly
         from research labs into mainstream products, internal tooling, and enterprise
@@ -97,78 +100,74 @@
         injection is no longer just a chatbot failure: it becomes a route to data leakage,
         unsafe automation, and loss of control over downstream actions.
       </p>
-      <!---TODO: Summarize the introduction and background a bit and make it look more dynamic (not just a block of plain text)-->
-      <div class="callout">
-        <p>
-          <strong>Key insight:</strong> prompt injection is not simply a UI problem or a
-          badly written prompt. It is a structural security problem created by the way LLMs
-          combine instructions, context, external data, and tool access into one reasoning flow.
-          <!---TODO: Change the content of the key insight-->
-        </p>
-      </div>
+      <p>
+        Because this is a wide and multi-layered project,
+        we first needed substantial research to understand the true scope and depth of
+        prompt injection risks before defining architecture, features, and evaluation.
+      </p>
+      <!---TODO: the introduction and background, make it look more dynamic (not just a block of plain text)-->
     </section>
 
     <section class="section fade-in" id="research-report">
-      <h2>2. Research Report</h2>
+      <h2>Research Report</h2>
       <p>
         To ground the project in evidence rather than assumptions, we produced a dedicated
         research report on prompt injection protection. This report became the basis of our
         internal knowledge base and informed how we framed the problem, compared existing
         approaches, and prioritised the features and evaluation criteria of the platform.
       </p>
-      <!---TODO: Check the content and display it in another way that is not bullet points and looks more dynamic,
-      Check the content of the bullet points below, I don't think the what research covered is accurate-->
       <div class="card-grid cols-2 stagger">
         <div class="card">
           <h3>What the research covered</h3>
           <ul class="styled-list">
-            <li>Direct and indirect prompt injection</li>
-            <li>Instruction-data boundary confusion</li>
-            <li>Obfuscation and encoding-based attacks</li>
-            <li>Tool-use, MCP, and workflow contamination risks</li>
-            <li>Mitigations used in research and industry</li>
-            <li>Testing pipelines, frameworks, and evaluation metrics</li>
+            <li>What prompt injection is, why it is a major security risk, and why it matters in enterprise AI systems.</li>
+            <li>Main vulnerability types: direct and indirect injection, obfuscation, tool-use risks, memory/long-horizon issues, multimodal attacks, and workflow contamination.</li>
+            <li>Main mitigation strategies with defence in depth: input validation, prompt structuring, output filtering, sandboxing, and context sanitisation.</li>
+            <li>Testing methods and frameworks for continuous evaluation across prompts, tools, pipelines, and deployments.</li>
           </ul>
         </div>
         <div class="card">
           <h3>How we used it</h3>
           <ul class="styled-list">
-            <li>To define the project scope around realistic enterprise threats</li>
-            <li>To identify which attack surfaces matter beyond simple jailbreaks</li>
-            <li>To shape the evaluation strategy and testing priorities</li>
-            <li>To compare defensive approaches instead of relying on one single safeguard</li>
-            <li>To understand where current public tools are useful and where gaps remain</li>
+            <li>It shaped the platform structure: vulnerabilities, mitigations, and testing are separated but connected in a natural and structured way.</li>
+            <li>It helped us frame prompt injection as a system-level security issue, not just a bad prompt.</li>
+            <li>It guided the knowledge base content, especially the vulnerability and mitigation sections; and also serves as the primary reference for our internal chatbot.</li>
+            <li>It strengthened our focus on testing and comparison as continuous security practices.</li>
           </ul>
         </div>
       </div>
 
       <div class="callout callout--tip">
         <p>
-          <strong>Research report:</strong> the full report is embedded below so the user can
-          read it directly from the page. You can also provide a separate link to open it in a new tab.
+          <strong>Research report:</strong> the full report is embedded below for in-page reading,
+          with dedicated actions to open it in a separate tab or download a local copy.
         </p>
-        <!---TODO: Change this callout since we won't have the URL anymore-->
       </div>
 
-      <div style="margin-top:1rem;">
-        <p>
-          <a href="assets/docs/IXN_Avanade_Group28_PromptInjectionProtection_Report.pdf" target="_blank" rel="noopener">
-            Open the full research report in a new tab
+      <div class="pdf-viewer" aria-label="Prompt Injection Protection research report viewer">
+        <div class="pdf-viewer__actions">
+          <a class="btn btn--primary" href="assets/docs/research-report.pdf" target="_blank" rel="noopener">
+            Open Full Report
           </a>
-          <!---TODO: Get rid of the url and add it as something else, we want the user to be able to access it in a new page but we don't want a url-->
-        </p>
-        <!---TODO: The pdf doesn't load, fix this-->
-        <iframe
-          src="assets/docs/IXN_Avanade_Group28_PromptInjectionProtection_Report.pdf"
-          title="Prompt Injection Protection Research Report"
-          style="width:100%; height:900px; border:1px solid rgba(0,0,0,.12); border-radius:12px;"
-          loading="lazy">
-        </iframe>
+        </div>
+
+        <object
+          class="pdf-viewer__frame"
+          data="assets/docs/research-report.pdf"
+          type="application/pdf"
+          aria-label="Prompt Injection Protection research report PDF">
+          <p>
+            Your browser cannot display this PDF inline.
+            <a href="assets/docs/research-report.pdf" target="_blank" rel="noopener">Open the report in a new tab</a>
+            or
+            <a href="assets/docs/research-report.pdf" download="research-report.pdf">download it here</a>.
+          </p>
+        </object>
       </div>
     </section>
 
     <section class="section fade-in" id="vulnerabilities">
-      <h2>3. Vulnerability Taxonomy</h2>
+      <h2>Vulnerability Taxonomy</h2>
       <p>
         Prompt injection is not one single attack pattern. It is a family of vulnerabilities
         caused by how LLM systems combine natural-language instructions, external context,
@@ -176,9 +175,9 @@
         repeatedly in literature and real deployment scenarios.
       </p>
 
-      <div class="card-grid cols-2 stagger">
+      <div class="card-grid cols-2 stagger vulnerability-grid">
         <div class="card card-accent">
-          <h3>&#x26A1; Direct Prompt Injection</h3>
+          <h3>Direct Prompt Injection</h3>
           <p>
             A user explicitly attempts to override intended behaviour with adversarial instructions,
             for example by asking the model to ignore system guidance, reveal hidden instructions,
@@ -188,7 +187,7 @@
         </div>
 
         <div class="card card-accent">
-          <h3>&#x1F4E8; Indirect Prompt Injection</h3>
+          <h3>Indirect Prompt Injection</h3>
           <p>
             Malicious instructions are hidden inside external content such as emails, webpages,
             database entries, or documents that the model later reads and mistakenly treats as actionable.
@@ -197,7 +196,7 @@
         </div>
 
         <div class="card card-accent">
-          <h3>&#x1F500; Instruction-Data Boundary Confusion</h3>
+          <h3>Instruction-Data Boundary Confusion</h3>
           <p>
             Because system prompts, user input, retrieved text, and tool outputs are processed in a
             shared text context, the model may fail to maintain a strict distinction between “content”
@@ -207,7 +206,7 @@
         </div>
 
         <div class="card card-accent">
-          <h3>&#x1F3AD; Obfuscation and Encoding Attacks</h3>
+          <h3>Obfuscation and Encoding Attacks</h3>
           <p>
             Attackers may disguise malicious instructions through Base64, Unicode homoglyphs,
             multilingual phrasing, emoji patterns, or fragmented prompts to bypass simple filters.
@@ -216,7 +215,7 @@
         </div>
 
         <div class="card card-accent">
-          <h3>&#x1F527; Tool-Use and Action Injection</h3>
+          <h3>Tool-Use and Action Injection</h3>
           <p>
             If an LLM can call tools or APIs, an injection attack may push it to generate unsafe
             arguments, perform unintended actions, or trust poisoned tool outputs.
@@ -225,7 +224,7 @@
         </div>
 
         <div class="card card-accent">
-          <h3>&#x1F4BE; Memory and Long-Horizon Vulnerabilities</h3>
+          <h3>Memory and Long-Horizon Vulnerabilities</h3>
           <p>
             Seemingly harmless prompts can accumulate across multiple turns, gradually steering the
             model’s behaviour and causing safety drift over time.
@@ -234,7 +233,7 @@
         </div>
 
         <div class="card card-accent">
-          <h3>&#x1F5BC;&#xFE0F; Multimodal Injection</h3>
+          <h3>Multimodal Injection</h3>
           <p>
             Hidden instructions can be embedded in images or other non-text modalities, creating
             attack paths that bypass text-only validation or filtering strategies.
@@ -243,7 +242,7 @@
         </div>
 
         <div class="card card-accent">
-          <h3>&#x1F310; Multi-Agent / Workflow Contamination</h3>
+          <h3>Multi-Agent / Workflow Contamination</h3>
           <p>
             In agentic systems, one compromised step can contaminate shared memory, planning outputs,
             or downstream agents, turning a local failure into a broader workflow failure.
@@ -254,7 +253,7 @@
     </section>
 
     <section class="section fade-in" id="mitigations">
-      <h2>4. Mitigation Strategies</h2>
+      <h2>Mitigation Strategies</h2>
       <p>
         Our research consistently showed that there is no single fix for prompt injection.
         Effective protection requires defence in depth: reducing exposure, checking behaviour,
@@ -268,294 +267,175 @@
         </p>
       </div>
 
-      <div class="card-grid cols-2 stagger">
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F6E1;&#xFE0F;</div>
-          <div class="feature-content">
-            <h3>Input Validation &amp; Sanitisation</h3>
-            <p>
-              Treating all user input and external content as untrusted, applying filtering,
-              validation, schema checks, or auxiliary classification before the model sees it.
-            </p>
-          </div>
+      <div class="card-grid cols-2 stagger vulnerability-grid">
+        <div class="card card-accent">
+          <h3>Input Validation &amp; Sanitisation</h3>
+          <p>
+            Treating all user input and external content as untrusted, applying filtering,
+            validation, schema checks, or auxiliary classification before the model sees it.
+          </p>
+          <div class="tag-list"><span class="badge badge--brand">Prevention</span></div>
         </div>
 
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F4DD;</div>
-          <div class="feature-content">
-            <h3>Robust Prompt Design &amp; Context Separation</h3>
-            <p>
-              Structuring prompts so trusted instructions are clearly separated from untrusted data,
-              rather than concatenating everything into one ambiguous block.
-            </p>
-          </div>
+        <div class="card card-accent">
+          <h3>Robust Prompt Design &amp; Context Separation</h3>
+          <p>
+            Structuring prompts so trusted instructions are clearly separated from untrusted data,
+            rather than concatenating everything into one ambiguous block.
+          </p>
+          <div class="tag-list"><span class="badge badge--blue">Design</span></div>
         </div>
 
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F50D;</div>
-          <div class="feature-content">
-            <h3>Output Filtering, Guardrails &amp; Oversight</h3>
-            <p>
-              Validating outputs before they are shown to users or used in downstream actions,
-              and adding secondary checks or human review for high-risk operations.
-            </p>
-          </div>
+        <div class="card card-accent">
+          <h3>Output Filtering, Guardrails &amp; Oversight</h3>
+          <p>
+            Validating outputs before they are shown to users or used in downstream actions,
+            and adding secondary checks or human review for high-risk operations.
+          </p>
+          <div class="tag-list"><span class="badge badge--amber">Detection</span></div>
         </div>
 
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F916;</div>
-          <div class="feature-content">
-            <h3>Multi-Agent Defence Pipelines</h3>
-            <p>
-              Splitting responsibilities across specialised stages such as review, sanitisation,
-              execution, and output checking to reduce single-point compromise.
-            </p>
-          </div>
+        <div class="card card-accent">
+          <h3>Multi-Agent Defence Pipelines</h3>
+          <p>
+            Splitting responsibilities across specialised stages such as review, sanitisation,
+            execution, and output checking to reduce single-point compromise.
+          </p>
+          <div class="tag-list"><span class="badge badge--brand">Pipeline</span></div>
         </div>
 
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F9F9;</div>
-          <div class="feature-content">
-            <h3>Context Sanitisation for Long or External Inputs</h3>
-            <p>
-              Analysing retrieved or long-context content before it enters the prompt, especially
-              in RAG systems, browsers, and pipelines that consume untrusted documents.
-            </p>
-          </div>
+        <div class="card card-accent">
+          <h3>Context Sanitisation for Long or External Inputs</h3>
+          <p>
+            Analysing retrieved or long-context content before it enters the prompt, especially
+            in RAG systems, browsers, and pipelines that consume untrusted documents.
+          </p>
+          <div class="tag-list"><span class="badge badge--blue">Sanitisation</span></div>
         </div>
 
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F512;</div>
-          <div class="feature-content">
-            <h3>Sandboxing &amp; Permission Control</h3>
-            <p>
-              Restricting what tools the model can call, validating arguments, and requiring
-              approval for sensitive actions so successful injections have limited real-world impact.
-            </p>
-          </div>
+        <div class="card card-accent">
+          <h3>Sandboxing &amp; Permission Control</h3>
+          <p>
+            Restricting what tools the model can call, validating arguments, and requiring
+            approval for sensitive actions so successful injections have limited real-world impact.
+          </p>
+          <div class="tag-list"><span class="badge badge--amber">Containment</span></div>
         </div>
 
-        <div class="feature-item">
-          <div class="feature-icon">&#x2699;&#xFE0F;</div>
-          <div class="feature-content">
-            <h3>Model-Level Alignment</h3>
-            <p>
-              Alignment, adversarial fine-tuning, and policy training improve baseline robustness,
-              but should be treated as one layer of defence rather than a full solution.
-            </p>
-          </div>
+        <div class="card card-accent">
+          <h3>Model-Level Alignment</h3>
+          <p>
+            Alignment, adversarial fine-tuning, and policy training improve baseline robustness,
+            but should be treated as one layer of defence rather than a full solution.
+          </p>
+          <div class="tag-list"><span class="badge badge--brand">Model Layer</span></div>
         </div>
 
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F4CA;</div>
-          <div class="feature-content">
-            <h3>Monitoring and Governance</h3>
-            <p>
-              Mature deployments require ongoing monitoring, incident response, and continuous
-              evaluation because prompt injection threats evolve over time.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
 
     <section class="section fade-in" id="testing">
-      <h2>5. Testing Frameworks and Methodologies</h2>
-      <p>
-        The report surveys a broad testing ecosystem, including attacker-model testing,
-        black-box and white-box methods, external-data injection testing, MCP-focused
-        scenarios, and frameworks such as Garak, PromptMe, PromptBench, OpenAI Evals,
-        AgentHarm, HarmBench, and PyRIT. However, the implemented platform does not wire
-        all of those frameworks directly into the product. This section therefore focuses
-        on what the current platform actually uses.
+  <h2>Testing Methodologies</h2>
+
+  <p>
+    Testing was one of the most important parts of our research because prompt injection cannot be
+    understood from theory alone. The report showed that secure evaluation has to go beyond simple
+    prompt examples and cover the full lifecycle of an LLM system: baseline benchmarking before deployment,
+    integration testing once tools and external components are connected, automated adversarial testing
+    to catch regressions, sandboxed testing for realistic risky scenarios, and continued monitoring as
+    the system evolves.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Research takeaway:</strong> no single framework gives full coverage. The most effective
+      approach is a layered testing strategy combining different approaches.
+    </p>
+  </div>
+
+  <div class="card-grid cols-2 stagger mt-3">
+    <div class="card">
+      <h3>Testing Approaches We Identified</h3>
+      <div class="insight-stack">
+        <article class="insight-item">
+          <h4>Offline Baseline Evaluation</h4>
+          <p>Benchmark model behaviour before connecting tools or external systems.</p>
+        </article>
+        <article class="insight-item">
+          <h4>Integration Testing</h4>
+          <p>Test tools, APIs, retrieval pipelines, and agent workflows in realistic combinations.</p>
+        </article>
+        <article class="insight-item">
+          <h4>Automated Adversarial Regression</h4>
+          <p>Run repeatable hostile prompts continuously to catch regressions early.</p>
+        </article>
+        <article class="insight-item">
+          <h4>Sandboxed Scenario Testing</h4>
+          <p>Simulate risky multi-step interactions without exposing production systems.</p>
+        </article>
+        <article class="insight-item">
+          <h4>Post-Deployment Monitoring</h4>
+          <p>Track safety drift and newly emerging threats as the system evolves.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Why This Matters</h3>
+      <div class="insight-stack">
+        <article class="insight-item insight-item--why">
+          <h4>Context Changes Risk</h4>
+          <p>A model that looks safe in isolated tests can fail once tools and external data are connected.</p>
+        </article>
+        <article class="insight-item insight-item--why">
+          <h4>Single Benchmarks Are Not Enough</h4>
+          <p>One-off results do not represent multi-turn workflows, chained actions, or real deployment pressure.</p>
+        </article>
+        <article class="insight-item insight-item--why">
+          <h4>Testing Must Be Continuous</h4>
+          <p>Reliable security comes from broad, repeated evaluation tied to real system behaviour.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+    <section class="section section-track section-track--break fade-in" id="part-2">
+      <h2>Platform Research and Technical Overview</h2>
+      <p class="section-track__lead">
+        Tooling review, implementation choices, and technical trade-offs behind the delivered system.
       </p>
-
-      <div class="callout">
-        <p>
-          <strong>Implemented testing in the platform:</strong> the codebase currently supports
-          two practical testing modes: custom prompt testing through the main prompt runner,
-          and framework-based scanning through a framework runner that delegates to Garak.
-        </p>
-      </div>
-
-      <div class="card-grid cols-2 stagger">
-        <div class="card">
-          <h3>Prompt Runner</h3>
-          <p>
-            The main testing path in the platform is the prompt runner. Users create a test,
-            choose a model, optionally attach an environment with mitigations, and then run
-            the prompt against either a platform model or an external model endpoint.
-          </p>
-          <p>
-            For platform models, the backend applies pre-input mitigations, compiles prompt-layer
-            mitigation instructions into the system prompt, applies post-output filtering, and then
-            performs monitoring and analysis after the response is returned.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Framework Runner</h3>
-          <p>
-            The framework mode currently routes to <strong>Garak</strong>. The frontend testing page
-            exposes Garak probe selection, and the backend framework runner delegates directly to a
-            Garak-based runner that executes scans, stores results, and exposes saved run summaries.
-          </p>
-          <p>
-            This makes Garak the only framework-backed testing tool that is clearly active in the
-            current platform implementation.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Automated Risk Analysis</h3>
-          <p>
-            After prompt runs, the backend performs a second-stage analysis to determine whether the
-            model response appears to reflect successful prompt injection. This analysis returns a
-            flag, a score, and a reason, giving the user an interpretable risk summary rather than
-            just raw model output.
-          </p>
-          <p>
-            This is one of the platform’s most important testing choices because it turns raw outputs
-            into an evaluative workflow.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Conversation-Aware Testing</h3>
-          <p>
-            The testing system stores conversation context so that follow-up messages in the same test
-            can keep history. This matters because prompt injection is often not a single-turn problem:
-            the platform can test behaviour in a more realistic conversation setting rather than treating
-            each input as isolated.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>External Model Validation</h3>
-          <p>
-            The backend also supports testing external models via user-provided endpoints and response
-            mappings. In that mode, the model can be evaluated as-is, which is useful for comparing
-            external behaviour without forcing the platform’s internal mitigation pipeline onto it.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>What is present in the repository but not actively wired as a platform framework</h3>
-          <p>
-            The repository includes a <strong>PyRIT runner file</strong>, but it is not registered in
-            the active runner registry. The report discusses PromptMe, PromptBench, OpenAI Evals,
-            AgentHarm, AdvBench, HarmBench, and PyRIT as important research frameworks, but those are
-            not exposed as first-class platform testing modes in the current implementation.
-          </p>
-        </div>
-      </div>
-
-      <h3>What this means for the platform</h3>
-      <ul class="styled-list">
-        <li>The platform supports both interactive prompt testing and framework-driven scans</li>
-        <li>Garak is the currently implemented framework-level scanner</li>
-        <li>The platform combines raw test execution with post-run risk analysis</li>
-        <li>Conversation context and external model validation make the testing workflow more realistic</li>
-        <li>The broader testing frameworks from the report remain part of the research basis and future expansion space, not the full implemented testing surface</li>
-      </ul>
-    </section>
-
-    <section class="section fade-in" id="findings">
-      <h2>6. Key Findings</h2>
-      <p>
-        The strongest conclusion from our research is that prompt injection should not be treated
-        as a niche jailbreak problem. It is a broad system-level risk that grows as models become
-        more connected, more agentic, and more able to act on the world through tools and workflows.
-      </p>
-
-      <div class="card-grid cols-2 stagger">
-        <div class="card">
-          <div class="card-icon">&#x2705;</div>
-          <h3>Direct attacks are only one part of the problem</h3>
-          <p>
-            Simple direct injections matter, but the more difficult and more realistic risks often
-            come from indirect, hidden, or tool-mediated attacks.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">&#x26A0;&#xFE0F;</div>
-          <h3>Obfuscation remains a major weakness</h3>
-          <p>
-            Encoded, multilingual, or otherwise disguised instructions are still much harder to
-            defend against than plain-text attacks.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">&#x1F517;</div>
-          <h3>Tool and MCP access expand the attack surface</h3>
-          <p>
-            Once models can retrieve content, call APIs, or trigger downstream actions, prompt
-            injection can lead to much more serious consequences than unsafe text generation alone.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">&#x1F6E1;&#xFE0F;</div>
-          <h3>No single mitigation is enough</h3>
-          <p>
-            Effective protection depends on layered controls: input handling, prompt structure,
-            guardrails, permissions, testing, and monitoring all matter.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">&#x1F4CA;</div>
-          <h3>Security testing must be continuous</h3>
-          <p>
-            Prompt injection resilience cannot be “proved” once and then assumed forever. Testing
-            needs to continue as prompts, tools, models, and integrations change.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">&#x1F3D7;&#xFE0F;</div>
-          <h3>This is mainly an architectural and operational challenge</h3>
-          <p>
-            Safer deployment depends less on choosing a “perfect” model and more on how the system
-            is structured, constrained, evaluated, and governed in practice.
-          </p>
-        </div>
-      </div>
-
-      <div class="callout mt-3">
-        <p>
-          These findings directly informed the platform direction: focus on practical threat visibility,
-          evaluation support, and deployment-aware safety thinking rather than pretending prompt injection
-          can be eliminated with a single prompt or model choice.
-        </p>
-      </div>
-    </section>
-
-    <section class="section fade-in" id="part-2">
-      <h2>Part 2 - Platform Research and Technical Overview</h2>
     </section>
 
     <section class="section fade-in" id="existing-solutions">
-      <h2>7. Existing Solutions (and Where We Took Inspiration)</h2>
-      <!---TODO MANUALLY: Check the summaries and change them to be more accurate and have more info on each tool-->
-      <!---TODO: Change the display since now it is like a list of widgets and we want it to look more dinamic, it would be great if we could open and close them to read more details or smth like that-->
+      <h2>Existing Solutions</h2>
       <p>
         Before deciding what our platform should do, we reviewed both practical security
         tooling and broader enterprise-facing AI platforms. Our goal was not to copy an
         existing product, but to understand how current solutions approach prompt injection,
         red-teaming, evaluation, and operational safety.
+        <a href="#ref-1">[1]</a><a href="#ref-2">[2]</a><a href="#ref-8">[8]</a><a href="#ref-9">[9]</a>
       </p>
 
-      <div class="card-grid cols-3 stagger">
+      <div class="card-grid cols-3 stagger existing-solutions-grid">
         <div class="card card--feature">
           <h3>Foundry</h3>
           <p>
-            Foundry was useful as a high-level enterprise reference point. It helped frame the idea
-            of working with multiple models and managed providers rather than designing the product
-            around a single hard-coded model family.
+            Azure AI Foundry is a managed platform for accessing and orchestrating foundation models,
+            provider integrations, and enterprise AI workflows. Our industry partner, Josh McDonald,
+            introduced it early in the project as a practical enterprise reference point.
+            <a href="#ref-3">[3]</a>
           </p>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Supports multi-model and managed-provider workflows in one enterprise environment.</li>
+              <li>Strong credential and API integration model for operational use.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Can add platform-level complexity compared with single-provider setups.</li>
+            </ul>
+          </div>
         </div>
         <div class="card card--feature">
           <h3>NVIDIA Garak</h3>
@@ -563,7 +443,19 @@
             Garak was the most directly reflected external testing framework in the implemented platform.
             It demonstrated the value of repeatable adversarial probing and informed the framework-scan
             capability exposed through the Testing page.
+            <a href="#ref-2">[2]</a>
           </p>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Broad automated adversarial probing across multiple risk categories.</li>
+              <li>Good fit for repeatable and regression-oriented security scans.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>More effective for broad scanning than deep root-cause explanation.</li>
+            </ul>
+          </div>
         </div>
         <div class="card card--feature">
           <h3>Microsoft PyRIT</h3>
@@ -572,7 +464,19 @@
             injection testing as structured red-teaming. The repository includes a PyRIT runner file,
             which shows it was considered in the codebase, but it is not part of the currently active
             runner registry.
+            <a href="#ref-8">[8]</a>
           </p>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Strong structured red-teaming model for enterprise-style testing pipelines.</li>
+              <li>Useful for governance and repeatable security workflow design.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Not currently active in the production runner registry in this project.</li>
+            </ul>
+          </div>
         </div>
         <div class="card card--feature">
           <h3>PromptBench</h3>
@@ -580,13 +484,36 @@
             PromptBench informed the importance of adversarial benchmarking and comparing behaviour
             across prompt variants rather than relying on one or two examples.
           </p>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Strong for systematic adversarial robustness benchmarking.</li>
+              <li>Encourages structured comparison across prompt variants and scenarios.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>More benchmark-oriented than user-facing for interactive teaching experiences.</li>
+            </ul>
+          </div>
         </div>
         <div class="card card--feature">
           <h3>OWASP PromptMe</h3>
           <p>
             PromptMe was useful because it connects testing to recognised OWASP threat scenarios and
             reinforces a developer-facing, application-security view of prompt injection.
+            <a href="#ref-1">[1]</a>
           </p>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Directly aligns prompt injection testing with recognised OWASP threat framing.</li>
+              <li>Developer-friendly perspective for communicating application-security risks.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Not directly integrated as an active runner in the current platform.</li>
+            </ul>
+          </div>
         </div>
         <div class="card card--feature">
           <h3>OpenAI Evals and benchmark suites</h3>
@@ -594,430 +521,244 @@
             OpenAI Evals, together with benchmark-oriented resources such as AgentHarm, AdvBench, and
             HarmBench, influenced the idea that testing should be reproducible, extensible, and suitable
             for regression workflows rather than one-off manual checks.
+            <a href="#ref-9">[9]</a>
+          </p>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Supports reproducible, extensible, and regression-friendly evaluation workflows.</li>
+              <li>Strong benchmark coverage through complementary safety datasets.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Requires additional adaptation to serve as a standalone educational UI layer.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="applied-inspirations">
+      <h2>Key Inspirations We Applied</h2>
+      <p>
+        The following ideas most directly shaped the platform that was actually delivered.
+      </p>
+
+      <div class="card-grid cols-3 stagger">
+        <div class="card card--feature">
+          <h3>Foundry</h3>
+          <p>
+            We used Foundry as the provider layer for model access and credential-managed API integration,
+            which reinforced our multi-provider design instead of locking the system to a single model stack.
+            <a href="#ref-3">[3]</a>
+          </p>
+        </div>
+
+        <div class="card card--feature">
+          <h3>NVIDIA Garak</h3>
+          <p>
+            It shaped our framework-assisted testing workflow so evaluation is not only manual prompt
+            demonstrations, but also repeatable scan-based security checks.
+            <a href="#ref-2">[2]</a>
+          </p>
+        </div>
+
+        <div class="card card--feature">
+          <h3>OWASP PromptMe</h3>
+          <p>
+            Although not directly integrated, it guided how we present risk in a developer-facing way and
+            aligns with our OWASP Top 10 references and security-learning resources across the report.
+            <a href="#ref-1">[1]</a>
           </p>
         </div>
       </div>
-
-      <h3>What we took inspiration from</h3>
-      <ul class="styled-list">
-        <li>Framework-assisted testing rather than only manual demonstrations</li>
-        <li>Support for multiple models and providers instead of a single locked stack</li>
-        <li>Security evaluation as a workflow, not a one-time benchmark</li>
-        <li>Developer-facing outputs that explain risk, not just raw model responses</li>
-        <li>An enterprise framing focused on governance, repeatability, and deployment realism</li>
-      </ul>
     </section>
 
     <section class="section fade-in" id="frontend">
-      <h2>8. Frontend</h2>
-      <div class="callout">
-        <p>
-          <strong>Important note:</strong> the repository clearly documents the implemented frontend stack,
-          but it does not include a formal written shortlist of rejected frontend frameworks. For that reason,
-          this section records the final frontend choices and the trade-offs evidenced by the codebase, rather
-          than inventing a comparison against tools that are not documented.
-        </p>
-      </div>
-
+      <h2>Frontend</h2>
       <p>
-        The implemented frontend is a <strong>React single-page application</strong> built with
-        <strong>TypeScript</strong> and bundled with <strong>Vite</strong>. Styling is based on
-        <strong>Tailwind CSS v4</strong>, with <strong>shadcn/ui</strong> primitives built on
-        <strong>Radix UI</strong>. Routing is handled by <strong>react-router-dom</strong>, theming by
-        <strong>next-themes</strong>, animations by <strong>motion</strong>, and PDF export by
-        <strong>@react-pdf/renderer</strong>.
+        We focused this comparison on major frontend framework options and then documented the
+        stack we actually applied in the final implementation.
       </p>
 
       <div class="card-grid cols-2 stagger">
         <div class="card">
-          <h3>React + TypeScript</h3>
-          <p>
-            <strong>Why it fits this project:</strong> the platform is not a single report page but a multi-view
-            application with testing tools, a vulnerability catalogue, mitigations, a prompt enhancer, and a
-            security assistant. A component-based React SPA makes that easier to organise and extend.
-          </p>
-          <p>
-            <strong>Trade-off:</strong> a SPA introduces more frontend structure and state management complexity
-            than a static site, but it better supports interactive workflows.
-          </p>
+          <h3>React</h3>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Large ecosystem and strong community support.</li>
+              <li>Component model works well for complex interactive interfaces.</li>
+              <li>Good fit for incremental growth and long-term maintainability.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Requires choosing and integrating supporting libraries.</li>
+              <li>State and architecture decisions can become complex over time.</li>
+            </ul>
+          </div>
         </div>
 
         <div class="card">
-          <h3>Vite</h3>
-          <p>
-            <strong>Why it fits this project:</strong> Vite supports fast local development and straightforward
-            builds, which is useful in a project with frequent frontend iteration.
-          </p>
-          <p>
-            <strong>Trade-off:</strong> Vite is a build tool rather than a full application framework, so some
-            architectural decisions remain the team’s responsibility.
-          </p>
+          <h3>Vue</h3>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Lower learning curve and clear single-file component structure.</li>
+              <li>Good built-in conventions for rapid development.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Smaller enterprise footprint in our target context.</li>
+              <li>Less aligned with the existing team familiarity and repo direction.</li>
+            </ul>
+          </div>
         </div>
 
         <div class="card">
-          <h3>Tailwind CSS v4</h3>
-          <p>
-            <strong>Why it fits this project:</strong> Tailwind makes it easier to maintain visual consistency
-            across many pages and components while supporting rapid UI iteration.
-          </p>
-          <p>
-            <strong>Trade-off:</strong> utility-heavy markup can become verbose, but it keeps styling close to
-            the component where it is used.
-          </p>
+          <h3>Angular</h3>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Comprehensive framework with strong structure and conventions.</li>
+              <li>Good for large-scale enterprise applications with strict patterns.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Heavier setup and steeper learning curve for this project scope.</li>
+              <li>More framework overhead than needed for a coursework platform.</li>
+            </ul>
+          </div>
         </div>
 
         <div class="card">
-          <h3>shadcn/ui + Radix UI</h3>
-          <p>
-            <strong>Why it fits this project:</strong> this combination gives accessible, composable UI primitives
-            without forcing the whole design into a rigid visual system. That fits a coursework platform that needs
-            both polish and flexibility.
-          </p>
-          <p>
-            <strong>Trade-off:</strong> it provides primitives rather than full page design out of the box, so more
-            composition work is needed. The final repository also explicitly removes unused MUI/Emotion dependencies,
-            which shows the implemented component direction is Radix/shadcn rather than Material UI.
-          </p>
+          <h3>Svelte</h3>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Very lightweight runtime and concise component syntax.</li>
+              <li>Strong performance characteristics for interactive UI work.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Smaller ecosystem for some advanced integration needs.</li>
+              <li>Less consistent with the project's existing implementation path.</li>
+            </ul>
+          </div>
         </div>
+      </div>
 
-        <div class="card">
-          <h3>react-router-dom</h3>
-          <p>
-            <strong>Why it fits this project:</strong> the platform has multiple routes such as Home, Mitigations,
-            Testing, Prompt Enhancer, and Security Knowledge Assistant, so explicit client-side routing is a natural
-            fit.
-          </p>
-          <p>
-            <strong>Trade-off:</strong> client-side routing requires frontend route management, but it keeps navigation
-            smooth inside the SPA.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>next-themes, motion, and @react-pdf/renderer</h3>
-          <p>
-            <strong>Why they fit this project:</strong> next-themes supports the repository rule that dark mode is
-            mandatory, motion supports page transitions and interactive polish, and @react-pdf/renderer enables export
-            of vulnerability, mitigation, and test reports from inside the app.
-          </p>
-          <p>
-            <strong>Trade-off:</strong> each library adds dependency weight, but each one supports a clearly implemented
-            feature in the shipped frontend.
-          </p>
-        </div>
+      <h3 class="mt-4">Applied Frontend Decision</h3>
+      <div class="card">
+        <h3>React + Vite</h3>
+        <p>
+          We implemented the frontend using React with Vite. React provides a flexible component
+          architecture for multi-view interactive features, while Vite supports fast local iteration
+          and straightforward production builds.
+          <a href="#ref-4">[4]</a><a href="#ref-5">[5]</a>
+        </p>
       </div>
     </section>
 
     <section class="section fade-in" id="backend">
-      <h2>9. Backend</h2>
-      <div class="callout">
-        <p>
-          <strong>Important note:</strong> the repository clearly documents the implemented backend stack,
-          but it does not include a formal written shortlist of rejected backend frameworks. This section
-          therefore focuses on the implemented tools and the trade-offs evidenced by the codebase.
-        </p>
-      </div>
-
+      <h2>Backend</h2>
       <p>
-        The implemented backend is built in <strong>Python</strong> using <strong>FastAPI</strong>. It uses
-        <strong>SQLite</strong> for persistence, <strong>SQLAlchemy</strong> and <strong>SQLModel-related</strong>
-        pieces for database interaction, <strong>httpx</strong> for outbound HTTP model calls, and a provider-routing
-        layer to abstract OpenAI, Anthropic, and OpenAI-compatible model endpoints.
+        For the backend framework choice, we focused on a direct comparison between FastAPI and Django.
+        <a href="#ref-6">[6]</a><a href="#ref-7">[7]</a>
       </p>
 
       <div class="card-grid cols-2 stagger">
-        <div class="card">
-          <h3>Python</h3>
-          <p>
-            <strong>Why it fits this project:</strong> Python is a natural fit for AI integration, test tooling,
-            backend orchestration, and security-oriented prototyping. It also aligns well with the libraries used for
-            HTTP clients, model integration, and backend testing.
-          </p>
-          <p>
-            <strong>Trade-off:</strong> Python is not the most performance-focused option for all workloads, but the
-            current platform prioritises flexibility, integration, and iteration speed.
-          </p>
-        </div>
-
         <div class="card">
           <h3>FastAPI</h3>
-          <p>
-            <strong>Why it fits this project:</strong> FastAPI gives a clean API layer for test creation, model execution,
-            chat streaming, prompt enhancement, and model listing. It also suits typed request/response schemas and rapid
-            API development.
-          </p>
-          <p>
-            <strong>Trade-off:</strong> a separate backend adds deployment complexity compared with a purely static frontend,
-            but it is necessary here because the platform performs model calls, persistence, analysis, and streaming.
-          </p>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>High development speed for API-first systems.</li>
+              <li>Strong async support and good performance for I/O-heavy endpoints.</li>
+              <li>Automatic docs and schema validation from typed models.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Fewer built-in batteries than full-stack frameworks.</li>
+              <li>Some architecture pieces must be assembled by the team.</li>
+            </ul>
+          </div>
         </div>
 
         <div class="card">
-          <h3>SQLite</h3>
-          <p>
-            <strong>Why it fits this project:</strong> SQLite is simple and lightweight, which suits a coursework platform
-            that needs to persist tests, framework runs, and prompt enhancements without requiring external database setup.
-          </p>
-          <p>
-            <strong>Trade-off:</strong> SQLite is less scalable than a full client-server database, but it is sufficient
-            for the implemented platform and reduces operational overhead.
-          </p>
+          <h3>Django</h3>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Mature full-stack framework with strong conventions and tooling.</li>
+              <li>Includes admin, auth, and ORM out of the box.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Heavier framework footprint for an API-centric project.</li>
+              <li>Can introduce extra complexity for this project scope.</li>
+            </ul>
+          </div>
         </div>
+      </div>
 
-        <div class="card">
-          <h3>SQLAlchemy / SQLModel-related database layer</h3>
-          <p>
-            <strong>Why it fits this project:</strong> the backend uses a structured persistence layer with models,
-            repositories, and sessions instead of raw ad hoc file storage. That fits the need to save tests and
-            enhancement results in a maintainable way.
-          </p>
-          <p>
-            <strong>Trade-off:</strong> an ORM layer adds abstraction, but it keeps persistence more organised as the
-            backend grows.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>httpx and provider implementations</h3>
-          <p>
-            <strong>Why it fits this project:</strong> the backend needs to call different model providers through HTTP.
-            httpx makes that practical while keeping the provider implementations separate and reusable.
-          </p>
-          <p>
-            <strong>Trade-off:</strong> supporting multiple providers requires more configuration and abstraction, but
-            it avoids tying the platform to a single vendor path.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Provider router architecture</h3>
-          <p>
-            <strong>Why it fits this project:</strong> all model calls go through a router that resolves the chosen model
-            to the correct provider implementation. This keeps routes, services, and runners free from provider-specific
-            logic and makes the system easier to extend with more models later.
-          </p>
-          <p>
-            <strong>Trade-off:</strong> abstraction adds architectural complexity, but it directly supports the platform’s
-            multi-provider research goals.
-          </p>
-        </div>
+      <h3 class="mt-4">Backend Decision</h3>
+      <div class="card">
+        <h3>FastAPI</h3>
+        <p>
+          We selected FastAPI because the platform is primarily API-driven and benefits from fast iteration,
+          typed schemas, and straightforward integration with model orchestration and streaming endpoints.
+          <a href="#ref-6">[6]</a>
+        </p>
       </div>
     </section>
 
-    <section class="section fade-in" id="technical-decisions">
-      <h2>10. Technical Decisions</h2>
+    <section class="section fade-in" id="architecture-summary">
+      <h2>Platform Architecture Summary</h2>
       <p>
-        Beyond the choice of tools, the repository shows several important architectural decisions that shape how the
-        platform works. These decisions are clearer and more trustworthy than trying to guess undocumented “alternatives”.
+        The platform combines a React SPA frontend with a Python FastAPI backend, emphasizing flexibility,
+        multi-provider support, and security-focused architecture.
       </p>
 
-      <div class="card-grid cols-2 stagger">
+      <div class="card-grid cols-3 stagger">
         <div class="card">
-          <h3>React SPA + FastAPI backend</h3>
+          <h3>Frontend</h3>
           <p>
-            The project is intentionally split into a React single-page frontend and a FastAPI backend. This separates
-            UI concerns from model routing, test orchestration, persistence, and analysis.
+            <strong>Stack:</strong> React 18 + TypeScript, bundled with Vite, styled with Tailwind CSS v4
+            and shadcn/ui components. Includes mandatory dark mode, client-side routing, smooth animations,
+            and PDF export capabilities.
+          </p>
+          <p>
+            <strong>Why:</strong> supports interactive multi-view workflows (Testing, Mitigations, Prompt
+            Enhancer, Security Assistant) with responsive, accessible components and consistent design.
           </p>
         </div>
 
         <div class="card">
-          <h3>REST + SSE rather than polling for chat</h3>
+          <h3>Backend</h3>
           <p>
-            The security assistant uses server-sent events for streaming chat responses. This makes the assistant feel
-            more interactive and better matches the token-by-token behaviour users expect from AI systems.
+            <strong>Stack:</strong> Python with FastAPI REST API. SQLite for persistence with SQLAlchemy
+            ORM. httpx for HTTP calls to multiple model providers (OpenAI, Anthropic, OpenAI-compatible).
+            Provider router abstraction keeps vendor-specific logic centralised.
+          </p>
+          <p>
+            <strong>Why:</strong> prioritises flexibility and integration speed. Multi-provider design
+            avoids vendor lock-in. Lightweight database suitable for coursework scale.
           </p>
         </div>
 
         <div class="card">
-          <h3>Provider abstraction instead of provider-specific logic everywhere</h3>
+          <h3>Testing Framework</h3>
           <p>
-            All model calls are routed through the provider router. This avoids scattering provider-specific request logic
-            throughout routes and services and makes the backend easier to maintain.
+            <strong>Frameworks:</strong> Azure AI Foundry and NVIDIA Garak. Foundry supports managed model
+            access and credential-based provider integration, while Garak provides repeatable adversarial
+            probing through framework-style scan workflows.
+            <a href="#ref-2">[2]</a><a href="#ref-3">[3]</a>
           </p>
-        </div>
-
-        <div class="card">
-          <h3>Layered backend architecture</h3>
           <p>
-            The backend is explicitly divided into API, application, domain, and infrastructure layers. This keeps HTTP,
-            business logic, domain logic, and external integrations separate instead of mixing everything together.
+            <strong>Why:</strong> together they support both operational model access and structured security
+            evaluation, making testing more consistent than manual prompt checks alone.
           </p>
-        </div>
-
-        <div class="card">
-          <h3>Prompt enhancer with verification</h3>
-          <p>
-            The prompt enhancer is not a single rewrite step. It is a three-stage pipeline: improve, prepend mitigation
-            guidance, and verify. The verification stage exists so the platform does not blindly trust its own enhancement
-            output.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Knowledge-base-backed assistant instead of raw chat only</h3>
-          <p>
-            The assistant first searches an internal knowledge base, augments the query with matched vulnerabilities and
-            mitigations, and then calls the model. This is a deliberate choice to ground responses in platform knowledge
-            rather than rely only on raw generation.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>localStorage instead of sessionStorage for chat persistence</h3>
-          <p>
-            The repository explicitly records that chat history was moved to localStorage so conversations survive tab
-            closure and browser restart. That is a direct implemented decision, not a guess.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Framework scans currently standardised on Garak</h3>
-          <p>
-            Although the broader report discusses multiple evaluation frameworks, the active framework runner currently
-            standardises on Garak. This keeps the implemented framework path narrow and maintainable while still supporting
-            a serious scan workflow.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Testing external models as-is</h3>
-          <p>
-            For external model validation, the runner skips the platform’s internal mitigation flow and tests the endpoint
-            as provided. This is a useful decision because it allows comparison of external systems without changing their
-            behaviour first.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Dark mode as a non-negotiable UI rule</h3>
-          <p>
-            The repository rules explicitly state that dark mode support is mandatory. This is not just visual polish:
-            it is a design-system decision that affects every component and page in the frontend.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section fade-in" id="tools-summary">
-      <h2>11. Tools Summary</h2>
-      <div class="card">
-        <div style="overflow-x:auto;">
-          <table style="width:100%; border-collapse:collapse;">
-            <thead>
-              <tr>
-                <th style="text-align:left; padding:.85rem; border-bottom:1px solid rgba(0,0,0,.12);">Category</th>
-                <th style="text-align:left; padding:.85rem; border-bottom:1px solid rgba(0,0,0,.12);">Tool(s) Used</th>
-                <th style="text-align:left; padding:.85rem; border-bottom:1px solid rgba(0,0,0,.12);">Purpose in the Platform</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Frontend framework</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">React 18</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Single-page application UI</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Frontend language</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">TypeScript</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Typed frontend code</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Build tool</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Vite</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Development server and production build</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Styling</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Tailwind CSS v4</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Utility-based styling and design consistency</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">UI primitives</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">shadcn/ui + Radix UI</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Reusable accessible components</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Routing</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">react-router-dom</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Client-side page routing</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Theme management</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">next-themes</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Light/dark mode support</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Animations</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">motion</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Page transitions and UI animation</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">PDF export</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">@react-pdf/renderer</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Export of vulnerability, mitigation, and test reports</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Backend language</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Python</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Backend services and AI integration</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Backend framework</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">FastAPI</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">REST API and streaming endpoints</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Database</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">SQLite</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Persistence for tests and prompt enhancements</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Persistence layer</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">SQLAlchemy / SQLModel-related components</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Sessions, models, and repository pattern</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">HTTP client</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">httpx</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Calls to external model providers</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Model provider layer</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">ProviderRouter + provider registry</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Routing requests to OpenAI, Anthropic, and OpenAI-compatible providers</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Configured model families</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">gpt-5.2, gpt-5.1, gpt-5-nano, o4-nano, claude-sonnet-4-5, claude-haiku-4-5, claude-opus-4-1, llama-3.3-70b, phi-4, deepseek-v3.1, mistral-small-2503</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Multi-provider model selection for tests and assistant features</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Knowledge retrieval</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Internal vulnerability and mitigation catalogue + BM25-style keyword search</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Grounding the security assistant in curated project knowledge</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Testing modes</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Prompt runner + framework runner</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Interactive prompt testing and framework-based scans</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Framework scanner actually wired in</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Garak</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Framework-mode scan execution and saved run reports</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Prompt enhancement</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Three-stage improve → prepend mitigations → verify pipeline</td>
-                <td style="padding:.85rem; border-bottom:1px solid rgba(0,0,0,.08);">Hardening user prompts with verification before returning results</td>
-              </tr>
-              <tr>
-                <td style="padding:.85rem;">Chat persistence</td>
-                <td style="padding:.85rem;">localStorage</td>
-                <td style="padding:.85rem;">Persisting assistant history across browser restarts</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </section>
@@ -1027,27 +768,22 @@
       <p>
         The following sources were the main references used in our research report and knowledge base.
       </p>
+      <p>
+        <strong>Clarification:</strong> for references to information contained within the report refer to content in this same report.
+      </p>
 
       <ol class="styled-list">
-        <li>Datadog. <em>LLM guardrails: Best practices for deploying LLM apps securely</em>, 2025.</li>
-        <li>Runpeng Geng et al. <em>Pisanitizer: Preventing prompt injection to long-context LLMs via prompt sanitization</em>, 2025.</li>
-        <li>Kai Greshake et al. <em>Not what you’ve signed up for: Compromising real-world LLM-integrated applications with indirect prompt injection</em>, 2023.</li>
-        <li>S. M. Asif Hossain et al. <em>A multi-agent LLM defense pipeline against prompt injection attacks</em>, 2025.</li>
-        <li>Donghyun Lee and Mo Tiwari. <em>Prompt infection: LLM-to-LLM prompt injection within multi-agent systems</em>, 2024.</li>
-        <li>Yupei Liu et al. <em>Formalizing and benchmarking prompt injection attacks and defenses</em>, USENIX Security Symposium, 2024.</li>
-        <li>Mantas Mazeika et al. <em>HarmBench: A standardized evaluation framework for automated red teaming and robust refusal</em>, 2024.</li>
-        <li>OWASP. <em>LLM01:2025 Prompt Injection</em>, OWASP GenAI Security Project, 2025.</li>
-        <li>OWASP Foundation. <em>LLM01:2023 - Prompt Injection</em>, 2023.</li>
-        <li>OWASP Foundation. <em>LLM Prompt Injection Prevention Cheat Sheet</em>, 2025.</li>
-        <li>Joon Sung Park et al. <em>Generative agents: Interactive simulacra of human behavior</em>, 2023.</li>
-        <li>Prompt Security. <em>The OWASP Top 10 for LLM Apps / GenAI (2025): Prompt injection and mitigations</em>, 2024.</li>
-        <li>Timo Schick et al. <em>Toolformer: Language models can teach themselves to use tools</em>, 2023.</li>
-        <li>Solo.io. <em>Mitigating indirect prompt injection attacks on LLMs</em>, 2025.</li>
-        <li>Le Wang et al. <em>Manipulating multimodal agents via cross-modal prompt injection</em>, 2025.</li>
-        <li>Y. Wang et al. <em>Defending against prompt injection with DataFilter</em>, 2025.</li>
-        <li>Alexander Wei, Nika Haghtalab, and Jacob Steinhardt. <em>Jailbroken: How does LLM safety training fail?</em>, NeurIPS, 2023.</li>
-        <li>Andy Zou et al. <em>Universal and transferable adversarial attacks on aligned language models</em>, 2023.</li>
-        <li>Project repository documentation: root README, frontend README, backend README, backend ARCHITECTURE, and FEATURES notes.</li>
+        <li id="ref-1"><strong>[1]</strong> OWASP GenAI Security Project. <em>LLM01:2025 Prompt Injection</em>, 2025. https://genai.owasp.org/llmrisk/llm01-prompt-injection/</li>
+        <li id="ref-2"><strong>[2]</strong> NVIDIA. <em>garak: LLM vulnerability scanner</em> (GitHub repository), accessed 2026. https://github.com/NVIDIA/garak</li>
+        <li id="ref-3"><strong>[3]</strong> Microsoft Azure. <em>Azure AI Foundry Documentation</em>, accessed 2026. https://learn.microsoft.com/azure/ai-foundry/</li>
+        <li id="ref-4"><strong>[4]</strong> React. <em>React Documentation</em>, accessed 2026. https://react.dev/</li>
+        <li id="ref-5"><strong>[5]</strong> Vite. <em>Vite Documentation</em>, accessed 2026. https://vite.dev/guide/</li>
+        <li id="ref-6"><strong>[6]</strong> FastAPI. <em>FastAPI Documentation</em>, accessed 2026. https://fastapi.tiangolo.com/</li>
+        <li id="ref-7"><strong>[7]</strong> Django Software Foundation. <em>Django Documentation</em>, accessed 2026. https://docs.djangoproject.com/</li>
+        <li id="ref-8"><strong>[8]</strong> Microsoft. <em>PyRIT: Python Risk Identification Tool for generative AI</em> (GitHub repository), accessed 2026. https://github.com/Azure/PyRIT</li>
+        <li id="ref-9"><strong>[9]</strong> OpenAI. <em>OpenAI Evals</em> (GitHub repository), accessed 2026. https://github.com/openai/evals</li>
+        <li id="ref-10"><strong>[10]</strong> PromptBench. <em>PromptBench</em> (GitHub repository), accessed 2026. https://github.com/microsoft/promptbench</li>
+        <li id="ref-11"><strong>[11]</strong> Mantas Mazeika et al. <em>HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal</em>, 2024. https://arxiv.org/abs/2402.04249</li>
       </ol>
     </section>
 
