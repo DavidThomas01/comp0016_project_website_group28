@@ -254,6 +254,265 @@
       letter-spacing: 0.05em;
       margin-top: 0.25rem;
     }
+
+    /* ── Site map tree ── */
+    .sitemap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding: 0.5rem 0 1rem;
+      overflow-x: auto;
+    }
+
+    .sitemap-inner {
+      width: 100%;
+      max-width: 1160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Each node */
+    .sm-node {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.1rem;
+      border: 1.5px solid rgba(255,107,53,0.35);
+      border-radius: 0.6rem;
+      background: linear-gradient(135deg, #fff9f7, #fff);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #333;
+      text-align: center;
+      white-space: nowrap;
+      box-shadow: 0 1px 4px rgba(255,107,53,0.07);
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+    .sm-node:hover {
+      border-color: #FF6B35;
+      box-shadow: 0 3px 10px rgba(255,107,53,0.15);
+    }
+    .sm-node--home {
+      padding: 0.65rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 800;
+      border-width: 2px;
+      border-color: #FF6B35;
+      background: linear-gradient(135deg, #FF6B35, #FF4500);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(255,107,53,0.3);
+    }
+    .sm-node--home:hover { box-shadow: 0 6px 20px rgba(255,107,53,0.4); border-color: #FF4500; }
+    .sm-node--vuln {
+      border-color: rgba(99,102,241,0.4);
+      background: linear-gradient(135deg, #f5f3ff, #fff);
+      font-size: 0.78rem;
+      padding: 0.4rem 0.85rem;
+    }
+    .sm-node--vuln:hover { border-color: #6366f1; }
+    .sm-node--widget {
+      border-color: rgba(16,185,129,0.4);
+      background: linear-gradient(135deg, #f0fdf4, #fff);
+      color: #065f46;
+      font-size: 0.8rem;
+      padding: 0.4rem 1rem;
+      border-style: dashed;
+    }
+
+    /* Vertical connector */
+    .sm-vline {
+      width: 2px;
+      height: 28px;
+      background: linear-gradient(180deg, #FF6B35, rgba(255,107,53,0.35));
+      flex-shrink: 0;
+    }
+    .sm-vline--short { height: 18px; }
+
+    /* Horizontal row of nodes */
+    .sm-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+    }
+
+    /* Each column in a row */
+    .sm-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Horizontal spanning line above a row */
+    .sm-hline-wrap {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .sm-branch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1 1 0;
+      min-width: 0;
+    }
+    .sm-branch .sm-node {
+      min-width: 0;
+    }
+
+    .sm-main-branches {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      position: relative;
+      padding-top: 2px;
+    }
+
+    .sm-crossbar {
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: rgba(255,107,53,0.35);
+    }
+
+    .sm-branch-row {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      align-items: flex-start;
+      gap: 1rem;
+      width: 100%;
+      margin-top: 0;
+    }
+
+    .sm-branch-card {
+      width: 100%;
+      border: 1.5px solid rgba(255,107,53,0.22);
+      border-top: 3px solid rgba(255,107,53,0.8);
+      border-radius: 0.85rem;
+      background: linear-gradient(160deg, #fff9f7 0%, #fff 100%);
+      box-shadow: 0 2px 10px rgba(255,107,53,0.06);
+      padding: 0.9rem 0.85rem;
+    }
+
+    .sm-branch-title {
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: #222;
+      text-align: center;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .sm-branch-meta {
+      margin-top: 0.65rem;
+      font-size: 0.64rem;
+      line-height: 1.55;
+      color: #666;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .sm-branch-meta strong {
+      color: #c2410c;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.6rem;
+      margin-right: 0.2rem;
+    }
+
+    .sm-branch-meta--stack {
+      white-space: normal;
+    }
+
+    /* ── Database section ── */
+    .db-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .db-card {
+      border: 1px solid rgba(255,107,53,0.16);
+      border-top: 3px solid #FF6B35;
+      border-radius: 0.9rem;
+      background: linear-gradient(160deg, #fff9f7 0%, #fff 100%);
+      box-shadow: 0 2px 10px rgba(255,107,53,0.05);
+      overflow: hidden;
+    }
+    .db-card__head {
+      padding: 0.9rem 1rem 0.75rem;
+      border-bottom: 1px solid rgba(255,107,53,0.1);
+      background: linear-gradient(135deg, #fff7f3, #fff);
+    }
+    .db-card__name {
+      font-family: "SF Mono", ui-monospace, Menlo, monospace;
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #c2410c;
+      margin: 0;
+    }
+    .db-card__sub {
+      margin: 0.3rem 0 0;
+      font-size: 0.82rem;
+      color: #666;
+      line-height: 1.5;
+    }
+    .db-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+    }
+    .db-table th {
+      text-align: left;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #777;
+      background: #fff;
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid #f0e5df;
+    }
+    .db-table td {
+      padding: 0.68rem 1rem;
+      border-bottom: 1px solid #f7ebe5;
+      color: #444;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .db-table tr:last-child td { border-bottom: none; }
+    .db-type {
+      font-family: "SF Mono", ui-monospace, Menlo, monospace;
+      font-size: 0.78rem;
+      color: #c2410c;
+      white-space: nowrap;
+    }
+    .db-key {
+      font-family: "SF Mono", ui-monospace, Menlo, monospace;
+      font-size: 0.78rem;
+      color: #666;
+      white-space: nowrap;
+    }
+    .db-notes {
+      padding: 0.9rem 1rem 1rem;
+      border-top: 1px solid rgba(255,107,53,0.08);
+      font-size: 0.88rem;
+      color: #555;
+      line-height: 1.65;
+    }
+    .db-notes p {
+      margin: 0 0 0.45rem;
+    }
+    .db-notes p:last-child {
+      margin-bottom: 0;
+    }
   </style>
 </head>
 
@@ -323,6 +582,7 @@
     <!-- Table of Contents -->
     <section class="section fade-in">
       <ul class="section-toc" aria-label="Sections on this page">
+        <li><a href="#sitemap">Site Map</a></li>
         <li><a href="#architecture">1. High-Level Architecture</a></li>
         <li><a href="#principles">2. Design Principles</a></li>
         <li><a href="#frontend">3. Frontend Architecture</a></li>
@@ -332,6 +592,80 @@
         <li><a href="#database">7. Database Architecture</a></li>
         <li><a href="#api">8. API Design</a></li>
       </ul>
+    </section>
+
+    <!-- ───────────────────────────────────────────
+         SITE MAP
+    ─────────────────────────────────────────────── -->
+    <section class="section fade-in" id="sitemap">
+      <h2>Site Map</h2>
+      <p>
+        The platform is a single-page application with six distinct routes, a floating
+        chat widget accessible from every page, and eight individual vulnerability detail
+        pages branching from the home catalogue.
+      </p>
+
+      <div class="sitemap" role="img" aria-label="Platform site map showing page hierarchy">
+        <div class="sitemap-inner">
+
+          <!-- Root -->
+          <div class="sm-col">
+            <div class="sm-node sm-node--home">Platform Home</div>
+            <div class="sm-vline"></div>
+          </div>
+
+          <div class="sm-main-branches">
+            <div class="sm-crossbar" aria-hidden="true"></div>
+
+            <div class="sm-branch-row">
+              <div class="sm-branch">
+                <div class="sm-vline"></div>
+                <div class="sm-branch-card">
+                  <p class="sm-branch-title">Vulnerability Catalogue</p>
+                </div>
+              </div>
+
+              <div class="sm-branch">
+                <div class="sm-vline"></div>
+                <div class="sm-branch-card">
+                  <p class="sm-branch-title">Mitigation Library</p>
+                </div>
+              </div>
+
+              <div class="sm-branch">
+                <div class="sm-vline"></div>
+                <div class="sm-branch-card">
+                  <p class="sm-branch-title">Testing Workbench</p>
+                </div>
+              </div>
+
+              <div class="sm-branch">
+                <div class="sm-vline"></div>
+                <div class="sm-branch-card">
+                  <p class="sm-branch-title">Prompt Enhancer</p>
+                </div>
+              </div>
+
+              <div class="sm-branch">
+                <div class="sm-vline"></div>
+                <div class="sm-branch-card">
+                  <p class="sm-branch-title">Security Knowledge Assistant</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Persistent widget note -->
+          <div style="margin-top:1.75rem;">
+            <div class="sm-node sm-node--widget">&#x1F4AC; Chat Widget — persistent on all pages</div>
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align:center; font-size:0.85rem; color:#888; margin-top:0.5rem;">
+        Solid lines indicate direct navigation. The chat widget (dashed border) is mounted
+        in the root layout and is accessible from every route without navigation.
+      </p>
     </section>
 
     <!-- ───────────────────────────────────────────
@@ -744,193 +1078,182 @@ graph LR
     </section>
 
     <!-- ───────────────────────────────────────────
-         5. ANALYSIS PIPELINE
-    ─────────────────────────────────────────────── -->
-    <section class="section fade-in" id="pipeline">
-      <h2>5. AI Analysis Pipeline</h2>
-      <p>
-        Every prompt test run produces a <code>MitigationAnalysis</code> domain object
-        that reports whether the model's response was compromised by the injected prompt.
-        This judgment is produced by a two-stage hybrid analyser in the infrastructure
-        layer: a deterministic rule engine (weighted 60%) combined with an AI semantic
-        classifier (weighted 40%). The final risk score is computed using a probabilistic
-        combination formula, <em>score = 1 − ∏(1 − wᵢ · sᵢ)</em>, which keeps the result
-        naturally bounded in [0, 1].
-      </p>
-
-      <div class="mermaid">
-graph LR
-    INPUT["Input<br/>context · prompt · response"]
-
-    subgraph Det["Deterministic Engine · 60%"]
-        RULES["33 regex rules<br/>7 categories"]
-        STRUCT["Structural heuristics"]
-        ENCODE["Encoding detector<br/>(Base64 · ROT13 · hex)"]
-        DSCORE["Deterministic score"]
-        RULES & STRUCT & ENCODE --> DSCORE
-    end
-
-    subgraph AI["AI Classifier · 40%"]
-        AIPROMPT["JSON prompt → gpt-5-nano"]
-        AIRESULT["confidence · attack_type"]
-        AIPROMPT --> AIRESULT
-    end
-
-    COMBINE["score = 1 − ∏(1 − wᵢ·sᵢ)"]
-    OUTPUT["InjectionAnalysisResult<br/>risk_score · severity · flags"]
-    FINAL["MitigationAnalysis<br/>flagged · score · reason"]
-
-    INPUT --> Det & AI
-    DSCORE --> COMBINE
-    AIRESULT --> COMBINE
-    COMBINE --> OUTPUT --> FINAL
-      </div>
-
-      <h3>Runner Dispatch</h3>
-      <p>
-        Before analysis is invoked, <code>RunnerRouter</code> selects the appropriate
-        <code>TestRunner</code> implementation based on the <code>RunnerSpec.type</code>
-        field stored with the test:
-      </p>
-      <div class="table-wrap">
-        <table class="layer-table">
-          <thead><tr><th>Runner type</th><th>Class</th><th>Mechanism</th><th>Analysis used</th></tr></thead>
-          <tbody>
-            <tr>
-              <td><code>prompt</code></td>
-              <td><code>PromptRunner</code></td>
-              <td>Sends crafted messages directly to the model via <code>ProviderRouter</code>; applies mitigation chain before/after</td>
-              <td>Hybrid analyser (<code>PromptTestAnalyser</code>)</td>
-            </tr>
-            <tr>
-              <td><code>framework</code></td>
-              <td><code>GarakRunner</code></td>
-              <td>Writes a temporary YAML config and executes <code>garak</code> as a managed subprocess; parses JSONL hit reports</td>
-              <td>DEFCON-score aggregation from Garak report; no hybrid analyser</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- ───────────────────────────────────────────
-         6. END-TO-END WORKFLOW
-    ─────────────────────────────────────────────── -->
-    <section class="section fade-in" id="workflow">
-      <h2>6. End-to-End Workflow</h2>
-      <p>
-        The sequence diagram below traces a complete prompt-runner test execution from the
-        moment the user initiates a run in the browser to the moment results are returned.
-        The Garak framework path diverges after runner dispatch and is not shown in full.
-      </p>
-
-      <div class="mermaid">
-sequenceDiagram
-    participant FE as Frontend
-    participant API as API
-    participant SVC as TestService
-    participant PR as PromptRunner
-    participant MIT as Mitigations
-    participant MP as ModelProvider
-    participant AZ as Analyser
-
-    FE->>API: POST /tests/{id}/run
-    API->>SVC: run_test(test_id)
-    SVC->>PR: run(test)
-    PR->>MIT: apply_pre_input(prompt)
-    MIT-->>PR: filtered prompt
-    PR->>MP: complete(messages)
-    MP-->>PR: model response
-    PR->>MIT: apply_post_output(response)
-    MIT-->>PR: filtered response
-    PR->>AZ: analyse(prompt, response)
-    AZ-->>PR: MitigationAnalysis
-    PR-->>SVC: RunResult
-    SVC-->>API: RunResult
-    API-->>FE: JSON RunResult
-      </div>
-
-      <p>
-        Mitigation objects in the chain are resolved from <code>MITIGATION_REGISTRY</code>
-        using the slug list stored in <code>EnvironmentSpec.mitigations</code>. Each
-        mitigation implements exactly one of the <code>MitigationLayer</code> stages
-        (<code>PRE_INPUT</code>, <code>POST_OUTPUT</code>, <code>PROMPT</code>,
-        <code>INFRASTRUCTURE</code>, <code>MONITORING</code>), and the runner iterates
-        them in layer order. Mitigation verdicts are aggregated alongside the
-        analyser result to produce the composite <code>MitigationAnalysis</code>.
-      </p>
-    </section>
-
-    <!-- ───────────────────────────────────────────
-         7. DATABASE ARCHITECTURE
+         5. DATABASE ARCHITECTURE
     ─────────────────────────────────────────────── -->
     <section class="section fade-in" id="database">
-      <h2>7. Database Architecture</h2>
+      <h2>5. Database Architecture</h2>
       <p>
-        Persistence is provided by a single SQLite file accessed through SQLAlchemy's ORM.
-        The schema comprises three tables. Complex nested objects (<code>ModelSpec</code>,
-        <code>EnvironmentSpec</code>, <code>RunnerSpec</code>) are stored as JSON in
-        <code>TEXT</code> columns and deserialised by <code>TestRepository._to_domain()</code>
-        on read. This avoids the overhead of normalised sub-tables while keeping the domain
-        model free of ORM annotations.
+        The backend uses a single SQLite database file at <code>sqlite:///./app.db</code>,
+        accessed via SQLAlchemy ORM and initialised at startup with
+        <code>Base.metadata.create_all(bind=engine)</code>. Persisted storage is deliberately
+        narrow: only user-generated artefacts are written to disk. The platform's security
+        knowledge base is held separately in backend code as in-memory registries.
       </p>
 
-      <div class="mermaid">
-erDiagram
-    tests {
-        TEXT id PK
-        TEXT name
-        TEXT model_json
-        TEXT environment_json
-        TEXT runner_json
-        TEXT created_at
-    }
+      <div class="db-grid">
+        <article class="db-card">
+          <div class="db-card__head">
+            <h3 class="db-card__name">tests</h3>
+            <p class="db-card__sub">
+              Stores executed tests.
+            </p>
+          </div>
+          <table class="db-table">
+            <thead>
+              <tr><th>Column</th><th>Type</th><th>Key</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>id</code></td><td><span class="db-type">String</span></td><td><span class="db-key">PK</span></td></tr>
+              <tr><td><code>name</code></td><td><span class="db-type">String</span></td><td></td></tr>
+              <tr><td><code>model</code></td><td><span class="db-type">JSON</span></td><td></td></tr>
+              <tr><td><code>environment</code></td><td><span class="db-type">JSON</span></td><td></td></tr>
+              <tr><td><code>runner</code></td><td><span class="db-type">JSON</span></td><td></td></tr>
+              <tr><td><code>created_at</code></td><td><span class="db-type">DateTime</span></td><td></td></tr>
+            </tbody>
+          </table>
+          <div class="db-notes">
+            <p><strong>Purpose:</strong> stores complete executed test records.</p>
+            <p><strong>JSON fields:</strong> <code>model</code>, <code>environment</code>, and <code>runner</code> store the nested test configuration.</p>
+          </div>
+        </article>
 
-    test_configurations {
-        TEXT id PK
-        TEXT name
-        TEXT model_json
-        TEXT environment_json
-        TEXT runner_json
-        TEXT created_at
-    }
+        <article class="db-card">
+          <div class="db-card__head">
+            <h3 class="db-card__name">test_configurations</h3>
+            <p class="db-card__sub">
+              Stores saved test presets.
+            </p>
+          </div>
+          <table class="db-table">
+            <thead>
+              <tr><th>Column</th><th>Type</th><th>Key</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>id</code></td><td><span class="db-type">String</span></td><td><span class="db-key">PK</span></td></tr>
+              <tr><td><code>name</code></td><td><span class="db-type">String</span></td><td></td></tr>
+              <tr><td><code>model</code></td><td><span class="db-type">JSON</span></td><td></td></tr>
+              <tr><td><code>environment</code></td><td><span class="db-type">JSON</span></td><td></td></tr>
+              <tr><td><code>runner</code></td><td><span class="db-type">JSON</span></td><td></td></tr>
+              <tr><td><code>created_at</code></td><td><span class="db-type">DateTime</span></td><td><span class="db-key">INDEX</span></td></tr>
+            </tbody>
+          </table>
+          <div class="db-notes">
+            <p><strong>Purpose:</strong> stores saved configurations before a test is run.</p>
+            <p><strong>Difference from <code>tests</code>:</strong> same structure, but used for reusable presets rather than historical executions.</p>
+          </div>
+        </article>
 
-    prompt_enhancements {
-        TEXT id PK
-        TEXT original_prompt
-        TEXT enhanced_prompt
-        TEXT enhancement_type
-        TEXT created_at
-    }
+        <article class="db-card">
+          <div class="db-card__head">
+            <h3 class="db-card__name">prompt_enhancements</h3>
+            <p class="db-card__sub">
+              Stores prompt enhancement runs.
+            </p>
+          </div>
+          <table class="db-table">
+            <thead>
+              <tr><th>Column</th><th>Type</th><th>Key</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>id</code></td><td><span class="db-type">String</span></td><td><span class="db-key">PK</span></td></tr>
+              <tr><td><code>original_prompt</code></td><td><span class="db-type">String</span></td><td></td></tr>
+              <tr><td><code>improved_prompt</code></td><td><span class="db-type">String</span></td><td></td></tr>
+              <tr><td><code>enhanced_prompt</code></td><td><span class="db-type">String</span></td><td></td></tr>
+              <tr><td><code>selected_mitigation_ids</code></td><td><span class="db-type">JSON</span></td><td></td></tr>
+              <tr><td><code>verification_data</code></td><td><span class="db-type">JSON</span></td><td></td></tr>
+              <tr><td><code>model_id</code></td><td><span class="db-type">String</span></td><td></td></tr>
+              <tr><td><code>attempts</code></td><td><span class="db-type">Integer</span></td><td></td></tr>
+              <tr><td><code>created_at</code></td><td><span class="db-type">DateTime</span></td><td><span class="db-key">INDEX</span></td></tr>
+            </tbody>
+          </table>
+          <div class="db-notes">
+            <p><strong>Purpose:</strong> stores the full output of the prompt enhancement pipeline.</p>
+            <p><strong>JSON fields:</strong> <code>selected_mitigation_ids</code> stores the chosen mitigation list and <code>verification_data</code> stores the verifier result.</p>
+          </div>
+        </article>
       </div>
 
       <div class="callout callout--note">
         <p>
-          <strong>JSON column strategy:</strong> The <code>model_json</code>,
-          <code>environment_json</code>, and <code>runner_json</code> columns each store a
-          complete serialisation of their corresponding domain dataclass (produced via
-          Python's <code>dataclasses.asdict()</code>). On read, <code>TestRepository</code>
-          reconstructs the domain objects field-by-field, applying type coercions (e.g.
-          converting <code>runner["type"]</code> to a <code>RunnerType</code> enum). This
-          design allows the domain model to evolve independently of the SQL schema, with
-          migration handled by adding new optional keys to the JSON rather than altering
-          table columns.
+          <strong>JSON column strategy:</strong> the <code>model</code>,
+          <code>environment</code>, <code>runner</code>, <code>selected_mitigation_ids</code>,
+          and <code>verification_data</code> fields are stored as JSON columns instead of
+          being normalised into child tables. For tests, <code>TestRepository.create()</code>
+          serialises the nested dataclasses with <code>dataclasses.asdict()</code>, and
+          <code>TestRepository._to_domain()</code> rebuilds them on read, including enum
+          coercion for <code>RunnerType</code> and rehydration of saved message history into
+          <code>Message</code> objects. This keeps the relational schema small while leaving
+          nested-structure validation in the application layer.
         </p>
       </div>
 
       <p>
-        The <code>test_configurations</code> table stores saved (but not yet executed) test
-        templates with the same JSON column structure as <code>tests</code>. Separating
-        executed tests from saved configurations allows the UI to present a clean
-        distinction between "saved test presets" and "historical run results".
+        There are no foreign keys in the schema because each stored record is designed to be
+        self-contained. A test row already includes its model, environment, and runner
+        payloads; a prompt enhancement row already includes its selected mitigations and
+        verification result. For a single-user SQLite-backed educational platform, this is a
+        pragmatic tradeoff: simpler CRUD operations, no joins for common reads, and a domain
+        model that evolves more quickly than the SQL schema.
+      </p>
+
+      <h3>How Vulnerabilities and Mitigations Are Stored</h3>
+      <p>
+        The vulnerability catalogue and mitigation knowledge are <strong>not database
+        tables</strong>. They are stored in the backend as module-level Python dictionaries
+        populated with immutable dataclass instances when the process starts.
+      </p>
+
+      <div class="table-wrap">
+        <table class="layer-table">
+          <thead>
+            <tr><th>Backend source</th><th>Stored as</th><th>Role in the system</th><th>Persistence model</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>domain/knowledge/vulnerabilities.py</code></td>
+              <td><code>VULNERABILITIES: Dict[str, Vulnerability]</code></td>
+              <td>Canonical backend catalogue used by the Security Knowledge Assistant and keyword search</td>
+              <td>Static, version-controlled Python registry rebuilt at every backend startup</td>
+            </tr>
+            <tr>
+              <td><code>domain/knowledge/mitigations.py</code></td>
+              <td><code>MITIGATIONS: Dict[str, Mitigation]</code></td>
+              <td>Knowledge-base mitigation entries used for retrieval and explanatory chat responses</td>
+              <td>Static in-memory registry; not persisted to SQLite</td>
+            </tr>
+            <tr>
+              <td><code>infra/config/mitigations.py</code></td>
+              <td><code>MITIGATION_REGISTRY: Dict[str, MitigationConfig]</code></td>
+              <td>Executable mitigation configuration for prompt compilation and runner-layer defence application</td>
+              <td>Static runtime registry containing both prompt-layer messages and concrete mitigation implementations</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        This split is important. SQLite stores operational artefacts created by users during
+        normal use of the platform. By contrast, vulnerabilities and mitigations are shipped
+        with the codebase as trusted reference content. The chat assistant queries these
+        in-memory registries through <code>search_knowledge_base()</code>, which tokenises
+        and ranks the Python-defined entries directly without any SQL query, migration, or
+        seed data step.
+      </p>
+
+      <p>
+        The overall database architecture is therefore hybrid in practice:
+        <strong>relational persistence for mutable workflow state</strong> plus
+        <strong>static code-defined registries for security knowledge</strong>. Both are part
+        of backend state management, but only the former is managed by SQLAlchemy and written
+        to the SQLite file on disk.
       </p>
     </section>
 
     <!-- ───────────────────────────────────────────
-         8. API DESIGN
+         6. API DESIGN
     ─────────────────────────────────────────────── -->
     <section class="section fade-in" id="api">
-      <h2>8. API Design</h2>
+      <h2>6. API Design</h2>
       <p>
         The backend exposes a RESTful HTTP API mounted under <code>/api/v1</code> with six
         route modules. All request and response bodies are JSON validated by Pydantic v2
