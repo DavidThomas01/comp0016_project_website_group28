@@ -43,16 +43,15 @@
           <a class="nav-link" href="ui-design.html">UI Design</a>
           <a class="nav-link" href="system-design.html">System Design</a>
           <a class="nav-link" href="implementation.html">Implementation</a>
-          <a class="nav-link" href="evaluation.html">Evaluation</a>
           <a class="nav-link" href="testing.html">Testing</a>
-          <a class="nav-link" href="conclusion.html">Conclusion</a>
+          <a class="nav-link" href="evaluation.html">Evaluation</a>
           </div>
           <div class="nav-item">
             <a class="drop-toggle" href="appendices.html">Appendices ▾</a>
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
-              <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development blog (external)</a>
               <a href="appendices.html#monthly-video">Monthly videos</a>
             </div>
           </div>
@@ -97,56 +96,144 @@
       <h2>Project abstract</h2>
       <div class="abstract-stack">
         <article class="abstract-chunk" aria-labelledby="abstract-h-problem">
-          <h3 id="abstract-h-problem">Problem and motivation</h3>
+          <h3 id="abstract-h-problem" class="abstract-chunk__title">
+            <span class="abstract-chunk__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </span>
+            Problem and motivation
+          </h3>
           <div class="abstract-chunk__body">
             <p>
-              Large language models can be manipulated through prompt-injection attacks. Hidden instructions in user
-              input or other context can make a model ignore its task, leak data, or misuse tools.
+              More and more clients are asking for applications that use large language models. Avanade needed clearer,
+              practical information on how to keep those systems secure so delivery teams can meet client expectations
+              and build trust. A core risk is prompt injection: hidden instructions in user input or other context can
+              make a model ignore its task, leak data, or misuse tools.
             </p>
             <p>
-              That risk is especially serious when the model calls APIs or MCP-style servers, because failures can
-              propagate into real systems and client environments. There is still a gap between theory and clear,
-              repeatable attack examples.
+              That risk is especially serious when the model calls APIs or
+              <span class="glossary-pop" tabindex="0" aria-describedby="mcp-tip-abstract" aria-expanded="false">
+                MCP
+                <span id="mcp-tip-abstract" class="glossary-pop__panel" role="region" aria-label="What is MCP?">
+                  <span class="glossary-pop__title">MCP</span>
+                  <span class="glossary-pop__body">
+                    <strong>Model Context Protocol</strong>: an open way to connect LLMs to tools and data (often via
+                    small servers). When a model can call out like this, prompt-injection failures can reach real systems.
+                  </span>
+                  <a
+                    class="glossary-pop__link"
+                    href="https://modelcontextprotocol.io/"
+                    target="_blank"
+                    rel="noopener noreferrer">Model Context Protocol</a>
+                </span>
+              </span>
+              -style servers, because failures can propagate into real systems and client environments. There is still a
+              gap between theory and clear, repeatable attack examples.
             </p>
             <p>
               Teams need practical ways to learn how attacks work, what mitigations exist, how to run tests, compare
-              mitigations, and harden system prompts without breaking intended behaviour. We treat prompt-injection
-              risk as something to study systematically—through structured content on vulnerabilities and mitigations,
-              and through tooling that runs prompts against real models and inspects the results.
+              mitigations, and harden system prompts without breaking intended behaviour. Abstract guidance alone is not
+              enough: teams also need readable material on vulnerabilities and mitigations and a way to run prompts
+              against real models and review what comes back.
             </p>
           </div>
         </article>
         <article class="abstract-chunk" aria-labelledby="abstract-h-platform">
-          <h3 id="abstract-h-platform">Platform and technical approach</h3>
+          <h3 id="abstract-h-platform" class="abstract-chunk__title">
+            <span class="abstract-chunk__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
+            </span>
+            Platform and technical approach
+          </h3>
           <div class="abstract-chunk__body">
             <p>
               We built an educational web application with a React single-page front end and a FastAPI back end
-              backed by SQLite. The platform presents a vulnerability catalogue with detail pages, interactive demos,
-              knowledge-check quizzes, and links to mitigations.
+              backed by SQLite. Users can work through a vulnerability catalogue with detail pages and interactive
+              demos, take quizzes to check what they have learned, and open a mitigation catalogue when they need
+              practical fixes—mitigation pages give structured explanations and optional code-style snippets.
             </p>
             <p>
-              Mitigation guides give structured explanations and optional code-style snippets. A testing workbench lets
-              users configure and run tests against routed LLM providers. A three-stage prompt-enhancement pipeline
-              (improve, prepend mitigation rules, verify) and a streaming security-assistant chat, with keyword search
-              over the same catalogue, round out the user-facing surface.
+              A
+              <span class="glossary-pop" tabindex="0" aria-describedby="ka-tip-abstract" aria-expanded="false">
+                knowledge assistant
+                <span id="ka-tip-abstract" class="glossary-pop__panel" role="region" aria-label="What is the knowledge assistant?">
+                  <span class="glossary-pop__title">Knowledge assistant</span>
+                  <span class="glossary-pop__body">
+                    Catalogue-aware chat: answers on prompt injection and the platform, with suggested questions—not a
+                    general web search.
+                  </span>
+                </span>
+              </span>
+              answers questions about prompt injection in plain language, with keyword search across the catalogue. The
+              testing area lets you run your own prompts against whichever models you configure (including custom
+              endpoints). You can also run
+              <span class="glossary-pop" tabindex="0" aria-describedby="garak-tip-abstract" aria-expanded="false">
+                Garak
+                <span id="garak-tip-abstract" class="glossary-pop__panel" role="region" aria-label="What is Garak?">
+                  <span class="glossary-pop__title">Garak</span>
+                  <span class="glossary-pop__body">
+                    NVIDIA&rsquo;s open-source <strong>Generative AI Red-teaming &amp; Assessment Kit</strong>: a probe-based
+                    scanner for LLMs that checks for prompt injection, jailbreaks, leaks, and other failure modes, similar in spirit to security tools like <em>nmap</em> but for language models.
+                  </span>
+                  <a
+                    class="glossary-pop__link"
+                    href="https://github.com/NVIDIA/garak"
+                    target="_blank"
+                    rel="noopener noreferrer">NVIDIA Garak on GitHub</a>
+                </span>
+              </span>
+              scans against those same models, with chat-style output and a short risk read-out. The
+              <span class="glossary-pop" tabindex="0" aria-describedby="pe-tip-abstract" aria-expanded="false">
+                prompt enhancer
+                <span id="pe-tip-abstract" class="glossary-pop__panel" role="region" aria-label="What is the prompt enhancer?">
+                  <span class="glossary-pop__title">Prompt enhancer</span>
+                  <span class="glossary-pop__body">
+                    Three steps: improve your system prompt, add mitigation rules you choose, verify—before the model
+                    uses it.
+                  </span>
+                </span>
+              </span>
+              walks through three steps on your system prompt—tidy it up, add mitigation rules, check the result—before
+              you rely on that prompt in production.
             </p>
             <p>
-              The backend centralises model access through a provider router, applies configurable mitigation layers
-              around test execution where appropriate, and analyses model outputs for injection-related risk.
+              On the server side, traffic goes through one routing layer to the right provider APIs; SQLite stores the
+              catalogue, saved tests, and past runs; optional mitigation layers can sit around each test run; and
+              simple scoring flags outputs that look risky. A small runner calls the external Garak tool and drops those
+              scan results into the same history and analysis views as manual tests. The assistant streams answers live,
+              like a chat, so replies appear as they are generated.
             </p>
           </div>
         </article>
         <article class="abstract-chunk" aria-labelledby="abstract-h-impact">
-          <h3 id="abstract-h-impact">Outcomes and intended impact</h3>
+          <h3 id="abstract-h-impact" class="abstract-chunk__title">
+            <span class="abstract-chunk__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                <polyline points="17 6 23 6 23 12" />
+              </svg>
+            </span>
+            Outcomes and intended impact
+          </h3>
           <div class="abstract-chunk__body">
             <p>
-              Developed in collaboration with Avanade, the platform supports technical and non-technical users in
-              understanding prompt injection and reducing risk when delivering client solutions.
+              Developed in collaboration with Avanade, the platform is for anyone at the company—whether they are new
+              to prompt injection or already pushing deeper tests with custom models. It supports people at any stage of
+              familiarity, in a digestible format, as both an interactive learning space and a hands-on testing
+              environment.
             </p>
             <p>
-              It combines structured learning with interactive testing: teams can study the material and run realistic
-              checks so that client work can be made more secure, and Avanade employees can learn and practise
-              alongside their day-to-day work with AI systems.
+              The aim is for teams to align on risk and rehearse mitigations before problems surface in client systems,
+              and so people have tried mitigations, not just read about them. In turn, that can strengthen client
+              trust, raise capability across technical and non-technical roles, and give Avanade a lasting internal
+              resource that stays useful as models and tools change.
             </p>
           </div>
         </article>
@@ -198,12 +285,46 @@
               The “Test Prompt Injection” area is where you build tests, save setups, and run them against external
               models. You pick or create a test, set the model, system prompt, mitigations, and how to call the API
               (including OpenAI-style, Anthropic, or a custom endpoint). You can check the connection, run a normal
-              test, or run a Garak scan. Results show in chat, analysis, and framework history; tests and saved configs
+              test, or run a
+              <span class="glossary-pop" tabindex="0" aria-describedby="garak-tip-home-p">
+                Garak
+                <span id="garak-tip-home-p" class="glossary-pop__panel" role="region" aria-label="What is Garak?">
+                  <span class="glossary-pop__title">Garak</span>
+                  <span class="glossary-pop__body">
+                    NVIDIA&rsquo;s open-source <strong>Generative AI Red-teaming &amp; Assessment Kit</strong>: a probe-based
+                    scanner for LLMs that checks for prompt injection, jailbreaks, leaks, and other failure modes, similar in spirit to security tools like <em>nmap</em> but for language models.
+                  </span>
+                  <a
+                    class="glossary-pop__link"
+                    href="https://github.com/NVIDIA/garak"
+                    target="_blank"
+                    rel="noopener noreferrer">NVIDIA Garak on GitHub</a>
+                </span>
+              </span>
+              scan. Results show in chat, analysis, and framework history; tests and saved configs
               are stored on the backend.
             </p>
             <ul class="feature-actions">
               <li>Create, edit, duplicate, and delete tests; load and save named configurations.</li>
-              <li>Validate the API connection, then run a test or a Garak scan.</li>
+              <li>
+                Validate the API connection, then run a test or a
+                <span class="glossary-pop" tabindex="0" aria-describedby="garak-tip-home-li">
+                  Garak
+                  <span id="garak-tip-home-li" class="glossary-pop__panel" role="region" aria-label="What is Garak?">
+                    <span class="glossary-pop__title">Garak</span>
+                    <span class="glossary-pop__body">
+                      NVIDIA&rsquo;s open-source <strong>Generative AI Red-teaming &amp; Assessment Kit</strong>: a probe-based
+                      scanner for LLMs that checks for prompt injection, jailbreaks, leaks, and other failure modes, similar in spirit to security tools like <em>nmap</em> but for language models.
+                    </span>
+                    <a
+                      class="glossary-pop__link"
+                      href="https://github.com/NVIDIA/garak"
+                      target="_blank"
+                      rel="noopener noreferrer">NVIDIA Garak on GitHub</a>
+                  </span>
+                </span>
+                scan.
+              </li>
               <li>Review analysis and scan history; export a test report PDF where supported.</li>
             </ul>
           </div>
@@ -270,9 +391,9 @@
             </figure>
             <p>
               The Prompt Enhancer helps you harden a system prompt. You choose prompt-layer mitigations from a list,
-              paste your system prompt, pick a model, and run Generate. The app restructures the prompt, prepends
-              mitigations, and runs checks. The result panel shows original, improved, and enhanced text plus
-              verification (pass/fail style notes and which mitigations were applied). You can copy or reset.
+              paste your system prompt, pick a model, and run Generate. The app restructures the prompt, integrates
+              your chosen mitigations into it, and runs checks. The result panel shows original, improved, and enhanced
+              text plus verification (pass/fail style notes and which mitigations were applied). You can copy or reset.
             </p>
             <ul class="feature-actions">
               <li>Toggle mitigations, select a model, paste your prompt, then Generate or Reset.</li>
@@ -283,23 +404,108 @@
       </div>
     </section>
 
-    <!-- ===== Delivery timeline (Gantt) ===== -->
-    <section class="section fade-in" id="timeline">
+    <!-- ===== Demo video ===== -->
+    <section class="section fade-in" id="video">
+      <h2>Demo video</h2>
+      <div class="project-video-embed">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/8TZMtslA3UY"
+          title="Team 28 Prompt Injection Protection — project video"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- ===== Team ===== -->
+    <section class="section fade-in" id="team">
+      <h2>Team and contacts</h2>
+
+      <h3 class="team-subtitle">Our Team</h3>
+      <p class="team-lead">Meet the students behind this project.</p>
+      <!-- Replace placeholder images: add your photos to report-website/assets/img/ with these exact filenames (e.g. teo-montero.jpg) and update the src below to use .jpg or .png -->
+      <div class="team-members stagger">
+        <div class="team-member">
+          <img src="assets/img/teo-montero.svg" alt="Teo Montero" class="team-member__photo" width="160" height="160" />
+          <h4 class="team-member__name">Teo Montero</h4>
+          <p class="team-member__role">Client liaison, programmer, and tester.</p>
+          <div class="team-member__links">
+            <a href="https://www.linkedin.com/in/teomontero/" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Teo Montero on LinkedIn">
+              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/teo-montero" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Teo Montero on GitHub">
+              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="assets/img/david-thomas.png" alt="David Thomas" class="team-member__photo" width="160" height="160" />
+          <h4 class="team-member__name">David Thomas</h4>
+          <p class="team-member__role">Report editor, programmer, and UI design.</p>
+          <div class="team-member__links">
+            <a href="https://www.linkedin.com/in/davidthomasg/" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="David Thomas on LinkedIn">
+              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/DavidThomas01" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="David Thomas on GitHub">
+              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="assets/img/nathaniel-gibbon.svg" alt="Nathaniel Gibbon" class="team-member__photo" width="160" height="160" />
+          <h4 class="team-member__name">Nathaniel Gibbon</h4>
+          <p class="team-member__role">Programmer and researcher.</p>
+          <div class="team-member__links">
+            <a href="https://www.linkedin.com/in/nathaniel-gibbon-323ba9387/" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Nathaniel Gibbon on LinkedIn">
+              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/NGibbon101" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Nathaniel Gibbon on GitHub">
+              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+        <div class="team-member">
+          <img src="assets/img/mario-mojarro.jpg" alt="Mario Mojarro" class="team-member__photo" width="160" height="160" />
+          <h4 class="team-member__name">Mario Mojarro</h4>
+          <p class="team-member__role">UI design, programmer, and researcher.</p>
+          <div class="team-member__links">
+            <a href="https://www.linkedin.com/in/mario-mojarro-ruiz-b6b249366/" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Mario Mojarro on LinkedIn">
+              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/MarioMojarro" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Mario Mojarro on GitHub">
+              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Project timeline (Gantt) ===== -->
+    <section class="section fade-in section--timeline" id="timeline">
       <div class="gantt-bleed">
-      <h2>Delivery timeline</h2>
+      <h2>Project timeline</h2>
 
       <div class="gantt-card" aria-label="Project timeline">
-        <div class="gantt-scroll">
+        <div class="gantt-scroll fade-in-left">
           <div class="gantt-grid">
             <div class="gantt-header">
               <div class="gantt-header-label"></div>
               <div class="gantt-header-track">
-                <div class="gantt-header-month gantt-header-month--oct" style="grid-column: span 4;">October</div>
-                <div class="gantt-header-month" style="grid-column: span 4;">November</div>
+                <div class="gantt-header-month gantt-header-month--oct" style="grid-column: span 2;">October</div>
+                <div class="gantt-header-month" style="grid-column: span 5;">November</div>
                 <div class="gantt-header-month" style="grid-column: span 4;">December</div>
                 <div class="gantt-header-month" style="grid-column: span 4;">January</div>
                 <div class="gantt-header-month" style="grid-column: span 4;">February</div>
-                <div class="gantt-header-month" style="grid-column: span 3;">March</div>
+                <div class="gantt-header-month" style="grid-column: span 4;">March</div>
               </div>
               <div class="gantt-header-label gantt-header-label--weeks">Week</div>
               <div class="gantt-header-track gantt-header-track--weeks">
@@ -329,7 +535,7 @@
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -365,14 +571,14 @@
               </div>
               <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -404,13 +610,13 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -443,14 +649,14 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -477,14 +683,14 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -517,13 +723,13 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -561,10 +767,10 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -598,13 +804,13 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
+                <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -636,13 +842,13 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
               </div>
@@ -656,7 +862,7 @@
 
             <div class="gantt-row gantt-row--task">
               <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-backend-api">
-                <div class="gantt-row-task">Backend persistence &amp; API (FastAPI + SQLite)</div>
+                <div class="gantt-row-task">Backend persistence &amp; API</div>
                 <div id="gantt-tip-backend-api" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Backend persistence &amp; API</strong>
                   FastAPI service, SQLite database through SQLAlchemy, and storage for tests and runs. Earlier work used
@@ -678,13 +884,13 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
               </div>
@@ -717,11 +923,11 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
               </div>
             </div>
@@ -751,12 +957,12 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
               </div>
@@ -764,7 +970,7 @@
 
             <div class="gantt-row gantt-row--task">
               <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-garak">
-                <div class="gantt-row-task">Automated framework scanning (Garak)</div>
+                <div class="gantt-row-task">Automated framework scanning</div>
                 <div id="gantt-tip-garak" class="gantt-phase-tooltip" role="tooltip">
                   <strong>Garak integration</strong>
                   Garak runs in the testing area with probe lists and UI, after the core testing flow and storage were
@@ -790,27 +996,28 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
+                <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
               </div>
             </div>
 
             <!-- Stage 3 -->
             <div class="gantt-row gantt-row--stage-header">
-              <div class="gantt-stage-header-label">Stage 4: Integration, evaluation &amp; delivery</div>
+              <div class="gantt-stage-header-label">Stage 4: Integration &amp; delivery</div>
               <div class="gantt-stage-header-track" aria-hidden="true"></div>
             </div>
 
             <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-assistant">
-                <div class="gantt-row-task">Security assistant</div>
-                <div id="gantt-tip-assistant" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Security assistant</strong>
-                  Chat that streams and uses the knowledge base. Later work added stronger behaviour, including links to
-                  vulnerability pages.
+              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-assistant-enhancer">
+                <div class="gantt-row-task">Security assistant &amp; prompt enhancer</div>
+                <div id="gantt-tip-assistant-enhancer" class="gantt-phase-tooltip" role="tooltip">
+                  <strong>Security assistant &amp; prompt enhancer</strong>
+                  Security assistant &mdash; chat that streams and uses the knowledge base; later work added stronger
+                  behaviour and links to vulnerability pages. Prompt enhancer &mdash; pipeline to improve prompts, saving of
+                  results, and UI for model choice and flows.
                 </div>
               </div>
               <div class="gantt-row-track">
@@ -828,82 +1035,13 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
-              </div>
-            </div>
-
-            <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-enhancer">
-                <div class="gantt-row-task">Prompt enhancer</div>
-                <div id="gantt-tip-enhancer" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Prompt enhancer</strong>
-                  Pipeline to improve prompts, saving of results, and UI for model choice and flows.
-                </div>
-              </div>
-              <div class="gantt-row-track">
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
-              </div>
-            </div>
-
-            <div class="gantt-row gantt-row--task">
-              <div class="gantt-row-label" tabindex="0" aria-describedby="gantt-tip-visual">
-                <div class="gantt-row-task">Branding &amp; dark mode</div>
-                <div id="gantt-tip-visual" class="gantt-phase-tooltip" role="tooltip">
-                  <strong>Branding &amp; dark mode</strong>
-                  Colour tokens, dark mode, subtle motion, and Avanade-aligned branding on main screens.
-                </div>
-              </div>
-              <div class="gantt-row-track">
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
@@ -975,106 +1113,44 @@
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell"></div>
                 <div class="gantt-cell gantt-cell--active-light"></div>
-                <div class="gantt-cell gantt-cell--active-light"></div>
+                <div class="gantt-cell gantt-cell--active-mid"></div>
                 <div class="gantt-cell gantt-cell--active"></div>
               </div>
             </div>
           </div>
         </div>
+        <div class="gantt-legend-scale" role="region" aria-label="How to read bar colours">
+          <p class="gantt-legend-scale__hint">
+            <span class="gantt-legend-scale__label">Bar colours</span>
+            <span class="gantt-legend-scale__dash">—</span>
+            <span class="gantt-legend-scale__text">Across each row, darker orange means more of that task&rsquo;s work was
+              completed.</span>
+          </p>
+          <div class="gantt-legend-scale__swatches">
+            <span class="gantt-legend-scale__item">
+              <span class="gantt-legend-scale__swatch gantt-legend-scale__swatch--light" aria-hidden="true"></span>
+              Lighter
+            </span>
+            <span class="gantt-legend-scale__sep" aria-hidden="true">→</span>
+            <span class="gantt-legend-scale__item">
+              <span class="gantt-legend-scale__swatch gantt-legend-scale__swatch--mid" aria-hidden="true"></span>
+              Mid
+            </span>
+            <span class="gantt-legend-scale__sep" aria-hidden="true">→</span>
+            <span class="gantt-legend-scale__item">
+              <span class="gantt-legend-scale__swatch gantt-legend-scale__swatch--dark" aria-hidden="true"></span>
+              Darker
+            </span>
+          </div>
+        </div>
         <p class="gantt-legend text-muted">
-          Stages group workstreams: <strong>Project initialisation &amp; research</strong> (stakeholders, requirements,
-          prototypes, HCI, MoSCoW), then <strong>Foundation &amp; content</strong>, <strong>Platform &amp; testing core</strong>
-          (FastAPI, SQLite, testing UI, models, Garak), and <strong>Integration, evaluation &amp; delivery</strong>
-          (assistant, enhancer, README in January, branding in late February, report and handover in March). Click a row label for detail.
+          Click a row label for details.
         </p>
+        <p class="gantt-timeframe text-muted">Time frame: 20 October 2025 to 27 March 2026.</p>
       </div>
       </div>
     </section>
 
-    <!-- ===== Demo video ===== -->
-    <section class="section fade-in" id="video">
-      <h2>Demo video</h2>
-      <div class="project-video-embed">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/8TZMtslA3UY"
-          title="Team 28 Prompt Injection Protection — project video"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          loading="lazy"></iframe>
-      </div>
-    </section>
-
-    <!-- ===== Team ===== -->
-    <section class="section fade-in" id="team">
-      <h2>Team and contacts</h2>
-
-      <h3 class="team-subtitle">Our Team</h3>
-      <p class="team-lead">Meet the students behind this project.</p>
-      <!-- Replace placeholder images: add your photos to report-website/assets/img/ with these exact filenames (e.g. teo-montero.jpg) and update the src below to use .jpg or .png -->
-      <div class="team-members">
-        <div class="team-member">
-          <img src="assets/img/teo-montero.svg" alt="Teo Montero" class="team-member__photo" width="160" height="160" />
-          <h4 class="team-member__name">Teo Montero</h4>
-          <p class="team-member__role">Client liaison, programmer, and tester.</p>
-          <div class="team-member__links">
-            <a href="https://www.linkedin.com/in/teomontero/" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Teo Montero on LinkedIn">
-              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://github.com/teo-montero" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Teo Montero on GitHub">
-              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              <span>GitHub</span>
-            </a>
-          </div>
-        </div>
-        <div class="team-member">
-          <img src="assets/img/david-thomas.png" alt="David Thomas" class="team-member__photo" width="160" height="160" />
-          <h4 class="team-member__name">David Thomas</h4>
-          <p class="team-member__role">Report editor, programmer, and UI design.</p>
-          <div class="team-member__links">
-            <a href="https://www.linkedin.com/in/davidthomasg/" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="David Thomas on LinkedIn">
-              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://github.com/DavidThomas01" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="David Thomas on GitHub">
-              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              <span>GitHub</span>
-            </a>
-          </div>
-        </div>
-        <div class="team-member">
-          <img src="assets/img/nathaniel-gibbon.svg" alt="Nathaniel Gibbon" class="team-member__photo" width="160" height="160" />
-          <h4 class="team-member__name">Nathaniel Gibbon</h4>
-          <p class="team-member__role">Programmer and researcher.</p>
-          <div class="team-member__links">
-            <a href="https://www.linkedin.com/in/nathaniel-gibbon-323ba9387/" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Nathaniel Gibbon on LinkedIn">
-              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://github.com/NGibbon101" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Nathaniel Gibbon on GitHub">
-              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              <span>GitHub</span>
-            </a>
-          </div>
-        </div>
-        <div class="team-member">
-          <img src="assets/img/mario-mojarro.jpg" alt="Mario Mojarro" class="team-member__photo" width="160" height="160" />
-          <h4 class="team-member__name">Mario Mojarro</h4>
-          <p class="team-member__role">UI design, programmer, and researcher.</p>
-          <div class="team-member__links">
-            <a href="https://www.linkedin.com/in/mario-mojarro-ruiz-b6b249366/" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Mario Mojarro on LinkedIn">
-              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://github.com/MarioMojarro" class="team-member__link" target="_blank" rel="noopener noreferrer" aria-label="Mario Mojarro on GitHub">
-              <svg class="team-member__icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              <span>GitHub</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ===== Page Nav ===== -->
     <nav class="page-nav fade-in" aria-label="Page navigation">
@@ -1105,9 +1181,8 @@
           <a href="ui-design.html">UI Design</a>
           <a href="system-design.html">System Design</a>
           <a href="implementation.html">Implementation</a>
-          <a href="evaluation.html">Evaluation</a>
           <a href="testing.html">Testing</a>
-          <a href="conclusion.html">Conclusion</a>
+          <a href="evaluation.html">Evaluation</a>
           <a href="appendices.html">Appendices</a>
         </nav>
       </div>
@@ -1115,7 +1190,7 @@
         <h3 class="site-footer__heading">Project</h3>
         <p class="site-footer__title">Prompt Injection Protection</p>
         <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26</p>
-        <a class="site-footer__blog-link" href="appendices.html#dev-blog">Development Blog</a>
+        <a class="site-footer__blog-link" href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development Blog</a>
         <p class="site-footer__subheading">Supporters</p>
         <ul class="site-footer__sponsors" role="list">
           <li>
