@@ -32,6 +32,7 @@
     <div class="container">
       <nav class="site-nav" aria-label="Primary">
         <div class="nav-left">
+          <div class="nav-scroll">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="requirements.html">Requirements</a>
           <a class="nav-link" href="research.html">Research</a>
@@ -39,15 +40,16 @@
           <a class="nav-link" href="ui-design.html">UI Design</a>
           <a class="nav-link" href="system-design.html">System Design</a>
           <a class="nav-link" href="implementation.html">Implementation</a>
-          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
-          <a class="nav-link" href="conclusion.html">Conclusion</a>
+          <a class="nav-link" href="testing.html">Testing</a>
+          <a class="nav-link" href="evaluation.html">Evaluation</a>
+          </div>
           <div class="nav-item">
-            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <a class="drop-toggle" href="appendices.html">Appendices ▾</a>
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
-              <a href="appendices.html#dev-blog">Development blog (external)</a>
-              <a href="appendices.html#monthly-video">Monthly video</a>
+              <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly videos</a>
             </div>
           </div>
         </div>
@@ -82,17 +84,17 @@
       </p>
       <div class="card-grid cols-3 stagger">
         <div class="card card--feature card-accent">
-          <div class="card-icon">&#x1F50D;</div>
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
           <h3>Input Analysis</h3>
           <p>Pattern recognition and heuristic-based scanning of incoming prompts.</p>
         </div>
         <div class="card card--feature card-accent">
-          <div class="card-icon">&#x1F3AF;</div>
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <h3>Classification</h3>
           <p>Categorising detected threats against the vulnerability taxonomy.</p>
         </div>
         <div class="card card--feature card-accent">
-          <div class="card-icon">&#x1F4CA;</div>
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div>
           <h3>Risk Scoring</h3>
           <p>Quantitative assessment of threat severity and potential impact.</p>
         </div>
@@ -107,17 +109,23 @@
         vulnerability taxonomy established in the research phase.
       </p>
       <div class="img-placeholder">
-        <span class="placeholder-icon">&#x1F5FA;&#xFE0F;</span>
+        <span class="placeholder-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg></span>
         <span class="placeholder-label">Threat Model Diagram</span>
         Visualisation of the threat modelling framework will be added here
       </div>
       <div class="card-grid cols-2 stagger">
         <div class="card">
-          <h3>&#x26A0;&#xFE0F; Attack Vectors</h3>
+          <h3 class="heading-with-icon">
+            <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            Attack vectors
+          </h3>
           <p>Enumeration of entry points where prompt injection can occur, including direct input, retrieved context, tool responses, and multi-turn conversations.</p>
         </div>
         <div class="card">
-          <h3>&#x1F4C8; Risk Assessment</h3>
+          <h3 class="heading-with-icon">
+            <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+            Risk assessment
+          </h3>
           <p>Evaluation of each vector's likelihood and potential impact, taking into account the specific architecture and deployment context of MCP servers.</p>
         </div>
       </div>
@@ -131,7 +139,7 @@
         the appropriate response based on the severity and type of detected threat.
       </p>
       <div class="img-placeholder">
-        <span class="placeholder-icon">&#x2699;&#xFE0F;</span>
+        <span class="placeholder-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m4.9 19.1 1.4-1.4"/><path d="m17.7 6.3 1.4-1.4"/></svg></span>
         <span class="placeholder-label">Detection Pipeline Flowchart</span>
         Detailed flowchart of the detection and evaluation pipeline will be added here
       </div>
@@ -173,34 +181,7 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="container site-footer__inner">
-    <div class="site-footer__grid">
-      <div class="site-footer__block site-footer__pages">
-        <h3 class="site-footer__heading">Pages</h3>
-        <nav class="site-footer__nav" aria-label="Report pages">
-          <a href="index.html">Home</a>
-          <a href="requirements.html">Requirements</a>
-          <a href="research.html">Research</a>
-          <a href="algorithms.html">Algorithms</a>
-          <a href="ui-design.html">UI Design</a>
-          <a href="system-design.html">System Design</a>
-          <a href="implementation.html">Implementation</a>
-          <a href="evaluation-testing.html">Evaluation &amp; Testing</a>
-          <a href="conclusion.html">Conclusion</a>
-          <a href="appendices.html">Appendices</a>
-        </nav>
-      </div>
-      <div class="site-footer__block site-footer__project">
-        <h3 class="site-footer__heading">Project</h3>
-        <p class="site-footer__title">Prompt Injection Protection</p>
-        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
-        <a href="appendices.html#dev-blog">Development Blog</a>
-      </div>
-    </div>
-    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
-  </div>
-</footer>
+<div id="footer-root"></div>
 
 <button class="back-to-top" aria-label="Back to top">
   <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

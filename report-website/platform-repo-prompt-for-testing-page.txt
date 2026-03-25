@@ -1,0 +1,73 @@
+================================================================================
+COPY EVERYTHING BELOW INTO YOUR IDE / CHAT (platform application repo)
+================================================================================
+
+You are helping me write the “Testing” section for our COMP0016 report website. The codebase in THIS repository is the Prompt Injection Protection platform (not the static report site).
+
+Please search the repo and answer in plain language. I will paste your answers into the report. Use short paragraphs and bullet lists where helpful.
+
+GOAL
+Gather everything needed to document our testing work: strategy, unit/integration tests, compatibility, responsive layout, performance or stress tests, prompt-injection testing, and user acceptance testing (including simulated testers, test cases, and feedback from testers / Avanade).
+
+For EACH testing area below, I need ALL of the following (if it doesn’t exist, say “not done” or “not applicable” and why):
+
+1) Why we did this test (what risk or requirement it checks)
+2) What tool(s) we used (exact names and versions if in package.json, lockfiles, or CI)
+3) How we ran it (commands, CI job names, manual steps, environments)
+4) What results we got (pass/fail, numbers, screenshots described in words, logs summary)
+5) One short conclusion (what that means for the project)
+
+AREAS TO COVER
+
+A) Overall testing strategy
+- How testing fits our MoSCoW requirements or main features (home, vulnerabilities, knowledge base, testing view, chatbot, MCP if any).
+- What we automate vs what we do manually.
+
+B) Unit tests
+- Framework (e.g. pytest, Jest, Vitest, unittest).
+- Where test files live (paths).
+- How to run them (npm/poetry/etc.).
+- Approximate count or main modules covered.
+- Any gaps.
+
+C) Integration tests
+- What “integration” means in this project (API + DB, MCP, LLM mocks, etc.).
+- Tools and how to run them.
+- Results summary.
+
+D) Compatibility testing (browsers, OS, devices — if we did any)
+- Which browsers/versions we tried.
+- Anything we know broke or needed a workaround.
+
+E) Responsive design testing (if applicable)
+- How we checked mobile/tablet/desktop (real devices, DevTools, specific widths).
+- Anything that still feels rough.
+
+F) Performance / stress testing (if applicable)
+- What we measured (load time, API latency, chat response time).
+- Tools (Lighthouse, browser Network tab, custom scripts, etc.).
+- Numbers if we have them.
+
+G) Prompt testing (prompt injection, mitigations, pass/fail rules)
+- How we define pass/fail for prompts and mitigations.
+- Datasets or example prompts we use.
+- Any link to Garak, PyRIT, or custom harnesses if present in the repo.
+- Results or limitations.
+
+H) User acceptance testing (UAT)
+- Whether we used simulated testers, structured test cases, or sessions with real users.
+- Test cases: list or summarise scenarios (e.g. “create a custom test”, “toggle mitigation”, “export PDF”).
+- Feedback from testers AND from the project partner (Avanade): themes, quotes if noted in docs, what we changed as a result.
+
+I) Evidence in the repo
+- Point to: CI config (.github/workflows, GitLab CI, etc.), test scripts in package.json/pyproject, README testing section, any docs/TESTING.md or similar.
+- If something is only in meeting notes or Slack, say “not in repo” so I know to add it manually.
+
+OUTPUT FORMAT
+- Use clear headings matching A–I.
+- Prefer concrete file paths, commands, and version numbers from the repo.
+- Tone: clear, student-level, straightforward — not marketing speak.
+
+================================================================================
+END OF PROMPT
+================================================================================

@@ -39,6 +39,7 @@
     <div class="container">
       <nav class="site-nav" aria-label="Primary">
         <div class="nav-left">
+          <div class="nav-scroll">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="requirements.html">Requirements</a>
           <a class="nav-link" href="research.html">Research</a>
@@ -46,15 +47,16 @@
           <a class="nav-link active" href="ui-design.html">UI Design</a>
           <a class="nav-link" href="system-design.html">System Design</a>
           <a class="nav-link" href="implementation.html">Implementation</a>
-          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
-          <a class="nav-link" href="conclusion.html">Conclusion</a>
+          <a class="nav-link" href="testing.html">Testing</a>
+          <a class="nav-link" href="evaluation.html">Evaluation</a>
+          </div>
           <div class="nav-item">
-            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <a class="drop-toggle" href="appendices.html">Appendices ▾</a>
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
-              <a href="appendices.html#dev-blog">Development blog (external)</a>
-              <a href="appendices.html#monthly-video">Monthly video</a>
+              <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly videos</a>
             </div>
           </div>
         </div>
@@ -238,83 +240,21 @@
         The goal of this version was to establish a clearer information hierarchy across views while
         keeping interactions approachable for both technical and semi-technical users.
       </p>
-
-      <div class="card-grid cols-3">
-        <figure class="img-placeholder prototype-shot">
-          <img src="assets/prototypes/SystemsEngineering_HCI_Prototype_V0_Home.jpeg" alt="Initial prototype home view v0" loading="lazy" />
-          <figcaption><strong>Initial Prototype Screenshot 1</strong> - In the Home view, vulnerabilities were presented more clearly as an expandable list, making navigation and first-pass understanding more straightforward.</figcaption>
-        </figure>
-        <figure class="img-placeholder prototype-shot">
-          <img src="assets/prototypes/SystemsEngineering_HCI_Prototype_V0_Vulnerability.jpeg" alt="Initial prototype vulnerability view v0" loading="lazy" />
-          <figcaption><strong>Initial Prototype Screenshot 2</strong> - In the Vulnerability view, we introduced color coding to make behavior differences and information blocks easier to interpret quickly.</figcaption>
-        </figure>
-        <figure class="img-placeholder prototype-shot">
-          <img src="assets/prototypes/SystemsEngineering_HCI_Prototype_V0_Test.jpeg" alt="Initial prototype testing view v0" loading="lazy" />
-          <figcaption><strong>Initial Prototype Screenshot 3</strong> - In the Testing view, tests were organized through clear folder structures, and an analysis panel was surfaced in a highly intuitive layout.</figcaption>
-        </figure>
-      </div>
-
-      <!---TODO: Prototype explanation and evaluation are mere placeholders that need to be completed and probably changed, the UI as well since it is pretty static-->
-      <div class="card-grid cols-2 stagger mt-3">
-        <div class="card">
-          <h3>Prototype Explanation</h3>
-          <p>
-            Explain what the prototype included, which requirements it already supported, and which
-            features were still missing or unclear.
-          </p>
+      <div class="card-grid cols-3 stagger">
+        <div class="card card--feature card-accent">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8H5l4.9 3.6-1.9 5.8L12 15.6l4.9 3.6-1.9-5.8L20 8.8h-5.1L12 3z"/></svg></div>
+          <h3>Clarity First</h3>
+          <p>Complex security concepts presented through clean, intuitive interfaces with clear visual hierarchy.</p>
         </div>
-        <div class="card">
-          <h3>Prototype Evaluation</h3>
-          <p>
-            Summarise the evaluation findings for this version: what worked well, what confused users,
-            and what needed to be changed before refinement.
-          </p>
+        <div class="card card--feature card-accent">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+          <h3>Guided Exploration</h3>
+          <p>Users can navigate freely between vulnerabilities, mitigations, and testing tools with logical flow.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section fade-in" id="refined-prototype">
-      <h2>Refined Prototype</h2>
-      <p>
-        The refined prototype should show the improved interactive design after incorporating feedback
-        from the earlier version. This section should focus on how the interface became more coherent,
-        more informative, and more aligned with the final platform structure.
-      </p>
-      <p>
-        Typical improvements to document here include stronger hierarchy, better grouping of content,
-        more explicit actions, clearer distinction between risks and mitigations, and smoother transitions
-        between educational and practical workflows.
-      </p>
-
-      <div class="card-grid cols-3">
-        <figure class="img-placeholder prototype-shot">
-          <img src="assets/prototypes/SystemsEngineering_HCI_Prototype_V1_Home.jpeg" alt="Refined prototype home overview v1" loading="lazy" />
-          <figcaption><strong>Refined Prototype Screenshot 1</strong> - v1 refined home overview and polished navigation hierarchy.</figcaption>
-        </figure>
-        <figure class="img-placeholder prototype-shot">
-          <img src="assets/prototypes/SystemsEngineering_HCI_Prototype_V1_Vulnerability.jpeg" alt="Refined prototype vulnerability view v1" loading="lazy" />
-          <figcaption><strong>Refined Prototype Screenshot 2</strong> - v1 vulnerability view with clearer behavior comparison and mitigation context.</figcaption>
-        </figure>
-        <figure class="img-placeholder prototype-shot">
-          <img src="assets/prototypes/SystemsEngineering_HCI_Prototype_V1_Test.jpeg" alt="Refined prototype testing view v1" loading="lazy" />
-          <figcaption><strong>Refined Prototype Screenshot 3</strong> - v1 testing workflow with clearer configuration and outputs.</figcaption>
-        </figure>
-      </div>
-
-      <!---TODO: This is a placeholder for the refinement explanation and evaluation, needs to be completed and UI changed-->
-      <div class="card-grid cols-2 stagger mt-3">
-        <div class="card">
-          <h3>Refinement Explanation</h3>
-          <p>
-            Explain what changed from the initial prototype and how those changes improved usability.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Refinement Evaluation</h3>
-          <p>
-            Summarise the evaluation of the refined prototype and explain how it moved closer to the
-            final implemented UI.
-          </p>
+        <div class="card card--feature card-accent">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="M9 20v-1l.8-4.5a2 2 0 0 1 1.6-1.6h.4a2 2 0 0 1 1.6 1.6l.8 4.5v1"/><path d="M6 12a4 4 0 0 1 6.13 3.5"/><path d="M18 12a4 4 0 0 1-6.13 3.5"/></svg></div>
+          <h3>Accessible by Default</h3>
+          <p>WCAG AA compliance, keyboard navigation, screen reader support, and high-contrast mode built in.</p>
         </div>
       </div>
     </section>
@@ -354,125 +294,40 @@
       </p>
 
       <div class="card-grid cols-2 stagger">
-        <div class="card">
-          <h3>What was added</h3>
-          <ul class="styled-list">
-            <li>Search and filtering on the Home page vulnerability catalogue</li>
-            <li>A dedicated deep-dive vulnerability page with demo, comparison, mitigation links, and quiz</li>
-            <li>A separate Mitigations page with implementation language switching and PDF export</li>
-            <li>A large Testing view with guided setup, advanced setup, risk analysis, and framework scanning</li>
-            <li>A dedicated Prompt Enhancer workflow</li>
-            <li>A floating assistant widget plus a full-screen Security Knowledge Assistant page</li>
-            <li>PDF export support across core learning and testing workflows</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>What was reduced or separated</h3>
-          <ul class="styled-list">
-            <li>Vulnerabilities and mitigations are no longer merged into one overloaded screen</li>
-            <li>Testing is isolated from static explanation pages so experimentation feels intentional</li>
-            <li>Assistant functionality is available globally but can also expand into its own dedicated page</li>
-            <li>Complex configuration is hidden inside the Testing workflow instead of cluttering the Home page</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3>Implemented views</h3>
-      <div class="card-grid cols-2 stagger implemented-views-grid">
-        <div class="card card--feature">
-          <h3>Home</h3>
-          <p>
-            The Home page introduces prompt injection, presents a vulnerability catalogue, and supports
-            search and impact filtering. It is designed as the main entry point for both first-time and
-            returning users.
-          </p>
-          <div class="implemented-view-shots">
-            <figure class="img-placeholder prototype-shot">
-              <img src="assets/final_ui/home_page.png" alt="Home page screenshot in normal mode" loading="lazy" />
-              <figcaption><strong>Normal Mode</strong> - Home view.</figcaption>
-            </figure>
-            <figure class="img-placeholder prototype-shot">
-              <img src="assets/final_ui/home_page_dm.png" alt="Home page screenshot in dark mode" loading="lazy" />
-              <figcaption><strong>Dark Mode</strong> - Home view.</figcaption>
-            </figure>
+        <div class="card card-accent">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <h3>Security Engineer</h3>
+          <p>Experienced professional evaluating MCP server deployments. Needs detailed technical analysis, advanced testing tools, and exportable reports.</p>
+          <div class="tag-list">
+            <span class="badge badge--brand">Technical</span>
+            <span class="badge badge--blue">Testing Focus</span>
           </div>
         </div>
-
-        <div class="card card--feature">
-          <h3>Mitigations</h3>
-          <p>
-            The Mitigations page separates defensive content from attack content. Users can browse all
-            mitigations, read what each one does, review its strategy and flow, switch between pseudo-code,
-            Python, and Java implementations when available, and export a PDF.
-          </p>
-          <div class="implemented-view-shots">
-            <figure class="img-placeholder prototype-shot">
-              <img src="assets/final_ui/mitigations.png" alt="Mitigations page screenshot in normal mode" loading="lazy" />
-              <figcaption><strong>Normal Mode</strong> - Mitigations view.</figcaption>
-            </figure>
-            <figure class="img-placeholder prototype-shot">
-              <img src="assets/final_ui/mitigations_dm.png" alt="Mitigations page screenshot in dark mode" loading="lazy" />
-              <figcaption><strong>Dark Mode</strong> - Mitigations view.</figcaption>
-            </figure>
+        <div class="card card-accent">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <h3>CS Student / Researcher</h3>
+          <p>Learning about AI security. Needs clear explanations, working examples, and educational walkthroughs of attack techniques and defences.</p>
+          <div class="tag-list">
+            <span class="badge badge--green">Educational</span>
+            <span class="badge badge--blue">Examples Focus</span>
           </div>
         </div>
-
-        <div class="card card--feature">
-          <h3>Testing</h3>
-          <p>
-            The Testing page is the most complex workflow in the system. It supports creating and editing
-            tests, using platform or external models, selecting one or more mitigations, switching between
-            prompt and framework runners, running Garak scans, viewing attempt-by-attempt results, and
-            exporting reports.
-          </p>
-          <div class="implemented-view-shots">
-            <figure class="img-placeholder prototype-shot">
-              <img src="assets/final_ui/testing.png" alt="Testing page screenshot in normal mode" loading="lazy" />
-              <figcaption><strong>Normal Mode</strong> - Testing view.</figcaption>
-            </figure>
-            <figure class="img-placeholder prototype-shot">
-              <img src="assets/final_ui/testing_dm.png" alt="Testing page screenshot in dark mode" loading="lazy" />
-              <figcaption><strong>Dark Mode</strong> - Testing view.</figcaption>
-            </figure>
+        <div class="card card-accent">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22V11"/><path d="m16 8-4-4-4 4"/></svg></div>
+          <h3>Technical Manager</h3>
+          <p>Overseeing AI integration. Needs high-level risk summaries, mitigation guidance, and compliance-aligned reporting.</p>
+          <div class="tag-list">
+            <span class="badge badge--amber">Strategic</span>
+            <span class="badge badge--brand">Compliance</span>
           </div>
         </div>
-
-        <div class="card card--feature">
-          <h3>Prompt Enhancer</h3>
-          <p>
-            The Prompt Enhancer offers a dedicated workflow for selecting mitigations and strengthening a
-            system prompt. It supports model selection, mitigation selection, input prompt editing, and a
-            structured results area for the enhanced output.
-          </p>
-          <div class="implemented-view-shots">
-            <figure class="img-placeholder prototype-shot">
-              <img src="assets/final_ui/promp_enhancer.jpeg" alt="Prompt Enhancer screenshot in normal mode" loading="lazy" />
-              <figcaption><strong>Normal Mode</strong> - Prompt Enhancer view.</figcaption>
-            </figure>
-            <figure class="img-placeholder prototype-shot">
-              <img src="assets/final_ui/prompt_enhancer_dm.jpeg" alt="Prompt Enhancer screenshot in dark mode" loading="lazy" />
-              <figcaption><strong>Dark Mode</strong> - Prompt Enhancer view.</figcaption>
-            </figure>
-          </div>
-        </div>
-
-        <div class="card card--feature">
-          <h3>Security Knowledge Assistant</h3>
-          <p>
-            The assistant exists both as a floating chat widget and as a full-screen page for longer
-            conversations. This dual design supports quick help without interrupting the main workflow,
-            while still allowing deeper exploration when needed.
-          </p>
-          <div class="implemented-view-shots">
-            <figure class="img-placeholder prototype-shot">
-              <img src="assets/final_ui/chatbot.png" alt="Security assistant screenshot in normal mode" loading="lazy" />
-              <figcaption><strong>Normal Mode</strong> - Security Knowledge Assistant view.</figcaption>
-            </figure>
-            <figure class="img-placeholder prototype-shot">
-              <img src="assets/final_ui/chatbot_dm.png" alt="Security assistant screenshot in dark mode" loading="lazy" />
-              <figcaption><strong>Dark Mode</strong> - Security Knowledge Assistant view.</figcaption>
-            </figure>
+        <div class="card card-accent">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="m16.24 7.76-1.804 1.805"/><path d="M19 5 16.74 7.26"/><path d="m16.24 16.24 1.804 1.805"/><path d="M19 19l-2.26-2.26"/><path d="m7.76 7.76-1.805 1.804"/><path d="M5 5l2.26 2.26"/><path d="m7.76 16.24-1.805 1.804"/><path d="M5 19l2.26-2.26"/></svg></div>
+          <h3>AI Developer</h3>
+          <p>Building applications with LLMs. Needs practical mitigation code, testing APIs, and integration guidance.</p>
+          <div class="tag-list">
+            <span class="badge badge--brand">Practical</span>
+            <span class="badge badge--green">Integration</span>
           </div>
         </div>
       </div>
@@ -488,26 +343,26 @@
         distinguish between essential information and advanced features, empowering them to focus on what
         matters to their role and goals.
       </p>
-
-      <div class="card-grid cols-2 stagger">
-        <div class="card">
-          <h3>Alignment with Requirements</h3>
-          <ul class="styled-list">
-            <li>The Home page supports first-time understanding through explanation and catalogue browsing</li>
-            <li>The Vulnerability view supports deeper technical investigation with examples and comparisons</li>
-            <li>The Testing view supports practical experimentation and exportable outcomes</li>
-            <li>The assistant supports theoretical and practical follow-up questions</li>
-            <li>The Mitigations page supports users who want code-oriented defensive guidance</li>
-          </ul>
+      <div class="card-grid cols-2">
+        <div class="img-placeholder">
+          <span class="placeholder-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <span class="placeholder-label">Home Page Wireframe</span>
+          Dashboard layout showing vulnerability overview, navigation, and search
         </div>
-        <div class="card">
-          <h3>Why personas mattered</h3>
-          <p>
-            A purely technical interface would have made the platform harder to use for semi-technical
-            users, while a purely educational interface would not have satisfied advanced testing and
-            report-oriented needs. The final structure therefore tries to support several levels of
-            expertise without splitting the product into separate systems.
-          </p>
+        <div class="img-placeholder">
+          <span class="placeholder-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <span class="placeholder-label">Vulnerability View Wireframe</span>
+          Detailed view with explanation, example, mitigation, and comparison panel
+        </div>
+        <div class="img-placeholder">
+          <span class="placeholder-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <span class="placeholder-label">Testing Interface Wireframe</span>
+          Chat-style testing view with prompt input, mitigation toggles, and results
+        </div>
+        <div class="img-placeholder">
+          <span class="placeholder-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <span class="placeholder-label">Knowledge Base Wireframe</span>
+          Searchable knowledge base with categorised entries and filtering
         </div>
       </div>
 
@@ -521,12 +376,35 @@
         dark mode, semantic colour coding (red for vulnerabilities, green for mitigations, orange for actions),
         and a clear information hierarchy that remains scannable across all page sizes.
       </p>
-
-      <div class="callout callout--tip">
-        <p>
-          <strong>Outcome:</strong> the final UI is understandable, navigable, and readable under different
-          user needs and viewport sizes while supporting advanced technical workflows.
-        </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="feature-item">
+          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.01"/><path d="M10 8h.01"/><path d="M14 8h.01"/><path d="M18 8h.01"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/><path d="M7 16h10"/></svg></div>
+          <div class="feature-content">
+            <h3>Keyboard Navigation</h3>
+            <p>All interactive elements accessible via keyboard with visible focus indicators and logical tab order.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+          <div class="feature-content">
+            <h3>Responsive Design</h3>
+            <p>Fully responsive layouts tested across mobile, tablet, and desktop viewport sizes.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="feature-content">
+            <h3>Colour &amp; Contrast</h3>
+            <p>Colour is never the sole indicator of meaning; all text meets WCAG AA contrast ratios.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384a.705.705 0 0 0 1.203-.403l.002 1.404A9.96 9.96 0 0 0 22 12a9.96 9.96 0 0 0-8.898-9.901v1.4Z"/></svg></div>
+          <div class="feature-content">
+            <h3>Screen Reader Support</h3>
+            <p>Semantic HTML, ARIA labels, and meaningful alt text for full screen reader compatibility.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -544,34 +422,7 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="container site-footer__inner">
-    <div class="site-footer__grid">
-      <div class="site-footer__block site-footer__pages">
-        <h3 class="site-footer__heading">Pages</h3>
-        <nav class="site-footer__nav" aria-label="Report pages">
-          <a href="index.html">Home</a>
-          <a href="requirements.html">Requirements</a>
-          <a href="research.html">Research</a>
-          <a href="algorithms.html">Algorithms</a>
-          <a href="ui-design.html">UI Design</a>
-          <a href="system-design.html">System Design</a>
-          <a href="implementation.html">Implementation</a>
-          <a href="evaluation-testing.html">Evaluation &amp; Testing</a>
-          <a href="conclusion.html">Conclusion</a>
-          <a href="appendices.html">Appendices</a>
-        </nav>
-      </div>
-      <div class="site-footer__block site-footer__project">
-        <h3 class="site-footer__heading">Project</h3>
-        <p class="site-footer__title">Prompt Injection Protection</p>
-        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
-        <a href="appendices.html#dev-blog">Development Blog</a>
-      </div>
-    </div>
-    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
-  </div>
-</footer>
+<div id="footer-root"></div>
 
 <button class="back-to-top" aria-label="Back to top">
   <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
