@@ -3,25 +3,225 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Moved – Conclusion content is on Evaluation</title>
-  <meta name="robots" content="noindex" />
-  <meta http-equiv="refresh" content="0; url=evaluation.html" />
-  <link rel="canonical" href="evaluation.html" />
+  <meta name="description" content="Conclusion of the Prompt Injection Protection project — summary of work, lessons learned, and future directions." />
+  <title>Conclusion – Prompt Injection Protection</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<main id="main" class="container page-moved">
-  <h1>This page has moved</h1>
-  <p>
-    The report no longer has a separate conclusion page. Summary, reflections, and
-    <a href="evaluation.html#future-work">future work</a> live on
-    <a href="evaluation.html">Evaluation</a>.
-    If you are not redirected automatically, use that link.
-  </p>
+
+<header class="site-header">
+  <div class="container topbar">
+    <a class="brand" href="index.html">
+      <div>
+        <div class="brand-title">Prompt Injection Protection</div>
+        <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
+      </div>
+    </a>
+    <div class="brand-logos" aria-hidden="true">
+      <img src="assets/img/logo-ucl.png" alt="UCL">
+      <img src="assets/img/logo-avanade.webp" alt="Avanade">
+    </div>
+  </div>
+  <div class="container">
+    <label class="burger" for="nav-toggle">Menu</label>
+  </div>
+  <input id="nav-toggle" type="checkbox" />
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-left">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="requirements.html">Requirements</a>
+          <a class="nav-link" href="research.html">Research</a>
+          <a class="nav-link" href="algorithms.html">Algorithms</a>
+          <a class="nav-link" href="ui-design.html">UI Design</a>
+          <a class="nav-link" href="system-design.html">System Design</a>
+          <a class="nav-link" href="implementation.html">Implementation</a>
+          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a class="nav-link active" href="conclusion.html">Conclusion</a>
+          <div class="nav-item">
+            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <div class="dropdown" role="menu" aria-label="Appendices">
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
+              <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly video</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">Systems Engineering · IXN</div>
+    <h1>Conclusion</h1>
+    <p>
+      A summary of the project's achievements, key lessons learned throughout
+      development, and recommendations for future research and development.
+    </p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="container">
+
+    <section class="section fade-in" id="summary">
+      <h2>Summary of Work</h2>
+      <div class="callout callout--note">
+        <p><strong>Coming soon:</strong> The full project summary will be completed once all implementation and evaluation phases are finalised.</p>
+      </div>
+      <p>
+        This project set out to explore, document, and build tools for combating prompt
+        injection vulnerabilities in AI systems — with particular focus on Model Context
+        Protocol (MCP) server security. The work was conducted by Team 28 at UCL Computer
+        Science in collaboration with Avanade.
+      </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F4D6;</div>
+          <h3>Research &amp; Analysis</h3>
+          <p>Comprehensive literature review and vulnerability taxonomy covering 8 major categories of prompt injection attacks and 7 mitigation strategy families.</p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F3D7;&#xFE0F;</div>
+          <h3>Platform Development</h3>
+          <p>Design and implementation of a web-based platform for exploring vulnerabilities, testing mitigations, and generating security recommendations.</p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F9EA;</div>
+          <h3>Testing Framework</h3>
+          <p>Development of automated testing tools for assessing MCP server deployments against prompt injection and related security threats.</p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">&#x1F4CB;</div>
+          <h3>Guidance &amp; Recommendations</h3>
+          <p>Technical recommendations and best-practice guidance for organisations deploying MCP servers in production environments.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="lessons-learned">
+      <h2>Lessons Learned</h2>
+      <p>
+        The project provided valuable insights across both technical and process dimensions.
+        These lessons will inform future work in this space and are shared here for the
+        benefit of the wider community.
+      </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F4A1;</div>
+          <div class="feature-content">
+            <h3>Security is Architectural</h3>
+            <p>Prompt injection defence requires system-level thinking, not just model-level improvements. Architecture matters more than model choice.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F504;</div>
+          <div class="feature-content">
+            <h3>Iterative Testing is Essential</h3>
+            <p>The adversarial landscape evolves continuously; testing must be ongoing rather than a one-time activity.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F91D;</div>
+          <div class="feature-content">
+            <h3>Collaboration Accelerates Progress</h3>
+            <p>Close collaboration with Avanade's security team provided real-world context that shaped more practical and applicable outcomes.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">&#x1F4DA;</div>
+          <div class="feature-content">
+            <h3>Documentation Pays Dividends</h3>
+            <p>Thorough documentation of attack patterns, mitigations, and test results creates a reusable knowledge base with lasting value.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="future-work">
+      <h2>Future Work</h2>
+      <p>
+        Several promising directions for future research and development have been
+        identified through this project.
+      </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="card">
+          <h3>&#x1F916; Multi-Model Support</h3>
+          <p>Extend the testing framework to support multiple LLM providers, enabling comparative security analysis across different models and configurations.</p>
+        </div>
+        <div class="card">
+          <h3>&#x26A1; Real-Time Monitoring</h3>
+          <p>Develop production monitoring capabilities that can detect prompt injection attempts in real-time for deployed MCP servers.</p>
+        </div>
+        <div class="card">
+          <h3>&#x1F310; Community Knowledge Base</h3>
+          <p>Open the vulnerability knowledge base to community contributions, creating a collaborative resource for the AI security community.</p>
+        </div>
+        <div class="card">
+          <h3>&#x1F50D; Automated Discovery</h3>
+          <p>Explore AI-driven automated vulnerability discovery using adversarial LLMs and evolutionary search techniques.</p>
+        </div>
+      </div>
+
+      <div class="callout mt-3">
+        <p>The rapid evolution of AI systems and the expanding role of MCP in enterprise deployments make continued research in this area increasingly critical.</p>
+      </div>
+    </section>
+
+    <nav class="page-nav fade-in" aria-label="Page navigation">
+      <a href="evaluation-testing.html">
+        <span class="page-nav-label">Previous</span>
+        <span class="page-nav-title">← Evaluation &amp; Testing</span>
+      </a>
+      <a href="appendices.html">
+        <span class="page-nav-label">Next</span>
+        <span class="page-nav-title">Appendices →</span>
+      </a>
+    </nav>
+
+  </div>
 </main>
-<script>
-  window.location.replace('evaluation.html');
-</script>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__block site-footer__pages">
+        <h3 class="site-footer__heading">Pages</h3>
+        <nav class="site-footer__nav" aria-label="Report pages">
+          <a href="index.html">Home</a>
+          <a href="requirements.html">Requirements</a>
+          <a href="research.html">Research</a>
+          <a href="algorithms.html">Algorithms</a>
+          <a href="ui-design.html">UI Design</a>
+          <a href="system-design.html">System Design</a>
+          <a href="implementation.html">Implementation</a>
+          <a href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a href="conclusion.html">Conclusion</a>
+          <a href="appendices.html">Appendices</a>
+        </nav>
+      </div>
+      <div class="site-footer__block site-footer__project">
+        <h3 class="site-footer__heading">Project</h3>
+        <p class="site-footer__title">Prompt Injection Protection</p>
+        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
+        <a href="appendices.html#dev-blog">Development Blog</a>
+      </div>
+    </div>
+    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

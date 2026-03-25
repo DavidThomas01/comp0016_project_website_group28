@@ -3,21 +3,527 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Moved – Evaluation &amp; Testing split</title>
-  <meta http-equiv="refresh" content="0; url=evaluation.html" />
+  <meta name="description" content="Evaluation strategy, test setup, metrics, and results for the Prompt Injection Protection platform." />
+  <title>Evaluation &amp; Testing – Prompt Injection Protection</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<main id="main" class="container page-moved">
-  <h1>This page has moved</h1>
-  <p>
-    Evaluation and testing are now on separate pages. If you are not redirected automatically,
-    use <a href="testing.html">Testing</a> or <a href="evaluation.html">Evaluation</a>.
-  </p>
+
+<header class="site-header">
+  <div class="container topbar">
+    <a class="brand" href="index.html">
+      <div>
+        <div class="brand-title">Prompt Injection Protection</div>
+        <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
+      </div>
+    </a>
+    <div class="brand-logos" aria-hidden="true">
+      <img src="assets/img/logo-ucl.png" alt="UCL">
+      <img src="assets/img/logo-avanade.webp" alt="Avanade">
+    </div>
+  </div>
+  <div class="container">
+    <label class="burger" for="nav-toggle">Menu</label>
+  </div>
+  <input id="nav-toggle" type="checkbox" />
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-left">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="requirements.html">Requirements</a>
+          <a class="nav-link" href="research.html">Research</a>
+          <a class="nav-link" href="algorithms.html">Algorithms</a>
+          <a class="nav-link" href="ui-design.html">UI Design</a>
+          <a class="nav-link" href="system-design.html">System Design</a>
+          <a class="nav-link" href="implementation.html">Implementation</a>
+          <a class="nav-link active" href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a class="nav-link" href="conclusion.html">Conclusion</a>
+          <div class="nav-item">
+            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <div class="dropdown" role="menu" aria-label="Appendices">
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
+              <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly video</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">Systems Engineering · IXN</div>
+    <h1>Evaluation &amp; Testing</h1>
+    <p>
+      The evaluation strategy, test infrastructure, key metrics, and results from
+      comprehensive testing of the platform against prompt injection vulnerabilities.
+    </p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="container">
+
+    <section class="section fade-in" id="summary-achievements">
+      <h2>Summary of Achievements</h2>
+      <p>
+        The platform has been developed against the MoSCoW-prioritised requirements for the Prompt Injection Protection system
+        (Systems Engineering, IXN, Group 28, Avanade). Below is a structured summary of how the delivered system meets the
+        <strong>must-have</strong> functional and non-functional requirements, written for easy traceability and reading.
+      </p>
+
+      <div class="achievements-grid">
+        <div class="card card-accent achievements-card">
+          <h3>Functional — Must Have</h3>
+          <p class="achievements-intro">The system delivers the following core features as specified.</p>
+
+          <div class="achievement-block">
+            <h4>Home Page</h4>
+            <ul class="styled-list">
+              <li>A dedicated home page that introduces <strong>prompt injection</strong>, associated risks, and a high-level explanation of how prompt injection works.</li>
+              <li>A list of <strong>known prompt injection vulnerabilities</strong>, each clickable with a short summary.</li>
+            </ul>
+          </div>
+
+          <div class="achievement-block">
+            <h4>In-Depth Vulnerability View</h4>
+            <ul class="styled-list">
+              <li>Selecting a vulnerability from the home page navigates to a detailed view.</li>
+              <li>An <strong>information panel</strong> with a technical explanation of the vulnerability.</li>
+              <li>An <strong>example panel</strong> showing how a model behaves when faced with that vulnerability.</li>
+              <li>A clear explanation of <strong>at least one mitigation strategy</strong> per vulnerability.</li>
+              <li>A <strong>comparison panel</strong> showing model behaviour without mitigation vs. with mitigation applied.</li>
+            </ul>
+          </div>
+
+          <div class="achievement-block">
+            <h4>Knowledge Base</h4>
+            <ul class="styled-list">
+              <li>Clear examples of prompt injection vulnerabilities with technical explanations.</li>
+              <li>Working attack examples for each vulnerability type.</li>
+              <li>Clear explanations of prompt injection mitigations with technical detail for each.</li>
+            </ul>
+          </div>
+
+          <div class="achievement-block">
+            <h4>Testing View</h4>
+            <ul class="styled-list">
+              <li>Accessible from the main navigation bar.</li>
+              <li>Users can <strong>create custom tests</strong> for individual mitigations, with tests named by the user and stored in memory for the session.</li>
+              <li>A <strong>chat-style interface</strong> that processes a single prompt; users can enable or disable mitigations (one per test) identified during research.</li>
+              <li>Tests show a clear <strong>pass/fail result</strong> based on predefined security expectations.</li>
+              <li>Test data is preserved locally in an <strong>SQL database</strong>; all tests run on a fixed model (GPT 5.0).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card card-accent achievements-card">
+          <h3>Non-Functional — Must Have</h3>
+          <p class="achievements-intro">The system meets the following quality and delivery criteria.</p>
+
+          <div class="achievement-block">
+            <h4>Delivery &amp; Form</h4>
+            <ul class="styled-list">
+              <li>The system is delivered as a <strong>web application</strong>, usable in standard browsers without a persistent backend server requirement.</li>
+            </ul>
+          </div>
+
+          <div class="achievement-block">
+            <h4>Clarity &amp; Audience</h4>
+            <ul class="styled-list">
+              <li>Vulnerabilities, mitigations, and test results are presented in a <strong>clear and understandable manner</strong> for both technical and semi-technical users.</li>
+            </ul>
+          </div>
+
+          <div class="achievement-block">
+            <h4>Performance</h4>
+            <ul class="styled-list">
+              <li>The chatbot and testing interfaces provide <strong>acceptable interactive response times</strong> for typical use.</li>
+            </ul>
+          </div>
+
+          <div class="achievement-block">
+            <h4>Interface &amp; Standards</h4>
+            <ul class="styled-list">
+              <li>An <strong>intuitive, clear, and logical interface</strong> that conforms to agreed standards and supports consistent navigation across views.</li>
+            </ul>
+          </div>
+
+          <div class="achievement-block">
+            <h4>Accessibility &amp; Preference</h4>
+            <ul class="styled-list">
+              <li>The system supports a <strong>dark mode</strong> interface so users can choose a preferred visual theme.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="individual-contributions">
+      <h2>Individual Contributions</h2>
+      <p>
+        Contribution across work packages by team member. Percentages indicate relative effort within each area.
+      </p>
+      <div class="table-wrap contribution-table-wrap">
+        <table class="styled-table contribution-table">
+          <thead>
+            <tr>
+              <th>Work package</th>
+              <th>Teo</th>
+              <th>David</th>
+              <th>Nathaniel</th>
+              <th>Mario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Project partner liaison</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Requirements analysis</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>HCI / user research</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Research and experiments</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>UI design</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Backend &amp; MCP</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Frontend — application</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Frontend — report website</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Organising user testing</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Testing</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Report website</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Blog and monthly video</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr class="contribution-total">
+              <td><strong>Overall contribution</strong></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="critical-evaluation">
+      <h2>Critical Evaluation of the Project</h2>
+      <p>
+        A structured assessment of the platform across key dimensions. Expand each area for details.
+      </p>
+      <div class="evaluation-accordion" role="region" aria-label="Critical evaluation categories">
+        <details class="evaluation-item">
+          <summary>User Interface / User Experience</summary>
+          <div class="evaluation-content">
+            <p>Placeholder: Evaluation of the UI/UX — clarity, consistency with Avanade styling, usability for technical and semi-technical users, accessibility, and dark mode implementation.</p>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Functionality</summary>
+          <div class="evaluation-content">
+            <p>Placeholder: Assessment of delivered features against must-have functional requirements — home page, vulnerability view, knowledge base, and testing view.</p>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Stability</summary>
+          <div class="evaluation-content">
+            <p>Placeholder: Evaluation of system stability, error handling, and reliability under typical usage.</p>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Efficiency</summary>
+          <div class="evaluation-content">
+            <p>Placeholder: Response times, resource usage, and performance of the chatbot and testing interfaces.</p>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Compatibility</summary>
+          <div class="evaluation-content">
+            <p>Placeholder: Browser and device compatibility, fixed-model testing setup, and any constraints.</p>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Maintainability</summary>
+          <div class="evaluation-content">
+            <p>Placeholder: Code structure, documentation, and ease of future extension or modification.</p>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Project Management</summary>
+          <div class="evaluation-content">
+            <p>Placeholder: Planning, coordination, use of MoSCoW, and delivery against timeline.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="evaluation-strategy">
+      <h2>Evaluation Strategy</h2>
+      <div class="callout callout--note">
+        <p><strong>Coming soon:</strong> Detailed evaluation results and analysis will be added as testing progresses. The strategy and metrics framework are defined below.</p>
+      </div>
+      <p>
+        The evaluation strategy covers functional correctness, security effectiveness,
+        usability, and performance. Testing is structured in layers — from unit tests
+        of individual components through to end-to-end integration testing of the full
+        platform against real prompt injection scenarios.
+      </p>
+      <div class="card-grid cols-4 stagger">
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x1F9F1;</div>
+          <h3>Unit Tests</h3>
+          <p>Individual component and function-level testing.</p>
+        </div>
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x1F517;</div>
+          <h3>Integration</h3>
+          <p>Cross-component interaction and data flow validation.</p>
+        </div>
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x1F3D7;&#xFE0F;</div>
+          <h3>System</h3>
+          <p>End-to-end testing of complete user workflows.</p>
+        </div>
+        <div class="card card--feature card-accent">
+          <div class="card-icon">&#x1F464;</div>
+          <h3>Acceptance</h3>
+          <p>User acceptance testing with stakeholders and target users.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="test-setup">
+      <h2>Test Setup</h2>
+      <p>
+        The test environment is designed to provide reproducible, isolated conditions
+        for evaluating the platform's detection and mitigation capabilities.
+      </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="card">
+          <h3>&#x1F9EA; Test Environment</h3>
+          <p>Isolated testing environment with controlled access to LLM APIs and MCP server instances. All tests run against consistent model configurations to ensure reproducibility.</p>
+        </div>
+        <div class="card">
+          <h3>&#x1F4C1; Test Data</h3>
+          <p>Curated dataset of prompt injection attacks spanning all vulnerability categories identified in the research phase, including both known and novel attack variants.</p>
+        </div>
+        <div class="card">
+          <h3>&#x2699;&#xFE0F; Configuration</h3>
+          <p>Standardised test configurations with documented model parameters, mitigation settings, and evaluation criteria for each test category.</p>
+        </div>
+        <div class="card">
+          <h3>&#x1F504; Automation</h3>
+          <p>Automated test execution pipelines that can re-run the full test suite on demand, enabling regression testing and comparative evaluation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="metrics">
+      <h2>Metrics</h2>
+      <p>
+        Key metrics used to evaluate the platform's effectiveness across security,
+        usability, and performance dimensions.
+      </p>
+      <div class="stat-grid stagger">
+        <div class="stat">
+          <div class="stat-number">—</div>
+          <div class="stat-label">Detection Rate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">—</div>
+          <div class="stat-label">False Positive Rate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">—</div>
+          <div class="stat-label">Mitigation Success</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">—</div>
+          <div class="stat-label">Response Time</div>
+        </div>
+      </div>
+      <div class="table-wrap mt-3">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Description</th>
+              <th>Target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Detection rate</td>
+              <td>Percentage of known injection attacks correctly identified</td>
+              <td>To be defined</td>
+            </tr>
+            <tr>
+              <td>False positive rate</td>
+              <td>Percentage of legitimate prompts incorrectly flagged</td>
+              <td>To be defined</td>
+            </tr>
+            <tr>
+              <td>Mitigation effectiveness</td>
+              <td>Success rate of applied mitigations against detected threats</td>
+              <td>To be defined</td>
+            </tr>
+            <tr>
+              <td>Response latency</td>
+              <td>Time from prompt submission to result display</td>
+              <td>To be defined</td>
+            </tr>
+            <tr>
+              <td>User satisfaction</td>
+              <td>SUS score from user acceptance testing</td>
+              <td>To be defined</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="results">
+      <h2>Results Summary</h2>
+      <div class="callout">
+        <p><strong>Pending:</strong> Test results will be documented here as evaluation progresses. Results will include detailed breakdowns by vulnerability category, mitigation type, and attack complexity.</p>
+      </div>
+      <div class="img-placeholder">
+        <span class="placeholder-icon">&#x1F4CA;</span>
+        <span class="placeholder-label">Results Dashboard</span>
+        Charts and tables showing detection rates, mitigation effectiveness, and comparative analysis
+      </div>
+    </section>
+
+    <section class="section fade-in" id="future-work">
+      <h2>Future Work</h2>
+      <p>
+        Placeholder: Future work and recommendations will be documented here. This may include extensions to the testing framework, integration with additional tools (e.g. Garak, PyRIT), support for custom models or system prompts, mapping to OWASP Top 10 for LLMs or MITRE ATLAS, and further hardening of the platform.
+      </p>
+      <div class="callout callout--note">
+        <p><strong>To be completed:</strong> Add concrete next steps, prioritised backlog items, and any handover notes for continued development or research.</p>
+      </div>
+    </section>
+
+    <nav class="page-nav fade-in" aria-label="Page navigation">
+      <a href="implementation.html">
+        <span class="page-nav-label">Previous</span>
+        <span class="page-nav-title">← Implementation</span>
+      </a>
+      <a href="conclusion.html">
+        <span class="page-nav-label">Next</span>
+        <span class="page-nav-title">Conclusion →</span>
+      </a>
+    </nav>
+
+  </div>
 </main>
-<script>
-  window.location.replace('evaluation.html');
-</script>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__block site-footer__pages">
+        <h3 class="site-footer__heading">Pages</h3>
+        <nav class="site-footer__nav" aria-label="Report pages">
+          <a href="index.html">Home</a>
+          <a href="requirements.html">Requirements</a>
+          <a href="research.html">Research</a>
+          <a href="algorithms.html">Algorithms</a>
+          <a href="ui-design.html">UI Design</a>
+          <a href="system-design.html">System Design</a>
+          <a href="implementation.html">Implementation</a>
+          <a href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a href="conclusion.html">Conclusion</a>
+          <a href="appendices.html">Appendices</a>
+        </nav>
+      </div>
+      <div class="site-footer__block site-footer__project">
+        <h3 class="site-footer__heading">Project</h3>
+        <p class="site-footer__title">Prompt Injection Protection</p>
+        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
+        <a href="appendices.html#dev-blog">Development Blog</a>
+      </div>
+    </div>
+    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

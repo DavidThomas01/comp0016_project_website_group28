@@ -16,8 +16,8 @@ algorithms.html ............. Algorithms & Detection Logic
 ui-design.html .............. UI Design & Wireframes
 system-design.html .......... System Design & Architecture
 implementation.html ......... Implementation Details
-testing.html ................ Testing (pytest, gaps)
-evaluation.html ............. Evaluation (traceability, contributions, critical eval, future work)
+evaluation-testing.html ..... Evaluation & Testing
+conclusion.html ............. Conclusion & Future Work
 appendices.html ............. Appendices (manual, GDPR, blog, video)
 ```
 
@@ -87,15 +87,18 @@ appendices.html ............. Appendices (manual, GDPR, blog, video)
 - External integrations (APIs, MCP, tools)
 - Notable decisions and trade-offs
 
-### 8. Testing (`testing.html`)
-- Testing strategy and pytest snapshot
-- Gaps and future testing directions
+### 8. Evaluation & Testing (`evaluation-testing.html`)
+- Testing strategy overview
+- Test types: unit, integration, system, acceptance
+- Results and coverage metrics
+- Performance and security evaluation
+- Requirements traceability matrix
 
-### 9. Evaluation (`evaluation.html`)
-- Requirements traceability and achievements
-- Contributions (platform vs report website)
-- Known bugs and critical evaluation
-- Future work (product extensions)
+### 9. Conclusion (`conclusion.html`)
+- Summary of project achievements
+- Objectives vs outcomes comparison
+- Lessons learned (technical and process)
+- Recommendations for future work
 
 ### 10. Appendices (`appendices.html`)
 - **User manual & deployment guide** (`#user-manual`)
@@ -145,8 +148,8 @@ appendices.html ............. Appendices (manual, GDPR, blog, video)
 - [ ] **UI Design** — currently placeholder; add wireframes, mockups, design rationale
 - [ ] **System Design** — currently placeholder; add architecture diagrams and component descriptions
 - [ ] **Implementation** — currently placeholder; write technical details
-- [ ] **Testing** — extend pytest notes and UAT as needed
-- [ ] **Evaluation** — keep traceability, contributions, critical eval, and future work up to date
+- [ ] **Evaluation & Testing** — currently placeholder; add test results and analysis
+- [ ] **Conclusion** — currently placeholder; write summary and reflections
 - [ ] **Appendices** — currently placeholder; add user manual, GDPR section, blog link, video
 
 ### Accessibility
