@@ -6,6 +6,54 @@
   <meta name="description" content="System architecture and design of the Prompt Injection Protection platform — components, data flow, and security considerations." />
   <title>System Design – Prompt Injection Protection</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'neutral',
+      themeVariables: {
+        primaryColor: '#4f46e5',
+        primaryTextColor: '#1e1b4b',
+        primaryBorderColor: '#6366f1',
+        lineColor: '#6366f1',
+        secondaryColor: '#e0e7ff',
+        tertiaryColor: '#f8f7ff'
+      },
+      flowchart: { curve: 'basis', htmlLabels: true },
+      sequence: { actorMargin: 60 }
+    });
+  </script>
+  <style>
+    .mermaid {
+      background: var(--surface, #fafafa);
+      border: 1px solid var(--border, #e5e7eb);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    .arch-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.55rem;
+      border-radius: 0.25rem;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+    .arch-api    { background:#dbeafe; color:#1e40af; }
+    .arch-app    { background:#dcfce7; color:#166534; }
+    .arch-domain { background:#fef9c3; color:#854d0e; }
+    .arch-infra  { background:#fce7f3; color:#9d174d; }
+    .layer-table { width:100%; border-collapse:collapse; margin:1rem 0; }
+    .layer-table th, .layer-table td { padding:0.6rem 0.85rem; border:1px solid var(--border,#e5e7eb); font-size:0.9rem; vertical-align:top; }
+    .layer-table th { background:var(--surface,#f9fafb); font-weight:600; }
+    .section-toc { list-style:none; padding:0; margin:0 0 1.5rem; display:flex; flex-wrap:wrap; gap:0.5rem; }
+    .section-toc li a { display:inline-block; padding:0.3rem 0.75rem; border:1px solid var(--border,#e5e7eb); border-radius:2rem; font-size:0.85rem; text-decoration:none; color:var(--text-muted,#6b7280); }
+    .section-toc li a:hover { background:var(--accent,#4f46e5); color:#fff; border-color:transparent; }
+  </style>
 </head>
 
 <body>
@@ -61,8 +109,9 @@
     <div class="kicker">Systems Engineering · IXN</div>
     <h1>System Design</h1>
     <p>
-      The high-level architecture and system design of the platform, including component
-      overview, data flow patterns, technology stack, and security architecture.
+      A comprehensive account of the platform's architecture: the layered decomposition of
+      the backend, the component model of the frontend, the data pipeline, persistence
+      strategy, and API contract — grounded entirely in the production codebase.
     </p>
   </div>
 </section>
@@ -70,177 +119,677 @@
 <main id="main">
   <div class="container">
 
+    <!-- Table of Contents -->
+    <section class="section fade-in">
+      <ul class="section-toc" aria-label="Sections on this page">
+        <li><a href="#architecture">1. High-Level Architecture</a></li>
+        <li><a href="#principles">2. Design Principles</a></li>
+        <li><a href="#frontend">3. Frontend Architecture</a></li>
+        <li><a href="#backend">4. Backend Layered Architecture</a></li>
+        <li><a href="#pipeline">5. Analysis Pipeline</a></li>
+        <li><a href="#workflow">6. End-to-End Workflow</a></li>
+        <li><a href="#database">7. Database Architecture</a></li>
+        <li><a href="#api">8. API Design</a></li>
+      </ul>
+    </section>
+
+    <!-- ───────────────────────────────────────────
+         1. HIGH-LEVEL ARCHITECTURE
+    ─────────────────────────────────────────────── -->
     <section class="section fade-in" id="architecture">
-      <h2>High-Level Architecture</h2>
-      <div class="callout callout--note">
-        <p><strong>Coming soon:</strong> The full architecture diagram and detailed component descriptions will be added once the system design is finalised.</p>
-      </div>
+      <h2>1. High-Level Architecture</h2>
       <p>
-        The platform follows a modular architecture that separates concerns between the
-        user interface, business logic, data management, and external integrations. This
-        design enables independent development and testing of each component.
+        The platform is structured as two independently deployable processes — a
+        <strong>Next.js frontend</strong> and a <strong>FastAPI backend</strong> — communicating
+        exclusively over an HTTP REST API with a single Server-Sent Events (SSE) channel for
+        streaming chat responses. This separation enforces a strict client/server boundary:
+        all business logic, model access, and persistence reside in the backend; the frontend
+        is a pure rendering and interaction layer with no direct database or LLM access.
       </p>
-      <div class="img-placeholder">
-        <span class="placeholder-icon">&#x1F3D7;&#xFE0F;</span>
-        <span class="placeholder-label">System Architecture Diagram</span>
-        High-level architecture diagram showing all major components and their interactions
+      <p>
+        External dependencies are confined to two integration points: the
+        <strong>OpenAI API</strong> (used by the platform model provider and the AI analysis
+        sub-system) and the <strong>Garak CLI</strong> (invoked as a managed subprocess for
+        red-teaming framework runs). Both integrations are behind abstract interfaces in the
+        domain layer, so neither affects the core business logic.
+      </p>
+
+      <div class="mermaid">
+graph TB
+    subgraph Browser["Browser (Next.js 15 · React 19)"]
+        UI["Pages &amp; Components<br/>(App Router)"]
+        SSEClient["SSE Client<br/>(chat streaming)"]
+    end
+
+    subgraph Backend["Backend Process (FastAPI · Python 3.12)"]
+        API["API Layer<br/>(routes / schemas)"]
+        APP["Application Layer<br/>(services)"]
+        DOMAIN["Domain Layer<br/>(entities / interfaces)"]
+        INFRA["Infrastructure Layer<br/>(providers / runners / repos)"]
+    end
+
+    subgraph Persistence["Persistence"]
+        DB[("SQLite<br/>(3 tables)")]
+    end
+
+    subgraph External["External Services"]
+        OPENAI["OpenAI API<br/>(gpt-5.x family)"]
+        GARAK["Garak CLI<br/>(subprocess)"]
+    end
+
+    UI -->|"REST JSON"| API
+    SSEClient -->|"text/event-stream"| API
+    API --> APP
+    APP --> DOMAIN
+    DOMAIN --> INFRA
+    INFRA --> DB
+    INFRA --> OPENAI
+    INFRA --> GARAK
+      </div>
+
+      <div class="callout callout--note">
+        <p>
+          <strong>Deployment topology:</strong> both processes run on the same host during
+          development and are configured via environment variables (<code>OPENAI_API_KEY</code>,
+          <code>DATABASE_URL</code>, <code>NEXT_PUBLIC_API_URL</code>). No separate message
+          broker, cache, or authentication service is required.
+        </p>
       </div>
     </section>
 
-    <section class="section fade-in" id="components">
-      <h2>Component Overview</h2>
+    <!-- ───────────────────────────────────────────
+         2. DESIGN PRINCIPLES
+    ─────────────────────────────────────────────── -->
+    <section class="section fade-in" id="principles">
+      <h2>2. Design Principles &amp; Architectural Patterns</h2>
       <p>
-        The system is composed of several key components, each responsible for a distinct
-        aspect of the platform's functionality.
+        Four architectural patterns govern every structural decision in the backend codebase.
+        Their combined effect is a system in which the domain model is entirely free of
+        framework and I/O concerns, and in which any provider, runner, or persistence
+        technology can be replaced without touching business logic.
       </p>
+
       <div class="card-grid cols-2 stagger">
         <div class="card card-accent">
-          <div class="card-icon">&#x1F5A5;&#xFE0F;</div>
-          <h3>Frontend Application</h3>
-          <p>Web-based interface providing the vulnerability explorer, knowledge base, and testing views. Delivers responsive, accessible UI across devices.</p>
-          <div class="tag-list">
-            <span class="badge badge--blue">UI Layer</span>
-            <span class="badge badge--green">Responsive</span>
-          </div>
+          <h3>Clean / Layered Architecture</h3>
+          <p>
+            The backend is organised into four explicit layers — API, Application, Domain, and
+            Infrastructure — with dependencies pointing strictly inward. The domain layer
+            defines only pure Python dataclasses and abstract base classes; it has no imports
+            from FastAPI, SQLAlchemy, or any third-party library. Outer layers depend on
+            inner ones; inner layers never depend on outer ones.
+          </p>
         </div>
         <div class="card card-accent">
-          <div class="card-icon">&#x2699;&#xFE0F;</div>
-          <h3>Analysis Engine</h3>
-          <p>Core processing logic for prompt analysis, vulnerability detection, and mitigation evaluation. Implements the algorithmic pipeline.</p>
-          <div class="tag-list">
-            <span class="badge badge--brand">Core Logic</span>
-            <span class="badge badge--amber">Processing</span>
-          </div>
+          <h3>Repository Pattern</h3>
+          <p>
+            All persistence is mediated through a <code>TestRepository</code> class that
+            translates between domain objects (<code>Test</code>, <code>ModelSpec</code>,
+            <code>RunnerSpec</code>) and SQLAlchemy ORM models. Application services receive
+            an injected SQLAlchemy <code>Session</code> and call repository methods; they
+            are never aware of the underlying SQL dialect or table schema.
+          </p>
         </div>
         <div class="card card-accent">
-          <div class="card-icon">&#x1F9EA;</div>
-          <h3>Testing Framework</h3>
-          <p>Automated testing infrastructure for running prompt injection tests against MCP servers with configurable mitigation strategies.</p>
-          <div class="tag-list">
-            <span class="badge badge--brand">Testing</span>
-            <span class="badge badge--blue">Automation</span>
-          </div>
+          <h3>Strategy Pattern via Abstract Base Classes</h3>
+          <p>
+            Three families of behaviour are defined as abstract base classes in the domain
+            layer: <code>ModelProvider</code> (how to call a model), <code>TestRunner</code>
+            (how to execute a test), and <code>Mitigation</code> (how to filter or modify
+            a prompt/response). Concrete implementations are registered in module-level
+            registries (<code>MODEL_REGISTRY</code>, <code>MITIGATION_REGISTRY</code>) and
+            resolved at runtime by <code>ProviderRouter</code> and <code>RunnerRouter</code>.
+          </p>
         </div>
         <div class="card card-accent">
-          <div class="card-icon">&#x1F4BE;</div>
-          <h3>Data Layer</h3>
-          <p>Local SQL database for preserving test data, knowledge base content, and user configurations. No persistent backend server required.</p>
-          <div class="tag-list">
-            <span class="badge badge--green">Local Storage</span>
-            <span class="badge badge--blue">SQL</span>
-          </div>
+          <h3>Dependency Injection via Container</h3>
+          <p>
+            A central <code>Container</code> class (instantiated once at startup in
+            <code>main.py</code>) constructs and wires all service objects. FastAPI route
+            handlers receive services via <code>Depends()</code>, ensuring that no service
+            creates its own dependencies. This makes the entire service graph testable in
+            isolation by substituting mock objects at the container boundary.
+          </p>
         </div>
+      </div>
+
+      <h3>Dependency Rule Visualised</h3>
+      <p>
+        The diagram below makes the inward dependency rule explicit. An arrow from layer A
+        to layer B means "A imports B". No arrow ever crosses inward from a more-central
+        layer to a peripheral one.
+      </p>
+
+      <div class="mermaid">
+graph LR
+    API["<b>API Layer</b><br/>routes · schemas<br/>FastAPI"]
+    APP["<b>Application Layer</b><br/>TestService · ChatService<br/>ProviderRouter · RunnerRouter"]
+    DOMAIN["<b>Domain Layer</b><br/>Test · ModelSpec · RunnerSpec<br/>EnvironmentSpec · Mitigation<br/>ModelProvider · TestRunner"]
+    INFRA["<b>Infrastructure Layer</b><br/>TestRepository · PromptRunner<br/>GarakRunner · PlatformProvider<br/>ExternalProvider · Mitigations"]
+
+    API -->|"imports"| APP
+    APP -->|"imports"| DOMAIN
+    INFRA -->|"implements"| DOMAIN
+    API -->|"depends on"| INFRA
       </div>
     </section>
 
-    <section class="section fade-in" id="data-flow">
-      <h2>Data Flow</h2>
+    <!-- ───────────────────────────────────────────
+         3. FRONTEND ARCHITECTURE
+    ─────────────────────────────────────────────── -->
+    <section class="section fade-in" id="frontend">
+      <h2>3. Frontend Architecture</h2>
       <p>
-        Data flows through the system in a well-defined pipeline, from user input
-        through analysis and testing to results presentation.
+        The frontend is a Next.js 15 application using the App Router with React 19 Server
+        and Client Components. It is organised around seven top-level pages, each backed by
+        a dedicated TypeScript module under <code>app/pages/</code>. All LLM-facing and
+        persistence operations are delegated to the backend; the frontend holds no persistent
+        state beyond what is managed in React component state and the browser session.
       </p>
-      <div class="img-placeholder">
-        <span class="placeholder-icon">&#x1F504;</span>
-        <span class="placeholder-label">Data Flow Diagram</span>
-        Sequence diagram showing how data moves between components during key operations
-      </div>
-      <div class="card-grid cols-3 stagger">
-        <div class="card card--feature">
-          <h3>1. Input</h3>
-          <p>User provides prompts, selects vulnerabilities, or configures tests via the frontend.</p>
-        </div>
-        <div class="card card--feature">
-          <h3>2. Process</h3>
-          <p>The analysis engine evaluates inputs, applies detection logic, and runs mitigations.</p>
-        </div>
-        <div class="card card--feature">
-          <h3>3. Output</h3>
-          <p>Results are formatted and presented with clear pass/fail indicators and detailed analysis.</p>
-        </div>
-      </div>
-    </section>
 
-    <section class="section fade-in" id="tech-stack">
-      <h2>Technology Stack</h2>
-      <p>
-        Technology choices are driven by the project requirements: web delivery,
-        local-first data, and no persistent backend server.
-      </p>
+      <div class="mermaid">
+graph TD
+    subgraph AppRouter["Next.js App Router"]
+        ROOT["app/ (root layout)"]
+
+        P1["HomePage<br/>Platform overview"]
+        P2["VulnerabilityPage<br/>Vulnerability explorer"]
+        P3["KnowledgePage<br/>Mitigation knowledge base"]
+        P4["TestingPage<br/>Test configuration &amp; runs"]
+        P5["ChatPage<br/>Interactive LLM chat"]
+        P6["ConfigPage<br/>Model configuration"]
+        P7["ReportPage<br/>PDF report generation"]
+
+        ROOT --> P1
+        ROOT --> P2
+        ROOT --> P3
+        ROOT --> P4
+        ROOT --> P5
+        ROOT --> P6
+        ROOT --> P7
+    end
+
+    subgraph Shared["Shared Infrastructure"]
+        TYPES["types/testing.ts<br/>Shared TypeScript types"]
+        HOOKS["SSE hook<br/>(chat streaming)"]
+        UI["56 shadcn/ui components<br/>(components/ui/)"]
+    end
+
+    P4 --> TYPES
+    P5 --> HOOKS
+    P2 --> UI
+    P3 --> UI
+    P4 --> UI
+      </div>
+
+      <h3>Key Frontend Subsystems</h3>
       <div class="table-wrap">
-        <table class="styled-table">
+        <table class="layer-table">
           <thead>
-            <tr>
-              <th>Layer</th>
-              <th>Technology</th>
-              <th>Rationale</th>
-            </tr>
+            <tr><th>Subsystem</th><th>Location</th><th>Responsibility</th></tr>
           </thead>
           <tbody>
             <tr>
-              <td>Frontend</td>
-              <td>To be confirmed</td>
-              <td>Responsive web UI meeting accessibility requirements</td>
+              <td>Test configuration wizard</td>
+              <td><code>TestingPage.tsx</code></td>
+              <td>Multi-step form for defining model spec, environment, and runner; serialises to <code>RunnerSpec</code>/<code>ModelSpec</code> shapes and POSTs to <code>/tests</code></td>
             </tr>
             <tr>
-              <td>Logic</td>
-              <td>To be confirmed</td>
-              <td>Analysis engine and detection pipeline</td>
+              <td>Shared type definitions</td>
+              <td><code>types/testing.ts</code></td>
+              <td>Single source of truth for all API request/response shapes (<code>Test</code>, <code>ModelSpec</code>, <code>RunnerSpec</code>, <code>RunResult</code>, <code>AttemptResult</code>)</td>
             </tr>
             <tr>
-              <td>Data</td>
-              <td>SQL (local)</td>
-              <td>Local-first storage per non-functional requirements</td>
+              <td>SSE chat client</td>
+              <td><code>ChatPage.tsx</code></td>
+              <td>Opens a <code>text/event-stream</code> connection to <code>/chat/stream</code>; appends tokens to a React state buffer as they arrive</td>
             </tr>
             <tr>
-              <td>LLM Integration</td>
-              <td>GPT-5.0 (fixed)</td>
-              <td>Standardised model as specified in requirements</td>
+              <td>PDF report generation</td>
+              <td><code>ReportPage.tsx</code></td>
+              <td>Uses <code>jspdf</code> and <code>html2canvas</code> to render the current test results into a downloadable PDF entirely client-side</td>
             </tr>
             <tr>
-              <td>Protocol</td>
-              <td>MCP</td>
-              <td>Target protocol for security testing and evaluation</td>
+              <td>Component library</td>
+              <td><code>components/ui/</code></td>
+              <td>56 shadcn/ui components (buttons, dialogs, tables, tabs, toasts, etc.) providing a consistent Radix UI primitive foundation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        The <code>types/testing.ts</code> module is the interface contract between frontend
+        and backend. Every REST response is typed against the definitions in this file,
+        providing compile-time safety for field access and ensuring that any backend schema
+        change propagates as a TypeScript type error rather than a runtime failure.
+      </p>
+    </section>
+
+    <!-- ───────────────────────────────────────────
+         4. BACKEND LAYERED ARCHITECTURE
+    ─────────────────────────────────────────────── -->
+    <section class="section fade-in" id="backend">
+      <h2>4. Backend Layered Architecture</h2>
+      <p>
+        The backend is decomposed into four layers. Each layer is a distinct Python package
+        under <code>src/</code>, and the dependency rule is enforced by import discipline:
+        no module in an inner package may import from an outer one.
+      </p>
+
+      <div class="mermaid">
+graph TB
+    subgraph api["<b>API Layer</b> — src/api/"]
+        R1["tests.py<br/>CRUD for Test entities"]
+        R2["knowledge.py<br/>Vulnerability &amp; mitigation KB"]
+        R3["config.py<br/>Model configuration"]
+        R4["chat.py<br/>SSE streaming chat"]
+        R5["enhancements.py<br/>Prompt enhancement store"]
+        R6["health.py<br/>Liveness probe"]
+    end
+
+    subgraph app["<b>Application Layer</b> — src/domain/services/"]
+        S1["TestService<br/>test lifecycle orchestration"]
+        S2["ProviderRouter<br/>model provider resolution"]
+        S3["RunnerRouter<br/>test runner resolution"]
+        S4["ChatService<br/>streaming LLM conversation"]
+    end
+
+    subgraph domain["<b>Domain Layer</b> — src/domain/"]
+        E1["Test · ModelSpec<br/>RunnerSpec · EnvironmentSpec"]
+        E2["Message · MitigationAnalysis"]
+        I1["ModelProvider (ABC)"]
+        I2["TestRunner (ABC)"]
+        I3["Mitigation (ABC)<br/>MitigationLayer (enum)"]
+    end
+
+    subgraph infra["<b>Infrastructure Layer</b> — src/infra/"]
+        P1["PlatformProvider<br/>ExternalProvider"]
+        P2["PromptRunner<br/>GarakRunner"]
+        P3["12 Mitigation classes<br/>(MITIGATION_REGISTRY)"]
+        P4["TestRepository<br/>(SQLAlchemy ORM)"]
+        P5["PromptTestAnalyser<br/>PromptInjectionAnalyzer"]
+    end
+
+    api --> app
+    app --> domain
+    infra -->|implements| domain
+    api --> infra
+      </div>
+
+      <h3>Layer Responsibilities</h3>
+      <div class="table-wrap">
+        <table class="layer-table">
+          <thead>
+            <tr><th>Layer</th><th>Package</th><th>Responsibilities</th><th>Key Constraints</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="arch-label arch-api">API</span></td>
+              <td><code>src/api/</code></td>
+              <td>HTTP routing, request validation (Pydantic schemas), response serialisation, OpenAPI documentation</td>
+              <td>No business logic; delegates immediately to application services</td>
+            </tr>
+            <tr>
+              <td><span class="arch-label arch-app">Application</span></td>
+              <td><code>src/domain/services/</code></td>
+              <td>Orchestration of domain objects and infrastructure calls; transaction boundaries; provider/runner routing</td>
+              <td>No direct I/O; no SQL; must remain unit-testable without network access</td>
+            </tr>
+            <tr>
+              <td><span class="arch-label arch-domain">Domain</span></td>
+              <td><code>src/domain/</code></td>
+              <td>Pure business entities (frozen dataclasses), value objects, abstract interfaces for extension points, domain enumerations</td>
+              <td>Zero third-party imports; no I/O of any kind; represents the stable core</td>
+            </tr>
+            <tr>
+              <td><span class="arch-label arch-infra">Infrastructure</span></td>
+              <td><code>src/infra/</code></td>
+              <td>Concrete model providers, test runners, mitigation implementations, ORM models, repositories, analysis engine, Garak subprocess management</td>
+              <td>Implements domain interfaces; handles all side effects; swappable without changing business logic</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Model and Mitigation Registries</h3>
+      <p>
+        The infrastructure layer exposes two module-level dictionaries that act as
+        service locators for pluggable strategies. <code>MODEL_REGISTRY</code> maps
+        model identifiers (e.g. <code>"gpt-5.2"</code>) to <code>ModelProvider</code>
+        instances; <code>MITIGATION_REGISTRY</code> maps slug strings (e.g.
+        <code>"pre_filter"</code>) to <code>Mitigation</code> instances. Both registries
+        are populated at module import time, making new providers and mitigations addable
+        without modifying any service code.
+      </p>
+    </section>
+
+    <!-- ───────────────────────────────────────────
+         5. ANALYSIS PIPELINE
+    ─────────────────────────────────────────────── -->
+    <section class="section fade-in" id="pipeline">
+      <h2>5. AI Analysis Pipeline</h2>
+      <p>
+        Every prompt test run produces a <code>MitigationAnalysis</code> domain object
+        that reports whether the model's response was compromised by the injected prompt.
+        This judgment is produced by a two-stage hybrid analyser in the infrastructure
+        layer: a deterministic rule engine (weighted 60%) combined with an AI semantic
+        classifier (weighted 40%). The final risk score is computed using a probabilistic
+        combination formula, <em>score = 1 − ∏(1 − wᵢ · sᵢ)</em>, which keeps the result
+        naturally bounded in [0, 1].
+      </p>
+
+      <div class="mermaid">
+graph TD
+    INPUT["Conversation<br/>[context + prompt + response]"]
+
+    subgraph Deterministic["Deterministic Engine (60% weight)"]
+        RULES["33 regex rules<br/>7 categories"]
+        STRUCT["Structural heuristics<br/>(multi-step detection)"]
+        ENCODE["Encoding detector<br/>(Base64 · ROT13 · hex)"]
+        DSCORE["Deterministic score"]
+        RULES --> DSCORE
+        STRUCT --> DSCORE
+        ENCODE --> DSCORE
+    end
+
+    subgraph AIAnalysis["AI Semantic Classifier (40% weight)"]
+        AIPROMPT["Structured JSON prompt<br/>→ gpt-5-nano"]
+        AIRESULT["AIAnalysisResult<br/>(confidence · attack_type)"]
+        AIPROMPT --> AIRESULT
+    end
+
+    COMBINE["Probabilistic combination<br/>score = 1 − ∏(1 − wᵢ · sᵢ)"]
+    SEVERITY["Severity label<br/>safe / low_risk / suspicious / likely_injection"]
+    OUTPUT["InjectionAnalysisResult<br/>(risk_score · severity · flags · explanations)"]
+    FINAL["MitigationAnalysis<br/>(flagged · score · reason)"]
+
+    INPUT --> Deterministic
+    INPUT --> AIAnalysis
+    Deterministic --> COMBINE
+    AIAnalysis --> COMBINE
+    COMBINE --> SEVERITY
+    SEVERITY --> OUTPUT
+    OUTPUT --> FINAL
+      </div>
+
+      <h3>Runner Dispatch</h3>
+      <p>
+        Before analysis is invoked, <code>RunnerRouter</code> selects the appropriate
+        <code>TestRunner</code> implementation based on the <code>RunnerSpec.type</code>
+        field stored with the test:
+      </p>
+      <div class="table-wrap">
+        <table class="layer-table">
+          <thead><tr><th>Runner type</th><th>Class</th><th>Mechanism</th><th>Analysis used</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code>prompt</code></td>
+              <td><code>PromptRunner</code></td>
+              <td>Sends crafted messages directly to the model via <code>ProviderRouter</code>; applies mitigation chain before/after</td>
+              <td>Hybrid analyser (<code>PromptTestAnalyser</code>)</td>
+            </tr>
+            <tr>
+              <td><code>framework</code></td>
+              <td><code>GarakRunner</code></td>
+              <td>Writes a temporary YAML config and executes <code>garak</code> as a managed subprocess; parses JSONL hit reports</td>
+              <td>DEFCON-score aggregation from Garak report; no hybrid analyser</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <section class="section fade-in" id="security">
-      <h2>Security Architecture</h2>
-      <div class="callout callout--warning">
-        <p><strong>Security by design:</strong> Given that the platform analyses security vulnerabilities, its own security architecture is critical. Defence-in-depth principles are applied throughout.</p>
+    <!-- ───────────────────────────────────────────
+         6. END-TO-END WORKFLOW
+    ─────────────────────────────────────────────── -->
+    <section class="section fade-in" id="workflow">
+      <h2>6. End-to-End Workflow</h2>
+      <p>
+        The sequence diagram below traces a complete prompt-runner test execution from the
+        moment the user initiates a run in the browser to the moment results are returned.
+        The Garak framework path diverges after runner dispatch and is not shown in full.
+      </p>
+
+      <div class="mermaid">
+sequenceDiagram
+    participant FE as Frontend
+    participant API as API Layer
+    participant SVC as TestService
+    participant RR as RunnerRouter
+    participant PR as PromptRunner
+    participant MIT as Mitigation chain
+    participant MP as ModelProvider
+    participant AZ as PromptTestAnalyser
+    participant DB as TestRepository
+
+    FE->>API: POST /tests/{id}/run
+    API->>SVC: run_test(test_id, session)
+    SVC->>DB: get_by_id(test_id)
+    DB-->>SVC: Test domain object
+
+    SVC->>RR: get_runner(runner_type)
+    RR-->>SVC: PromptRunner instance
+
+    SVC->>PR: run(test)
+    PR->>MIT: apply_pre_input(prompt)
+    MIT-->>PR: filtered / augmented prompt
+
+    PR->>MP: complete(messages)
+    MP-->>PR: model response text
+
+    PR->>MIT: apply_post_output(response)
+    MIT-->>PR: filtered / augmented response
+
+    PR->>AZ: analyse(response, prompt, context, mitigation_results)
+    AZ-->>PR: MitigationAnalysis (flagged, score, reason)
+
+    PR-->>SVC: RunResult
+    SVC-->>API: RunResult
+    API-->>FE: JSON RunResult
       </div>
-      <div class="card-grid cols-2 stagger">
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F512;</div>
-          <div class="feature-content">
-            <h3>Sandboxed Execution</h3>
-            <p>All prompt testing runs in isolated environments with strict resource and permission controls.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F6E1;&#xFE0F;</div>
-          <div class="feature-content">
-            <h3>Input Boundaries</h3>
-            <p>Clear separation between user-provided content and system instructions at every layer.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F4DD;</div>
-          <div class="feature-content">
-            <h3>Audit Logging</h3>
-            <p>Comprehensive logging of all test operations and analysis results for traceability.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">&#x1F510;</div>
-          <div class="feature-content">
-            <h3>Minimal Permissions</h3>
-            <p>Principle of least privilege applied to all tool and API interactions.</p>
-          </div>
-        </div>
+
+      <p>
+        Mitigation objects in the chain are resolved from <code>MITIGATION_REGISTRY</code>
+        using the slug list stored in <code>EnvironmentSpec.mitigations</code>. Each
+        mitigation implements exactly one of the <code>MitigationLayer</code> stages
+        (<code>PRE_INPUT</code>, <code>POST_OUTPUT</code>, <code>PROMPT</code>,
+        <code>INFRASTRUCTURE</code>, <code>MONITORING</code>), and the runner iterates
+        them in layer order. Mitigation verdicts are aggregated alongside the
+        analyser result to produce the composite <code>MitigationAnalysis</code>.
+      </p>
+    </section>
+
+    <!-- ───────────────────────────────────────────
+         7. DATABASE ARCHITECTURE
+    ─────────────────────────────────────────────── -->
+    <section class="section fade-in" id="database">
+      <h2>7. Database Architecture</h2>
+      <p>
+        Persistence is provided by a single SQLite file accessed through SQLAlchemy's ORM.
+        The schema comprises three tables. Complex nested objects (<code>ModelSpec</code>,
+        <code>EnvironmentSpec</code>, <code>RunnerSpec</code>) are stored as JSON in
+        <code>TEXT</code> columns and deserialised by <code>TestRepository._to_domain()</code>
+        on read. This avoids the overhead of normalised sub-tables while keeping the domain
+        model free of ORM annotations.
+      </p>
+
+      <div class="mermaid">
+erDiagram
+    tests {
+        TEXT id PK
+        TEXT name
+        TEXT model_json
+        TEXT environment_json
+        TEXT runner_json
+        TEXT created_at
+    }
+
+    test_configurations {
+        TEXT id PK
+        TEXT name
+        TEXT model_json
+        TEXT environment_json
+        TEXT runner_json
+        TEXT created_at
+    }
+
+    prompt_enhancements {
+        TEXT id PK
+        TEXT original_prompt
+        TEXT enhanced_prompt
+        TEXT enhancement_type
+        TEXT created_at
+    }
       </div>
+
+      <div class="callout callout--note">
+        <p>
+          <strong>JSON column strategy:</strong> The <code>model_json</code>,
+          <code>environment_json</code>, and <code>runner_json</code> columns each store a
+          complete serialisation of their corresponding domain dataclass (produced via
+          Python's <code>dataclasses.asdict()</code>). On read, <code>TestRepository</code>
+          reconstructs the domain objects field-by-field, applying type coercions (e.g.
+          converting <code>runner["type"]</code> to a <code>RunnerType</code> enum). This
+          design allows the domain model to evolve independently of the SQL schema, with
+          migration handled by adding new optional keys to the JSON rather than altering
+          table columns.
+        </p>
+      </div>
+
+      <p>
+        The <code>test_configurations</code> table stores saved (but not yet executed) test
+        templates with the same JSON column structure as <code>tests</code>. Separating
+        executed tests from saved configurations allows the UI to present a clean
+        distinction between "saved test presets" and "historical run results".
+      </p>
+    </section>
+
+    <!-- ───────────────────────────────────────────
+         8. API DESIGN
+    ─────────────────────────────────────────────── -->
+    <section class="section fade-in" id="api">
+      <h2>8. API Design</h2>
+      <p>
+        The backend exposes a RESTful HTTP API mounted under <code>/api/v1</code> with six
+        route modules. All request and response bodies are JSON validated by Pydantic v2
+        schemas. The API contract is formally documented by FastAPI's auto-generated OpenAPI
+        specification, accessible at <code>/docs</code> during development.
+      </p>
+
+      <div class="table-wrap">
+        <table class="layer-table">
+          <thead>
+            <tr><th>Route module</th><th>Prefix</th><th>Key endpoints</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>tests.py</code></td>
+              <td><code>/tests</code></td>
+              <td>
+                <code>GET /</code> — list all tests<br/>
+                <code>POST /</code> — create test<br/>
+                <code>GET /{id}</code> — retrieve test<br/>
+                <code>PUT /{id}</code> — update test<br/>
+                <code>DELETE /{id}</code> — delete test<br/>
+                <code>POST /{id}/run</code> — execute test and return <code>RunResult</code>
+              </td>
+            </tr>
+            <tr>
+              <td><code>knowledge.py</code></td>
+              <td><code>/knowledge</code></td>
+              <td>
+                <code>GET /vulnerabilities</code> — full vulnerability KB<br/>
+                <code>GET /mitigations</code> — mitigation KB with <code>MitigationLayer</code> metadata<br/>
+                <code>GET /search</code> — BM25-weighted field search across both KBs
+              </td>
+            </tr>
+            <tr>
+              <td><code>config.py</code></td>
+              <td><code>/config</code></td>
+              <td>
+                <code>GET /models</code> — available platform model identifiers<br/>
+                <code>GET /mitigations</code> — registered mitigation slugs and metadata
+              </td>
+            </tr>
+            <tr>
+              <td><code>chat.py</code></td>
+              <td><code>/chat</code></td>
+              <td>
+                <code>POST /stream</code> — initiates an SSE stream; emits token-by-token
+                assistant response via <code>text/event-stream</code>
+              </td>
+            </tr>
+            <tr>
+              <td><code>enhancements.py</code></td>
+              <td><code>/enhancements</code></td>
+              <td>
+                <code>GET /</code> — list saved prompt enhancements<br/>
+                <code>POST /</code> — store a new enhanced prompt
+              </td>
+            </tr>
+            <tr>
+              <td><code>health.py</code></td>
+              <td><code>/health</code></td>
+              <td>
+                <code>GET /</code> — liveness probe returning <code>{"status": "ok"}</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Request / Response Contract</h3>
+      <p>
+        The <code>POST /tests/{id}/run</code> endpoint is the most structurally complex,
+        returning a <code>RunResult</code> object that varies by runner type:
+      </p>
+      <div class="table-wrap">
+        <table class="layer-table">
+          <thead>
+            <tr><th>Field</th><th>Type</th><th>Present for</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>output</code></td>
+              <td><code>string</code></td>
+              <td>All</td>
+              <td>Human-readable summary of the run outcome</td>
+            </tr>
+            <tr>
+              <td><code>analysis</code></td>
+              <td><code>TestAnalysis</code></td>
+              <td>All</td>
+              <td>Composite verdict: <code>flagged</code> (bool), <code>score</code> (0–1), <code>reason</code></td>
+            </tr>
+            <tr>
+              <td><code>started_at</code> / <code>finished_at</code></td>
+              <td><code>ISO-8601 string</code></td>
+              <td>All</td>
+              <td>Wall-clock timestamps for the run</td>
+            </tr>
+            <tr>
+              <td><code>attempts</code></td>
+              <td><code>AttemptResult[]</code></td>
+              <td>Framework runs</td>
+              <td>Per-probe attempt details: prompt sent, output received, <code>blocked</code>, <code>compromised</code>, HTTP statuses</td>
+            </tr>
+            <tr>
+              <td><code>report_html_url</code></td>
+              <td><code>string | null</code></td>
+              <td>Framework runs</td>
+              <td>Relative URL to the Garak-generated HTML report file, served statically</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        The SSE endpoint at <code>POST /chat/stream</code> emits newline-delimited
+        <code>data:</code> events. Each event carries a JSON object with a single
+        <code>token</code> field. A terminal <code>data: [DONE]</code> event signals
+        end-of-stream, mirroring the convention used by the OpenAI streaming API.
+      </p>
     </section>
 
     <nav class="page-nav fade-in" aria-label="Page navigation">
