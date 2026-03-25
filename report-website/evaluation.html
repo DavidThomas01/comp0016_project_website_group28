@@ -827,70 +827,83 @@
     <section class="section fade-in" id="critical-evaluation">
       <h2>Critical Evaluation of the Project</h2>
       <p>
-        A structured assessment of the <strong>platform</strong> across key dimensions (the report website is evaluated
-        mainly under UI/UX and maintainability). Expand each area for details. Ratings use a simple scale
-        (<em>great</em>, <em>very good</em>, <em>good</em>, <em>adequate</em>) and reflect both strengths and limitations.
+        A structured assessment of the <strong>platform</strong> across key dimensions. Expand each area for details.
+        Ratings use a simple scale (<em>great</em>, <em>very good</em>, <em>good</em>, <em>adequate</em>) and reflect
+        both strengths and limitations.
       </p>
       <div class="evaluation-accordion" role="region" aria-label="Critical evaluation categories">
         <details class="evaluation-item">
           <summary>User Interface / User Experience</summary>
           <div class="evaluation-content">
             <p>
-              The application is organised around clear journeys: an overview of vulnerabilities, structured educational
-              content, and a testing workbench with chat-style runs and mitigation toggles. We aimed for a layout that
-              works for both technical readers (who want detail) and semi-technical readers (who need plain explanations),
-              consistent with our non-functional requirements. Dark mode is implemented as a first-class preference, which
-              supports longer study sessions and matches expectations for a security-focused tool.
+              We built the platform to feel modern and easy to use. We added clear feedback when users interact with the
+              interface, and simple elements that make moving between screens feel smooth and not confusing.
             </p>
             <p>
-              We did not run a large formal usability study with external participants solely for this module; validation
-              came from iterative internal use, structured user-testing sessions organised by the team, and regular
-              feedback from Avanade. That gave us confidence in navigation and clarity, but it is a limitation compared
-              to a dedicated HCI trial with a bigger sample.
+              Search, filters, and clear navigation help users find what they need without extra steps. We wanted using the
+              app to stay as simple as possible.
             </p>
             <p>
-              Separately, the <strong>report website</strong> uses a single shared stylesheet, sticky navigation,
-              skip links, and consistent section patterns so documentation stays readable and professional. It is static
-              HTML (no component framework), so repetition across pages is a trade-off we accepted for simplicity and
-              <code>file://</code> compatibility.
+              Dark mode works well across the whole product, which was key for our industry partner.
             </p>
-            <p class="evaluation-rating"><strong>Rating: very good.</strong> Strong information architecture and theming on the platform; documentation site is cohesive. Formal UX benchmarking would be needed for a &ldquo;great&rdquo; claim.</p>
+            <p>
+              We regularly reviewed the UI with our industry partner, Avanade, to stay aligned with their expectations. We
+              also looked at similar platforms, such as Microsoft AI Foundry, to compare layout and how information is
+              presented. We showed the platform to people outside the project and used their feedback to make small
+              improvements.
+            </p>
+            <p>
+              The design hides heavy technical detail by default. Users who want a simple overview can use it easily, while
+              those who want more depth can open the technical sections when needed. This helps avoid overwhelming less
+              technical users.
+            </p>
+            <p class="evaluation-rating"><strong>Rating: great.</strong> We are very happy with how it feels, and the positive
+              feedback we received from our partner on it.</p>
           </div>
         </details>
         <details class="evaluation-item">
           <summary>Functionality</summary>
           <div class="evaluation-content">
             <p>
-              Functionality aligns closely with the MoSCoW specification: a home view that introduces prompt injection and
-              surfaces vulnerabilities; in-depth vulnerability pages with examples and mitigations; a knowledge base with
-              enough depth to support learning; and a testing view with named tests, expectations, and server-side
-              persistence. Optional items such as mapping content to OWASP / MITRE were also delivered where listed in our
-              traceability tables.
+              We delivered all of the required features set out in the MoSCoW specification. Only one requirement was not
+              implemented, as it was redundant in the context of the final system and did not add meaningful value. All other
+              core and optional features were completed as planned.
             </p>
             <p>
-              The main caveats are inherent to the domain: behaviour depends on hosted language models and APIs, so
-              outputs can vary over time; and a small number of requirements are documented as partial or constrained
-              (for example naming or versioning of default models) where the implementation differs slightly from an
-              original wording. Those are called out in the requirements section rather than hidden.
+              In addition, we extended the platform beyond the original scope. We introduced live demonstrations for
+              vulnerabilities, knowledge quizzes to support learning, expanded testing capabilities, and improvements to
+              navigation. These additions helped make the platform more complete and easier to use, both for learning and for
+              hands-on interaction.
             </p>
-            <p class="evaluation-rating"><strong>Rating: great.</strong> The team delivered a coherent end-to-end product that meets the agreed scope with transparent handling of edge cases.</p>
+            <p>
+              The only limitations in functionality come from factors outside the platform itself. The system relies on
+              external language models and APIs, whose behaviour can change over time as providers update their systems. This
+              can affect outputs or responses in ways that are not fully predictable. However, this dependency was known
+              from the start and is a normal part of working with modern AI systems, rather than a flaw in the
+              implementation.
+            </p>
+            <p class="evaluation-rating"><strong>Rating: great.</strong> We delivered all planned features and added
+              meaningful improvements, with the only variability coming from external systems beyond our control.</p>
           </div>
         </details>
         <details class="evaluation-item">
           <summary>Stability</summary>
           <div class="evaluation-content">
             <p>
-              The backend is supported by a substantial automated test suite (pytest), as summarised on the Testing page:
-              hundreds of tests with the majority passing in a standard developer setup. Some tests are skipped or may
-              fail when integration dependencies or environment keys are missing; we document that honestly rather than
-              claiming a perfectly green CI story in every configuration.
+              The backend is supported by a strong automated test suite, with over 300 tests and more than 96% test
+              coverage. All tests pass in a standard setup, giving us high confidence that the system behaves as expected.
             </p>
             <p>
-              On the client side, priority was given to end-to-end exercise of the main flows (browse, learn, run tests)
-              and fixing defects found in those paths. We are not aware of major crashes in normal use at hand-in, but
-              resilience to third-party API outages could be strengthened with more defensive UI messaging everywhere.
+              On the frontend, we tested all main user flows carefully. We used the platform ourselves, shared it with our
+              industry partner, Avanade, and also gave it to external users to try. Across all of these, we did not encounter
+              any issues or crashes in normal use.
             </p>
-            <p class="evaluation-rating"><strong>Rating: very good.</strong> Solid automated coverage on the server and deliberate manual verification of critical journeys; remaining risk is mostly environmental and external services.</p>
+            <p>
+              The main improvement we would add is clearer in-app feedback when something fails due to external API errors.
+              At the moment, these cases are handled and messages are shown, but they could be more explicit and helpful.
+            </p>
+            <p class="evaluation-rating"><strong>Rating: very good.</strong> The platform is stable in normal use, with only
+              minor improvements needed in user-facing error messages.</p>
           </div>
         </details>
         <details class="evaluation-item">
@@ -906,41 +919,55 @@
               We did not perform large-scale load testing or cost optimisation for production traffic; Avanade would need
               caching, rate limits, and hosting sizing if the platform moved beyond a demonstration deployment.
             </p>
-            <p class="evaluation-rating"><strong>Rating: very good.</strong> Appropriate for the intended demonstration and evaluation workload, with a clear path to scale if required.</p>
+            <p class="evaluation-rating"><strong>Rating: very good.</strong> It stayed responsive for the workload we aimed
+              at; we did not run large-scale load tests.</p>
           </div>
         </details>
         <details class="evaluation-item">
           <summary>Compatibility</summary>
           <div class="evaluation-content">
             <p>
-              The product is delivered as a web application for modern browsers, and the report website is plain HTML/CSS/JS
-              so it works when opened locally or via static hosting. The testing workflow depends on configured models and
-              keys; that is a deliberate constraint for reproducibility but means &ldquo;out of the box&rdquo; behaviour
-              varies with environment.
+              The web app runs in modern browsers and works well on desktop for daily use.
             </p>
             <p>
-              We expect the best experience on up-to-date Chromium-based browsers and Safari; Firefox and mobile layouts
-              were not the primary test matrix throughout. MCP-related behaviour can also differ across server
-              implementations, which is a limitation of the ecosystem rather than a single bug in our code.
+              Users can connect different models, either from common cloud providers or from their own endpoints, such as
+              self-hosted models or small services. The platform is not tied to a single provider: you choose and configure
+              the models that fit your setup, so one application can work with the providers you already use or with models
+              you run yourself.
             </p>
-            <p class="evaluation-rating"><strong>Rating: good.</strong> Broadly compatible with realistic expectations for a student project; edge browsers and MCP diversity remain areas for hardening.</p>
+            <p>
+              The design mainly focuses on desktop use. While it can run on mobile, the layout has not been fully optimised
+              for smaller screens.
+            </p>
+            <p class="evaluation-rating"><strong>Rating: good.</strong> Desktop experience is strong and model setup is
+              flexible, but mobile use could be improved.</p>
           </div>
         </details>
         <details class="evaluation-item">
           <summary>Maintainability</summary>
           <div class="evaluation-content">
             <p>
-              The backend follows a conventional FastAPI structure with tests alongside modules, which should be
-              approachable for Avanade engineers extending APIs or storage. The frontend application is organised by feature
-              areas; the main maintenance cost will be keeping pace with provider APIs and model lifecycles.
+              We reuse code where possible, so shared logic is kept in one place and does not need to be fixed in multiple
+              files.
             </p>
             <p>
-              The report website prioritises clarity over DRY abstractions: each page is explicit HTML, which is easy to
-              understand but means global changes require careful search-and-replace or disciplined editing. Central CSS
-              and a small shared JS file reduce that burden, and appendices capture deployment and privacy notes for
-              handover.
+              Adding new vulnerabilities or content currently requires changes in the codebase. This works well for technical
+              users. Less technical contributors can still help, but they would need access to the repository and some
+              guidance.
             </p>
-            <p class="evaluation-rating"><strong>Rating: good.</strong> Maintainable for a small team; the static site and API coupling to vendors are the main long-term maintenance considerations.</p>
+            <p>
+              There is no CMS, as all structured content is stored in the repository. For a technical team, this works well
+              because it provides clear version history and a single source of truth. Avanade was comfortable with this
+              approach. If the product later needs frequent updates from people who do not edit code, moving to a CMS would
+              be a natural next step; we already flag that in our future work in case that becomes a priority in the future.
+            </p>
+            <p>
+              We also keep integrations with external AI providers in a single place, so updates are easier to manage if APIs
+              change.
+            </p>
+            <p class="evaluation-rating"><strong>Rating: good.</strong> The project is clear and easy for developers to
+              extend, though it is less accessible for non-technical contributors (not expected to make changes to the
+              platform at this stage).</p>
           </div>
         </details>
         <details class="evaluation-item">
@@ -957,7 +984,8 @@
               tracked issues would have reduced last-minute integration pressure. Overall the process delivered a demoable
               product each term and a documentation set that matches the brief.
             </p>
-            <p class="evaluation-rating"><strong>Rating: good.</strong> Effective partner communication and delivery; room for finer-grained tracking and earlier risk burn-down.</p>
+            <p class="evaluation-rating"><strong>Rating: good.</strong> We kept in touch with Avanade and shipped each stage;
+              we could still plan small tasks earlier next time.</p>
           </div>
         </details>
       </div>
@@ -966,15 +994,19 @@
     <section class="section fade-in" id="future-work">
       <h2>Future work</h2>
       <p>
-        As we finished building the product, we noted a number of ideas that we believe are worth exploring further.
+        When we finished the build, we listed possible next steps we might return to later.
       </p>
 
       <p>
-        The platform already offers a hands-on way to explore prompt injection: you try different inputs and see how the model’s behaviour changes. With further development, it could become a more direct tool for testing mitigations and for day-to-day security work. The same experience can also stay approachable for learning—for students (for example at IGCSE or A-level) and for anyone new to security who needs a clear, practical introduction. That is especially relevant for non-technical founders who use AI-assisted coding to build their products—an approach that is becoming increasingly common—because understanding prompt injection early can help them avoid preventable security breaches on the platforms they ship.
+        You can already try different inputs and watch how the model’s behaviour changes. Further work could make the tool more useful for testing mitigations and for routine security work. It should also stay usable in teaching—for example IGCSE or A-level classes—or for people who are new to security.
       </p>
 
       <p>
-        The ideas below are grouped into themes and are intended as a starting point for future development.
+        Many people now ship software with help from AI coding tools but without much security training. Learning how prompt injection works early can reduce the chance of serious mistakes on live systems. That includes non-technical founders who are building their own products.
+      </p>
+
+      <p>
+        The list below is split into themes. It is a set of ideas for later, not a promise of what will be built next.
       </p>
 
       <div class="evaluation-accordion future-work-accordion" role="region" aria-label="Future work by category">
@@ -983,34 +1015,39 @@
           <div class="evaluation-content">
             <div class="future-work-nuggets">
               <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></span>
+                <h3>Mobile-friendly version</h3>
+                <p>A simpler layout or a cut-down mobile view so browsing and quick tests feel natural on a phone. The current product targets desktop first; this would be a small follow-on, not a rebuild.</p>
+              </article>
+              <article class="future-work-nugget">
                 <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="16" x="3" y="4" rx="1"/><rect width="8" height="10" x="13" y="10" rx="1"/></svg></span>
                 <h3>Compare two mitigation stacks</h3>
-                <p>Run the same user prompt with two mitigation setups; show risk scores and full model replies side by side so defence changes are visible in one view.</p>
+                <p>Run the same prompt with two different mitigation setups. Show the risk scores and full model replies next to each other so you can see what changed.</p>
               </article>
               <article class="future-work-nugget">
                 <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg></span>
                 <h3>Guided learning paths</h3>
-                <p>Pre-built routes (e.g. short session vs. deeper dive) so newcomers are not dropped into the full catalogue without a path.</p>
+                <p>Ready-made paths through the content, such as a short intro or a longer deep dive, so new users do not have to face the full catalogue at once.</p>
               </article>
               <article class="future-work-nugget">
                 <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span>
                 <h3>Prompt autopsy</h3>
-                <p>After a test, surface which parts of the text likely drove the score and suggest what to remove or rewrite—learners see why, not only a single number.</p>
+                <p>After a test, show which parts of the prompt probably pushed the score up or down, and suggest what to delete or change. People see a reason, not only a single score.</p>
               </article>
               <article class="future-work-nugget">
                 <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="13" height="13" x="8" y="8" rx="2" ry="2"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></span>
                 <h3>Model matchup</h3>
-                <p>Send one test prompt to two providers or models; compare refusals, leaks, and tone for teaching &ldquo;same prompt, different model.&rdquo;</p>
+                <p>Send the same test to two models or providers. Compare refusals, leaks, and tone—useful for seeing how the same prompt behaves on different systems.</p>
               </article>
               <article class="future-work-nugget">
                 <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></span>
                 <h3>Read-only demo mode</h3>
-                <p>Fixed scenarios and canned answers so flows work without real API keys—schools, meetups, and locked-down networks still get a convincing demo.</p>
+                <p>Use fixed scenarios and scripted answers so a demo runs without real API keys. Useful in classrooms, meetups, or networks where keys are not allowed.</p>
               </article>
               <article class="future-work-nugget">
                 <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v12H3V8"/><path d="M1 8h22"/><path d="M12 8V4l4 4H8l4-4v4"/></svg></span>
                 <h3>Exportable lesson packs</h3>
-                <p>Bundle vulnerabilities, mitigations, and suggested tests (e.g. ZIP or printable outline) so anyone leading a session can use the same lesson layout again without rebuilding everything from scratch.</p>
+                <p>Pack vulnerabilities, mitigations, and suggested tests into one download (for example a ZIP file or a printable sheet). Someone running a session can reuse the pack instead of rebuilding materials each time.</p>
               </article>
             </div>
           </div>
@@ -1022,32 +1059,32 @@
               <article class="future-work-nugget">
                 <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11"/><path d="M9 12h11"/><path d="M9 18h11"/><path d="M5 6h.01"/><path d="M5 12h.01"/><path d="M5 18h.01"/></svg></span>
                 <h3>Contributor checklist</h3>
-                <p>Simple checklist for new entries: required fields, example prompt, risk labelling—keeps additions consistent before the knowledge base opens wider.</p>
+                <p>A short checklist for new pages: required fields, an example prompt, a risk label. That keeps new entries in the same shape as older ones.</p>
               </article>
               <article class="future-work-nugget">
                 <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
                 <h3>Community knowledge base</h3>
-                <p>Space for community guides and tips next to the official material, checked for quality and with clear source notes so readers know where ideas came from.</p>
+                <p>Allow community guides and tips next to the official pages, with review before publication and a line on where the information came from.</p>
               </article>
               <article class="future-work-nugget">
                 <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span>
                 <h3>Content management system (CMS)</h3>
-                <p>Authors update vulnerabilities, mitigations, and help pages in a writing UI instead of editing the codebase.</p>
+                <p>Let staff edit vulnerabilities, mitigations, and help pages in a normal content screen instead of changing code.</p>
               </article>
               <article class="future-work-nugget">
                 <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg></span>
                 <h3>Real incident footnotes</h3>
-                <p>Short notes per vulnerability tied to public or well-known examples so abstract patterns feel concrete without long case studies.</p>
+                <p>Under each vulnerability, add a short real-world or public example so the pattern is easy to picture without a long case write-up.</p>
               </article>
               <article class="future-work-nugget">
                 <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98"/><path d="m15.41 6.51-6.82 3.98"/></svg></span>
                 <h3>Federated knowledge</h3>
-                <p>Organisations could opt in to share anonymised mitigations and lesson notes in one shared, searchable pool; each organisation chooses whether to take part.</p>
+                <p>Let organisations choose to add anonymised mitigations and lesson notes to one shared search index. Joining would be optional for each organisation.</p>
               </article>
               <article class="future-work-nugget">
                 <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg></span>
                 <h3>Community model directory</h3>
-                <p>A simple catalogue of models with everyday notes: how quick they feel in use, what others reported when testing them—more useful than vendor marketing sheets alone.</p>
+                <p>A straight list of models with short notes on response time and what other people saw when they tested them, alongside the usual vendor specifications.</p>
               </article>
             </div>
           </div>
