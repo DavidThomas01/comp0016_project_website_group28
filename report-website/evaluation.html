@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Evaluation of the Prompt Injection Protection platform: requirements traceability, contributions, critical assessment, known bugs, and future work." />
+  <title>Evaluation – Prompt Injection Protection</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container topbar">
+    <a class="brand" href="index.html">
+      <div>
+        <div class="brand-title">Prompt Injection Protection</div>
+        <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
+      </div>
+    </a>
+    <div class="brand-logos" aria-hidden="true">
+      <img src="assets/img/logo-ucl.png" alt="UCL">
+      <img src="assets/img/logo-avanade.webp" alt="Avanade">
+    </div>
+  </div>
+  <div class="container">
+    <label class="burger" for="nav-toggle">Menu</label>
+  </div>
+  <input id="nav-toggle" type="checkbox" />
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-left">
+          <div class="nav-scroll">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="requirements.html">Requirements</a>
+          <a class="nav-link" href="research.html">Research</a>
+          <a class="nav-link" href="algorithms.html">Algorithms</a>
+          <a class="nav-link" href="ui-design.html">UI Design</a>
+          <a class="nav-link" href="system-design.html">System Design</a>
+          <a class="nav-link" href="implementation.html">Implementation</a>
+          <a class="nav-link" href="testing.html">Testing</a>
+          <a class="nav-link active" href="evaluation.html">Evaluation</a>
+          </div>
+          <div class="nav-item">
+            <a class="drop-toggle" href="appendices.html">Appendices ▾</a>
+            <div class="dropdown" role="menu" aria-label="Appendices">
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
+              <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly videos</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">Systems Engineering · IXN</div>
+    <h1>Evaluation</h1>
+    <p>
+      How we assessed the delivered platform against the requirements, the team&rsquo;s contributions,
+      and a critical look at what worked and what did not.
+    </p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="container">
+
+    <section class="section fade-in" id="summary-achievements">
+      <h2>Summary of Achievements</h2>
+      <p class="section-lead achievements-section-lead">
+        The detailed tables are in
+        <a href="#requirements-traceability">Requirements traceability</a>. This section is a brief summary.
+      </p>
+
+      <div class="achievements-grid">
+        <div class="card card-accent achievements-card">
+          <h3>Functional — Must have</h3>
+          <p class="achievements-intro">
+            Home page, vulnerability catalogue with in-depth views (examples, mitigations, comparison), structured knowledge content,
+            and a full testing workbench.
+          </p>
+          <details class="evaluation-item achievements-expand">
+            <summary>See a fuller summary</summary>
+            <div class="evaluation-content">
+              <div class="achievement-block">
+                <h4>Home</h4>
+                <ul class="styled-list">
+                  <li>Introduces prompt injection, risks, and how attacks work; lists vulnerabilities with short summaries and navigation into detail.</li>
+                </ul>
+              </div>
+              <div class="achievement-block">
+                <h4>Vulnerability view</h4>
+                <ul class="styled-list">
+                  <li>Technical explanation, behaviour example, mitigation(s), and a comparison of unmitigated vs mitigated model output.</li>
+                </ul>
+              </div>
+              <div class="achievement-block">
+                <h4>Knowledge base</h4>
+                <ul class="styled-list">
+                  <li>Worked examples, attack demonstrations, and mitigation explanations with enough depth to support learning and testing.</li>
+                </ul>
+              </div>
+              <div class="achievement-block">
+                <h4>Testing</h4>
+                <ul class="styled-list">
+                  <li>Custom named tests, chat-style runs with per-test mitigations, pass/fail expectations, server-side SQL storage, default platform models in the GPT-5.x family (see evaluation notes for naming vs &ldquo;GPT 5.0&rdquo; in the spec).</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="card card-accent achievements-card">
+          <h3>Non-functional — Must have</h3>
+          <p class="achievements-intro">
+            Browser-based delivery, clear presentation for technical and semi-technical readers, responsive interactive areas,
+            consistent standards-aligned UI, and dark mode.
+          </p>
+          <details class="evaluation-item achievements-expand">
+            <summary>See a fuller summary</summary>
+            <div class="evaluation-content">
+              <div class="achievement-block">
+                <h4>Delivery &amp; form</h4>
+                <ul class="styled-list">
+                  <li>Web application usable in standard browsers without requiring a persistent backend for basic use.</li>
+                </ul>
+              </div>
+              <div class="achievement-block">
+                <h4>Clarity &amp; audience</h4>
+                <ul class="styled-list">
+                  <li>Vulnerabilities, mitigations, and test outcomes are explained so both technical and semi-technical users can follow them.</li>
+                </ul>
+              </div>
+              <div class="achievement-block">
+                <h4>Performance &amp; UI</h4>
+                <ul class="styled-list">
+                  <li>Chat and testing flows stay responsive in normal use; layout and navigation follow the agreed interface patterns.</li>
+                </ul>
+              </div>
+              <div class="achievement-block">
+                <h4>Preference</h4>
+                <ul class="styled-list">
+                  <li>Dark mode is available as a first-class theme choice.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="requirements-traceability">
+      <h2>Requirements traceability</h2>
+      <p>
+        Key functionalities (must have and should have) are
+        <strong>98%</strong> completed; optional functionalities (could have) are <strong>100%</strong> completed.
+        Each row shows delivery status against the specification.
+      </p>
+      <p class="traceability-hint">
+        <strong>Note:</strong> For any requirement marked not completed, hover or focus anywhere on that row — a short explanation appears next to the status.
+      </p>
+
+      <div class="evaluation-accordion" role="region" aria-label="Requirements by priority and type">
+        <details class="evaluation-item">
+          <summary>Functional requirements — Must have</summary>
+          <div class="evaluation-content">
+            <div class="table-wrap">
+              <table class="styled-table requirements-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Requirement</th>
+                    <th scope="col" class="req-priority">Priority</th>
+                    <th scope="col" class="req-cell-status">Done</th>
+                    <th scope="col" class="req-contributors">Contributors</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Home page introduces prompt injection, associated risks, and a high-level explanation of how prompt injection works.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Home page displays a list of known prompt injection vulnerabilities.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Each vulnerability is clickable and includes a short summary.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Selecting a vulnerability from the home page navigates to an in-depth vulnerability view.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>In-depth view includes a vulnerability information panel with a technical explanation.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>In-depth view includes an example panel showing how a model behaves when faced with the vulnerability.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Clear explanation of at least one mitigation strategy for each vulnerability.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Each vulnerability includes a technical explanation.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David</td>
+                  </tr>
+                  <tr>
+                    <td>Each vulnerability includes a working example demonstrating the vulnerability.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario</td>
+                  </tr>
+                  <tr>
+                    <td>Comparison panel shows model behaviour without mitigation.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario</td>
+                  </tr>
+                  <tr>
+                    <td>Comparison panel shows model behaviour with mitigation applied.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David</td>
+                  </tr>
+                  <tr>
+                    <td>Knowledge base: clear examples of prompt injection vulnerabilities.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David</td>
+                  </tr>
+                  <tr>
+                    <td>Knowledge base: technical explanations for each vulnerability.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David</td>
+                  </tr>
+                  <tr>
+                    <td>Knowledge base: working attack examples.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Knowledge base: clear explanations of prompt injection mitigations.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Knowledge base: technical explanations for each mitigation.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Testing view is accessible from the main navigation bar.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario</td>
+                  </tr>
+                  <tr>
+                    <td>Users can create custom tests for individual mitigations.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Chat-style interface processes a single prompt.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David</td>
+                  </tr>
+                  <tr>
+                    <td>Users can enable or disable mitigations identified during research (one per test).</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Custom tests are named by the user.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Teo, Mario</td>
+                  </tr>
+                  <tr>
+                    <td>Custom tests are stored in memory during the session.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Teo, Mario</td>
+                  </tr>
+                  <tr>
+                    <td>Tests clearly indicate pass/fail based on predefined security expectations.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Teo, Mario</td>
+                  </tr>
+                  <tr>
+                    <td>Test data is preserved locally in an SQL database.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Teo, Mario</td>
+                  </tr>
+                  <tr>
+                    <td>All tests run on a fixed model (GPT 5.0).</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Teo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="evaluation-item">
+          <summary>Functional requirements — Should have</summary>
+          <div class="evaluation-content">
+            <div class="table-wrap">
+              <table class="styled-table requirements-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Requirement</th>
+                    <th scope="col" class="req-priority">Priority</th>
+                    <th scope="col" class="req-cell-status">Done</th>
+                    <th scope="col" class="req-contributors">Contributors</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="req-row req-row--incomplete">
+                    <td>In-depth vulnerability view: sandbox input field to test prompts with and without mitigation enabled.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status">
+                      <span class="req-status-tooltip" tabindex="0" aria-describedby="req-reason-sandbox">
+                        <span class="req-status req-status--not" aria-hidden="true"></span>
+                        <span class="req-status-tooltip__panel" id="req-reason-sandbox" role="tooltip">
+                          Not completed — after discussing it with our partner at Avanade we decided not to add a second sandbox here. The testing page already lets you run prompts with or without mitigations, so duplicating that in the vulnerability view would go against how the platform is organised and could mislead users.
+                        </span>
+                      </span>
+                    </td>
+                    <td class="req-contributors"><span class="visually-hidden">No contributors</span></td>
+                  </tr>
+                  <tr>
+                    <td>In-depth vulnerability view: mitigation implementation presented in pseudocode.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Mario</td>
+                  </tr>
+                  <tr>
+                    <td>In-depth vulnerability view: references or external sources for further reading.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David</td>
+                  </tr>
+                  <tr>
+                    <td>In-depth vulnerability view: ability to export the view as PDF.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David</td>
+                  </tr>
+                  <tr>
+                    <td>Testing view: support multi-prompt tests with conversation history.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Testing view: support for multiple agents.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Testing view: ability to export tests as PDFs.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David</td>
+                  </tr>
+                  <tr>
+                    <td>Testing view: multiple mitigations can be applied simultaneously in a custom test.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Chatbot trained on knowledge base: answers theoretical questions on prompt injection.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David</td>
+                  </tr>
+                  <tr>
+                    <td>Chatbot trained on knowledge base: answers practical questions on scenarios and gives guidance.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="evaluation-item">
+          <summary>Functional requirements — Could have</summary>
+          <div class="evaluation-content">
+            <div class="table-wrap">
+              <table class="styled-table requirements-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Requirement</th>
+                    <th scope="col" class="req-priority">Priority</th>
+                    <th scope="col" class="req-cell-status">Done</th>
+                    <th scope="col" class="req-contributors">Contributors</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>In-depth vulnerability view: mitigations in multiple programming languages with a tabbed interface.</td>
+                    <td class="req-priority">Could</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Mario</td>
+                  </tr>
+                  <tr>
+                    <td>Chatbot provides links to redirect users to relevant pages within the system.</td>
+                    <td class="req-priority">Could</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David</td>
+                  </tr>
+                  <tr>
+                    <td>AI prompt enhancer view: fine-tuned model refines input prompt based on target vulnerabilities and mitigations to include.</td>
+                    <td class="req-priority">Could</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Nathaniel, David</td>
+                  </tr>
+                  <tr>
+                    <td>Testing view: run interactive tests on custom models connected via API.</td>
+                    <td class="req-priority">Could</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Testing view: run interactive tests on a model with a custom system prompt.</td>
+                    <td class="req-priority">Could</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Testing view: run automated testing pipeline based on Nvidia Garak and Microsoft PyRIT frameworks.</td>
+                    <td class="req-priority">Could</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Teo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="evaluation-item">
+          <summary>Non-functional requirements — Must have</summary>
+          <div class="evaluation-content">
+            <div class="table-wrap">
+              <table class="styled-table requirements-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Requirement</th>
+                    <th scope="col" class="req-priority">Priority</th>
+                    <th scope="col" class="req-cell-status">Done</th>
+                    <th scope="col" class="req-contributors">Contributors</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>System is delivered as a web application.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario</td>
+                  </tr>
+                  <tr>
+                    <td>Vulnerabilities, mitigations, and test results are clear and understandable for technical users.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Vulnerabilities, mitigations, and test results are clear and understandable for semi-technical users.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Chatbot and testing interfaces provide acceptable interactive response time.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>Intuitive, clear, and logical interface that conforms to standards.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario, Teo</td>
+                  </tr>
+                  <tr>
+                    <td>System supports a dark mode interface.</td>
+                    <td class="req-priority">Must</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="evaluation-item">
+          <summary>Non-functional requirements — Should have</summary>
+          <div class="evaluation-content">
+            <div class="table-wrap">
+              <table class="styled-table requirements-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Requirement</th>
+                    <th scope="col" class="req-priority">Priority</th>
+                    <th scope="col" class="req-cell-status">Done</th>
+                    <th scope="col" class="req-contributors">Contributors</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Consistent colour schemes with Avanade style.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario</td>
+                  </tr>
+                  <tr>
+                    <td>Standardised icons.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario</td>
+                  </tr>
+                  <tr>
+                    <td>Uniform layout conventions across all views.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David, Mario</td>
+                  </tr>
+                  <tr>
+                    <td>Red used to represent vulnerabilities and failing tests.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Mario</td>
+                  </tr>
+                  <tr>
+                    <td>Green used to represent mitigations and passing tests.</td>
+                    <td class="req-priority">Should</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">Teo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="evaluation-item">
+          <summary>Non-functional requirements — Could have</summary>
+          <div class="evaluation-content">
+            <div class="table-wrap">
+              <table class="styled-table requirements-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Requirement</th>
+                    <th scope="col" class="req-priority">Priority</th>
+                    <th scope="col" class="req-cell-status">Done</th>
+                    <th scope="col" class="req-contributors">Contributors</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mapping of vulnerabilities and mitigations to OWASP Top 10 for LLMs and MITRE ATLAS.</td>
+                    <td class="req-priority">Could</td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-contributors">David</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="individual-contributions">
+      <h2>Individual Contributions</h2>
+      <p>
+        Contribution across work packages by team member. Percentages are team-estimated from git history and merge
+        ownership on the platform repository (not a line-count measure). Where coursework or meetings are not in git,
+        splits are approximate.
+      </p>
+      <p>
+        We separate <strong>system development</strong> (the Prompt Injection Protection platform) from the
+        <strong>report website</strong> (this coursework documentation site) so ownership of each deliverable is clear.
+      </p>
+
+      <h3 class="contribution-section-title" id="contributions-system">System development (platform)</h3>
+      <p class="section-lead contribution-section-lead">
+        Partner liaison, research, design, implementation, and verification of the web application and backend.
+      </p>
+      <div class="contribution-tables-group">
+      <div class="table-wrap contribution-table-wrap">
+        <table class="styled-table contribution-table" aria-labelledby="contributions-system">
+          <colgroup>
+            <col class="col-work-package" />
+            <col class="col-member" />
+            <col class="col-member" />
+            <col class="col-member" />
+            <col class="col-member" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Work package</th>
+              <th scope="col">Teo</th>
+              <th scope="col">David</th>
+              <th scope="col">Nathaniel</th>
+              <th scope="col">Mario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Project partner liaison</td>
+              <td>30%</td>
+              <td>25%</td>
+              <td>20%</td>
+              <td>25%</td>
+            </tr>
+            <tr>
+              <td>Requirements analysis</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
+            </tr>
+            <tr>
+              <td>HCI / user research</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
+            </tr>
+            <tr>
+              <td>Research and experiments</td>
+              <td>40%</td>
+              <td>20%</td>
+              <td>15%</td>
+              <td>25%</td>
+            </tr>
+            <tr>
+              <td>UI design (application)</td>
+              <td>20%</td>
+              <td>25%</td>
+              <td>15%</td>
+              <td>40%</td>
+            </tr>
+            <tr>
+              <td>Backend (FastAPI &amp; SQLite)</td>
+              <td>50%</td>
+              <td>10%</td>
+              <td>15%</td>
+              <td>25%</td>
+            </tr>
+            <tr>
+              <td>Frontend &mdash; application</td>
+              <td>25%</td>
+              <td>35%</td>
+              <td>20%</td>
+              <td>20%</td>
+            </tr>
+            <tr>
+              <td>Organising user testing</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
+            </tr>
+            <tr>
+              <td>Testing (platform)</td>
+              <td>55%</td>
+              <td>15%</td>
+              <td>15%</td>
+              <td>15%</td>
+            </tr>
+            <tr>
+              <td>Blog and monthly video</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
+              <td>25%</td>
+            </tr>
+            <tr class="contribution-total">
+              <th scope="row">Overall (equal weight per work package)</th>
+              <td>32%</td>
+              <td>23%</td>
+              <td>20%</td>
+              <td>25%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="contribution-section-title" id="contributions-report-site">Report website</h3>
+      <p class="section-lead contribution-section-lead">
+        Static HTML/CSS deliverable: shared layout, design system, page content, media, and accessibility. Each row sums to 100% across the team for that work package.
+      </p>
+      <div class="table-wrap contribution-table-wrap">
+        <table class="styled-table contribution-table" aria-labelledby="contributions-report-site">
+          <colgroup>
+            <col class="col-work-package" />
+            <col class="col-member" />
+            <col class="col-member" />
+            <col class="col-member" />
+            <col class="col-member" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Work package</th>
+              <th scope="col">Teo</th>
+              <th scope="col">David</th>
+              <th scope="col">Nathaniel</th>
+              <th scope="col">Mario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Site-wide layout, header/footer &amp; navigation</td>
+              <td>12%</td>
+              <td>60%</td>
+              <td>14%</td>
+              <td>14%</td>
+            </tr>
+            <tr>
+              <td>Design system &amp; global CSS</td>
+              <td>10%</td>
+              <td>65%</td>
+              <td>12%</td>
+              <td>13%</td>
+            </tr>
+            <tr>
+              <td>Shared JS &amp; progressive enhancement</td>
+              <td>10%</td>
+              <td>65%</td>
+              <td>12%</td>
+              <td>13%</td>
+            </tr>
+            <tr>
+              <td>Content &mdash; core report pages (Home&ndash;System Design)</td>
+              <td>28%</td>
+              <td>32%</td>
+              <td>22%</td>
+              <td>18%</td>
+            </tr>
+            <tr>
+              <td>Content &mdash; delivery &amp; evaluation (Implementation&ndash;Evaluation)</td>
+              <td>22%</td>
+              <td>38%</td>
+              <td>22%</td>
+              <td>18%</td>
+            </tr>
+            <tr>
+              <td>Appendices, media figures &amp; accessibility pass</td>
+              <td>18%</td>
+              <td>48%</td>
+              <td>18%</td>
+              <td>16%</td>
+            </tr>
+            <tr class="contribution-total">
+              <th scope="row">Overall (equal weight per work package)</th>
+              <td>17%</td>
+              <td>51%</td>
+              <td>17%</td>
+              <td>15%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      <p class="contribution-total-note">
+        The <strong>overall</strong> row in each table is the simple average of that member&rsquo;s percentage across work packages in that table (each package weighted equally). The four percentages sum to 100%.
+      </p>
+    </section>
+
+    <section class="section fade-in" id="known-bugs">
+      <h2>Known bugs</h2>
+      <p>
+        We tested the core parts of the product carefully and addressed the issues we found. The main user flows have been checked end-to-end, and at this stage we are not aware of any major bugs in the current version. While there were some challenges during development, these were worked through to ensure the key features behave as expected.
+      </p>
+
+      <p>
+        We see this as a solid base for Avanade to build on. We have included clear documentation so that anyone can understand the platform, maintain it, and extend it with new functionalities over time.         We are also encouraged by the positive feedback from Avanade and Microsoft, as well as the opportunity to share the work through an article on the AI Foundry blog and an upcoming presentation on the AI Foundry Discord.
+      </p>
+    </section>
+
+    <section class="section fade-in" id="critical-evaluation">
+      <h2>Critical Evaluation of the Project</h2>
+      <p>
+        A structured assessment of the <strong>platform</strong> across key dimensions (the report website is evaluated
+        mainly under UI/UX and maintainability). Expand each area for details. Ratings use a simple scale
+        (<em>great</em>, <em>very good</em>, <em>good</em>, <em>adequate</em>) and reflect both strengths and limitations.
+      </p>
+      <div class="evaluation-accordion" role="region" aria-label="Critical evaluation categories">
+        <details class="evaluation-item">
+          <summary>User Interface / User Experience</summary>
+          <div class="evaluation-content">
+            <p>
+              The application is organised around clear journeys: an overview of vulnerabilities, structured educational
+              content, and a testing workbench with chat-style runs and mitigation toggles. We aimed for a layout that
+              works for both technical readers (who want detail) and semi-technical readers (who need plain explanations),
+              consistent with our non-functional requirements. Dark mode is implemented as a first-class preference, which
+              supports longer study sessions and matches expectations for a security-focused tool.
+            </p>
+            <p>
+              We did not run a large formal usability study with external participants solely for this module; validation
+              came from iterative internal use, structured user-testing sessions organised by the team, and regular
+              feedback from Avanade. That gave us confidence in navigation and clarity, but it is a limitation compared
+              to a dedicated HCI trial with a bigger sample.
+            </p>
+            <p>
+              Separately, the <strong>report website</strong> uses a single shared stylesheet, sticky navigation,
+              skip links, and consistent section patterns so documentation stays readable and professional. It is static
+              HTML (no component framework), so repetition across pages is a trade-off we accepted for simplicity and
+              <code>file://</code> compatibility.
+            </p>
+            <p class="evaluation-rating"><strong>Rating: very good.</strong> Strong information architecture and theming on the platform; documentation site is cohesive. Formal UX benchmarking would be needed for a &ldquo;great&rdquo; claim.</p>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Functionality</summary>
+          <div class="evaluation-content">
+            <p>
+              Functionality aligns closely with the MoSCoW specification: a home view that introduces prompt injection and
+              surfaces vulnerabilities; in-depth vulnerability pages with examples and mitigations; a knowledge base with
+              enough depth to support learning; and a testing view with named tests, expectations, and server-side
+              persistence. Optional items such as mapping content to OWASP / MITRE were also delivered where listed in our
+              traceability tables.
+            </p>
+            <p>
+              The main caveats are inherent to the domain: behaviour depends on hosted language models and APIs, so
+              outputs can vary over time; and a small number of requirements are documented as partial or constrained
+              (for example naming or versioning of default models) where the implementation differs slightly from an
+              original wording. Those are called out in the requirements section rather than hidden.
+            </p>
+            <p class="evaluation-rating"><strong>Rating: great.</strong> The team delivered a coherent end-to-end product that meets the agreed scope with transparent handling of edge cases.</p>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Stability</summary>
+          <div class="evaluation-content">
+            <p>
+              The backend is supported by a substantial automated test suite (pytest), as summarised on the Testing page:
+              hundreds of tests with the majority passing in a standard developer setup. Some tests are skipped or may
+              fail when integration dependencies or environment keys are missing; we document that honestly rather than
+              claiming a perfectly green CI story in every configuration.
+            </p>
+            <p>
+              On the client side, priority was given to end-to-end exercise of the main flows (browse, learn, run tests)
+              and fixing defects found in those paths. We are not aware of major crashes in normal use at hand-in, but
+              resilience to third-party API outages could be strengthened with more defensive UI messaging everywhere.
+            </p>
+            <p class="evaluation-rating"><strong>Rating: very good.</strong> Solid automated coverage on the server and deliberate manual verification of critical journeys; remaining risk is mostly environmental and external services.</p>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Efficiency</summary>
+          <div class="evaluation-content">
+            <p>
+              SQLite and local-first storage keep data access predictable for coursework scale. The interactive areas
+              (chat-style testing, vulnerability browsing) remain responsive in normal use; the heaviest cost is
+              naturally LLM latency and token use, which we mitigate by using APIs only when the user runs a test or
+              chat action rather than on every navigation.
+            </p>
+            <p>
+              We did not perform large-scale load testing or cost optimisation for production traffic; Avanade would need
+              caching, rate limits, and hosting sizing if the platform moved beyond a demonstration deployment.
+            </p>
+            <p class="evaluation-rating"><strong>Rating: very good.</strong> Appropriate for the intended demonstration and evaluation workload, with a clear path to scale if required.</p>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Compatibility</summary>
+          <div class="evaluation-content">
+            <p>
+              The product is delivered as a web application for modern browsers, and the report website is plain HTML/CSS/JS
+              so it works when opened locally or via static hosting. The testing workflow depends on configured models and
+              keys; that is a deliberate constraint for reproducibility but means &ldquo;out of the box&rdquo; behaviour
+              varies with environment.
+            </p>
+            <p>
+              We expect the best experience on up-to-date Chromium-based browsers and Safari; Firefox and mobile layouts
+              were not the primary test matrix throughout. MCP-related behaviour can also differ across server
+              implementations, which is a limitation of the ecosystem rather than a single bug in our code.
+            </p>
+            <p class="evaluation-rating"><strong>Rating: good.</strong> Broadly compatible with realistic expectations for a student project; edge browsers and MCP diversity remain areas for hardening.</p>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Maintainability</summary>
+          <div class="evaluation-content">
+            <p>
+              The backend follows a conventional FastAPI structure with tests alongside modules, which should be
+              approachable for Avanade engineers extending APIs or storage. The frontend application is organised by feature
+              areas; the main maintenance cost will be keeping pace with provider APIs and model lifecycles.
+            </p>
+            <p>
+              The report website prioritises clarity over DRY abstractions: each page is explicit HTML, which is easy to
+              understand but means global changes require careful search-and-replace or disciplined editing. Central CSS
+              and a small shared JS file reduce that burden, and appendices capture deployment and privacy notes for
+              handover.
+            </p>
+            <p class="evaluation-rating"><strong>Rating: good.</strong> Maintainable for a small team; the static site and API coupling to vendors are the main long-term maintenance considerations.</p>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Project Management</summary>
+          <div class="evaluation-content">
+            <p>
+              We used MoSCoW consistently to prioritise must-haves during a fixed academic timeline, held regular contact
+              with Avanade to align scope, and split ownership across backend, frontend, research, and QA so parallel work
+              was possible. Git-based collaboration and issue tracking supported larger changes, though smaller tasks were
+              sometimes coordinated informally.
+            </p>
+            <p>
+              As with many group projects, workload peaked near deadlines; earlier decomposition of polish items into
+              tracked issues would have reduced last-minute integration pressure. Overall the process delivered a demoable
+              product each term and a documentation set that matches the brief.
+            </p>
+            <p class="evaluation-rating"><strong>Rating: good.</strong> Effective partner communication and delivery; room for finer-grained tracking and earlier risk burn-down.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="future-work">
+      <h2>Future work</h2>
+      <p>
+        As we finished building the product, we noted a number of ideas that we believe are worth exploring further.
+      </p>
+
+      <p>
+        The platform already offers a hands-on way to explore prompt injection: you try different inputs and see how the model’s behaviour changes. With further development, it could become a more direct tool for testing mitigations and for day-to-day security work. The same experience can also stay approachable for learning—for students (for example at IGCSE or A-level) and for anyone new to security who needs a clear, practical introduction. That is especially relevant for non-technical founders who use AI-assisted coding to build their products—an approach that is becoming increasingly common—because understanding prompt injection early can help them avoid preventable security breaches on the platforms they ship.
+      </p>
+
+      <p>
+        The ideas below are grouped into themes and are intended as a starting point for future development.
+      </p>
+
+      <div class="evaluation-accordion future-work-accordion" role="region" aria-label="Future work by category">
+        <details class="evaluation-item">
+          <summary>Learning, testing &amp; demos</summary>
+          <div class="evaluation-content">
+            <div class="future-work-nuggets">
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="16" x="3" y="4" rx="1"/><rect width="8" height="10" x="13" y="10" rx="1"/></svg></span>
+                <h3>Compare two mitigation stacks</h3>
+                <p>Run the same user prompt with two mitigation setups; show risk scores and full model replies side by side so defence changes are visible in one view.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg></span>
+                <h3>Guided learning paths</h3>
+                <p>Pre-built routes (e.g. short session vs. deeper dive) so newcomers are not dropped into the full catalogue without a path.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span>
+                <h3>Prompt autopsy</h3>
+                <p>After a test, surface which parts of the text likely drove the score and suggest what to remove or rewrite—learners see why, not only a single number.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="13" height="13" x="8" y="8" rx="2" ry="2"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></span>
+                <h3>Model matchup</h3>
+                <p>Send one test prompt to two providers or models; compare refusals, leaks, and tone for teaching &ldquo;same prompt, different model.&rdquo;</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></span>
+                <h3>Read-only demo mode</h3>
+                <p>Fixed scenarios and canned answers so flows work without real API keys—schools, meetups, and locked-down networks still get a convincing demo.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v12H3V8"/><path d="M1 8h22"/><path d="M12 8V4l4 4H8l4-4v4"/></svg></span>
+                <h3>Exportable lesson packs</h3>
+                <p>Bundle vulnerabilities, mitigations, and suggested tests (e.g. ZIP or printable outline) so anyone leading a session can use the same lesson layout again without rebuilding everything from scratch.</p>
+              </article>
+            </div>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Community, content &amp; operations</summary>
+          <div class="evaluation-content">
+            <div class="future-work-nuggets">
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11"/><path d="M9 12h11"/><path d="M9 18h11"/><path d="M5 6h.01"/><path d="M5 12h.01"/><path d="M5 18h.01"/></svg></span>
+                <h3>Contributor checklist</h3>
+                <p>Simple checklist for new entries: required fields, example prompt, risk labelling—keeps additions consistent before the knowledge base opens wider.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <h3>Community knowledge base</h3>
+                <p>Space for community guides and tips next to the official material, checked for quality and with clear source notes so readers know where ideas came from.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span>
+                <h3>Content management system (CMS)</h3>
+                <p>Authors update vulnerabilities, mitigations, and help pages in a writing UI instead of editing the codebase.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg></span>
+                <h3>Real incident footnotes</h3>
+                <p>Short notes per vulnerability tied to public or well-known examples so abstract patterns feel concrete without long case studies.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98"/><path d="m15.41 6.51-6.82 3.98"/></svg></span>
+                <h3>Federated knowledge</h3>
+                <p>Organisations could opt in to share anonymised mitigations and lesson notes in one shared, searchable pool; each organisation chooses whether to take part.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg></span>
+                <h3>Community model directory</h3>
+                <p>A simple catalogue of models with everyday notes: how quick they feel in use, what others reported when testing them—more useful than vendor marketing sheets alone.</p>
+              </article>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <nav class="page-nav fade-in" aria-label="Page navigation">
+      <a href="testing.html">
+        <span class="page-nav-label">Previous</span>
+        <span class="page-nav-title">← Testing</span>
+      </a>
+      <a href="appendices.html">
+        <span class="page-nav-label">Next</span>
+        <span class="page-nav-title">Appendices →</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<div id="footer-root"></div>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
