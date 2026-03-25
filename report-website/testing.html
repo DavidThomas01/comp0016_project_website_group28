@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="How we tested the Prompt Injection Protection platform: backend pytest suite, manual browser checks, partner and user feedback." />
+  <title>Testing – Prompt Injection Protection</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container topbar">
+    <a class="brand" href="index.html">
+      <div>
+        <div class="brand-title">Prompt Injection Protection</div>
+        <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
+      </div>
+    </a>
+    <div class="brand-logos" aria-hidden="true">
+      <img src="assets/img/logo-ucl.png" alt="UCL">
+      <img src="assets/img/logo-avanade.webp" alt="Avanade">
+    </div>
+  </div>
+  <div class="container">
+    <label class="burger" for="nav-toggle">Menu</label>
+  </div>
+  <input id="nav-toggle" type="checkbox" />
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-left">
+          <div class="nav-scroll">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="requirements.html">Requirements</a>
+          <a class="nav-link" href="research.html">Research</a>
+          <a class="nav-link" href="algorithms.html">Algorithms</a>
+          <a class="nav-link" href="ui-design.html">UI Design</a>
+          <a class="nav-link" href="system-design.html">System Design</a>
+          <a class="nav-link" href="implementation.html">Implementation</a>
+          <a class="nav-link active" href="testing.html">Testing</a>
+          <a class="nav-link" href="evaluation.html">Evaluation</a>
+          </div>
+          <div class="nav-item">
+            <a class="drop-toggle" href="appendices.html">Appendices ▾</a>
+            <div class="dropdown" role="menu" aria-label="Appendices">
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
+              <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly videos</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">Systems Engineering · IXN</div>
+    <h1>Testing</h1>
+    <p>
+      How we tested the platform: automated backend tests, manual checks in the browser, feedback from Avanade, and short sessions with independent testers.
+    </p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="container">
+
+    <section class="section fade-in" id="testing-strategy">
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect width="6" height="4" x="9" y="3" rx="2"/><path d="M9 12h6"/><path d="M9 16h6"/></svg>
+        Testing strategy
+      </h2>
+      <p>
+        We used several types of testing to make sure the platform was reliable both technically and from a user point of view. Our goal was to check the parts of the product that matter most: learning about prompt injection, exploring vulnerabilities, and running tests in the app.
+      </p>
+      <div class="card-grid stagger">
+        <div class="card card-accent">
+          <h3>What this included</h3>
+          <ul class="testing-point-list">
+            <li><strong>Unit and integration testing:</strong> checking that individual backend components behave correctly and that important flows work properly when connected together.</li>
+            <li><strong>Manual browser testing:</strong> checking that the main screens work across common browsers and window sizes.</li>
+            <li><strong>Partner feedback:</strong> Avanade gave regular feedback on layout, navigation, and feature placement.</li>
+            <li><strong>Light user testing:</strong> seven people outside the team completed core tasks and told us what felt clear or confusing.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="pytest-snapshot" aria-labelledby="pytest-snapshot-heading">
+      <h2 class="visually-hidden">Backend pytest</h2>
+      <div class="testing-snapshot">
+        <p class="testing-snapshot-heading" id="pytest-snapshot-heading">
+          <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
+          Backend pytest
+        </p>
+        <p class="testing-snapshot-note">
+          We ran the backend test suite locally from <code>backend/</code> after installing the development dependencies
+          (<code>pip install -e &quot;.[dev]&quot;</code>, then <code>PYTHONPATH=src pytest</code>). Figures below are from one recorded run.
+        </p>
+        <p class="testing-subsection-title">Results from one recorded run</p>
+        <div class="stat-grid stagger">
+          <div class="stat">
+            <div class="stat-number">316</div>
+            <div class="stat-label">Tests collected</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">316</div>
+            <div class="stat-label">Passed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Failed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Skipped</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number stat-number--ver">&gt;96%</div>
+            <div class="stat-label">Coverage (approx.)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number stat-number--ver">9.0.2</div>
+            <div class="stat-label">Pytest (local)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="unit-integration">
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        Unit and integration testing
+      </h2>
+      <p>
+        The backend test suite is built with <code>pytest</code>, with <code>pytest-asyncio</code> used for async parts of the system. Most tests use mocks rather than real model calls, which keeps the suite fast and practical to run. A smaller set of integration tests can also call live APIs when the right keys are available.
+      </p>
+      <div class="testing-two-col">
+        <div class="card">
+          <h3>Unit tests</h3>
+          <p>
+            Unit tests check individual parts of the backend on their own. This includes things like mitigations, prompt helpers, scoring logic, API routes, storage, and runners such as the Garak wrapper. These tests make it easier to change the backend without worrying that small changes will quietly break core behaviour.
+          </p>
+          <p class="testing-subsection-title">Example of the kind of behaviour covered:</p>
+          <div class="testing-code-block"><code>def test_flagged_threshold_respects_score():
+    """Risk at or above the threshold should mark output as flagged."""
+    analyser = PromptTestAnalyser()
+    low = AnalysisResult(risk_score=0.35, lines=[])
+    high = AnalysisResult(risk_score=0.45, lines=[])
+
+    assert analyser.is_flagged(low) is False
+    assert analyser.is_flagged(high) is True</code></div>
+          <p class="testing-prompt-hint">This is only an illustrative example. Exact names may differ slightly in the repository.</p>
+        </div>
+        <div class="card">
+          <h3>Integration tests</h3>
+          <p>
+            Integration tests check larger flows through the application, for example whether an HTTP request passes through the system correctly and returns the expected result. Some of these tests can also use live providers when API keys are present.
+          </p>
+          <p class="testing-subsection-title">Example of this kind of pattern:</p>
+          <div class="testing-code-block"><code>@pytest.mark.asyncio
+async def test_create_named_test_returns_id(async_client):
+    payload = {"name": "demo", "prompt": "Hello", "expect_pass": True}
+    response = await async_client.post("/api/tests", json=payload)
+
+    assert response.status_code == 201
+    body = response.json()
+    assert "id" in body
+    assert body["name"] == "demo"</code></div>
+          <p class="testing-prompt-hint">This is also illustrative only. Exact paths and fields follow the real application API.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="components-tested">
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+        What we covered in automated tests
+      </h2>
+      <p>
+        The automated backend test suite is where we check that core behaviour stays reliable as the codebase changes. Most tests run quickly because model calls are mocked, while a smaller number can use live APIs when keys are available.
+      </p>
+      <p>
+        In practice, this means testing the main HTTP routes, prompt and mitigation logic, risk scoring, storage, and runners such as the Garak integration. We also check how the system handles invalid input and missing resources.
+      </p>
+      <p>
+        For reporting, we grouped this work into four broad areas:
+      </p>
+      <div class="card-grid card-grid--2x2 stagger">
+        <div class="card card-accent">
+          <h3>API and application flow</h3>
+          <ul class="testing-point-list">
+            <li>Creating, listing, and running tests</li>
+            <li>Security Assistant and streaming paths where covered</li>
+            <li>Error handling for invalid input or missing resources</li>
+          </ul>
+        </div>
+        <div class="card card-accent">
+          <h3>Analysis, scoring, and tools</h3>
+          <ul class="testing-point-list">
+            <li>Prompt injection analysers and risk scoring</li>
+            <li>Garak runner behaviour with mocked subprocess calls</li>
+            <li>Mitigation handling and score-related edge cases</li>
+          </ul>
+        </div>
+        <div class="card card-accent">
+          <h3>Data and configuration</h3>
+          <ul class="testing-point-list">
+            <li>SQLite-backed repositories and migrations used in testing</li>
+            <li>Threshold and weight logic used by scoring</li>
+          </ul>
+        </div>
+        <div class="card card-accent">
+          <h3>Optional live model checks</h3>
+          <ul class="testing-point-list">
+            <li>OpenAI, Anthropic, and compatible endpoints when keys are available</li>
+            <li>These tests are skipped automatically if the required keys are missing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="compatibility-responsive">
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+        Compatibility &amp; Responsive design testing
+      </h2>
+      <p>
+        We manually tested the main parts of the platform across <strong>Chrome, Safari, Firefox, and Edge</strong> to make sure the experience was consistent in normal desktop use. This included browsing the catalogue, reading vulnerability and knowledge pages, using the testing area, and interacting with the Security Assistant. Across these checks, the core flows worked reliably and we did not see inconsistent behaviour between browsers.
+      </p>
+      <p>
+        For responsiveness, we tested the platform at a range of window sizes rather than only in a full desktop view. We checked that the layout still worked well on narrower screens, smaller laptops, and tablet-sized widths, and that navigation, panels, and key actions remained easy to find and use. Content adjusted cleanly without awkward horizontal scrolling or broken layout, and the platform remained comfortable to use as the available space changed.
+      </p>
+      <p>
+        We also checked both light and dark modes to make sure text, controls, and spacing remained clear across themes. In normal use, chat and test runs felt responsive on the devices we used, and these checks did not reveal any functional issues in the main user journeys.
+      </p>
+    </section>
+
+    <section class="section fade-in" id="performance-stress-testing">
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        Performance/stress testing
+      </h2>
+      <p>
+        We lined up the most demanding Garak configurations the product offers and ran them back to back on the same stack a consultant would use: ordinary hardware, ordinary network, the testing screen left open while the work ran underneath. Somewhere in the middle of a long pass you stop watching the clock and start watching whether progress, labels, and partial results still mean something.
+      </p>
+      <p>
+        They did. Even when a scan stretched well beyond a quick smoke test, the run completed with summaries we could return to the next day without guesswork. We repeated the exercise on separate evenings until the last rough edges were gone—not because we were chasing a benchmark on a chart, but because we wanted to be sure a serious pass would spend attention on the findings, not on babysitting the shell around them.
+      </p>
+      <p>
+        This was a confidence exercise, not a published performance study. It tells you what we did with our own time; it does not pretend to replace industry load harnesses or fixed SLA numbers.
+      </p>
+    </section>
+
+    <section class="section fade-in" id="prompt-testing">
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+        Testing prompts for the enhancer and Security Assistant
+      </h2>
+      <p>
+        As well as the automatic backend tests, we checked the written instructions (prompts) for two features people use a lot: the prompt enhancer and the Security Assistant. We wanted those instructions to be easy to understand, stay on topic, and fit what the user was trying to do.
+      </p>
+
+      <div class="uat-block">
+        <h3>Prompt enhancer</h3>
+        <p>
+          We tried short text, long pasted blocks, and vague questions. We read the rewritten text next to what the user had typed and asked: did this really help, or just add noise? If the result was too stiff, changed what the user meant, or added things they did not ask for, we changed the prompt and tried again.
+        </p>
+      </div>
+
+      <div class="uat-block">
+        <h3>Security Assistant</h3>
+        <p>
+          We looked at follow-up questions, messages with very little context, and people trying to move the chat outside the knowledge base. When answers were too vague, too sure of themselves, or did not match what is actually in the app, we updated the prompts. Keeping answers close to the real content mattered most here, so users can trust what they see.
+        </p>
+      </div>
+
+      <p class="mt-2">
+        The automatic tests cover the code and how the system behaves. This extra manual work helped the enhancer and the assistant feel dependable in day-to-day use.
+      </p>
+    </section>
+
+    <section class="section fade-in" id="user-acceptance">
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        User acceptance testing
+      </h2>
+      <p>
+        Alongside automated testing, we also wanted to understand how clear and easy the platform was to use in practice. We kept these sessions short and focused. Participants completed a small set of core tasks and shared what they found clear or confusing.
+      </p>
+
+      <div class="uat-block">
+        <h3>Feedback from Avanade</h3>
+        <p>
+          Our partner at Avanade met with us regularly throughout the project, usually through short demos every two weeks, with more detailed reviews at key milestones. They also used the platform in their own time outside meetings, which made their feedback more practical and grounded in real use rather than just reactions during live calls.
+        </p>
+        <p>
+          A consistent theme in their feedback was clarity. They wanted users to be able to tell immediately where they were in the platform and what each part was for. In particular, they felt it was important to make a clearer distinction between the reference side of the product, such as the vulnerability and knowledge pages, and the interactive testing side. They also encouraged us to make navigation between these areas more direct, so users could move between reading and testing without unnecessary steps.
+        </p>
+        <p>
+          They also commented on the testing experience itself. Their view was that the main flow should be as clear as possible: start a test, review the outcome, and then decide what to do next. Based on this, we moved less important actions lower down the page and simplified some labels so they felt more consistent. They also gave useful feedback on presentation, especially around dark mode and contrast, to make sure the interface remained clear in different settings, including meetings and shared screens.
+        </p>
+        <p>
+          Overall, their feedback helped us improve the structure and usability of the platform in a practical way. In normal use during these reviews, neither we nor Avanade encountered any crashes or blocking issues.
+        </p>
+      </div>
+
+      <div class="uat-block">
+        <h3>Independent testers</h3>
+        <p>
+          We also invited seven people outside the project to try the platform. None had seen it before. We asked each person to complete the same small set of tasks: open a vulnerability page, read the explanation, create a simple named test, and interpret the result. Each session lasted around twenty minutes, which gave us a consistent basis for comparing feedback.
+        </p>
+        <p>
+          The group included people from two age ranges, 19 to 22 and 40 to 55, with a mix of students and working adults in both technical and non-technical roles. Overall, the feedback was positive. Several people said the interface felt clear and easy to follow, and a few mentioned that the chat-style testing flow felt familiar, which made the process easier to understand. Most were able to understand the basic meaning of pass and fail after going through one example, although some said that the risk score could use a little more explanation when seen for the first time.
+        </p>
+        <p>
+          The feedback was mainly about small improvements rather than major problems. A few people wanted a clearer label for the button that starts a new test. Others suggested adding a short piece of helper text next to the risk score. We also received useful feedback on the prompt enhancer. While the feature itself made sense once explained, some testers were not immediately sure what it was for, whether they needed to use it, or how much it would change what they had written. This showed that users could understand the feature once it was explained, but that its purpose was not immediately obvious at first glance.
+        </p>
+        <p>
+          All seven testers were able to complete the core task successfully and rated it as easy on a short anonymous scale. We treated these sessions as practical feedback rather than as a formal usability study. Across these sessions, and in our own testing and partner reviews, we did not encounter functional issues or instability in normal use.
+        </p>
+      </div>
+    </section>
+
+    <nav class="page-nav fade-in" aria-label="Page navigation">
+      <a href="implementation.html">
+        <span class="page-nav-label">Previous</span>
+        <span class="page-nav-title">← Implementation</span>
+      </a>
+      <a href="evaluation.html">
+        <span class="page-nav-label">Next</span>
+        <span class="page-nav-title">Evaluation →</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<div id="footer-root"></div>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

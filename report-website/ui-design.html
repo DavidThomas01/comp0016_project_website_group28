@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="UI design process for the Prompt Injection Protection platform — design goals, personas, wireframes, and accessibility." />
+  <meta name="description" content="UI design process for the Prompt Injection Protection platform — design principles, sketches, prototypes, final UI, personas, and accessibility." />
   <title>UI Design – Prompt Injection Protection</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
@@ -61,8 +61,9 @@
     <div class="kicker">Systems Engineering · IXN</div>
     <h1>UI Design</h1>
     <p>
-      The user interface design process, from initial design goals and user personas
-      through to wireframes, prototyping, and accessibility-first development.
+      This page documents the design principles, interface evolution, and final UI of the
+      Prompt Injection Protection platform. It combines the HCI design process with the
+      implemented interface evidenced by the current frontend.
     </p>
   </div>
 </section>
@@ -70,15 +71,165 @@
 <main id="main">
   <div class="container">
 
-    <section class="section fade-in" id="design-goals">
-      <h2>Design Goals</h2>
-      <div class="callout callout--note">
-        <p><strong>Coming soon:</strong> Detailed design rationale and visual design principles will be documented here once the design system is finalised.</p>
-      </div>
+    <section class="section fade-in" id="design-principles">
+      <h2>Design Principles</h2>
       <p>
-        The UI design is guided by a set of core principles that prioritise clarity,
-        usability, and educational value. The platform must serve both technical security
-        professionals and semi-technical users exploring prompt injection for the first time.
+        The platform was designed to satisfy the project requirements of being a clear,
+        intuitive, web-based system usable by both technical and semi-technical users.
+        Because the product combines education, explanation, experimentation, and reporting,
+        the interface had to balance simplicity with depth.
+      </p>
+
+      <div class="design-principles-list">
+        <details class="principle-item">
+          <summary>
+            <h3>Intuitiveness & Learnability</h3>
+          </summary>
+          <div class="principle-content">
+            <p>
+              A new user should understand "what this is" and "what to do next" quickly, with minimal instructions.
+              We achieved this through clear information architecture with distinct routes (Home, Vulnerability detail,
+              Mitigations, Testing, Prompt Enhancer, Security Assistant), a catalogue-driven navigation that operates
+              as a predictable "list → detail" learning pattern, and a natural reading path supported by Previous/Next
+              vulnerability navigation.
+            </p>
+            <p>
+              This principle is crucial because the platform must support both users who already understand AI security
+              and users encountering prompt injection concepts for the first time.
+            </p>
+          </div>
+        </details>
+
+        <details class="principle-item">
+          <summary>
+            <h3>Consistency & Visual Coherence</h3>
+          </summary>
+          <div class="principle-content">
+            <p>
+              Consistency was essential because the platform contains multiple views with different levels of technical
+              detail. We kept a shared visual language through glass-style panels, rounded card shapes, gradient heading
+              treatment, and repeated page structure. We chose shadcn/ui (built on Radix) with Tailwind CSS to ensure
+              consistent primitives—dialogs, tabs, sheets, and other components behave predictably across the UI.
+            </p>
+            <p>
+              Styling rules enforce consistency: a <code>cn()</code> helper, semantic colour tokens, preference for utilities
+              over custom CSS, and mandatory dark-mode parity. This prevents one-off styling and makes the interface
+              feel cohesive even as it scales.
+            </p>
+          </div>
+        </details>
+
+        <details class="principle-item">
+          <summary>
+            <h3>Usability & Efficiency</h3>
+          </summary>
+          <div class="principle-content">
+            <p>
+              Users should be able to iterate quickly and complete common tasks without repeated work. The Home page
+              features real-time search and impact-level filter pills (All/High/Medium/Low) for rapid scanning of content.
+              The Testing view supports reusable testing workflows through Test Actions (duplication, modification, removal)
+              and Test Configurations (save and apply reusable setups).
+            </p>
+            <p>
+              We also included an auto-play demo mode for the terminal, reducing interaction cost for passive learning
+              and presentation scenarios.
+            </p>
+          </div>
+        </details>
+
+        <details class="principle-item">
+          <summary>
+            <h3>Accessibility & Inclusive Design</h3>
+          </summary>
+          <div class="principle-content">
+            <p>
+              Users should be able to use the UI across themes, devices, and interaction modes (mouse/keyboard).
+              Dark mode is a non-negotiable requirement, implemented system-wide through semantic colour tokens and theme
+              variables in <code>frontend/src/styles/theme.css</code>, rather than one-off styling decisions.
+            </p>
+            <p>
+              Responsive design is built in from the start: a mobile header collapses to a hamburger menu and sheet under 768px,
+              supporting usability across devices. This approach makes accessibility practical and maintainable, not an afterthought.
+            </p>
+          </div>
+        </details>
+      </div>
+
+      <div class="callout">
+        <p>
+          <strong>Design rationale:</strong> the interface was intentionally designed to feel educational,
+          practical, and exploratory at the same time. Users should be able to move from “what is this?”
+          to “how does it work?” to “how do I test it?” in a natural way, without leaving the system.
+        </p>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="initial-sketches">
+      <h2>Initial Sketches</h2>
+      <p>
+        The initial sketches explored the core information architecture of the platform before any
+        implementation began. At this stage, the emphasis was on layout, navigation, and how to present
+        vulnerabilities, mitigations, and testing workflows in a way that would be understandable to
+        both technical and semi-technical users.
+      </p>
+      <p>
+        The main goal of the initial sketches was to validate the broad structure of the application:
+        a clear landing area, deep-dive content views, and separate spaces for practical testing and
+        assistance.
+      </p>
+
+      <div class="card-grid cols-2">
+        <figure class="img-placeholder prototype-shot">
+          <img src="assets/sketches/Sketch_home_page.png" alt="Initial home page sketch" loading="lazy" />
+          <figcaption><strong>Initial Home Sketch</strong> - This page was designed as the main learning entry point, where users can understand what prompt injection is and build a clear overall picture through a visual, intuitive interface before moving to deeper technical views.</figcaption>
+        </figure>
+        <figure class="img-placeholder prototype-shot">
+          <img src="assets/sketches/sketch-vulnerabilities-2.png" alt="Initial vulnerability hand-drawn sketch" loading="lazy" />
+          <figcaption><strong>Initial Vulnerabilities Sketch</strong> - The vulnerabilities area was planned as a structured three-part flow where users could learn each vulnerability concept, test model behaviour, and then study mitigation strategies in a connected journey.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="refined-sketches">
+      <h2>Refined Sketches</h2>
+      <p>
+        The refined sketches capture a clear design pivot from broad early concepts to focused user
+        journeys. We prioritised helping users understand prompt injection faster on the Home page,
+        using richer explanatory content and visual resources such as statistics.
+      </p>
+      <p>
+        We also restructured the Vulnerabilities area around an intuitive with-vs-without-mitigation
+        behaviour comparison, and moved practical experimentation into a dedicated Testing workspace.
+        This separation made the product goals clearer: learn concepts first, compare outcomes clearly,
+        and run organised tests in a purpose-built environment.
+      </p>
+
+      <div class="card-grid cols-2">
+        <figure class="img-placeholder prototype-shot">
+          <img src="assets/sketches/Sketch_refined_home_page.png" alt="Refined home sketch" loading="lazy" />
+          <figcaption><strong>Refined Home Sketch</strong> - We expanded the page with richer supporting content and additional resources, including statistics, so users can understand prompt injection concepts more quickly and with less cognitive effort.</figcaption>
+        </figure>
+        <figure class="img-placeholder prototype-shot">
+          <img src="assets/sketches/Sketch_refined_vulnerabilities.png" alt="Refined vulnerabilities sketch" loading="lazy" />
+          <figcaption><strong>Refined Vulnerabilities Sketch</strong> - We pivoted from running tests inside the vulnerability page to a clearer behaviour comparison view, showing model responses with and without mitigations. We also added more mitigation resources to make learning more visual and intuitive.</figcaption>
+        </figure>
+        <figure class="img-placeholder prototype-shot">
+          <img src="assets/sketches/sketch_refined_mitigations.png" alt="Refined mitigations sketch" loading="lazy" />
+          <figcaption><strong>Refined Testing Sketch</strong> - We designed a separate testing environment where users can easily choose mitigations in the center, evaluate model behavior on the right, and organize tests more clearly from the left panel.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="initial-prototype">
+      <h2>Initial Prototype</h2>
+      <p>
+        In the initial prototype, we focused on making the panel structure easier to understand and
+        simpler to navigate. Each major section used distinct color cues to improve intuitiveness and
+        accessibility, helping users recognize context and purpose at a glance.
+      </p>
+      <p>
+        The goal of this version was to establish a clearer information hierarchy across views while
+        keeping interactions approachable for both technical and semi-technical users.
       </p>
       <div class="card-grid cols-3 stagger">
         <div class="card card--feature card-accent">
@@ -97,89 +248,261 @@
           <p>WCAG AA compliance, keyboard navigation, screen reader support, and high-contrast mode built in.</p>
         </div>
       </div>
+
+      <h3>Initial prototype screenshots</h3>
+      <div class="card-grid cols-3 stagger prototype-screens-grid">
+        <figure class="img-placeholder prototype-shot">
+          <img src="assets/prototypes/SystemsEngineering_HCI_Prototype_V0_Home.jpeg" alt="Initial prototype Home view showing expandable vulnerability list" loading="lazy" />
+          <figcaption><strong>Initial Prototype Screenshot 1</strong> — In the Home view, vulnerabilities were presented more clearly as an expandable list, making navigation and first-pass understanding more straightforward.</figcaption>
+        </figure>
+        <figure class="img-placeholder prototype-shot">
+          <img src="assets/prototypes/SystemsEngineering_HCI_Prototype_V0_Vulnerability.jpeg" alt="Initial prototype Vulnerability view with colour-coded blocks" loading="lazy" />
+          <figcaption><strong>Initial Prototype Screenshot 2</strong> — In the Vulnerability view, we introduced colour coding to make behaviour differences and information blocks easier to interpret quickly.</figcaption>
+        </figure>
+        <figure class="img-placeholder prototype-shot">
+          <img src="assets/prototypes/SystemsEngineering_HCI_Prototype_V0_Test.jpeg" alt="Initial prototype Testing view with folders and analysis panel" loading="lazy" />
+          <figcaption><strong>Initial Prototype Screenshot 3</strong> — In the Testing view, tests were organized through clear folder structures, and an analysis panel was surfaced in a highly intuitive layout.</figcaption>
+        </figure>
+      </div>
+
+      <h3>Prototype explanation</h3>
+      <p>
+        This version established the core route structure (Home, vulnerability detail, testing) and proved that
+        colour cues and expandable lists could make dense security content approachable. It already supported
+        browsing vulnerabilities and running tests in a single workspace, but deep mitigation resources,
+        framework-assisted scans, and the full assistant workflow were not yet integrated or were ambiguous
+        in the layout.
+      </p>
+
+      <h3>Prototype evaluation</h3>
+      <p>
+        The v0 prototype tested well for basic navigation and for understanding “where to click next,” but users
+        still found the vulnerability view busy when learning and testing were combined. Folder-based test
+        organisation helped power users yet felt heavy for coursework-scale demos. These findings motivated
+        separating comparison-style learning from dedicated testing and tightening hierarchy before v1.
+      </p>
+    </section>
+
+    <section class="section fade-in" id="refined-prototype">
+      <h2>Refined Prototype</h2>
+      <p>
+        The refined prototype shows the improved interactive design after incorporating feedback from the earlier
+        version. The interface became more coherent and more aligned with the final platform structure.
+        Improvements include stronger hierarchy, better grouping of content, more explicit actions, clearer
+        distinction between risks and mitigations, and smoother transitions between educational and practical workflows.
+      </p>
+
+      <div class="card-grid cols-3 stagger prototype-screens-grid">
+        <figure class="img-placeholder prototype-shot">
+          <img src="assets/prototypes/SystemsEngineering_HCI_Prototype_V1_Home.jpeg" alt="Refined prototype v1 Home overview and navigation" loading="lazy" />
+          <figcaption><strong>Refined Prototype Screenshot 1</strong> — v1 refined home overview and polished navigation hierarchy.</figcaption>
+        </figure>
+        <figure class="img-placeholder prototype-shot">
+          <img src="assets/prototypes/SystemsEngineering_HCI_Prototype_V1_Vulnerability.jpeg" alt="Refined prototype v1 Vulnerability comparison view" loading="lazy" />
+          <figcaption><strong>Refined Prototype Screenshot 2</strong> — v1 vulnerability view with clearer behaviour comparison and mitigation context.</figcaption>
+        </figure>
+        <figure class="img-placeholder prototype-shot">
+          <img src="assets/prototypes/SystemsEngineering_HCI_Prototype_V1_Test.jpeg" alt="Refined prototype v1 Testing workflow" loading="lazy" />
+          <figcaption><strong>Refined Prototype Screenshot 3</strong> — v1 testing workflow with clearer configuration and outputs.</figcaption>
+        </figure>
+      </div>
+
+      <h3>Refinement explanation</h3>
+      <p>
+        Between v0 and v1 we reduced visual noise on primary screens, made mitigation and comparison panels easier
+        to scan, and clarified how users move from reading about a vulnerability to configuring a test. Actions
+        were grouped so that “learn,” “compare,” and “run” modes are predictable, which reduced wrong clicks in
+        evaluation sessions.
+      </p>
+
+      <h3>Refinement evaluation</h3>
+      <p>
+        Reviewers reported faster task completion on v1 for both exploratory learning and targeted testing.
+        Remaining gaps—later addressed in the shipped React app—included production-ready theming, PDF export,
+        and the full Prompt Enhancer and assistant experiences; the v1 prototype nonetheless validated the
+        information architecture we carried into implementation.
+      </p>
+    </section>
+
+    <section class="section fade-in" id="final-ui">
+      <h2>Final UI</h2>
+      <p>
+        The final implemented UI is a React single-page application with dedicated routes for the
+        major platform workflows. Rather than forcing every feature into one screen, the final design
+        uses a task-oriented structure: the Home page introduces the problem and vulnerability catalogue,
+        the Vulnerability view provides a deep technical breakdown, the Mitigations page focuses on
+        defensive strategies and code, the Testing page supports practical experimentation, the Prompt
+        Enhancer hardens prompts, and the Security Knowledge Assistant supports open-ended Q&amp;A.
+      </p>
+
+      <h3>Final design process</h3>
+      <p>
+        The final UI reflects a progression from broad educational structure to task-specific views.
+        The implemented frontend shows that the design prioritised modularity, with each route solving
+        a distinct user need while still sharing a common visual system. This is important because the
+        platform needs to support both learning and action: a user may begin by reading about a
+        vulnerability, then move to mitigations, then run a test, then export a report, then ask the
+        assistant for more help. We also introduced a dedicated dark mode to improve accessibility and
+        visual comfort, making the interface more adaptable to different user preferences and usage
+        environments.
+      </p>
+
+      <h3>Feedback reflected in the final structure</h3>
+      <p>
+        During the mid-stages of development, we received feedback from our TA that the interface felt
+        too static and old-fashioned. In response, we pivoted to a more modern and dynamic visual
+        direction based on widget-style components rather than heavy panel blocks, and refined the color
+        system and overall styling to be clearer and less visually intrusive. This change improved both
+        readability and perceived responsiveness while keeping the workflow structure intact.
+      </p>
+
+      <h3>What was added</h3>
+      <ul class="styled-list">
+        <li>Search and filtering on the Home page vulnerability catalogue.</li>
+        <li>A dedicated deep-dive vulnerability page with demo, comparison, mitigation links, and quiz.</li>
+        <li>A separate Mitigations page with implementation language switching and PDF export.</li>
+        <li>A large Testing view with guided setup, advanced setup, risk analysis, and framework scanning.</li>
+        <li>A dedicated Prompt Enhancer workflow.</li>
+        <li>A floating assistant widget plus a full-screen Security Knowledge Assistant page.</li>
+        <li>PDF export support across core learning and testing workflows.</li>
+      </ul>
+
+      <h3>What was reduced or separated</h3>
+      <ul class="styled-list">
+        <li>Vulnerabilities and mitigations are no longer merged into one overloaded screen.</li>
+        <li>Testing is isolated from static explanation pages so experimentation feels intentional.</li>
+        <li>Assistant functionality is available globally but can also expand into its own dedicated page.</li>
+        <li>Complex configuration is hidden inside the Testing workflow instead of cluttering the Home page.</li>
+      </ul>
+
+      <h3>Implemented views</h3>
+
+      <h4>Home</h4>
+      <p>
+        The Home page introduces prompt injection, presents a vulnerability catalogue, and supports search and
+        impact filtering. It is designed as the main entry point for both first-time and returning users.
+      </p>
+      <div class="implemented-view-shots">
+        <figure class="prototype-shot">
+          <img src="assets/final_ui/home_page.png" alt="Home page in normal mode" loading="lazy" />
+          <figcaption><strong>Normal mode</strong> — Home view.</figcaption>
+        </figure>
+        <figure class="prototype-shot">
+          <img src="assets/final_ui/home_page_dm.png" alt="Home page in dark mode" loading="lazy" />
+          <figcaption><strong>Dark mode</strong> — Home view.</figcaption>
+        </figure>
+      </div>
+
+      <h4>Mitigations</h4>
+      <p>
+        The Mitigations page separates defensive content from attack content. Users can browse all mitigations,
+        read what each one does, review its strategy and flow, switch between pseudo-code, Python, and Java
+        implementations when available, and export a PDF.
+      </p>
+      <div class="implemented-view-shots">
+        <figure class="prototype-shot">
+          <img src="assets/final_ui/mitigations.png" alt="Mitigations page in normal mode" loading="lazy" />
+          <figcaption><strong>Normal mode</strong> — Mitigations view.</figcaption>
+        </figure>
+        <figure class="prototype-shot">
+          <img src="assets/final_ui/mitigations_dm.png" alt="Mitigations page in dark mode" loading="lazy" />
+          <figcaption><strong>Dark mode</strong> — Mitigations view.</figcaption>
+        </figure>
+      </div>
+
+      <h4>Testing</h4>
+      <p>
+        The Testing page is the most complex workflow in the system. It supports creating and editing tests,
+        using platform or external models, selecting one or more mitigations, switching between prompt and
+        framework runners, running Garak scans, viewing attempt-by-attempt results, and exporting reports.
+      </p>
+      <div class="implemented-view-shots">
+        <figure class="prototype-shot">
+          <img src="assets/final_ui/testing.png" alt="Testing page in normal mode" loading="lazy" />
+          <figcaption><strong>Normal mode</strong> — Testing view.</figcaption>
+        </figure>
+        <figure class="prototype-shot">
+          <img src="assets/final_ui/testing_dm.png" alt="Testing page in dark mode" loading="lazy" />
+          <figcaption><strong>Dark mode</strong> — Testing view.</figcaption>
+        </figure>
+      </div>
+
+      <h4>Prompt Enhancer</h4>
+      <p>
+        The Prompt Enhancer offers a dedicated workflow for selecting mitigations and strengthening a system prompt.
+        It supports model selection, mitigation selection, input prompt editing, and a structured results area for
+        the enhanced output.
+      </p>
+      <div class="implemented-view-shots">
+        <figure class="prototype-shot">
+          <img src="assets/final_ui/promp_enhancer.jpeg" alt="Prompt Enhancer in normal mode" loading="lazy" />
+          <figcaption><strong>Normal mode</strong> — Prompt Enhancer view.</figcaption>
+        </figure>
+        <figure class="prototype-shot">
+          <img src="assets/final_ui/prompt_enhancer_dm.jpeg" alt="Prompt Enhancer in dark mode" loading="lazy" />
+          <figcaption><strong>Dark mode</strong> — Prompt Enhancer view.</figcaption>
+        </figure>
+      </div>
+
+      <h4>Security Knowledge Assistant</h4>
+      <p>
+        The assistant exists both as a floating chat widget and as a full-screen page for longer conversations.
+        This dual design supports quick help without interrupting the main workflow, while still allowing deeper
+        exploration when needed.
+      </p>
+      <div class="implemented-view-shots">
+        <figure class="prototype-shot">
+          <img src="assets/final_ui/chatbot.png" alt="Security Knowledge Assistant in normal mode" loading="lazy" />
+          <figcaption><strong>Normal mode</strong> — Security Knowledge Assistant view.</figcaption>
+        </figure>
+        <figure class="prototype-shot">
+          <img src="assets/final_ui/chatbot_dm.png" alt="Security Knowledge Assistant in dark mode" loading="lazy" />
+          <figcaption><strong>Dark mode</strong> — Security Knowledge Assistant view.</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="section fade-in" id="personas">
       <h2>Personas &amp; User Needs</h2>
       <p>
-        User personas were developed through stakeholder interviews and analysis of the
-        target audience to ensure the platform meets the needs of its primary user groups.
+        Our platform was intentionally designed to serve both technical and semi-technical users without
+        forcing either group to navigate unnecessary complexity. We achieved this by structuring distinct
+        workflows: learning, investigation, testing, and knowledge support, each with layered explanations that
+        allow users at any experience level to engage at their comfort level. This modular approach lets users
+        distinguish between essential information and advanced features, empowering them to focus on what
+        matters to their role and goals.
       </p>
-      <div class="card-grid cols-2 stagger">
-        <div class="card card-accent">
-          <div class="card-icon">&#x1F468;&#x200D;&#x1F4BB;</div>
-          <h3>Security Engineer</h3>
-          <p>Experienced professional evaluating MCP server deployments. Needs detailed technical analysis, advanced testing tools, and exportable reports.</p>
-          <div class="tag-list">
-            <span class="badge badge--brand">Technical</span>
-            <span class="badge badge--blue">Testing Focus</span>
-          </div>
-        </div>
-        <div class="card card-accent">
-          <div class="card-icon">&#x1F469;&#x200D;&#x1F393;</div>
-          <h3>CS Student / Researcher</h3>
-          <p>Learning about AI security. Needs clear explanations, working examples, and educational walkthroughs of attack techniques and defences.</p>
-          <div class="tag-list">
-            <span class="badge badge--green">Educational</span>
-            <span class="badge badge--blue">Examples Focus</span>
-          </div>
-        </div>
-        <div class="card card-accent">
-          <div class="card-icon">&#x1F468;&#x200D;&#x1F4BC;</div>
-          <h3>Technical Manager</h3>
-          <p>Overseeing AI integration. Needs high-level risk summaries, mitigation guidance, and compliance-aligned reporting.</p>
-          <div class="tag-list">
-            <span class="badge badge--amber">Strategic</span>
-            <span class="badge badge--brand">Compliance</span>
-          </div>
-        </div>
-        <div class="card card-accent">
-          <div class="card-icon">&#x1F469;&#x200D;&#x1F52C;</div>
-          <h3>AI Developer</h3>
-          <p>Building applications with LLMs. Needs practical mitigation code, testing APIs, and integration guidance.</p>
-          <div class="tag-list">
-            <span class="badge badge--brand">Practical</span>
-            <span class="badge badge--green">Integration</span>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section fade-in" id="wireframes">
-      <h2>Wireframes &amp; Prototypes</h2>
-      <p>
-        Wireframes were developed iteratively, progressing from low-fidelity sketches through
-        to high-fidelity interactive prototypes tested with representative users.
-      </p>
-      <div class="card-grid cols-2">
-        <div class="img-placeholder">
-          <span class="placeholder-icon">&#x1F5BC;&#xFE0F;</span>
-          <span class="placeholder-label">Home Page Wireframe</span>
-          Dashboard layout showing vulnerability overview, navigation, and search
+      <div class="personas-two-col">
+        <div class="card card-accent personas-focus-card">
+          <h3>Alignment with requirements</h3>
+          <ul class="styled-list personas-focus-list">
+            <li>The Home page supports first-time understanding through explanation and catalogue browsing.</li>
+            <li>The Vulnerability view supports deeper technical investigation with examples and comparisons.</li>
+            <li>The Testing view supports practical experimentation and exportable outcomes.</li>
+            <li>The assistant supports theoretical and practical follow-up questions.</li>
+            <li>The Mitigations page supports users who want code-oriented defensive guidance.</li>
+          </ul>
         </div>
-        <div class="img-placeholder">
-          <span class="placeholder-icon">&#x1F5BC;&#xFE0F;</span>
-          <span class="placeholder-label">Vulnerability View Wireframe</span>
-          Detailed view with explanation, example, mitigation, and comparison panel
-        </div>
-        <div class="img-placeholder">
-          <span class="placeholder-icon">&#x1F5BC;&#xFE0F;</span>
-          <span class="placeholder-label">Testing Interface Wireframe</span>
-          Chat-style testing view with prompt input, mitigation toggles, and results
-        </div>
-        <div class="img-placeholder">
-          <span class="placeholder-icon">&#x1F5BC;&#xFE0F;</span>
-          <span class="placeholder-label">Knowledge Base Wireframe</span>
-          Searchable knowledge base with categorised entries and filtering
+        <div class="card card-accent personas-focus-card">
+          <h3>Why personas mattered</h3>
+          <p>
+            A purely technical interface would have made the platform harder to use for semi-technical users, while
+            a purely educational interface would not have satisfied advanced testing and report-oriented needs. The
+            final structure therefore tries to support several levels of expertise without splitting the product into
+            separate systems.
+          </p>
         </div>
       </div>
     </section>
 
     <section class="section fade-in" id="accessibility">
-      <h2>Accessibility Considerations</h2>
+      <h2>Accessibility</h2>
       <p>
-        Accessibility is treated as a fundamental design requirement, not an afterthought.
-        The platform is built to meet WCAG 2.1 AA standards throughout.
+        Accessibility was treated as a core requirement from the start. The interface supports keyboard
+        navigation with visible focus indicators, responsive design across mobile and desktop, system-wide
+        dark mode, semantic colour coding (red for vulnerabilities, green for mitigations, orange for actions),
+        and a clear information hierarchy that remains scannable across all page sizes.
       </p>
       <div class="card-grid cols-2 stagger">
         <div class="feature-item">
@@ -211,6 +534,11 @@
           </div>
         </div>
       </div>
+
+      <p class="accessibility-outcome">
+        <strong>Outcome:</strong> the final UI is understandable, navigable, and readable under different user
+        needs and viewport sizes while supporting advanced technical workflows.
+      </p>
     </section>
 
     <nav class="page-nav fade-in" aria-label="Page navigation">
