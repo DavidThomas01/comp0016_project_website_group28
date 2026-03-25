@@ -72,7 +72,10 @@
   <div class="container">
 
     <section class="section fade-in" id="testing-strategy">
-      <h2>Testing strategy</h2>
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect width="6" height="4" x="9" y="3" rx="2"/><path d="M9 12h6"/><path d="M9 16h6"/></svg>
+        Testing strategy
+      </h2>
       <p>
         We used several types of testing to make sure the platform was reliable both technically and from a user point of view. Our goal was to check the parts of the product that matter most: learning about prompt injection, exploring vulnerabilities, and running tests in the app.
       </p>
@@ -92,10 +95,13 @@
     <section class="section fade-in" id="pytest-snapshot" aria-labelledby="pytest-snapshot-heading">
       <h2 class="visually-hidden">Backend pytest</h2>
       <div class="testing-snapshot">
-        <p class="testing-snapshot-heading" id="pytest-snapshot-heading">Backend pytest</p>
+        <p class="testing-snapshot-heading" id="pytest-snapshot-heading">
+          <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
+          Backend pytest
+        </p>
         <p class="testing-snapshot-note">
           We ran the backend test suite locally from <code>backend/</code> after installing the development dependencies
-          (<code>pip install -e &quot;.[dev]&quot;</code>, then <code>PYTHONPATH=src pytest</code>). Figures below are from one recorded run; re-run before release if the codebase changes.
+          (<code>pip install -e &quot;.[dev]&quot;</code>, then <code>PYTHONPATH=src pytest</code>). Figures below are from one recorded run.
         </p>
         <p class="testing-subsection-title">Results from one recorded run</p>
         <div class="stat-grid stagger">
@@ -128,17 +134,20 @@
     </section>
 
     <section class="section fade-in" id="unit-integration">
-      <h2>Unit and integration testing</h2>
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        Unit and integration testing
+      </h2>
       <p>
-        The backend uses <strong>pytest</strong> and <strong>pytest-asyncio</strong> for asynchronous code. Most tests use mocks instead of real model calls, which keeps the suite fast and low cost. A smaller set of integration tests can call live APIs when the required keys are available.
+        The backend test suite is built with <code>pytest</code>, with <code>pytest-asyncio</code> used for async parts of the system. Most tests use mocks rather than real model calls, which keeps the suite fast and practical to run. A smaller set of integration tests can also call live APIs when the right keys are available.
       </p>
       <div class="testing-two-col">
         <div class="card">
           <h3>Unit tests</h3>
           <p>
-            Unit tests check smaller parts of the system in isolation, such as mitigations, prompt helpers, scoring, API routes, storage, and runners like the Garak wrapper. These tests help us make changes to the backend with confidence.
+            Unit tests check individual parts of the backend on their own. This includes things like mitigations, prompt helpers, scoring logic, API routes, storage, and runners such as the Garak wrapper. These tests make it easier to change the backend without worrying that small changes will quietly break core behaviour.
           </p>
-          <p class="testing-subsection-title">Example of the kind of behaviour covered</p>
+          <p class="testing-subsection-title">Example of the kind of behaviour covered:</p>
           <div class="testing-code-block"><code>def test_flagged_threshold_respects_score():
     """Risk at or above the threshold should mark output as flagged."""
     analyser = PromptTestAnalyser()
@@ -152,9 +161,9 @@
         <div class="card">
           <h3>Integration tests</h3>
           <p>
-            Integration tests cover larger flows, such as an HTTP request passing through the application and returning the expected result. Some of these tests can also use real providers when API keys are present.
+            Integration tests check larger flows through the application, for example whether an HTTP request passes through the system correctly and returns the expected result. Some of these tests can also use live providers when API keys are present.
           </p>
-          <p class="testing-subsection-title">Example of this kind of pattern</p>
+          <p class="testing-subsection-title">Example of this kind of pattern:</p>
           <div class="testing-code-block"><code>@pytest.mark.asyncio
 async def test_create_named_test_returns_id(async_client):
     payload = {"name": "demo", "prompt": "Hello", "expect_pass": True}
@@ -167,58 +176,61 @@ async def test_create_named_test_returns_id(async_client):
           <p class="testing-prompt-hint">This is also illustrative only. Exact paths and fields follow the real application API.</p>
         </div>
       </div>
-      <p class="section-lead mt-2">
-        Configuration for the test suite is defined in <code>backend/pyproject.toml</code> and <code>backend/pytest.ini</code>. Harmless warnings can appear if production code contains classes whose names start with <code>Test</code>.
-      </p>
     </section>
 
     <section class="section fade-in" id="components-tested">
-      <h2>What we covered in automated tests</h2>
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+        What we covered in automated tests
+      </h2>
       <p>
-        The backend automated suite is where we check that core behaviour stays trustworthy as the code evolves. Most checks run quickly by mocking model calls, with a smaller set of paths that can talk to live APIs when keys are available.
+        The automated backend test suite is where we check that core behaviour stays reliable as the codebase changes. Most tests run quickly because model calls are mocked, while a smaller number can use live APIs when keys are available.
       </p>
       <p>
-        In practice that means exercising HTTP APIs, prompt and mitigation logic, risk scoring, persistence, and runners such as the Garak integration—along with error handling when inputs are invalid or resources are missing.
+        In practice, this means testing the main HTTP routes, prompt and mitigation logic, risk scoring, storage, and runners such as the Garak integration. We also check how the system handles invalid input and missing resources.
       </p>
       <p>
-        The four cards below summarise how that work is grouped for reporting: application flow, analysis and tooling, configuration and data, and optional live-model tests.
+        For reporting, we grouped this work into four broad areas:
       </p>
       <div class="card-grid card-grid--2x2 stagger">
         <div class="card card-accent">
           <h3>API and application flow</h3>
           <ul class="testing-point-list">
-            <li>Creating, listing, and running tests.</li>
-            <li>Security Assistant and streaming paths where these are covered by tests.</li>
-            <li>Error handling for invalid input or missing resources.</li>
+            <li>Creating, listing, and running tests</li>
+            <li>Security Assistant and streaming paths where covered</li>
+            <li>Error handling for invalid input or missing resources</li>
           </ul>
         </div>
         <div class="card card-accent">
           <h3>Analysis, scoring, and tools</h3>
           <ul class="testing-point-list">
-            <li>Prompt injection analysers and risk scoring.</li>
-            <li>Garak runner behaviour using mocked subprocess calls.</li>
-            <li>Mitigation handling and score-related edge cases.</li>
+            <li>Prompt injection analysers and risk scoring</li>
+            <li>Garak runner behaviour with mocked subprocess calls</li>
+            <li>Mitigation handling and score-related edge cases</li>
           </ul>
         </div>
         <div class="card card-accent">
           <h3>Data and configuration</h3>
           <ul class="testing-point-list">
-            <li>SQLite-backed repositories and migrations used during testing.</li>
-            <li>Threshold and weight logic used by scoring.</li>
+            <li>SQLite-backed repositories and migrations used in testing</li>
+            <li>Threshold and weight logic used by scoring</li>
           </ul>
         </div>
         <div class="card card-accent">
           <h3>Optional live model checks</h3>
           <ul class="testing-point-list">
-            <li>OpenAI, Anthropic, and compatible endpoints when keys are available.</li>
-            <li>These tests are skipped automatically if the required keys are missing.</li>
+            <li>OpenAI, Anthropic, and compatible endpoints when keys are available</li>
+            <li>These tests are skipped automatically if the required keys are missing</li>
           </ul>
         </div>
       </div>
     </section>
 
     <section class="section fade-in" id="compatibility-responsive">
-      <h2>Compatibility &amp; Responsive design testing</h2>
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+        Compatibility &amp; Responsive design testing
+      </h2>
       <p>
         We manually tested the main parts of the platform across <strong>Chrome, Safari, Firefox, and Edge</strong> to make sure the experience was consistent in normal desktop use. This included browsing the catalogue, reading vulnerability and knowledge pages, using the testing area, and interacting with the Security Assistant. Across these checks, the core flows worked reliably and we did not see inconsistent behaviour between browsers.
       </p>
@@ -231,7 +243,10 @@ async def test_create_named_test_returns_id(async_client):
     </section>
 
     <section class="section fade-in" id="performance-stress-testing">
-      <h2>Performance/stress testing</h2>
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        Performance/stress testing
+      </h2>
       <p>
         We lined up the most demanding Garak configurations the product offers and ran them back to back on the same stack a consultant would use: ordinary hardware, ordinary network, the testing screen left open while the work ran underneath. Somewhere in the middle of a long pass you stop watching the clock and start watching whether progress, labels, and partial results still mean something.
       </p>
@@ -244,38 +259,38 @@ async def test_create_named_test_returns_id(async_client):
     </section>
 
     <section class="section fade-in" id="prompt-testing">
-      <h2>Testing prompts for the enhancer and Security Assistant</h2>
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+        Testing prompts for the enhancer and Security Assistant
+      </h2>
       <p>
-        Alongside the automated backend checks described earlier, we spent a sustained stretch of time on the <strong>prompts</strong> that sit behind two of the most hands-on parts of the platform: the prompt enhancer and the Security Assistant (the chat-style help that answers questions using the knowledge base). Our aim was straightforward in wording but demanding in practice: when someone presses send, the model should receive instructions that are clear, cautious, and appropriate to the task—not theatrically clever, and not careless with scope.
+        As well as the automatic backend tests, we checked the written instructions (prompts) for two features people use a lot: the prompt enhancer and the Security Assistant. We wanted those instructions to be easy to understand, stay on topic, and fit what the user was trying to do.
       </p>
 
       <div class="uat-block">
         <h3>Prompt enhancer</h3>
         <p>
-          We treated the enhancer as something closer to its own small feature than a single line in a config file. We tried short questions, long pasted blocks, and deliberately vague one-line asks, then read the rewritten output beside the original to see whether it actually helped or simply added noise. When a run felt too stiff, too eager to change the meaning, or too happy to expand the brief without being asked, we adjusted the prompt text behind the feature and ran the same inputs again.
-        </p>
-        <p>
-          The work was iterative in the same spirit as the rest of the project: short sessions, a shared notes doc, and re-testing after each round of edits rather than a single grand sign-off. We were not trying to prove a theorem about every possible input; we were trying to reach a point where ordinary use, including the messy half-formed prompts people type when they are in a hurry, behaved predictably enough that we could stand behind the tool in a demo or a client conversation.
+          We tried short text, long pasted blocks, and vague questions. We read the rewritten text next to what the user had typed and asked: did this really help, or just add noise? If the result was too stiff, changed what the user meant, or added things they did not ask for, we changed the prompt and tried again.
         </p>
       </div>
 
       <div class="uat-block">
         <h3>Security Assistant</h3>
         <p>
-          For the Security Assistant we focused on conversation-shaped risks: follow-up questions, messages with almost no context, and the natural tendency of users to steer the chat toward topics that sit outside the knowledge base. We kept copies of the exchanges we did not like—answers that sounded confident but were thin on substance, or a tone that felt wrong for a security setting—and used those threads to tighten the system and developer prompts a little at a time.
-        </p>
-        <p>
-          We paid particular attention to answers that might appear to quote or summarise material that was not really there on the page in front of the user. That kind of slip would undermine trust quickly, so we re-ran those scenarios until the assistant’s behaviour felt grounded. This was not a full independent red-team programme against the underlying model; it was disciplined, repetitive use by the team until we were comfortable relying on the chat in reviews, workshops, and day-to-day checks before hand-in.
+          We looked at follow-up questions, messages with very little context, and people trying to move the chat outside the knowledge base. When answers were too vague, too sure of themselves, or did not match what is actually in the app, we updated the prompts. Keeping answers close to the real content mattered most here, so users can trust what they see.
         </p>
       </div>
 
       <p class="mt-2">
-        The pytest suite continues to guard APIs, scoring, and tooling in code. This section describes the complementary layer of work—words and transcripts—that made the enhancer and the chat experience feel considered rather than improvised.
+        The automatic tests cover the code and how the system behaves. This extra manual work helped the enhancer and the assistant feel dependable in day-to-day use.
       </p>
     </section>
 
     <section class="section fade-in" id="user-acceptance">
-      <h2>User acceptance testing</h2>
+      <h2 class="heading-with-icon">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        User acceptance testing
+      </h2>
       <p>
         Alongside automated testing, we also wanted to understand how clear and easy the platform was to use in practice. We kept these sessions short and focused. Participants completed a small set of core tasks and shared what they found clear or confusing.
       </p>

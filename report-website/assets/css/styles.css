@@ -1814,12 +1814,21 @@ html:not(.js) .req-status-tooltip__panel {
   border-left: 4px solid var(--brand);
 }
 .testing-snapshot-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--brand-dark);
   margin: 0 0 0.5rem;
+}
+.testing-snapshot-heading .ui-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+  color: var(--brand-dark);
 }
 .testing-snapshot-note {
   font-size: 0.9rem;
@@ -1842,14 +1851,9 @@ html:not(.js) .req-status-tooltip__panel {
 }
 .testing-two-col {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1.25rem;
   align-items: stretch;
-}
-@media (max-width: 720px) {
-  .testing-two-col {
-    grid-template-columns: 1fr;
-  }
 }
 .testing-point-list {
   margin: 0.5rem 0 0;
