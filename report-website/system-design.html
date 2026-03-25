@@ -10,49 +10,250 @@
   <script>
     mermaid.initialize({
       startOnLoad: true,
-      theme: 'neutral',
+      theme: 'base',
       themeVariables: {
-        primaryColor: '#4f46e5',
-        primaryTextColor: '#1e1b4b',
-        primaryBorderColor: '#6366f1',
-        lineColor: '#6366f1',
-        secondaryColor: '#e0e7ff',
-        tertiaryColor: '#f8f7ff'
+        primaryColor: '#fff5f2',
+        primaryTextColor: '#111111',
+        primaryBorderColor: '#FF6B35',
+        lineColor: '#FF6B35',
+        secondaryColor: '#fff9f7',
+        tertiaryColor: '#ffffff',
+        tertiaryBorderColor: '#e6e6e6',
+        clusterBkg: '#fffcfb',
+        clusterBorder: '#ffd5c2',
+        edgeLabelBackground: '#ffffff',
+        fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif',
+        fontSize: '14px'
       },
-      flowchart: { curve: 'basis', htmlLabels: true },
-      sequence: { actorMargin: 60 }
+      flowchart: {
+        curve: 'basis',
+        htmlLabels: true,
+        useMaxWidth: true,
+        padding: 16,
+        nodeSpacing: 40,
+        rankSpacing: 48
+      },
+      sequence: {
+        actorMargin: 40,
+        useMaxWidth: true,
+        boxMargin: 6,
+        messageMargin: 20,
+        mirrorActors: false,
+        bottomMarginAdj: 1
+      }
     });
   </script>
   <style>
+    /* ── Mermaid diagrams ── */
     .mermaid {
-      background: var(--surface, #fafafa);
-      border: 1px solid var(--border, #e5e7eb);
-      border-radius: 0.75rem;
-      padding: 1.5rem;
+      background: linear-gradient(135deg, #fff9f7 0%, #ffffff 100%);
+      border: 1px solid rgba(255,107,53,0.15);
+      border-top: 3px solid #FF6B35;
+      border-radius: 0.85rem;
+      padding: 1.75rem 1rem;
       overflow-x: auto;
-      margin: 1.5rem 0;
+      margin: 1.75rem 0;
+      box-shadow: 0 2px 12px rgba(255,107,53,0.06), 0 1px 3px rgba(0,0,0,0.03);
+      text-align: center;
     }
+    .mermaid svg {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* ── Architecture layer badges ── */
     .arch-label {
       display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
-      padding: 0.15rem 0.55rem;
-      border-radius: 0.25rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.35rem;
       margin-right: 0.4rem;
       vertical-align: middle;
     }
-    .arch-api    { background:#dbeafe; color:#1e40af; }
-    .arch-app    { background:#dcfce7; color:#166534; }
-    .arch-domain { background:#fef9c3; color:#854d0e; }
-    .arch-infra  { background:#fce7f3; color:#9d174d; }
-    .layer-table { width:100%; border-collapse:collapse; margin:1rem 0; }
-    .layer-table th, .layer-table td { padding:0.6rem 0.85rem; border:1px solid var(--border,#e5e7eb); font-size:0.9rem; vertical-align:top; }
-    .layer-table th { background:var(--surface,#f9fafb); font-weight:600; }
-    .section-toc { list-style:none; padding:0; margin:0 0 1.5rem; display:flex; flex-wrap:wrap; gap:0.5rem; }
-    .section-toc li a { display:inline-block; padding:0.3rem 0.75rem; border:1px solid var(--border,#e5e7eb); border-radius:2rem; font-size:0.85rem; text-decoration:none; color:var(--text-muted,#6b7280); }
-    .section-toc li a:hover { background:var(--accent,#4f46e5); color:#fff; border-color:transparent; }
+    .arch-api    { background: #dbeafe; color: #1d4ed8; }
+    .arch-app    { background: #dcfce7; color: #15803d; }
+    .arch-domain { background: #fef3c7; color: #92400e; }
+    .arch-infra  { background: #fce7f3; color: #9d174d; }
+
+    /* ── Layer / data tables ── */
+    .layer-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0;
+      font-size: 0.9rem;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .layer-table th {
+      background: linear-gradient(135deg, #fff5f2, #fff9f7);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #555;
+      padding: 0.7rem 1rem;
+      border-bottom: 2px solid rgba(255,107,53,0.18);
+      text-align: left;
+    }
+    .layer-table td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: top;
+      color: #444;
+      line-height: 1.6;
+    }
+    .layer-table tr:last-child td { border-bottom: none; }
+    .layer-table tr:hover td { background: #fff9f7; }
+    .layer-table code {
+      font-size: 0.82rem;
+      background: rgba(255,107,53,0.07);
+      color: #c2410c;
+      padding: 0.1rem 0.35rem;
+      border-radius: 0.25rem;
+      font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    }
+
+    /* ── Table scroll wrapper ── */
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 0.75rem; }
+
+    /* ── Page TOC pills ── */
+    .section-toc {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .section-toc li a {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      background: #fff;
+      border: 1px solid rgba(255,107,53,0.2);
+      border-radius: 2rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #666;
+      transition: all 0.2s ease;
+    }
+    .section-toc li a:hover {
+      background: var(--brand, #FF6B35);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 2px 8px rgba(255,107,53,0.25);
+      transform: translateY(-1px);
+    }
+
+    /* ── Interface showcase ── */
+    .interface-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .iface-card {
+      border: 1px solid rgba(255,107,53,0.2);
+      border-top: 3px solid #FF6B35;
+      border-radius: 0.85rem;
+      padding: 1.25rem 1.25rem 1rem;
+      background: linear-gradient(160deg, #fff9f7 0%, #fff 100%);
+      box-shadow: 0 2px 8px rgba(255,107,53,0.06);
+    }
+    .iface-card__title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #FF6B35;
+      margin-bottom: 0.15rem;
+    }
+    .iface-card__name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 0.75rem;
+    }
+    .iface-card pre {
+      margin: 0;
+      background: #1e1e2e;
+      border-radius: 0.5rem;
+      padding: 0.85rem 1rem;
+      overflow-x: auto;
+      font-size: 0.78rem;
+      line-height: 1.55;
+    }
+    .iface-card code {
+      font-family: "SF Mono", ui-monospace, Menlo, monospace;
+      color: #cdd6f4;
+      background: none;
+      padding: 0;
+      border-radius: 0;
+      font-size: inherit;
+    }
+    .c-kw  { color: #cba6f7; }  /* keyword */
+    .c-cls { color: #89dceb; }  /* class/type */
+    .c-fn  { color: #a6e3a1; }  /* function */
+    .c-st  { color: #f38ba8; }  /* abstract/decorator */
+    .c-cm  { color: #585b70; }  /* comment */
+    .c-pa  { color: #fab387; }  /* param */
+
+    .iface-card__footer {
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+      color: #666;
+      line-height: 1.5;
+    }
+    .iface-card__footer strong { color: #111; }
+
+    /* ── Extensibility table ── */
+    .ext-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.9rem; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+    .ext-table th { background: linear-gradient(135deg, #fff5f2, #fff9f7); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; color: #555; padding: 0.65rem 1rem; border-bottom: 2px solid rgba(255,107,53,0.18); text-align: left; }
+    .ext-table td { padding: 0.7rem 1rem; border-bottom: 1px solid #f0f0f0; vertical-align: top; color: #444; line-height: 1.55; }
+    .ext-table tr:last-child td { border-bottom: none; }
+    .ext-table tr:hover td { background: #fff9f7; }
+    .ext-table code { font-size: 0.8rem; background: rgba(255,107,53,0.07); color: #c2410c; padding: 0.1rem 0.35rem; border-radius: 0.25rem; font-family: "SF Mono", ui-monospace, Menlo, monospace; }
+    .ext-table .badge-steps { display: inline-flex; align-items: center; gap: 0.3rem; }
+    .step-pill { display: inline-block; background: #FF6B35; color: #fff; font-size: 0.68rem; font-weight: 800; padding: 0.1rem 0.45rem; border-radius: 1rem; }
+
+    /* ── Stat strip ── */
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .stat-strip__item {
+      background: linear-gradient(135deg, #fff9f7, #fff);
+      border: 1px solid rgba(255,107,53,0.15);
+      border-radius: 0.85rem;
+      padding: 1.1rem 1.25rem;
+      text-align: center;
+    }
+    .stat-strip__value {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #FF6B35, #FF4500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+    .stat-strip__label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.25rem;
+    }
   </style>
 </head>
 
@@ -140,7 +341,7 @@
       <h2>1. High-Level Architecture</h2>
       <p>
         The platform is structured as two independently deployable processes — a
-        <strong>Next.js frontend</strong> and a <strong>FastAPI backend</strong> — communicating
+        <strong>React (Vite) frontend</strong> and a <strong>FastAPI backend</strong> — communicating
         exclusively over an HTTP REST API with a single Server-Sent Events (SSE) channel for
         streaming chat responses. This separation enforces a strict client/server boundary:
         all business logic, model access, and persistence reside in the backend; the frontend
@@ -148,51 +349,47 @@
       </p>
       <p>
         External dependencies are confined to two integration points: the
-        <strong>OpenAI API</strong> (used by the platform model provider and the AI analysis
+        <strong>model providers (connected through Microsoft Foundry AI or custom HTTP endpoints)</strong> (used by the platform model provider and the AI analysis
         sub-system) and the <strong>Garak CLI</strong> (invoked as a managed subprocess for
         red-teaming framework runs). Both integrations are behind abstract interfaces in the
         domain layer, so neither affects the core business logic.
       </p>
 
       <div class="mermaid">
-graph TB
-    subgraph Browser["Browser (Next.js 15 · React 19)"]
-        UI["Pages &amp; Components<br/>(App Router)"]
-        SSEClient["SSE Client<br/>(chat streaming)"]
+graph LR
+    subgraph Browser["Browser — React 18 · Vite · React Router v7"]
+        UI["Pages &amp; Components"]
+        SSEClient["SSE Client"]
     end
 
-    subgraph Backend["Backend Process (FastAPI · Python 3.12)"]
-        API["API Layer<br/>(routes / schemas)"]
-        APP["Application Layer<br/>(services)"]
-        DOMAIN["Domain Layer<br/>(entities / interfaces)"]
-        INFRA["Infrastructure Layer<br/>(providers / runners / repos)"]
+    subgraph Backend["Backend — FastAPI · Python 3.12"]
+        API["API Layer"] --> APP["Application Layer"] --> DOMAIN["Domain Layer"] --> INFRA["Infrastructure Layer"]
     end
 
-    subgraph Persistence["Persistence"]
-        DB[("SQLite<br/>(3 tables)")]
-    end
+    DB[("SQLite")]
 
-    subgraph External["External Services"]
-        OPENAI["OpenAI API<br/>(gpt-5.x family)"]
-        GARAK["Garak CLI<br/>(subprocess)"]
+    subgraph Ext["External Services"]
+        FOUNDRY["Azure AI Foundry<br/>(GPT · Claude · Llama · Phi · DeepSeek · Mistral)"]
+        EXTHTTP["External HTTP<br/>(user-provided)"]
+        GARAK["Garak CLI"]
     end
 
     UI -->|"REST JSON"| API
-    SSEClient -->|"text/event-stream"| API
-    API --> APP
-    APP --> DOMAIN
-    DOMAIN --> INFRA
+    SSEClient -->|"SSE stream"| API
     INFRA --> DB
-    INFRA --> OPENAI
+    INFRA --> FOUNDRY
+    INFRA --> EXTHTTP
     INFRA --> GARAK
       </div>
 
       <div class="callout callout--note">
         <p>
           <strong>Deployment topology:</strong> both processes run on the same host during
-          development and are configured via environment variables (<code>OPENAI_API_KEY</code>,
-          <code>DATABASE_URL</code>, <code>NEXT_PUBLIC_API_URL</code>). No separate message
-          broker, cache, or authentication service is required.
+          development and are configured via environment variables (per-model
+          <code>FOUNDRY_*_ENDPOINT</code> and <code>FOUNDRY_*_KEY</code> pairs for each Azure
+          AI Foundry deployment, plus <code>DATABASE_URL</code> and
+          <code>VITE_API_URL</code>). No separate message broker, cache, or
+          authentication service is required.
         </p>
       </div>
     </section>
@@ -201,76 +398,178 @@ graph TB
          2. DESIGN PRINCIPLES
     ─────────────────────────────────────────────── -->
     <section class="section fade-in" id="principles">
-      <h2>2. Design Principles &amp; Architectural Patterns</h2>
+      <h2>2. Design Principles &amp; Extensibility</h2>
       <p>
-        Four architectural patterns govern every structural decision in the backend codebase.
-        Their combined effect is a system in which the domain model is entirely free of
-        framework and I/O concerns, and in which any provider, runner, or persistence
-        technology can be replaced without touching business logic.
+        The central architectural decision of this platform is that every major extension
+        point (adding a new LLM provider, a new test runner, or a new mitigation strategy)
+        is defined by a <strong>single-method abstract base class</strong> in the domain layer.
+        No routing logic, service code, or API layer needs to change. The entire system is
+        open for extension and closed for modification.
       </p>
 
-      <div class="card-grid cols-2 stagger">
+      <h3>Three Core Interfaces</h3>
+      <p>
+        The domain layer defines exactly three abstract base classes. Together they cover every
+        way the platform interacts with external models and applies security controls.
+      </p>
+
+      <div class="interface-grid">
+        <div class="iface-card">
+          <div class="iface-card__title">LLM Integration</div>
+          <div class="iface-card__name">ModelProvider</div>
+          <pre><code><span class="c-kw">class</span> <span class="c-cls">ModelProvider</span>(ABC):
+
+  <span class="c-st">@abstractmethod</span>
+  <span class="c-kw">async def</span> <span class="c-fn">generate</span>(
+    <span class="c-pa">self</span>,
+    <span class="c-pa">request</span>: <span class="c-cls">ModelRequest</span>
+  ) -> <span class="c-cls">ModelResponse</span>:
+    <span class="c-cm">"""Execute a model call."""</span>
+    pass</code></pre>
+          <div class="iface-card__footer">
+            <strong>1 method.</strong> Implement it to connect any LLM.
+            Currently powers <strong>10 models</strong> across 4 provider types
+            (OpenAI-compatible, Anthropic, Azure AI Foundry, and custom HTTP endpoints).
+          </div>
+        </div>
+
+        <div class="iface-card">
+          <div class="iface-card__title">Test Execution</div>
+          <div class="iface-card__name">TestRunner</div>
+          <pre><code><span class="c-kw">class</span> <span class="c-cls">TestRunner</span>(ABC):
+
+  <span class="c-st">@abstractmethod</span>
+  <span class="c-kw">async def</span> <span class="c-fn">run</span>(
+    <span class="c-pa">self</span>,
+    <span class="c-pa">test</span>: <span class="c-cls">Test</span>,
+    <span class="c-pa">prompt</span>: <span class="c-cls">Message</span> | <span class="c-kw">None</span>
+  ) -> <span class="c-cls">TestResult</span>:
+    pass</code></pre>
+          <div class="iface-card__footer">
+            <strong>1 method.</strong> Implement it to add any test strategy.
+            Currently backed by <strong>PromptRunner</strong> (direct model calls +
+            mitigation chain) and <strong>GarakRunner</strong> (subprocess framework).
+          </div>
+        </div>
+
+        <div class="iface-card">
+          <div class="iface-card__title">Security Controls</div>
+          <div class="iface-card__name">Mitigation</div>
+          <pre><code><span class="c-kw">class</span> <span class="c-cls">Mitigation</span>(ABC):
+  layer: <span class="c-cls">MitigationLayer</span>
+
+  <span class="c-st">@abstractmethod</span>
+  <span class="c-kw">def</span> <span class="c-fn">apply</span>(
+    <span class="c-pa">context</span>: <span class="c-cls">MitigationContext</span>
+  ) -> <span class="c-cls">MitigationContext</span>:
+    pass</code></pre>
+          <div class="iface-card__footer">
+            <strong>1 method + 1 layer tag.</strong> Implement it to add any defence.
+            Currently <strong>12 mitigations</strong> across 4 pipeline stages:
+            PROMPT, PRE_INPUT, POST_OUTPUT, and MONITORING.
+          </div>
+        </div>
+      </div>
+
+      <h3>What Extensibility Looks Like in Practice</h3>
+      <p>
+        Because all business logic is written against these interfaces, and never against
+        concrete classes, every extension requires changes in exactly one place.
+      </p>
+
+      <div class="table-wrap">
+        <table class="ext-table">
+          <thead>
+            <tr>
+              <th>To add…</th>
+              <th>Implement</th>
+              <th>Register in</th>
+              <th>Services / API changed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A new LLM (e.g. Gemini)</td>
+              <td><code>GeminiProvider.generate()</code></td>
+              <td><code>MODEL_REGISTRY</code></td>
+              <td><strong>None.</strong> <code>ProviderRouter</code> resolves it automatically.</td>
+            </tr>
+            <tr>
+              <td>A new test framework (e.g. PyRIT)</td>
+              <td><code>PyritRunner.run()</code></td>
+              <td><code>RunnerRouter</code></td>
+              <td><strong>None.</strong> The API and <code>TestService</code> are unaware of runner types.</td>
+            </tr>
+            <tr>
+              <td>A new mitigation (e.g. semantic similarity guard)</td>
+              <td><code>NewMitigation.apply()</code></td>
+              <td><code>MITIGATION_REGISTRY</code></td>
+              <td><strong>None.</strong> The runner pipeline applies all registered mitigations in layer order.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout--tip">
+        <p>
+          <strong>Open/Closed Principle in action:</strong> the platform shipped 10 LLM models,
+          12 mitigations, and 2 test runners without a single change to any service,
+          router, or API route. Each was added by implementing one method and inserting
+          one registry entry.
+        </p>
+      </div>
+
+      <h3>Supporting Architectural Patterns</h3>
+      <p>
+        Three further patterns work together to keep the interfaces clean and the system
+        testable end-to-end.
+      </p>
+
+      <div class="card-grid cols-3 stagger">
         <div class="card card-accent">
-          <h3>Clean / Layered Architecture</h3>
+          <h3>Layered Architecture</h3>
           <p>
-            The backend is organised into four explicit layers — API, Application, Domain, and
-            Infrastructure — with dependencies pointing strictly inward. The domain layer
-            defines only pure Python dataclasses and abstract base classes; it has no imports
-            from FastAPI, SQLAlchemy, or any third-party library. Outer layers depend on
-            inner ones; inner layers never depend on outer ones.
+            Dependencies always point inward. The domain layer — which owns all three ABCs —
+            has zero imports from FastAPI, SQLAlchemy, or any third-party library. Outer
+            layers depend on inner ones; the reverse never occurs.
+          </p>
+        </div>
+        <div class="card card-accent">
+          <h3>Dependency Injection</h3>
+          <p>
+            A central <code>Container</code> wires all service objects at startup.
+            FastAPI route handlers receive services via <code>Depends()</code>, so no service
+            instantiates its own dependencies — every concrete class is substitutable
+            without touching call sites.
           </p>
         </div>
         <div class="card card-accent">
           <h3>Repository Pattern</h3>
           <p>
-            All persistence is mediated through a <code>TestRepository</code> class that
-            translates between domain objects (<code>Test</code>, <code>ModelSpec</code>,
-            <code>RunnerSpec</code>) and SQLAlchemy ORM models. Application services receive
-            an injected SQLAlchemy <code>Session</code> and call repository methods; they
-            are never aware of the underlying SQL dialect or table schema.
-          </p>
-        </div>
-        <div class="card card-accent">
-          <h3>Strategy Pattern via Abstract Base Classes</h3>
-          <p>
-            Three families of behaviour are defined as abstract base classes in the domain
-            layer: <code>ModelProvider</code> (how to call a model), <code>TestRunner</code>
-            (how to execute a test), and <code>Mitigation</code> (how to filter or modify
-            a prompt/response). Concrete implementations are registered in module-level
-            registries (<code>MODEL_REGISTRY</code>, <code>MITIGATION_REGISTRY</code>) and
-            resolved at runtime by <code>ProviderRouter</code> and <code>RunnerRouter</code>.
-          </p>
-        </div>
-        <div class="card card-accent">
-          <h3>Dependency Injection via Container</h3>
-          <p>
-            A central <code>Container</code> class (instantiated once at startup in
-            <code>main.py</code>) constructs and wires all service objects. FastAPI route
-            handlers receive services via <code>Depends()</code>, ensuring that no service
-            creates its own dependencies. This makes the entire service graph testable in
-            isolation by substituting mock objects at the container boundary.
+            Persistence is mediated through <code>TestRepository</code>, which translates
+            between domain dataclasses and SQLAlchemy ORM models. Services call repository
+            methods; they are entirely unaware of the SQL dialect or table schema beneath.
           </p>
         </div>
       </div>
 
       <h3>Dependency Rule Visualised</h3>
       <p>
-        The diagram below makes the inward dependency rule explicit. An arrow from layer A
-        to layer B means "A imports B". No arrow ever crosses inward from a more-central
-        layer to a peripheral one.
+        An arrow from layer A to layer B means "A imports B". The domain layer —
+        where all three interfaces live — is at the centre and has no outward arrows.
       </p>
 
       <div class="mermaid">
 graph LR
-    API["<b>API Layer</b><br/>routes · schemas<br/>FastAPI"]
-    APP["<b>Application Layer</b><br/>TestService · ChatService<br/>ProviderRouter · RunnerRouter"]
-    DOMAIN["<b>Domain Layer</b><br/>Test · ModelSpec · RunnerSpec<br/>EnvironmentSpec · Mitigation<br/>ModelProvider · TestRunner"]
-    INFRA["<b>Infrastructure Layer</b><br/>TestRepository · PromptRunner<br/>GarakRunner · PlatformProvider<br/>ExternalProvider · Mitigations"]
+    API["API Layer<br/>routes · schemas · FastAPI"]
+    APP["Application Layer<br/>TestService · ChatService<br/>ProviderRouter · RunnerRouter"]
+    DOMAIN["Domain Layer<br/>ModelProvider · TestRunner · Mitigation<br/>Test · ModelSpec · RunnerSpec"]
+    INFRA["Infrastructure Layer<br/>PlatformProvider · ExternalProvider<br/>PromptRunner · GarakRunner<br/>12 Mitigation classes · TestRepository"]
 
     API -->|"imports"| APP
     APP -->|"imports"| DOMAIN
     INFRA -->|"implements"| DOMAIN
-    API -->|"depends on"| INFRA
+    API -.->|"depends on"| INFRA
       </div>
     </section>
 
@@ -280,46 +579,39 @@ graph LR
     <section class="section fade-in" id="frontend">
       <h2>3. Frontend Architecture</h2>
       <p>
-        The frontend is a Next.js 15 application using the App Router with React 19 Server
-        and Client Components. It is organised around seven top-level pages, each backed by
-        a dedicated TypeScript module under <code>app/pages/</code>. All LLM-facing and
-        persistence operations are delegated to the backend; the frontend holds no persistent
-        state beyond what is managed in React component state and the browser session.
+        The frontend is a React 18 single-page application built with Vite and React Router v7.
+        It is organised around six top-level pages, each a dedicated TypeScript module under
+        <code>app/pages/</code>, backed by shared shadcn/ui components and a floating chat widget
+        accessible from every page. All LLM-facing and persistence operations are delegated to
+        the backend; the frontend holds no persistent state beyond React component state and
+        browser <code>localStorage</code> (chat history).
       </p>
 
       <div class="mermaid">
-graph TD
-    subgraph AppRouter["Next.js App Router"]
-        ROOT["app/ (root layout)"]
+graph LR
+    ROOT["Root Layout<br/>(ThemeProvider)"]
 
-        P1["HomePage<br/>Platform overview"]
-        P2["VulnerabilityPage<br/>Vulnerability explorer"]
-        P3["KnowledgePage<br/>Mitigation knowledge base"]
-        P4["TestingPage<br/>Test configuration &amp; runs"]
-        P5["ChatPage<br/>Interactive LLM chat"]
-        P6["ConfigPage<br/>Model configuration"]
-        P7["ReportPage<br/>PDF report generation"]
-
-        ROOT --> P1
-        ROOT --> P2
-        ROOT --> P3
-        ROOT --> P4
-        ROOT --> P5
-        ROOT --> P6
-        ROOT --> P7
+    subgraph Pages["Pages — app/pages/"]
+        P1["HomePage"]
+        P2["VulnerabilityPage"]
+        P3["MitigationsPage"]
+        P4["TestingPage"]
+        P5["PromptEnhancerPage"]
+        P6["SecurityKnowledgeAssistantPage"]
     end
 
     subgraph Shared["Shared Infrastructure"]
-        TYPES["types/testing.ts<br/>Shared TypeScript types"]
-        HOOKS["SSE hook<br/>(chat streaming)"]
-        UI["56 shadcn/ui components<br/>(components/ui/)"]
+        WIDGET["ChatWidget<br/>(floating)"]
+        TYPES["TypeScript types"]
+        HOOKS["SSE hook"]
+        UI["shadcn/ui"]
     end
 
+    ROOT --> Pages
+    ROOT --> WIDGET
     P4 --> TYPES
-    P5 --> HOOKS
-    P2 --> UI
-    P3 --> UI
-    P4 --> UI
+    P6 --> HOOKS
+    P2 & P3 & P4 --> UI
       </div>
 
       <h3>Key Frontend Subsystems</h3>
@@ -330,39 +622,43 @@ graph TD
           </thead>
           <tbody>
             <tr>
-              <td>Test configuration wizard</td>
+              <td>Vulnerability catalogue</td>
+              <td><code>HomePage.tsx</code></td>
+              <td>Real-time search and filter across all 8 vulnerability types; staggered card entrance animations</td>
+            </tr>
+            <tr>
+              <td>Test workbench</td>
               <td><code>TestingPage.tsx</code></td>
-              <td>Multi-step form for defining model spec, environment, and runner; serialises to <code>RunnerSpec</code>/<code>ModelSpec</code> shapes and POSTs to <code>/tests</code></td>
+              <td>Multi-step form for model spec, environment, and runner; serialises to <code>RunnerSpec</code>/<code>ModelSpec</code> shapes and POSTs to <code>/tests</code></td>
             </tr>
             <tr>
-              <td>Shared type definitions</td>
-              <td><code>types/testing.ts</code></td>
-              <td>Single source of truth for all API request/response shapes (<code>Test</code>, <code>ModelSpec</code>, <code>RunnerSpec</code>, <code>RunResult</code>, <code>AttemptResult</code>)</td>
+              <td>Prompt enhancer</td>
+              <td><code>PromptEnhancerPage.tsx</code></td>
+              <td>Three-stage pipeline UI (improve → prepend mitigations → verify); side-by-side diff view of original vs. enhanced prompt</td>
             </tr>
             <tr>
-              <td>SSE chat client</td>
-              <td><code>ChatPage.tsx</code></td>
-              <td>Opens a <code>text/event-stream</code> connection to <code>/chat/stream</code>; appends tokens to a React state buffer as they arrive</td>
+              <td>Chat assistant</td>
+              <td><code>SecurityKnowledgeAssistantPage.tsx</code> + <code>ChatWidget</code></td>
+              <td>Opens a <code>text/event-stream</code> SSE connection; accumulates streaming tokens into a React state buffer; persists history in <code>localStorage</code></td>
             </tr>
             <tr>
-              <td>PDF report generation</td>
-              <td><code>ReportPage.tsx</code></td>
-              <td>Uses <code>jspdf</code> and <code>html2canvas</code> to render the current test results into a downloadable PDF entirely client-side</td>
+              <td>PDF export</td>
+              <td><code>lib/pdf/</code></td>
+              <td>Uses <code>@react-pdf/renderer</code> to compose a structured PDF report of test results entirely client-side</td>
             </tr>
             <tr>
               <td>Component library</td>
               <td><code>components/ui/</code></td>
-              <td>56 shadcn/ui components (buttons, dialogs, tables, tabs, toasts, etc.) providing a consistent Radix UI primitive foundation</td>
+              <td>shadcn/ui components (buttons, dialogs, tables, tabs, toasts, etc.) providing a consistent Radix UI primitive foundation with dark-mode support</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <p>
-        The <code>types/testing.ts</code> module is the interface contract between frontend
-        and backend. Every REST response is typed against the definitions in this file,
-        providing compile-time safety for field access and ensuring that any backend schema
-        change propagates as a TypeScript type error rather than a runtime failure.
+        Shared TypeScript types serve as the interface contract between frontend and backend.
+        Every REST response is typed against these definitions, ensuring that any backend schema
+        change propagates as a compile-time type error rather than a silent runtime failure.
       </p>
     </section>
 
@@ -378,43 +674,26 @@ graph TD
       </p>
 
       <div class="mermaid">
-graph TB
-    subgraph api["<b>API Layer</b> — src/api/"]
-        R1["tests.py<br/>CRUD for Test entities"]
-        R2["knowledge.py<br/>Vulnerability &amp; mitigation KB"]
-        R3["config.py<br/>Model configuration"]
-        R4["chat.py<br/>SSE streaming chat"]
-        R5["enhancements.py<br/>Prompt enhancement store"]
-        R6["health.py<br/>Liveness probe"]
+graph LR
+    subgraph api["API Layer — src/api/"]
+        R["tests · knowledge · config<br/>chat · enhancements · health"]
     end
 
-    subgraph app["<b>Application Layer</b> — src/domain/services/"]
-        S1["TestService<br/>test lifecycle orchestration"]
-        S2["ProviderRouter<br/>model provider resolution"]
-        S3["RunnerRouter<br/>test runner resolution"]
-        S4["ChatService<br/>streaming LLM conversation"]
+    subgraph app["Application Layer — src/app/"]
+        S["TestService · ProviderRouter<br/>RunnerRouter · ChatService"]
     end
 
-    subgraph domain["<b>Domain Layer</b> — src/domain/"]
-        E1["Test · ModelSpec<br/>RunnerSpec · EnvironmentSpec"]
-        E2["Message · MitigationAnalysis"]
-        I1["ModelProvider (ABC)"]
-        I2["TestRunner (ABC)"]
-        I3["Mitigation (ABC)<br/>MitigationLayer (enum)"]
+    subgraph domain["Domain Layer — src/domain/"]
+        E["Test · ModelSpec · RunnerSpec<br/>ModelProvider · TestRunner · Mitigation"]
     end
 
-    subgraph infra["<b>Infrastructure Layer</b> — src/infra/"]
-        P1["PlatformProvider<br/>ExternalProvider"]
-        P2["PromptRunner<br/>GarakRunner"]
-        P3["12 Mitigation classes<br/>(MITIGATION_REGISTRY)"]
-        P4["TestRepository<br/>(SQLAlchemy ORM)"]
-        P5["PromptTestAnalyser<br/>PromptInjectionAnalyzer"]
+    subgraph infra["Infrastructure Layer — src/infra/"]
+        I["PlatformProvider · ExternalProvider<br/>PromptRunner · GarakRunner<br/>TestRepository · PromptTestAnalyser"]
     end
 
-    api --> app
-    app --> domain
-    infra -->|implements| domain
-    api --> infra
+    api --> app --> domain
+    infra -->|"implements"| domain
+    api -.->|"depends on"| infra
       </div>
 
       <h3>Layer Responsibilities</h3>
@@ -432,7 +711,7 @@ graph TB
             </tr>
             <tr>
               <td><span class="arch-label arch-app">Application</span></td>
-              <td><code>src/domain/services/</code></td>
+              <td><code>src/app/</code></td>
               <td>Orchestration of domain objects and infrastructure calls; transaction boundaries; provider/runner routing</td>
               <td>No direct I/O; no SQL; must remain unit-testable without network access</td>
             </tr>
@@ -480,37 +759,31 @@ graph TB
       </p>
 
       <div class="mermaid">
-graph TD
-    INPUT["Conversation<br/>[context + prompt + response]"]
+graph LR
+    INPUT["Input<br/>context · prompt · response"]
 
-    subgraph Deterministic["Deterministic Engine (60% weight)"]
+    subgraph Det["Deterministic Engine · 60%"]
         RULES["33 regex rules<br/>7 categories"]
-        STRUCT["Structural heuristics<br/>(multi-step detection)"]
+        STRUCT["Structural heuristics"]
         ENCODE["Encoding detector<br/>(Base64 · ROT13 · hex)"]
         DSCORE["Deterministic score"]
-        RULES --> DSCORE
-        STRUCT --> DSCORE
-        ENCODE --> DSCORE
+        RULES & STRUCT & ENCODE --> DSCORE
     end
 
-    subgraph AIAnalysis["AI Semantic Classifier (40% weight)"]
-        AIPROMPT["Structured JSON prompt<br/>→ gpt-5-nano"]
-        AIRESULT["AIAnalysisResult<br/>(confidence · attack_type)"]
+    subgraph AI["AI Classifier · 40%"]
+        AIPROMPT["JSON prompt → gpt-5-nano"]
+        AIRESULT["confidence · attack_type"]
         AIPROMPT --> AIRESULT
     end
 
-    COMBINE["Probabilistic combination<br/>score = 1 − ∏(1 − wᵢ · sᵢ)"]
-    SEVERITY["Severity label<br/>safe / low_risk / suspicious / likely_injection"]
-    OUTPUT["InjectionAnalysisResult<br/>(risk_score · severity · flags · explanations)"]
-    FINAL["MitigationAnalysis<br/>(flagged · score · reason)"]
+    COMBINE["score = 1 − ∏(1 − wᵢ·sᵢ)"]
+    OUTPUT["InjectionAnalysisResult<br/>risk_score · severity · flags"]
+    FINAL["MitigationAnalysis<br/>flagged · score · reason"]
 
-    INPUT --> Deterministic
-    INPUT --> AIAnalysis
-    Deterministic --> COMBINE
-    AIAnalysis --> COMBINE
-    COMBINE --> SEVERITY
-    SEVERITY --> OUTPUT
-    OUTPUT --> FINAL
+    INPUT --> Det & AI
+    DSCORE --> COMBINE
+    AIRESULT --> COMBINE
+    COMBINE --> OUTPUT --> FINAL
       </div>
 
       <h3>Runner Dispatch</h3>
@@ -554,36 +827,24 @@ graph TD
       <div class="mermaid">
 sequenceDiagram
     participant FE as Frontend
-    participant API as API Layer
+    participant API as API
     participant SVC as TestService
-    participant RR as RunnerRouter
     participant PR as PromptRunner
-    participant MIT as Mitigation chain
+    participant MIT as Mitigations
     participant MP as ModelProvider
-    participant AZ as PromptTestAnalyser
-    participant DB as TestRepository
+    participant AZ as Analyser
 
     FE->>API: POST /tests/{id}/run
-    API->>SVC: run_test(test_id, session)
-    SVC->>DB: get_by_id(test_id)
-    DB-->>SVC: Test domain object
-
-    SVC->>RR: get_runner(runner_type)
-    RR-->>SVC: PromptRunner instance
-
+    API->>SVC: run_test(test_id)
     SVC->>PR: run(test)
     PR->>MIT: apply_pre_input(prompt)
-    MIT-->>PR: filtered / augmented prompt
-
+    MIT-->>PR: filtered prompt
     PR->>MP: complete(messages)
-    MP-->>PR: model response text
-
+    MP-->>PR: model response
     PR->>MIT: apply_post_output(response)
-    MIT-->>PR: filtered / augmented response
-
-    PR->>AZ: analyse(response, prompt, context, mitigation_results)
-    AZ-->>PR: MitigationAnalysis (flagged, score, reason)
-
+    MIT-->>PR: filtered response
+    PR->>AZ: analyse(prompt, response)
+    AZ-->>PR: MitigationAnalysis
     PR-->>SVC: RunResult
     SVC-->>API: RunResult
     API-->>FE: JSON RunResult
@@ -788,7 +1049,7 @@ erDiagram
         The SSE endpoint at <code>POST /chat/stream</code> emits newline-delimited
         <code>data:</code> events. Each event carries a JSON object with a single
         <code>token</code> field. A terminal <code>data: [DONE]</code> event signals
-        end-of-stream, mirroring the convention used by the OpenAI streaming API.
+        end-of-stream, following the SSE streaming convention standardised by Azure AI Foundry's compatible endpoints.
       </p>
     </section>
 
