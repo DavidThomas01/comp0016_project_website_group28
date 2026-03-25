@@ -591,6 +591,7 @@
         <li><a href="#workflow">6. End-to-End Workflow</a></li>
         <li><a href="#database">7. Database Architecture</a></li>
         <li><a href="#api">8. API Design</a></li>
+        <li><a href="#error-handling">9. Error Handling</a></li>
       </ul>
     </section>
 
@@ -1373,6 +1374,93 @@ graph LR
         <code>data:</code> events. Each event carries a JSON object with a single
         <code>token</code> field. A terminal <code>data: [DONE]</code> event signals
         end-of-stream, following the SSE streaming convention standardised by Azure AI Foundry's compatible endpoints.
+      </p>
+    </section>
+
+    <!-- ─────────────────────────────────────────────
+         9. ERROR HANDLING
+    ──────────────────────────────────────────────── -->
+    <section class="section fade-in" id="error-handling">
+      <h2>9. Robust Error Handling</h2>
+      <p>
+        Robustness is handled as a first-class architectural concern. The backend distinguishes
+        between invalid user configuration, unknown mitigation setup, missing resources, and
+        failures from external systems such as model providers or framework subprocesses.
+        Instead of allowing these failures to crash the platform silently, each class of error
+        is caught close to its source, converted into a controlled response, and surfaced back
+        to the frontend with a clear failure reason.
+      </p>
+
+      <div class="table-wrap">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Failure source</th>
+              <th>How it is caught</th>
+              <th>Backend response</th>
+              <th>Frontend effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Invalid model, runner, or environment configuration</td>
+              <td><code>InvalidModelConfiguration</code> raised in domain/service validation</td>
+              <td><code>HTTP 400</code> with the validation message in <code>detail</code></td>
+              <td>The UI can show the user exactly which part of the request is invalid and prevent re-running until fixed</td>
+            </tr>
+            <tr>
+              <td>Custom or unknown mitigation IDs</td>
+              <td><code>UnknownMitigation</code> is raised during prompt compilation or mitigation-layer lookup, then translated into <code>InvalidModelConfiguration</code></td>
+              <td><code>HTTP 400</code> rather than an internal crash</td>
+              <td>The user sees that the mitigation setup is unsupported or malformed instead of receiving a generic failure</td>
+            </tr>
+            <tr>
+              <td>Missing test or configuration records</td>
+              <td><code>NotFoundError</code> raised by the service layer</td>
+              <td><code>HTTP 404</code> with a specific not-found message</td>
+              <td>The frontend can tell the user the selected record no longer exists</td>
+            </tr>
+            <tr>
+              <td>External provider failures, HTTP errors, or Garak runtime failures</td>
+              <td>Provider and runner layers raise <code>RuntimeError</code> after capturing upstream failure details</td>
+              <td><code>HTTP 502</code> with the upstream error text in <code>detail</code></td>
+              <td>The request returns in a controlled way, allowing the UI to show that the failure came from an external dependency rather than the browser or frontend</td>
+            </tr>
+            <tr>
+              <td>Prompt enhancement verification failure</td>
+              <td><code>EnhancementValidationError</code> raised after the retry budget is exhausted</td>
+              <td><code>HTTP 422</code> with an explicit explanation that validation did not pass</td>
+              <td>The user is told that enhancement failed verification, rather than incorrectly being shown a "successful" result</td>
+            </tr>
+            <tr>
+              <td>Chat streaming failure mid-response</td>
+              <td>The SSE generator catches the exception while streaming</td>
+              <td>A final SSE delta is emitted with an error message, followed by a clean <code>done</code> event</td>
+              <td>The chat widget degrades gracefully instead of hanging indefinitely on a broken stream</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout--note">
+        <p>
+          <strong>Why this is robust:</strong> the platform does not hide failures behind vague
+          "something went wrong" behaviour. Validation errors are returned as client errors,
+          upstream provider and framework failures are returned as gateway-style errors, and
+          streamed chat failures are terminated cleanly. This means the frontend receives a
+          usable response body for failed requests and can present users with a concrete reason
+          for what is failing.
+        </p>
+      </div>
+
+      <p>
+        This is especially important for external integrations. When an OpenAI-compatible
+        endpoint, Anthropic call, Azure content filter, custom external HTTP model, or Garak
+        framework scan fails, the backend captures the upstream failure and returns it through
+        the API instead of swallowing it. The result is operational transparency: users can
+        distinguish a bad prompt, a broken mitigation configuration, a missing record, and an
+        external-system outage because each travels back through the request path with a
+        different status code and message.
       </p>
     </section>
 
