@@ -815,28 +815,13 @@
 
     <section class="section fade-in" id="known-bugs">
       <h2>Known bugs</h2>
-      <p class="section-lead">
-        We tested the main parts of the product carefully and fixed the issues we found. At this point, we are not aware of any major bugs in the current version.
+      <p>
+        We tested the core parts of the product carefully and addressed the issues we found. The main user flows have been checked end-to-end, and at this stage we are not aware of any major bugs in the current version. While there were some challenges during development, these were worked through to ensure the key features behave as expected.
       </p>
-      <div class="evaluation-accordion" role="region" aria-label="Known bugs details">
-        <details class="evaluation-item">
-          <summary>See details</summary>
-          <div class="evaluation-content">
-            <p>
-              There were some challenges during development, but we worked through them and made sure the key features work as expected.
-              We tested the most important flows from start to finish.
 
-            </p>
-            <p>
-              We believe it is a solid base for Avanade to build on. We also included documentation to make sure anyone at Avanade can understand the platform, maintain it, and add new functionalities in the future.
-            </p>
-            <p>
-              We are very excited about the positive feedback from Avanade and Microsoft, and about the article we are writing for their blog (see our
-              <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">development blog</a>) and the presentation we will be giving on their AI Foundry Discord.
-            </p>
-          </div>
-        </details>
-      </div>
+      <p>
+        We see this as a solid base for Avanade to build on. We have included clear documentation so that anyone can understand the platform, maintain it, and extend it with new functionalities over time.         We are also encouraged by the positive feedback from Avanade and Microsoft, as well as the opportunity to share the work through an article on the AI Foundry blog and an upcoming presentation on the AI Foundry Discord.
+      </p>
     </section>
 
     <section class="section fade-in" id="critical-evaluation">
@@ -981,56 +966,92 @@
     <section class="section fade-in" id="future-work">
       <h2>Future work</h2>
       <p>
-        Promising directions for extending the platform and the research narrative beyond the hand-in scope.
-        These are not commitments of the coursework delivery; they indicate how Avanade or follow-on work could evolve the product.
+        As we finished building the product, we noted a number of ideas that we believe are worth exploring further.
       </p>
-      <div class="card-grid cols-2 stagger">
-        <div class="card">
-          <h3 class="heading-with-icon">
-            <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M6 7h4"/><path d="M6 11h12"/><path d="M6 15h8"/></svg>
-            Multi-model support
-          </h3>
-          <p>
-            Extend the testing framework to multiple LLM providers and model versions so teams can compare behaviour and mitigations
-            side-by-side rather than relying on a single fixed endpoint.
-          </p>
-        </div>
-        <div class="card">
-          <h3 class="heading-with-icon">
-            <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            Real-time monitoring
-          </h3>
-          <p>
-            Add production-style monitoring for MCP and tool-using deployments: alerting on suspicious prompt patterns,
-            policy violations, or repeated mitigation failures without blocking all traffic.
-          </p>
-        </div>
-        <div class="card">
-          <h3 class="heading-with-icon">
-            <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-            Community knowledge base
-          </h3>
-          <p>
-            Open curated contributions for new vulnerability write-ups, mitigations, and test cases with moderation and provenance
-            so the knowledge base stays trustworthy while growing beyond the core team.
-          </p>
-        </div>
-        <div class="card">
-          <h3 class="heading-with-icon">
-            <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            Automated discovery
-          </h3>
-          <p>
-            Explore adversarial search and optional attacker-model loops to propose novel injections and tool-abuse sequences,
-            always with human review before results are treated as findings.
-          </p>
-        </div>
-      </div>
-      <div class="callout mt-3">
-        <p>
-          Rapid change in LLM capabilities and in MCP adoption means prioritising extensibility, auditability, and partner feedback
-          over chasing every optional feature in a single release.
-        </p>
+
+      <p>
+        The platform already offers a hands-on way to explore prompt injection: you try different inputs and see how the model’s behaviour changes. With further development, it could become a more direct tool for testing mitigations and for day-to-day security work. The same experience can also stay approachable for learning—for students (for example at IGCSE or A-level) and for anyone new to security who needs a clear, practical introduction. That is especially relevant for non-technical founders who use AI-assisted coding to build their products—an approach that is becoming increasingly common—because understanding prompt injection early can help them avoid preventable security breaches on the platforms they ship.
+      </p>
+
+      <p>
+        The ideas below are grouped into themes and are intended as a starting point for future development.
+      </p>
+
+      <div class="evaluation-accordion future-work-accordion" role="region" aria-label="Future work by category">
+        <details class="evaluation-item">
+          <summary>Learning, testing &amp; demos</summary>
+          <div class="evaluation-content">
+            <div class="future-work-nuggets">
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="16" x="3" y="4" rx="1"/><rect width="8" height="10" x="13" y="10" rx="1"/></svg></span>
+                <h3>Compare two mitigation stacks</h3>
+                <p>Run the same user prompt with two mitigation setups; show risk scores and full model replies side by side so defence changes are visible in one view.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg></span>
+                <h3>Guided learning paths</h3>
+                <p>Pre-built routes (e.g. short session vs. deeper dive) so newcomers are not dropped into the full catalogue without a path.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span>
+                <h3>Prompt autopsy</h3>
+                <p>After a test, surface which parts of the text likely drove the score and suggest what to remove or rewrite—learners see why, not only a single number.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="13" height="13" x="8" y="8" rx="2" ry="2"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></span>
+                <h3>Model matchup</h3>
+                <p>Send one test prompt to two providers or models; compare refusals, leaks, and tone for teaching &ldquo;same prompt, different model.&rdquo;</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></span>
+                <h3>Read-only demo mode</h3>
+                <p>Fixed scenarios and canned answers so flows work without real API keys—schools, meetups, and locked-down networks still get a convincing demo.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v12H3V8"/><path d="M1 8h22"/><path d="M12 8V4l4 4H8l4-4v4"/></svg></span>
+                <h3>Exportable lesson packs</h3>
+                <p>Bundle vulnerabilities, mitigations, and suggested tests (e.g. ZIP or printable outline) so anyone leading a session can use the same lesson layout again without rebuilding everything from scratch.</p>
+              </article>
+            </div>
+          </div>
+        </details>
+        <details class="evaluation-item">
+          <summary>Community, content &amp; operations</summary>
+          <div class="evaluation-content">
+            <div class="future-work-nuggets">
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11"/><path d="M9 12h11"/><path d="M9 18h11"/><path d="M5 6h.01"/><path d="M5 12h.01"/><path d="M5 18h.01"/></svg></span>
+                <h3>Contributor checklist</h3>
+                <p>Simple checklist for new entries: required fields, example prompt, risk labelling—keeps additions consistent before the knowledge base opens wider.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <h3>Community knowledge base</h3>
+                <p>Space for community guides and tips next to the official material, checked for quality and with clear source notes so readers know where ideas came from.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span>
+                <h3>Content management system (CMS)</h3>
+                <p>Authors update vulnerabilities, mitigations, and help pages in a writing UI instead of editing the codebase.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg></span>
+                <h3>Real incident footnotes</h3>
+                <p>Short notes per vulnerability tied to public or well-known examples so abstract patterns feel concrete without long case studies.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98"/><path d="m15.41 6.51-6.82 3.98"/></svg></span>
+                <h3>Federated knowledge</h3>
+                <p>Organisations could opt in to share anonymised mitigations and lesson notes in one shared, searchable pool; each organisation chooses whether to take part.</p>
+              </article>
+              <article class="future-work-nugget">
+                <span class="future-work-nugget__icon" aria-hidden="true"><svg class="future-work-nugget__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg></span>
+                <h3>Community model directory</h3>
+                <p>A simple catalogue of models with everyday notes: how quick they feel in use, what others reported when testing them—more useful than vendor marketing sheets alone.</p>
+              </article>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
 
