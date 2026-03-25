@@ -62,22 +62,11 @@
   <div class="container">
     <div class="kicker">Research and Technical Overview</div>
     <h1>Prompt Injection Research, Platform Research, and Technical Decisions</h1>
-    <p>
-      This page is organized into two clearly separated tracks: prompt injection research that
-      informed the project, and platform-level technical decisions evidenced by the implemented codebase.
-    </p>
   </div>
 </section>
 
 <main id="main">
   <div class="container">
-
-    <section class="section section-track fade-in" id="part-1">
-      <h2>Prompt Injection Research</h2>
-      <p class="section-track__lead">
-        Threat models, attack taxonomy, mitigation strategies, and evidence base that define the security problem space.
-      </p>
-    </section>
 
     <section class="section fade-in" id="introduction">
       <h2>Introduction and Background</h2>
@@ -398,13 +387,15 @@
 
       <div class="card-grid cols-3 stagger existing-solutions-grid">
         <div class="card card--feature">
-          <h3>Foundry</h3>
-          <p>
-            Azure AI Foundry is a managed platform for accessing and orchestrating foundation models,
-            provider integrations, and enterprise AI workflows. Our industry partner, Josh McDonald,
-            introduced it early in the project as a practical enterprise reference point.
-            <a href="#ref-3">[3]</a>
-          </p>
+          <div class="card-feature-intro">
+            <h3>Foundry</h3>
+            <p>
+              Azure AI Foundry is a managed platform for accessing and orchestrating foundation models,
+              provider integrations, and enterprise AI workflows. Our industry partner, Josh McDonald,
+              introduced it early in the project as a practical enterprise reference point.
+              <a href="#ref-3">[3]</a>
+            </p>
+          </div>
           <div class="card-subsection" aria-label="Pros and cons">
             <h4>Pros</h4>
             <ul class="styled-list pros-list">
@@ -418,13 +409,15 @@
           </div>
         </div>
         <div class="card card--feature">
-          <h3>NVIDIA Garak</h3>
-          <p>
-            Garak was the most directly reflected external testing framework in the implemented platform.
-            It demonstrated the value of repeatable adversarial probing and informed the framework-scan
-            capability exposed through the Testing page.
-            <a href="#ref-2">[2]</a>
-          </p>
+          <div class="card-feature-intro">
+            <h3>NVIDIA Garak</h3>
+            <p>
+              Garak was the most directly reflected external testing framework in the implemented platform.
+              It demonstrated the value of repeatable adversarial probing and informed the framework-scan
+              capability exposed through the Testing page.
+              <a href="#ref-2">[2]</a>
+            </p>
+          </div>
           <div class="card-subsection" aria-label="Pros and cons">
             <h4>Pros</h4>
             <ul class="styled-list pros-list">
@@ -438,14 +431,16 @@
           </div>
         </div>
         <div class="card card--feature">
-          <h3>Microsoft PyRIT</h3>
-          <p>
-            PyRIT was relevant from a research and architecture perspective because it frames prompt
-            injection testing as structured red-teaming. The repository includes a PyRIT runner file,
-            which shows it was considered in the codebase, but it is not part of the currently active
-            runner registry.
-            <a href="#ref-8">[8]</a>
-          </p>
+          <div class="card-feature-intro">
+            <h3>Microsoft PyRIT</h3>
+            <p>
+              PyRIT was relevant from a research and architecture perspective because it frames prompt
+              injection testing as structured red-teaming. The repository includes a PyRIT runner file,
+              which shows it was considered in the codebase, but it is not part of the currently active
+              runner registry.
+              <a href="#ref-8">[8]</a>
+            </p>
+          </div>
           <div class="card-subsection" aria-label="Pros and cons">
             <h4>Pros</h4>
             <ul class="styled-list pros-list">
@@ -459,11 +454,13 @@
           </div>
         </div>
         <div class="card card--feature">
-          <h3>PromptBench</h3>
-          <p>
-            PromptBench informed the importance of adversarial benchmarking and comparing behaviour
-            across prompt variants rather than relying on one or two examples.
-          </p>
+          <div class="card-feature-intro">
+            <h3>PromptBench</h3>
+            <p>
+              PromptBench informed the importance of adversarial benchmarking and comparing behaviour
+              across prompt variants rather than relying on one or two examples.
+            </p>
+          </div>
           <div class="card-subsection" aria-label="Pros and cons">
             <h4>Pros</h4>
             <ul class="styled-list pros-list">
@@ -477,12 +474,14 @@
           </div>
         </div>
         <div class="card card--feature">
-          <h3>OWASP PromptMe</h3>
-          <p>
-            PromptMe was useful because it connects testing to recognised OWASP threat scenarios and
-            reinforces a developer-facing, application-security view of prompt injection.
-            <a href="#ref-1">[1]</a>
-          </p>
+          <div class="card-feature-intro">
+            <h3>OWASP PromptMe</h3>
+            <p>
+              PromptMe was useful because it connects testing to recognised OWASP threat scenarios and
+              reinforces a developer-facing, application-security view of prompt injection.
+              <a href="#ref-1">[1]</a>
+            </p>
+          </div>
           <div class="card-subsection" aria-label="Pros and cons">
             <h4>Pros</h4>
             <ul class="styled-list pros-list">
@@ -496,13 +495,15 @@
           </div>
         </div>
         <div class="card card--feature">
-          <h3>OpenAI Evals and benchmark suites</h3>
-          <p>
-            OpenAI Evals, together with benchmark-oriented resources such as AgentHarm, AdvBench, and
-            HarmBench, influenced the idea that testing should be reproducible, extensible, and suitable
-            for regression workflows rather than one-off manual checks.
-            <a href="#ref-9">[9]</a>
-          </p>
+          <div class="card-feature-intro">
+            <h3>OpenAI Evals and benchmark suites</h3>
+            <p>
+              OpenAI Evals, together with benchmark-oriented resources such as AgentHarm, AdvBench, and
+              HarmBench, influenced the idea that testing should be reproducible, extensible, and suitable
+              for regression workflows rather than one-off manual checks.
+              <a href="#ref-9">[9]</a>
+            </p>
+          </div>
           <div class="card-subsection" aria-label="Pros and cons">
             <h4>Pros</h4>
             <ul class="styled-list pros-list">
@@ -608,7 +609,9 @@
 
       <div class="card-grid cols-2 stagger">
         <div class="card">
-          <h3>FastAPI</h3>
+          <div class="card-feature-intro">
+            <h3>FastAPI</h3>
+          </div>
           <div class="card-subsection" aria-label="Pros and cons">
             <h4>Pros</h4>
             <ul class="styled-list pros-list">
@@ -625,7 +628,9 @@
         </div>
 
         <div class="card">
-          <h3>Django</h3>
+          <div class="card-feature-intro">
+            <h3>Django</h3>
+          </div>
           <div class="card-subsection" aria-label="Pros and cons">
             <h4>Pros</h4>
             <ul class="styled-list pros-list">
@@ -660,7 +665,8 @@
       </p>
 
       <div class="card-grid cols-3 stagger">
-        <div class="card">
+        <div class="card card--architecture-glass">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
           <h3>Frontend</h3>
           <p>
             <strong>Stack:</strong> React 18 + TypeScript, bundled with Vite, styled with Tailwind CSS v4
@@ -673,7 +679,8 @@
           </p>
         </div>
 
-        <div class="card">
+        <div class="card card--architecture-glass">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></div>
           <h3>Backend</h3>
           <p>
             <strong>Stack:</strong> Python with FastAPI REST API. SQLite for persistence with SQLAlchemy
@@ -686,7 +693,8 @@
           </p>
         </div>
 
-        <div class="card">
+        <div class="card card--architecture-glass">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 3h15"/><path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3"/><path d="M6 14h12"/></svg></div>
           <h3>Testing Framework</h3>
           <p>
             <strong>Frameworks:</strong> Azure AI Foundry and NVIDIA Garak. Foundry supports managed model
@@ -704,25 +712,28 @@
 
     <section class="section fade-in" id="references">
       <h2>References</h2>
-      <p>
-        The following sources were the main references used in our research report and knowledge base.
-      </p>
-      <p>
-        <strong>Clarification:</strong> for references to information contained within the report refer to content in this same report.
-      </p>
+      <div class="references-lede">
+        <p>
+          The following sources were the main references used in our research report and knowledge base.
+        </p>
+        <p class="references-hint">
+          <span class="references-hint__label">Note</span>
+          For references to information contained within the report, use the content in this same document.
+        </p>
+      </div>
 
-      <ol class="styled-list">
-        <li id="ref-1"><strong>[1]</strong> OWASP GenAI Security Project. <em>LLM01:2025 Prompt Injection</em>, 2025. https://genai.owasp.org/llmrisk/llm01-prompt-injection/</li>
-        <li id="ref-2"><strong>[2]</strong> NVIDIA. <em>garak: LLM vulnerability scanner</em> (GitHub repository), accessed 2026. https://github.com/NVIDIA/garak</li>
-        <li id="ref-3"><strong>[3]</strong> Microsoft Azure. <em>Azure AI Foundry Documentation</em>, accessed 2026. https://learn.microsoft.com/azure/ai-foundry/</li>
-        <li id="ref-4"><strong>[4]</strong> React. <em>React Documentation</em>, accessed 2026. https://react.dev/</li>
-        <li id="ref-5"><strong>[5]</strong> Vite. <em>Vite Documentation</em>, accessed 2026. https://vite.dev/guide/</li>
-        <li id="ref-6"><strong>[6]</strong> FastAPI. <em>FastAPI Documentation</em>, accessed 2026. https://fastapi.tiangolo.com/</li>
-        <li id="ref-7"><strong>[7]</strong> Django Software Foundation. <em>Django Documentation</em>, accessed 2026. https://docs.djangoproject.com/</li>
-        <li id="ref-8"><strong>[8]</strong> Microsoft. <em>PyRIT: Python Risk Identification Tool for generative AI</em> (GitHub repository), accessed 2026. https://github.com/Azure/PyRIT</li>
-        <li id="ref-9"><strong>[9]</strong> OpenAI. <em>OpenAI Evals</em> (GitHub repository), accessed 2026. https://github.com/openai/evals</li>
-        <li id="ref-10"><strong>[10]</strong> PromptBench. <em>PromptBench</em> (GitHub repository), accessed 2026. https://github.com/microsoft/promptbench</li>
-        <li id="ref-11"><strong>[11]</strong> Mantas Mazeika et al. <em>HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal</em>, 2024. https://arxiv.org/abs/2402.04249</li>
+      <ol class="reference-list" role="list">
+        <li id="ref-1">OWASP GenAI Security Project. <em>LLM01:2025 Prompt Injection</em>, 2025. https://genai.owasp.org/llmrisk/llm01-prompt-injection/</li>
+        <li id="ref-2">NVIDIA. <em>garak: LLM vulnerability scanner</em> (GitHub repository), accessed 2026. https://github.com/NVIDIA/garak</li>
+        <li id="ref-3">Microsoft Azure. <em>Azure AI Foundry Documentation</em>, accessed 2026. https://learn.microsoft.com/azure/ai-foundry/</li>
+        <li id="ref-4">React. <em>React Documentation</em>, accessed 2026. https://react.dev/</li>
+        <li id="ref-5">Vite. <em>Vite Documentation</em>, accessed 2026. https://vite.dev/guide/</li>
+        <li id="ref-6">FastAPI. <em>FastAPI Documentation</em>, accessed 2026. https://fastapi.tiangolo.com/</li>
+        <li id="ref-7">Django Software Foundation. <em>Django Documentation</em>, accessed 2026. https://docs.djangoproject.com/</li>
+        <li id="ref-8">Microsoft. <em>PyRIT: Python Risk Identification Tool for generative AI</em> (GitHub repository), accessed 2026. https://github.com/Azure/PyRIT</li>
+        <li id="ref-9">OpenAI. <em>OpenAI Evals</em> (GitHub repository), accessed 2026. https://github.com/openai/evals</li>
+        <li id="ref-10">PromptBench. <em>PromptBench</em> (GitHub repository), accessed 2026. https://github.com/microsoft/promptbench</li>
+        <li id="ref-11">Mantas Mazeika et al. <em>HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal</em>, 2024. https://arxiv.org/abs/2402.04249</li>
       </ol>
     </section>
 
