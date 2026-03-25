@@ -58,7 +58,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a { transition: all var(--duration) var(--ease); }
+a {
+  color: var(--brand);
+  transition: all var(--duration) var(--ease);
+}
+
+a:visited {
+  color: var(--brand-dark);
+}
+
+a:hover {
+  color: var(--brand-accent);
+}
+
+a:active {
+  color: var(--brand-light);
+}
 
 p { line-height: 1.75; color: var(--text-secondary); }
 
@@ -661,6 +676,7 @@ main { padding: 2.5rem 0 3rem; }
   padding: 2rem 0;
   border-bottom: 1px solid var(--border-light);
   transition: all var(--duration-slow) var(--ease);
+  scroll-margin-top: 120px;
 }
 .section:last-child { border-bottom: none; }
 .section:hover {
@@ -2025,6 +2041,7 @@ html.js .gantt-phase-tooltip {
   box-shadow: var(--shadow-sm);
 }
 
+#explain-requirements { scroll-margin-top: 130px; }
 /* ====== Stats ====== */
 .stat-grid {
   display: grid;

@@ -76,10 +76,10 @@
       <h2>Project Background</h2>
       <div class="project-bg-layout">
         <div class="project-bg-text">
-          <p>The modern rise in AI adoption has led to increased concerns about the security and robustness of AI systems, particularly in the context of prompt injection attacks. AI has become increasingly prevalent in various applications, but with this speed many organisations have not fully considered the challenges it presents, making it a critical area for security research. Our project partner from Avanade, Josh McDonald an AI Security Lead, has worked with us to explore this issue and develop a solution that informs Avanade's clients about the risks and mitigation strategies for prompt injection attacks. Avanade is a company formed by Accenture and Microsoft, they work with organisations to provide IT consulting and services focused on utilising Microsoft technology in a number of different domains including artificial intelligence, business analytics, digital transformation and cloud computing.</p>
+          <p>The modern rise in AI adoption has led to increased concerns about the security and robustness of AI systems, particularly in the context of prompt injection attacks. AI has become increasingly prevalent in various applications, but with this speed many organisations have not fully considered the challenges it presents, making it a critical area for security research. Our project partner from Avanade, <a href="https://www.linkedin.com/in/joshmcdonaldmvp/" target="_blank" rel="noopener noreferrer">Josh McDonald [2]</a>, an AI Security Lead, has worked with us to explore this issue and develop a solution that informs Avanade's clients about the risks and mitigation strategies for prompt injection attacks. Avanade is a company formed by Accenture and Microsoft, they work with organisations to provide IT consulting and services focused on utilising Microsoft technology in a number of different domains including artificial intelligence, business analytics, digital transformation and cloud computing.[1]</p>
         </div>
         <div class="project-bg-logo">
-          <img src="assets/img/logo-avanade.svg" alt="Avanade logo" />
+          <img src="assets/img/logo-avanade.webp" alt="Avanade logo" />
         </div>
       </div>
     </section>
@@ -96,7 +96,49 @@
       <h3>Client Requirements</h3>
       <p>After creating the initial report, we had various meetings with our client to discuss and refine the requirements for the platform. This included focusing on the needs of the company and the typical requirements of Avanade's clients. We developed and refined these requirements throughout the early development process with feedback from our client on our first prototypes. The majority of our final requirements were derived from these discussions.</p>
       <h3>Interview</h3>
-      <p>We also conducted a semi-structured interview with a Senior Research Scientist in Agentic AI working for Holistic AI, Zekun Wu. Holistic AI is an organisation that works in AI security and compliance so we consulted Zekun Wu to ask where he felt AI security was most lacking and where he experienced pain points in his research.</p>
+      <p>We also conducted a semi-structured interview with a Senior Research Scientist in Agentic AI working for Holistic AI, <a href="https://www.linkedin.com/in/zekun-wu-1190091a3/" target="_blank" rel="noopener noreferrer">Zekun Wu [3]</a>. Holistic AI is an organisation that works in AI security and compliance so we consulted Zekun Wu to ask where he felt AI security was most lacking and where he experienced difficulties in his research.</p>
+      <div class="card-grid cols-2 stagger">
+        <div class="card card-accent">
+          <h3>Industry AI Security Lead</h3>
+          <p><strong>Q:</strong> What do you think is the current biggest issue with prompt injection?</p>
+          <p><strong>A:</strong> Well, the field is still quite new and there's a lack of standardized approaches to addressing these vulnerabilities, especially since attacks are evolving so rapidly. But if we're talking about the most concerning issue I would say indirect prompt injection since it introduces so many new attack vectors to models and agents, and there aren't many tools available to address it effectively.</p>
+          <br>
+          <p><strong>Q:</strong> Where do you feel current mitigations, frameworks, or tools are lacking?</p>
+          <p><strong>A:</strong> I think the current frameworks are very technical and not easily connected, so while testing one framework, it's difficult to integrate and compare insights from another. I personally use Microsoft Foundry[2] a lot in my work, I think it's a great tool for deploying AI models and setting up endpoints, but it lacks seamless integration with other security tools.</p>
+          <br>
+          <p><strong>Q:</strong> What frameworks have you used, or are there any tools we should research?</p>
+          <p><strong>A:</strong> I have used Microsoft Foundry and PyRIT, I think both are great tools for testing prompt injection vulnerabilities. PyRIT is more of a set of comprehensive tests that try to break the model with different vulnerabilities like red-teaming attacks.</p>
+          <br>
+          <p><strong>Q:</strong> Do you think a tool for creating custom test scenarios for prompt injection could be useful for your work?</p>
+          <p><strong>A:</strong> I think it's a great idea and could be really useful for our clients. The customizability sounds interesting, while most of our clients use the GPT or Anthropic models it would be nice to be able to test any model easily too.</p>
+          <br>
+          <p><strong>Q:</strong> How accessible should this tool be?</p>
+          <p><strong>A:</strong> I think with the knowledge you have in the report you could make the tool quite accessible to users with varying levels of AI security knowledge. I can see it being useful for newer members of my team who might not have as much experience with AI security for learning about the vulnerabilities involved. And the testing could be great for all users, technical and non-technical.</p>
+          <br>
+          <p><strong>Q:</strong> What would make you trust a prompt injection protection tool?</p>
+          <p><strong>A:</strong> I would want a tool with lots of transparency and clear control over the testing process.</p>
+        </div>
+        <div class="card card-accent">
+          <h3>AI Security Researcher</h3>
+          <p><strong>Q:</strong> What do you think is the current biggest issue with prompt injection?</p>
+          <p><strong>A:</strong> e</p>
+          <br>
+          <p><strong>Q:</strong> Where do you feel current mitigations, frameworks, or tools are lacking?</p>
+          <p><strong>A:</strong> e</p>
+          <br>
+          <p><strong>Q:</strong> What frameworks have you used, or are there any tools we should research?</p>
+          <p><strong>A:</strong> e</p>
+          <br>
+          <p><strong>Q:</strong> Do you think a tool for creating custom test scenarios for prompt injection could be useful for your work?</p>
+          <p><strong>A:</strong> e</p>
+          <br>
+          <p><strong>Q:</strong> How accessible should this tool be?</p>
+          <p><strong>A:</strong> e</p>
+          <br>
+          <p><strong>Q:</strong> What would make you trust a prompt injection protection tool?</p>
+          <p><strong>A:</strong> e</p>
+        </div>
+      </div>
     </section>
 
     <section class="section fade-in" id="personas">
@@ -244,7 +286,7 @@
 
       <h4>Should Have</h4>
       <ul class="styled-list">
-        <li>➖ The in-depth vulnerability view includes a sandbox input field for testing prompts with and without mitigation enabled.*</li>
+        <li>➖ The in-depth vulnerability view includes a sandbox input field for testing prompts with and without mitigation enabled.<a href="#explain-requirements">*</a></li>
         <li>✅ The in-depth vulnerability view includes mitigation implementation templates presented in pseudocode.</li>
         <li>✅ The in-depth vulnerability view includes references or external sources for further reading.</li>
         <li>✅ The in-depth vulnerability view supports exporting as a PDF.</li>
@@ -304,8 +346,18 @@
         <li>✅ The system does not ensure compatibility with all LLM providers.</li>
         <li>✅ The system does not support fully custom automated testing pipelines.</li>
       </ul>
+      <div id="explain-requirements">
+        <p>*This requirement was found to not align with the page as it functions as a testing feature which is more aligned with the testing page. To replace the interactive test we featured a live demo and a static section displaying the difference, meeting the core idea behind the requirement without conflicting with the page's purpose.</p>
+      </div>
     </section>
-
+    <section class="section fade-in" id="References">
+      <h2>References</h2>
+      <ul class="styled-list">
+        <li>[1] Avanade. (n.d.). About Avanade. Avanade. Retrieved March 20, 2026, from <a href="https://www.avanade.com/en-gb/about">https://www.avanade.com/en-gb/about</a></li>
+        <li>[2] <a href="https://www.linkedin.com/in/joshmcdonaldmvp/">Josh McDonald</a></li>
+        <li>[3] <a href="https://www.linkedin.com/in/zekun-wu-1190091a3/">Zekun Wu</a></li>
+      </ul>
+    </section>
     <nav class="page-nav fade-in" aria-label="Page navigation">
       <a href="index.html">
         <span class="page-nav-label">Previous</span>

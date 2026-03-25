@@ -73,7 +73,7 @@
 <main id="main">
   <div class="container">
 
-    <section class="section fade-in" id="user-and-deployment-manuals">
+    <section class="section fade-in" id="user-manual">
       <h2>User &amp; Deployment Manuals</h2>
       <p>
         Detailed guides for both end users and technical operators setting up and using the
@@ -126,30 +126,13 @@
         This section documents data privacy considerations and GDPR compliance
         measures implemented in the platform.
       </p>
-      <div class="card-grid cols-3 stagger">
-        <div class="card card--feature card-accent">
-          <div class="card-icon">&#x1F512;</div>
-          <h3>Data Minimisation</h3>
-          <p>The platform collects only the minimum data necessary for testing and does not store personal information.</p>
-        </div>
-        <div class="card card--feature card-accent">
-          <div class="card-icon">&#x1F4BE;</div>
-          <h3>Local-First Storage</h3>
-          <p>All test data is stored locally on the user's device with no transmission to external servers.</p>
-        </div>
-        <div class="card card--feature card-accent">
-          <div class="card-icon">&#x1F5D1;&#xFE0F;</div>
-          <h3>Right to Erasure</h3>
-          <p>Users can delete all stored test data and configurations at any time through the platform interface.</p>
-        </div>
-      </div>
-      <div class="callout callout--tip mt-3">
-        <p>
-          <strong>Privacy by design:</strong> The platform's local-first architecture inherently minimises
-          data privacy risks by keeping all test data on the user's device. No persistent backend
-          server means no centralised data collection. As such we are completely compliant with GDPR.
-        </p>
-      </div>
+      <ul class="styled-list">
+        <li><strong>Data Minimisation:</strong> The platform collects only the minimum data necessary for testing and does not store personal information.</li>
+        <li><strong>Local-First Storage:</strong> All test data is stored locally on the user's device with no transmission to external servers.</li>
+        <li><strong>Right to Erasure:</strong> Users can delete all stored test data and configurations at any time through the platform interface.</li>
+        <li><strong>External Models:</strong> The platform integrates with external AI models, users are responsible for ensuring compliance with regulations defined by the respective providers.</li>
+        <li><strong>Chatbot:</strong> The platform's chatbot functionality utilizes an OpenAI model, all interactions with the model are subject to the provider's terms and conditions.</li>
+      </ul>
     </section>
 
     <section class="section fade-in" id="dev-blog">
@@ -159,7 +142,6 @@
         challenges encountered, and insights gained throughout the project.
       </p>
       <div class="card card-accent">
-        <div class="card-icon">&#x270D;&#xFE0F;</div>
         <h3>Visit the Development Blog</h3>
         <p>
           Read about our weekly progress, technical deep-dives, and project reflections.
