@@ -898,6 +898,17 @@ h4 {
 .cols-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 .cols-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 
+/* Fixed 2×2 grid (testing page — automated coverage cards) */
+.card-grid.card-grid--2x2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+@media (max-width: 700px) {
+  .card-grid.card-grid--2x2 {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Feature card (centered) */
 .card--feature {
   text-align: center;
@@ -1746,6 +1757,52 @@ html:not(.js) .req-status-tooltip__panel {
   font-size: 1.1rem;
   margin-bottom: 0.65rem;
 }
+/* User acceptance (testing page): clearer rhythm between paragraphs */
+#user-acceptance > p {
+  margin-bottom: 1.35rem;
+}
+#user-acceptance .uat-block p {
+  margin-top: 0;
+  margin-bottom: 1.1rem;
+}
+#user-acceptance .uat-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Prompt testing (testing page): match UAT paragraph rhythm */
+#prompt-testing > p {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+#prompt-testing > p.mt-2 {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+#prompt-testing .uat-block p {
+  margin-top: 0;
+  margin-bottom: 1.1rem;
+}
+#prompt-testing .uat-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Testing page: intro and stress sections — clearer paragraph rhythm */
+#components-tested > p {
+  margin-top: 0;
+  margin-bottom: 1.15rem;
+}
+#components-tested > p:last-of-type {
+  margin-bottom: 1.35rem;
+}
+#compatibility-responsive > p,
+#performance-stress-testing > p {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+}
+#compatibility-responsive > p:last-child,
+#performance-stress-testing > p:last-child {
+  margin-bottom: 0;
+}
 
 .testing-snapshot {
   background: var(--bg-gradient);
@@ -1806,6 +1863,23 @@ html:not(.js) .req-status-tooltip__panel {
 }
 .testing-point-list strong {
   color: var(--text);
+}
+
+.testing-code-block {
+  margin: 1rem 0 0;
+  padding: 1rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+.testing-code-block code {
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", Menlo, monospace;
+  color: var(--text);
+  white-space: pre;
+  display: block;
 }
 
 .home-feature-expand {
@@ -2890,6 +2964,24 @@ footer .container {
   letter-spacing: 0.08em;
   color: var(--muted);
 }
+.site-footer__supporters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 0.5rem;
+  text-align: left;
+}
+.site-footer__supporters .site-footer__subheading {
+  margin: 0 0 0.4rem;
+  align-self: flex-start;
+}
+.site-footer__supporters .site-footer__sponsors {
+  margin-top: 0;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  width: 100%;
+}
 .site-footer__sponsors {
   list-style: none;
   display: flex;
@@ -2903,8 +2995,9 @@ footer .container {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
   min-height: 3.25rem;
-  padding: 0.5rem 0.85rem;
+  padding: 0.45rem 0.75rem;
   background: var(--surface);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
@@ -2936,6 +3029,11 @@ footer .container {
 }
 .site-footer__sponsor-img--avanade {
   height: 1.65rem;
+}
+@media (max-width: 380px) {
+  .site-footer__supporters .site-footer__sponsors {
+    flex-wrap: wrap;
+  }
 }
 .site-footer__bottom {
   padding-top: 1.35rem;

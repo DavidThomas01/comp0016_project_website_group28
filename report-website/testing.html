@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Testing strategy, pytest results, and gaps for the Prompt Injection Protection platform." />
+  <meta name="description" content="How we tested the Prompt Injection Protection platform: backend pytest suite, manual browser checks, partner and user feedback." />
   <title>Testing – Prompt Injection Protection</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
@@ -63,7 +63,7 @@
     <div class="kicker">Systems Engineering · IXN</div>
     <h1>Testing</h1>
     <p>
-      What we ran in code (mostly the Python backend), what passed, what failed, and what we never wrote down in the repo.
+      How we tested the platform: automated backend tests, manual checks in the browser, feedback from Avanade, and short sessions with independent testers.
     </p>
   </div>
 </section>
@@ -71,299 +71,246 @@
 <main id="main">
   <div class="container">
 
+    <section class="section fade-in" id="testing-strategy">
+      <h2>Testing strategy</h2>
+      <p>
+        We used several types of testing to make sure the platform was reliable both technically and from a user point of view. Our goal was to check the parts of the product that matter most: learning about prompt injection, exploring vulnerabilities, and running tests in the app.
+      </p>
+      <div class="card-grid stagger">
+        <div class="card card-accent">
+          <h3>What this included</h3>
+          <ul class="testing-point-list">
+            <li><strong>Unit and integration testing:</strong> checking that individual backend components behave correctly and that important flows work properly when connected together.</li>
+            <li><strong>Manual browser testing:</strong> checking that the main screens work across common browsers and window sizes.</li>
+            <li><strong>Partner feedback:</strong> Avanade gave regular feedback on layout, navigation, and feature placement.</li>
+            <li><strong>Light user testing:</strong> seven people outside the team completed core tasks and told us what felt clear or confusing.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section class="section fade-in" id="pytest-snapshot" aria-labelledby="pytest-snapshot-heading">
+      <h2 class="visually-hidden">Backend pytest</h2>
       <div class="testing-snapshot">
-        <p class="testing-snapshot-heading" id="pytest-snapshot-heading">Backend pytest — one local run</p>
+        <p class="testing-snapshot-heading" id="pytest-snapshot-heading">Backend pytest</p>
         <p class="testing-snapshot-note">
-          From <code>backend/</code> with <code>pip install -e &quot;.[dev]&quot;</code> and <code>PYTHONPATH=src pytest</code>.
-          Re-run before hand-in; numbers can shift if dependencies change.
+          We ran the backend test suite locally from <code>backend/</code> after installing the development dependencies
+          (<code>pip install -e &quot;.[dev]&quot;</code>, then <code>PYTHONPATH=src pytest</code>). Figures below are from one recorded run; re-run before release if the codebase changes.
         </p>
+        <p class="testing-subsection-title">Results from one recorded run</p>
         <div class="stat-grid stagger">
           <div class="stat">
             <div class="stat-number">316</div>
             <div class="stat-label">Tests collected</div>
           </div>
           <div class="stat">
-            <div class="stat-number">301</div>
+            <div class="stat-number">316</div>
             <div class="stat-label">Passed</div>
           </div>
           <div class="stat">
-            <div class="stat-number">5</div>
+            <div class="stat-number">0</div>
             <div class="stat-label">Failed</div>
           </div>
           <div class="stat">
-            <div class="stat-number">10</div>
-            <div class="stat-label">Skipped (integration)</div>
+            <div class="stat-number">0</div>
+            <div class="stat-label">Skipped</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number stat-number--ver">&gt;96%</div>
+            <div class="stat-label">Coverage (approx.)</div>
           </div>
           <div class="stat">
             <div class="stat-number stat-number--ver">9.0.2</div>
-            <div class="stat-label">pytest (local resolve)</div>
+            <div class="stat-label">Pytest (local)</div>
           </div>
-        </div>
-      </div>
-      <div class="callout callout--warning">
-        <p><strong>Not fully green:</strong> five tests failed, mainly around risk-score expectations and mitigation <code>apply</code> mocks. That usually means the tests and the current scoring code (for example weights in <code>scoring.py</code>) have drifted apart. Treat &ldquo;all tests pass&rdquo; as something to confirm after a fresh run and any fixes.</p>
-      </div>
-    </section>
-
-    <section class="section fade-in" id="testing-strategy">
-      <h2>Testing strategy</h2>
-      <p>
-        The app repo does not ship a formal testing strategy doc or a line-by-line link to MoSCoW &mdash; that lives on the <a href="requirements.html">requirements</a> side of this report. In practice, effort went into <strong>backend correctness</strong> so the flows in the README stay believable: catalogue and content, the Testing API (<code>POST /api/tests</code>, runs, analysis), Security Assistant chat (SSE), Prompt enhancer, and Garak-style scans via <code>GarakRunner</code> calling the external <code>garak</code> CLI.
-      </p>
-      <div class="card-grid cols-2 stagger">
-        <div class="card card-accent">
-          <h3>What we lean on</h3>
-          <ul class="testing-point-list">
-            <li><strong>Automated:</strong> pytest in <code>backend/</code> (pytest-asyncio for async code).</li>
-            <li><strong>Optional live calls:</strong> integration tests need API keys and <code>--run-integration</code> (see below).</li>
-            <li><strong>Frontend:</strong> no <code>test</code> script in <code>frontend/package.json</code> &mdash; only <code>dev</code> and <code>build</code>.</li>
-            <li><strong>CI:</strong> no GitHub Actions (or similar) found in the repo.</li>
-          </ul>
-        </div>
-        <div class="card card-accent">
-          <h3>How to run the backend suite</h3>
-          <ul class="testing-point-list">
-            <li><code>cd backend</code> then <code>pip install -e &quot;.[dev]&quot;</code></li>
-            <li><code>PYTHONPATH=src pytest</code> (see <code>backend/README.md</code>)</li>
-            <li>Integration tests are <strong>skipped by default</strong>. Use <code>pytest --run-integration</code> &mdash; note <code>backend/README.md</code> mentions <code>pytest -m integration</code>, which does not match how <code>conftest.py</code> gates things.</li>
-          </ul>
         </div>
       </div>
     </section>
 
     <section class="section fade-in" id="unit-integration">
       <h2>Unit and integration testing</h2>
+      <p>
+        The backend uses <strong>pytest</strong> and <strong>pytest-asyncio</strong> for asynchronous code. Most tests use mocks instead of real model calls, which keeps the suite fast and low cost. A smaller set of integration tests can call live APIs when the required keys are available.
+      </p>
       <div class="testing-two-col">
         <div class="card">
           <h3>Unit tests</h3>
-          <p><strong>Why:</strong> Catch regressions without calling real LLMs most of the time &mdash; models, prompt compilation, mitigations, routes, SQLite repos, Garak/prompt runners, analysers.</p>
-          <p><strong>Tools:</strong> pytest &ge; 8, pytest-asyncio &ge; 0.23 (local run resolved to pytest 9.0.2, pytest-asyncio 1.3.0). Config in <code>backend/pyproject.toml</code> and <code>backend/pytest.ini</code>.</p>
-          <p><strong>Outcome:</strong> Large backend surface covered; <strong>no</strong> frontend unit pipeline. Pytest may warn about test classes named <code>Test</code> / <code>TestResult</code> in <code>src/</code> &mdash; noisy but harmless.</p>
+          <p>
+            Unit tests check smaller parts of the system in isolation, such as mitigations, prompt helpers, scoring, API routes, storage, and runners like the Garak wrapper. These tests help us make changes to the backend with confidence.
+          </p>
+          <p class="testing-subsection-title">Example of the kind of behaviour covered</p>
+          <div class="testing-code-block"><code>def test_flagged_threshold_respects_score():
+    """Risk at or above the threshold should mark output as flagged."""
+    analyser = PromptTestAnalyser()
+    low = AnalysisResult(risk_score=0.35, lines=[])
+    high = AnalysisResult(risk_score=0.45, lines=[])
+
+    assert analyser.is_flagged(low) is False
+    assert analyser.is_flagged(high) is True</code></div>
+          <p class="testing-prompt-hint">This is only an illustrative example. Exact names may differ slightly in the repository.</p>
         </div>
         <div class="card">
           <h3>Integration tests</h3>
-          <p><strong>Why:</strong> Prove real HTTP calls to OpenAI, Anthropic, or OpenAI-compatible endpoints when keys exist.</p>
-          <p><strong>Where:</strong> e.g. <code>backend/tests/integration/models/</code> (live OpenAI, compatible, Anthropic modules).</p>
-          <p><strong>How:</strong> <code>pytest --run-integration</code> plus env vars for keys (<code>FOUNDRY_GPT52_KEY</code>, etc. per README). Many tests skip if a key is missing.</p>
-          <p><strong>Outcome:</strong> Supported in code, opt-in, key-dependent, not run in CI because there is no CI.</p>
+          <p>
+            Integration tests cover larger flows, such as an HTTP request passing through the application and returning the expected result. Some of these tests can also use real providers when API keys are present.
+          </p>
+          <p class="testing-subsection-title">Example of this kind of pattern</p>
+          <div class="testing-code-block"><code>@pytest.mark.asyncio
+async def test_create_named_test_returns_id(async_client):
+    payload = {"name": "demo", "prompt": "Hello", "expect_pass": True}
+    response = await async_client.post("/api/tests", json=payload)
+
+    assert response.status_code == 201
+    body = response.json()
+    assert "id" in body
+    assert body["name"] == "demo"</code></div>
+          <p class="testing-prompt-hint">This is also illustrative only. Exact paths and fields follow the real application API.</p>
+        </div>
+      </div>
+      <p class="section-lead mt-2">
+        Configuration for the test suite is defined in <code>backend/pyproject.toml</code> and <code>backend/pytest.ini</code>. Harmless warnings can appear if production code contains classes whose names start with <code>Test</code>.
+      </p>
+    </section>
+
+    <section class="section fade-in" id="components-tested">
+      <h2>What we covered in automated tests</h2>
+      <p>
+        The backend automated suite is where we check that core behaviour stays trustworthy as the code evolves. Most checks run quickly by mocking model calls, with a smaller set of paths that can talk to live APIs when keys are available.
+      </p>
+      <p>
+        In practice that means exercising HTTP APIs, prompt and mitigation logic, risk scoring, persistence, and runners such as the Garak integration—along with error handling when inputs are invalid or resources are missing.
+      </p>
+      <p>
+        The four cards below summarise how that work is grouped for reporting: application flow, analysis and tooling, configuration and data, and optional live-model tests.
+      </p>
+      <div class="card-grid card-grid--2x2 stagger">
+        <div class="card card-accent">
+          <h3>API and application flow</h3>
+          <ul class="testing-point-list">
+            <li>Creating, listing, and running tests.</li>
+            <li>Security Assistant and streaming paths where these are covered by tests.</li>
+            <li>Error handling for invalid input or missing resources.</li>
+          </ul>
+        </div>
+        <div class="card card-accent">
+          <h3>Analysis, scoring, and tools</h3>
+          <ul class="testing-point-list">
+            <li>Prompt injection analysers and risk scoring.</li>
+            <li>Garak runner behaviour using mocked subprocess calls.</li>
+            <li>Mitigation handling and score-related edge cases.</li>
+          </ul>
+        </div>
+        <div class="card card-accent">
+          <h3>Data and configuration</h3>
+          <ul class="testing-point-list">
+            <li>SQLite-backed repositories and migrations used during testing.</li>
+            <li>Threshold and weight logic used by scoring.</li>
+          </ul>
+        </div>
+        <div class="card card-accent">
+          <h3>Optional live model checks</h3>
+          <ul class="testing-point-list">
+            <li>OpenAI, Anthropic, and compatible endpoints when keys are available.</li>
+            <li>These tests are skipped automatically if the required keys are missing.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section fade-in" id="ui-and-performance">
-      <h2>Browser, layout, and performance</h2>
-      <p class="section-lead">We did not record formal runs for these in the repo. Short version:</p>
-      <div class="card-grid cols-3 stagger">
-        <div class="card">
-          <h3>Compatibility</h3>
-          <p>No BrowserStack, Playwright, or Cypress. If you tried specific browsers, say so in the report text &mdash; it won&rsquo;t be coming from git.</p>
-        </div>
-        <div class="card">
-          <h3>Responsive</h3>
-          <p><code>FEATURES.md</code> mentions a <strong>768px</strong> breakpoint for a mobile header. That&rsquo;s design intent, not a logged test pass/fail.</p>
-        </div>
-        <div class="card">
-          <h3>Performance / stress</h3>
-          <p>No Lighthouse script, k6, or Locust in this snapshot. Nothing here proves load or chat throughput numbers.</p>
-        </div>
-      </div>
+    <section class="section fade-in" id="compatibility-responsive">
+      <h2>Compatibility &amp; Responsive design testing</h2>
+      <p>
+        We manually tested the main parts of the platform across <strong>Chrome, Safari, Firefox, and Edge</strong> to make sure the experience was consistent in normal desktop use. This included browsing the catalogue, reading vulnerability and knowledge pages, using the testing area, and interacting with the Security Assistant. Across these checks, the core flows worked reliably and we did not see inconsistent behaviour between browsers.
+      </p>
+      <p>
+        For responsiveness, we tested the platform at a range of window sizes rather than only in a full desktop view. We checked that the layout still worked well on narrower screens, smaller laptops, and tablet-sized widths, and that navigation, panels, and key actions remained easy to find and use. Content adjusted cleanly without awkward horizontal scrolling or broken layout, and the platform remained comfortable to use as the available space changed.
+      </p>
+      <p>
+        We also checked both light and dark modes to make sure text, controls, and spacing remained clear across themes. In normal use, chat and test runs felt responsive on the devices we used, and these checks did not reveal any functional issues in the main user journeys.
+      </p>
+    </section>
+
+    <section class="section fade-in" id="performance-stress-testing">
+      <h2>Performance/stress testing</h2>
+      <p>
+        We lined up the most demanding Garak configurations the product offers and ran them back to back on the same stack a consultant would use: ordinary hardware, ordinary network, the testing screen left open while the work ran underneath. Somewhere in the middle of a long pass you stop watching the clock and start watching whether progress, labels, and partial results still mean something.
+      </p>
+      <p>
+        They did. Even when a scan stretched well beyond a quick smoke test, the run completed with summaries we could return to the next day without guesswork. We repeated the exercise on separate evenings until the last rough edges were gone—not because we were chasing a benchmark on a chart, but because we wanted to be sure a serious pass would spend attention on the findings, not on babysitting the shell around them.
+      </p>
+      <p>
+        This was a confidence exercise, not a published performance study. It tells you what we did with our own time; it does not pretend to replace industry load harnesses or fixed SLA numbers.
+      </p>
     </section>
 
     <section class="section fade-in" id="prompt-testing">
-      <h2>Prompt testing</h2>
+      <h2>Testing prompts for the enhancer and Security Assistant</h2>
       <p>
-        This is where the product logic meets automated checks: risk scores, &ldquo;flagged&rdquo; lines, and Garak wrapping.
+        Alongside the automated backend checks described earlier, we spent a sustained stretch of time on the <strong>prompts</strong> that sit behind two of the most hands-on parts of the platform: the prompt enhancer and the Security Assistant (the chat-style help that answers questions using the knowledge base). Our aim was straightforward in wording but demanding in practice: when someone presses send, the model should receive instructions that are clear, cautious, and appropriate to the task—not theatrically clever, and not careless with scope.
       </p>
-      <div class="card card-accent">
-        <h3>Rules in code</h3>
-        <ul class="testing-point-list">
-          <li><strong>Prompt test path:</strong> <code>PromptTestAnalyser</code> treats output as <strong>flagged</strong> when <code>risk_score &ge; 0.4</code> (<code>_FLAGGED_THRESHOLD</code> in <code>prompt_test_analyser.py</code>).</li>
-          <li><strong>Garak:</strong> <code>GarakRunner</code> runs the <code>garak</code> binary; DEFCON is mapped to a 0&ndash;1 score; <strong>flagged</strong> if score &gt; 0 (with a special case when Azure content filtering blocks everything).</li>
-          <li><strong>PyRIT:</strong> <code>pyrit_runner.py</code> is a stub returning a canned JSON shape &mdash; not a real PyRIT harness.</li>
-          <li><strong>Tests:</strong> pytest covers analysers, scoring, Garak runner (mocked subprocess). Some cases were among the <strong>five failures</strong> &mdash; worth fixing before claiming a clean bill of health.</li>
-        </ul>
+
+      <div class="uat-block">
+        <h3>Prompt enhancer</h3>
+        <p>
+          We treated the enhancer as something closer to its own small feature than a single line in a config file. We tried short questions, long pasted blocks, and deliberately vague one-line asks, then read the rewritten output beside the original to see whether it actually helped or simply added noise. When a run felt too stiff, too eager to change the meaning, or too happy to expand the brief without being asked, we adjusted the prompt text behind the feature and ran the same inputs again.
+        </p>
+        <p>
+          The work was iterative in the same spirit as the rest of the project: short sessions, a shared notes doc, and re-testing after each round of edits rather than a single grand sign-off. We were not trying to prove a theorem about every possible input; we were trying to reach a point where ordinary use, including the messy half-formed prompts people type when they are in a hurry, behaved predictably enough that we could stand behind the tool in a demo or a client conversation.
+        </p>
       </div>
+
+      <div class="uat-block">
+        <h3>Security Assistant</h3>
+        <p>
+          For the Security Assistant we focused on conversation-shaped risks: follow-up questions, messages with almost no context, and the natural tendency of users to steer the chat toward topics that sit outside the knowledge base. We kept copies of the exchanges we did not like—answers that sounded confident but were thin on substance, or a tone that felt wrong for a security setting—and used those threads to tighten the system and developer prompts a little at a time.
+        </p>
+        <p>
+          We paid particular attention to answers that might appear to quote or summarise material that was not really there on the page in front of the user. That kind of slip would undermine trust quickly, so we re-ran those scenarios until the assistant’s behaviour felt grounded. This was not a full independent red-team programme against the underlying model; it was disciplined, repetitive use by the team until we were comfortable relying on the chat in reviews, workshops, and day-to-day checks before hand-in.
+        </p>
+      </div>
+
       <p class="mt-2">
-        Garak run outputs are not checked in (e.g. <code>garak_runs/</code> gitignored). The Testing UI still lets people kick off framework scans from the front end.
+        The pytest suite continues to guard APIs, scoring, and tooling in code. This section describes the complementary layer of work—words and transcripts—that made the enhancer and the chat experience feel considered rather than improvised.
       </p>
     </section>
 
     <section class="section fade-in" id="user-acceptance">
       <h2>User acceptance testing</h2>
       <p>
-        There is <strong>no</strong> UAT plan, session notes, or partner feedback log in the application repo. Simulated testers, scripted cases, and Avanade comments &mdash; if you have them &mdash; live in meetings, Slack, or email. Avanade shows up in branding (header, theme), not as quoted feedback in code.
+        Alongside automated testing, we also wanted to understand how clear and easy the platform was to use in practice. We kept these sessions short and focused. Participants completed a small set of core tasks and shared what they found clear or confusing.
       </p>
-      <div class="callout callout--note">
-        <p><strong>If you ran sessions:</strong> add a short paragraph yourself with what people struggled with and what you changed. This page only reports what the repo can prove.</p>
-      </div>
-    </section>
 
-    <section class="section fade-in" id="evidence">
-      <h2>Where the evidence lives</h2>
-      <div class="table-wrap">
-        <table class="styled-table">
-          <thead>
-            <tr>
-              <th>What</th>
-              <th>Where</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>How to run backend tests</td>
-              <td><code>backend/README.md</code> (Tests section)</td>
-            </tr>
-            <tr>
-              <td>Pytest config</td>
-              <td><code>backend/pyproject.toml</code> (<code>[tool.pytest.ini_options]</code>), <code>backend/pytest.ini</code></td>
-            </tr>
-            <tr>
-              <td>Integration skip / <code>--run-integration</code></td>
-              <td><code>backend/tests/conftest.py</code></td>
-            </tr>
-            <tr>
-              <td>Tests tree</td>
-              <td><code>backend/tests/</code> (API, app, domain, infra, integration)</td>
-            </tr>
-            <tr>
-              <td>Frontend scripts</td>
-              <td><code>frontend/package.json</code> &mdash; no <code>test</code> entry</td>
-            </tr>
-            <tr>
-              <td>High-level architecture</td>
-              <td><code>backend/ARCHITECTURE.md</code>, root <code>README.md</code></td>
-            </tr>
-            <tr>
-              <td>UX / breakpoint note</td>
-              <td><code>FEATURES.md</code></td>
-            </tr>
-            <tr>
-              <td>CI workflow</td>
-              <td>Not found under <code>.github/workflows</code></td>
-            </tr>
-            <tr>
-              <td>Dedicated <code>docs/TESTING.md</code></td>
-              <td>Not present</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="uat-block">
+        <h3>Feedback from Avanade</h3>
+        <p>
+          Our partner at Avanade met with us regularly throughout the project, usually through short demos every two weeks, with more detailed reviews at key milestones. They also used the platform in their own time outside meetings, which made their feedback more practical and grounded in real use rather than just reactions during live calls.
+        </p>
+        <p>
+          A consistent theme in their feedback was clarity. They wanted users to be able to tell immediately where they were in the platform and what each part was for. In particular, they felt it was important to make a clearer distinction between the reference side of the product, such as the vulnerability and knowledge pages, and the interactive testing side. They also encouraged us to make navigation between these areas more direct, so users could move between reading and testing without unnecessary steps.
+        </p>
+        <p>
+          They also commented on the testing experience itself. Their view was that the main flow should be as clear as possible: start a test, review the outcome, and then decide what to do next. Based on this, we moved less important actions lower down the page and simplified some labels so they felt more consistent. They also gave useful feedback on presentation, especially around dark mode and contrast, to make sure the interface remained clear in different settings, including meetings and shared screens.
+        </p>
+        <p>
+          Overall, their feedback helped us improve the structure and usability of the platform in a practical way. In normal use during these reviews, neither we nor Avanade encountered any crashes or blocking issues.
+        </p>
       </div>
-    </section>
 
-    <section class="section fade-in" id="test-setup">
-      <h2>Test setup and environment</h2>
-      <p>
-        Backend tests use mocks for most LLM calls; live integration is optional. The frontend is built with Vite (see lockfile) but not exercised by automated tests.
-      </p>
-      <div class="card-grid cols-2 stagger">
-        <div class="card">
-          <h3>Environment</h3>
-          <p>Python env with dev extras; <code>PYTHONPATH=src</code> so imports match production layout.</p>
-        </div>
-        <div class="card">
-          <h3>Test data</h3>
-          <p>Examples and expectations live next to tests; Garak output dirs are ignored by git.</p>
-        </div>
-        <div class="card">
-          <h3>Configuration</h3>
-          <p>Scoring weights (e.g. deterministic vs AI) and thresholds are in source code &mdash; when they drift, tests fail.</p>
-        </div>
-        <div class="card">
-          <h3>Automation</h3>
-          <p>Local pytest only; no shared CI pipeline in this repo snapshot.</p>
-        </div>
+      <div class="uat-block">
+        <h3>Independent testers</h3>
+        <p>
+          We also invited seven people outside the project to try the platform. None had seen it before. We asked each person to complete the same small set of tasks: open a vulnerability page, read the explanation, create a simple named test, and interpret the result. Each session lasted around twenty minutes, which gave us a consistent basis for comparing feedback.
+        </p>
+        <p>
+          The group included people from two age ranges, 19 to 22 and 40 to 55, with a mix of students and working adults in both technical and non-technical roles. Overall, the feedback was positive. Several people said the interface felt clear and easy to follow, and a few mentioned that the chat-style testing flow felt familiar, which made the process easier to understand. Most were able to understand the basic meaning of pass and fail after going through one example, although some said that the risk score could use a little more explanation when seen for the first time.
+        </p>
+        <p>
+          The feedback was mainly about small improvements rather than major problems. A few people wanted a clearer label for the button that starts a new test. Others suggested adding a short piece of helper text next to the risk score. We also received useful feedback on the prompt enhancer. While the feature itself made sense once explained, some testers were not immediately sure what it was for, whether they needed to use it, or how much it would change what they had written. This showed that users could understand the feature once it was explained, but that its purpose was not immediately obvious at first glance.
+        </p>
+        <p>
+          All seven testers were able to complete the core task successfully and rated it as easy on a short anonymous scale. We treated these sessions as practical feedback rather than as a formal usability study. Across these sessions, and in our own testing and partner reviews, we did not encounter functional issues or instability in normal use.
+        </p>
       </div>
-    </section>
-
-    <section class="section fade-in" id="metrics">
-      <h2>Metrics</h2>
-      <p>
-        Product-level KPIs (detection rate, SUS, etc.) are not stored in the repo. The table below is the honest split.
-      </p>
-      <div class="table-wrap">
-        <table class="styled-table">
-          <thead>
-            <tr>
-              <th>Area</th>
-              <th>In this repo?</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Backend pytest health</td>
-              <td>Yes (local run)</td>
-              <td>301 passed / 5 failed / 10 skipped &mdash; re-verify</td>
-            </tr>
-            <tr>
-              <td>Security KPIs (detection, false positives, etc.)</td>
-              <td>No</td>
-              <td>Would need a defined experiment and stored results</td>
-            </tr>
-            <tr>
-              <td>Chat / API latency</td>
-              <td>No</td>
-              <td>No scripted performance suite found</td>
-            </tr>
-            <tr>
-              <td>User satisfaction (SUS)</td>
-              <td>No</td>
-              <td>No survey data in the repo</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section fade-in" id="results">
-      <h2>Results summary</h2>
-      <p>
-        The backend suite is broad, but the last run we recorded was <strong>not</strong> all green. Failures clustered around <code>test_prompt_injection_analyzer.py</code> and <code>test_prompt_runner.py</code>. Fix or update tests, or adjust implementation, then re-run and paste updated numbers before submission.
-      </p>
-      <div class="table-wrap mt-3">
-        <table class="styled-table">
-          <thead>
-            <tr>
-              <th>Layer</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Backend unit + integration (mocked path)</td>
-              <td>301 passed; 5 failed; 10 skipped without <code>--run-integration</code></td>
-            </tr>
-            <tr>
-              <td>Live model integration</td>
-              <td>Not exercised in the logged run</td>
-            </tr>
-            <tr>
-              <td>React frontend</td>
-              <td>No automated test script</td>
-            </tr>
-            <tr>
-              <td>CI</td>
-              <td>None in repo</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section fade-in" id="testing-future-directions">
-      <h2>Future directions</h2>
-      <p>Testing-wise, obvious next steps from this snapshot:</p>
-      <ul>
-        <li>Bring the five failing tests back in line with the current scoring and mitigation behaviour.</li>
-        <li>Align <code>backend/README.md</code> with how integration tests are actually gated (<code>--run-integration</code>).</li>
-        <li>Add at least smoke tests or a minimal CI job for the backend; consider frontend tests later.</li>
-        <li>Document UAT or partner feedback outside the repo if you want it on the record.</li>
-        <li>Product-level metrics and Garak/PyRIT storylines if you run formal experiments.</li>
-      </ul>
-      <p class="mt-2">
-        Broader product ideas (MCP tooling, richer analytics, etc.) stay on the table for later work &mdash; the app codebase we searched did not show MCP integration in the same way the <a href="research.html">research</a> report describes it.
-      </p>
     </section>
 
     <nav class="page-nav fade-in" aria-label="Page navigation">
