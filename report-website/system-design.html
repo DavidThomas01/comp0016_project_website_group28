@@ -540,6 +540,7 @@
     <div class="container">
       <nav class="site-nav" aria-label="Primary">
         <div class="nav-left">
+          <div class="nav-scroll">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="requirements.html">Requirements</a>
           <a class="nav-link" href="research.html">Research</a>
@@ -547,15 +548,16 @@
           <a class="nav-link" href="ui-design.html">UI Design</a>
           <a class="nav-link active" href="system-design.html">System Design</a>
           <a class="nav-link" href="implementation.html">Implementation</a>
-          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
-          <a class="nav-link" href="conclusion.html">Conclusion</a>
+          <a class="nav-link" href="testing.html">Testing</a>
+          <a class="nav-link" href="evaluation.html">Evaluation</a>
+          </div>
           <div class="nav-item">
-            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <a class="drop-toggle" href="appendices.html">Appendices ▾</a>
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
-              <a href="appendices.html#dev-blog">Development blog (external)</a>
-              <a href="appendices.html#monthly-video">Monthly video</a>
+              <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly videos</a>
             </div>
           </div>
         </div>
@@ -1478,34 +1480,7 @@ graph LR
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="container site-footer__inner">
-    <div class="site-footer__grid">
-      <div class="site-footer__block site-footer__pages">
-        <h3 class="site-footer__heading">Pages</h3>
-        <nav class="site-footer__nav" aria-label="Report pages">
-          <a href="index.html">Home</a>
-          <a href="requirements.html">Requirements</a>
-          <a href="research.html">Research</a>
-          <a href="algorithms.html">Algorithms</a>
-          <a href="ui-design.html">UI Design</a>
-          <a href="system-design.html">System Design</a>
-          <a href="implementation.html">Implementation</a>
-          <a href="evaluation-testing.html">Evaluation &amp; Testing</a>
-          <a href="conclusion.html">Conclusion</a>
-          <a href="appendices.html">Appendices</a>
-        </nav>
-      </div>
-      <div class="site-footer__block site-footer__project">
-        <h3 class="site-footer__heading">Project</h3>
-        <p class="site-footer__title">Prompt Injection Protection</p>
-        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
-        <a href="appendices.html#dev-blog">Development Blog</a>
-      </div>
-    </div>
-    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
-  </div>
-</footer>
+<div id="footer-root"></div>
 
 <button class="back-to-top" aria-label="Back to top">
   <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
