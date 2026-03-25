@@ -406,9 +406,9 @@
         <p>
           <strong>Why not a weighted average?</strong> A simple average of 0.3 × 0.9 + 0.7 × 0.2 = 0.45
           would suppress a near-certain deterministic detection because the AI classifier found
-          nothing suspicious. The multiplicative formula instead gives 1 &minus; (1 &minus; 0.27)(1 &minus; 0.0) = 0.27
+          not much suspicion. The multiplicative formula instead gives 1 &minus; (1 &minus; 0.27)(1 &minus; 0.14) = 0.37
           — but crucially, if <em>both</em> engines agree (e.g. s<sub>det</sub> = 0.8, s<sub>ai</sub> = 0.7),
-          the combined score rises to 0.89, higher than either alone. A single strong signal is
+          the combined score rises, higher than either alone. A single strong signal is
           preserved; agreement amplifies it.
         </p>
       </div>
@@ -583,8 +583,8 @@
         inadvertently altering the intended behaviour, or may forget to include one of
         the selected mitigations. Verification catches these failures before the enhanced
         prompt reaches the user. The retry loop with the improved prompt as the new base
-        converges quickly — in practice, over 95% of enhancements pass on the first attempt,
-        and all tested cases pass within two.
+        converges quickly — in practice, many enhancements pass on the first attempt,
+        and almost all tested cases pass within two.
       </p>
       <div class="compare-wrap">
         <table class="compare-table">
