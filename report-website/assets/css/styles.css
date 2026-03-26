@@ -2277,6 +2277,36 @@ body.page-requirements h3.subsection-heading .ui-icon {
   flex-shrink: 0;
 }
 
+body.page-requirements .survey-intro {
+  min-height: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+body.page-requirements .survey-layout {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 1rem;
+  align-items: start;
+  margin: 0 0 1.25rem;
+}
+
+body.page-requirements .survey-text {
+  min-width: 0;
+  padding-top: 2rem;
+}
+
+body.page-requirements .survey-graph,
+body.page-requirements .survey-text {
+  min-width: 0;
+}
+
+body.page-requirements .survey-graph img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
 body.page-requirements .interview-disclosure-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -2412,6 +2442,12 @@ body.page-requirements .use-case-scenarios__lead {
   line-height: 1.65;
   color: var(--text-secondary);
   max-width: 65ch;
+}
+
+@media (max-width: 900px) {
+  body.page-requirements .survey-layout {
+    grid-template-columns: 1fr;
+  }
 }
 body.page-requirements .use-case-disclosure {
   margin: 0 0 0.85rem;

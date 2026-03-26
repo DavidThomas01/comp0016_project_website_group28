@@ -118,7 +118,20 @@
         <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"> <rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 4H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"/><path d="M9 11h6"/><path d="M9 15h6"/><path d="M9 19h4"/></svg>
         Survey
       </h3>
-      <p>Our team decided that a survey would not be particularly useful for gathering the specific requirements we needed, as it would be difficult to design questions that capture the nuanced needs of our target users. Since we believe that the quality of requirements gained by specific interviews with industry experts would be more helpful compared to a survey.</p>
+      <p class="survey-intro">We would like to make our project as accessible as possible and for this we need an understanding of the extent to which our users may be familiar with prompt injection. To gain insight into this we performed a survey, asking our peers if they knew what prompt injection was, and if so, have they taken it into account when developing AI systems.</p>
+      <div class="survey-layout">
+        <div class="survey-graph">
+          <p><strong>Survey Results</strong></p>
+          <img src="assets/img/survey_chart.webp" alt="Graph showing the results of our survey, with 6 respondents indicating they were not aware of prompt injection, 1 indicating they were aware but had not taken it into account, and 2 indicating they were aware and had considered it in their development process." />
+        </div>
+        <div class="survey-text">
+          <p>Our survey gathered 9 responses, of them 6 indicated that they were not aware of prompt injection, 1 indicated they were aware but had not taken it into account, and 2 indicated they were aware and had considered it in their development process.</p>
+          <br>
+          <p>This results were what we expected, highlighting the need for more awareness and education on prompt injection in the AI development community. This informed our requirements design as we had evidence that most people, even those working with AI, are not fully aware of the risks of prompt injection and therefore the platform must be able to provide educational knowledge to give users with no experience an understanding of the problem as well as the existing solutions.</p>
+          <br>
+          <p>For privacy purposes we avoid identifying the participants in our survey, all participants are over the age of 18 and the survey was conducted on UCL premises.</p>
+        </div>
+      </div>
       <h3 class="subsection-heading">
         <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         Interview
