@@ -7,11 +7,6 @@
   <title>Algorithms – Prompt Injection Protection</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <style>
-    /* ── TOC pills ── */
-    .algo-toc { list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .algo-toc li a { display: inline-block; padding: 0.35rem 0.9rem; background: #fff; border: 1px solid rgba(255,107,53,0.2); border-radius: 2rem; font-size: 0.82rem; font-weight: 600; text-decoration: none; color: #666; transition: all 0.2s ease; }
-    .algo-toc li a:hover { background: #FF6B35; color: #fff; border-color: transparent; box-shadow: 0 2px 8px rgba(255,107,53,0.25); transform: translateY(-1px); }
-
     /* ── Formula block ── */
     .formula-block {
       background: linear-gradient(135deg, #1e1e2e 0%, #24243e 100%);
@@ -171,7 +166,7 @@
           <a class="nav-link" href="evaluation.html">Evaluation</a>
           </div>
           <div class="nav-item">
-            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <a class="drop-toggle" href="appendices.html">Appendices ▾</a>
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
@@ -200,13 +195,17 @@
 <main id="main">
   <div class="container">
 
-    <!-- TOC -->
-    <section class="section fade-in">
-      <ul class="algo-toc" aria-label="Algorithms on this page">
-        <li><a href="#bm25">1. Knowledge Base Retrieval</a></li>
-        <li><a href="#detection">2. Hybrid Injection Detection</a></li>
-        <li><a href="#enhancement">3. Verified Prompt Enhancement</a></li>
+    <nav class="page-local-nav fade-in" aria-label="On this page">
+      <span class="page-local-nav__label" id="algorithms-local-nav-label">On this page</span>
+      <ul class="page-local-nav__list" aria-labelledby="algorithms-local-nav-label">
+        <li><a href="#algorithms-overview">Overview</a></li>
+        <li><a href="#bm25">Retrieval (BM25)</a></li>
+        <li><a href="#detection">Detection</a></li>
+        <li><a href="#enhancement">Enhancement</a></li>
       </ul>
+    </nav>
+
+    <section class="section fade-in" id="algorithms-overview">
       <div class="card-grid cols-3 stagger">
         <div class="card card-accent">
           <h3>Knowledge Base Retrieval</h3>

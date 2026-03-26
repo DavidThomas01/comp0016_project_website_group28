@@ -44,7 +44,7 @@
           <a class="nav-link" href="evaluation.html">Evaluation</a>
           </div>
           <div class="nav-item">
-            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <a class="drop-toggle" href="appendices.html">Appendices ▾</a>
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#license">License (MIT Open)</a>
@@ -73,26 +73,41 @@
 <main id="main">
   <div class="container">
 
-    <section class="section fade-in">
+    <nav class="page-local-nav fade-in" aria-label="On this page">
+      <span class="page-local-nav__label" id="deployment-manual-local-nav-label">On this page</span>
+      <ul class="page-local-nav__list" aria-labelledby="deployment-manual-local-nav-label">
+        <li><a href="#deployment-overview">Overview</a></li>
+        <li><a href="#system-requirements">System reqs</a></li>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#backend-setup">Backend</a></li>
+        <li><a href="#frontend-setup">Frontend</a></li>
+        <li><a href="#environment-configuration">Environment</a></li>
+        <li><a href="#deployment-testing">Tests</a></li>
+        <li><a href="#full-repository">Repository</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </nav>
+
+    <section class="section fade-in" id="deployment-overview">
       <p>
         The deployment manual documents installation, environment configuration,
         runtime dependencies, and troubleshooting for local and production-like setups.
       </p>
 
-      <h2>System Requirements</h2>
+      <h2 id="system-requirements">System Requirements</h2>
       <ul class="styled-list">
         <li><strong>Node.js:</strong> Version 18 or higher, with npm or pnpm <a href="#references">[1]</a></li>
         <li><strong>Python:</strong> Version 3.10 or higher <a href="#references">[2]</a></li>
         <li><strong>Database:</strong> SQLite (included, no separate installation needed)</li>
       </ul>
 
-      <h2>Quick Start — Local Development</h2>
+      <h2 id="quick-start">Quick Start — Local Development</h2>
       <p>Follow these steps to run the platform locally:</p>
       <p>First clone the repository and navigate to the project directory.<br>
       <code>git clone https://github.com/DavidThomas01/comp0016_avanade_prompt_injection.git</code><br>
       <code>cd comp0016_avanade_prompt_injection</code></p>
 
-      <h3>Backend Setup</h3>
+      <h3 id="backend-setup">Backend Setup</h3>
       <ul class="styled-list">
         <li>Navigate to the <code>backend/</code> directory in the repository.</li>
         <li>(Only necessary for first-time setup) Create a Python virtual environment: <code>python -m venv .venv</code></li>
@@ -104,7 +119,7 @@
         <li>Access Swagger documentation: <code>http://localhost:8080/docs</code></li>
       </ul>
 
-      <h3>Frontend Setup</h3>
+      <h3 id="frontend-setup">Frontend Setup</h3>
       <ul class="styled-list">
         <li>In a separate terminal, navigate to the <code>frontend/</code> directory.</li>
         <li>Install dependencies: <code>npm install</code></li>
@@ -112,19 +127,19 @@
         <li>Access the application: <code>http://localhost:5173</code></li>
       </ul>
 
-      <h2>Environment Configuration</h2>
+      <h2 id="environment-configuration">Environment Configuration</h2>
       <p>Configure LLM model access by setting API keys and endpoints for each provider in the <code>backend/.env</code> file:</p>
       <ul class="styled-list">
         <li>See <code>.env.example</code> for a complete list of available models.</li>
       </ul>
 
-      <h2>Testing</h2>
+      <h2 id="deployment-testing">Testing</h2>
       <ul class="styled-list">
         <li>Run unit tests from the backend directory: <code>pytest</code></li>
         <li>Run integration tests (requires real LLM API keys): <code>pytest -m integration</code></li>
       </ul>
 
-      <h2>Full Repository &amp; Documentation</h2>
+      <h2 id="full-repository">Full Repository &amp; Documentation</h2>
       <div class="card card-accent mt-2">
         <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
         <h3>Complete Deployment Guide</h3>

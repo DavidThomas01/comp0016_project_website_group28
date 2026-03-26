@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
-<body>
+<body class="page-user-manual">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -44,7 +44,7 @@
           <a class="nav-link" href="evaluation.html">Evaluation</a>
           </div>
           <div class="nav-item">
-            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <a class="drop-toggle" href="appendices.html">Appendices ▾</a>
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#license">License (MIT Open)</a>
@@ -73,13 +73,26 @@
 <main id="main">
   <div class="container">
 
+    <nav class="page-local-nav fade-in" aria-label="On this page">
+      <span class="page-local-nav__label" id="user-manual-local-nav-label">On this page</span>
+      <ul class="page-local-nav__list" aria-labelledby="user-manual-local-nav-label">
+        <li><a href="#getting-started">Getting started</a></li>
+        <li><a href="#understand-vulnerability">Vulnerability</a></li>
+        <li><a href="#explore-mitigations">Mitigations</a></li>
+        <li><a href="#security-testing">Security test</a></li>
+        <li><a href="#prompt-enhancer">Enhancer</a></li>
+        <li><a href="#security-assistant">Assistant</a></li>
+        <li><a href="#export-findings">Export</a></li>
+      </ul>
+    </nav>
+
     <section class="section fade-in">
       <p>
         This manual explains how to use the Prompt Injection Protection platform to learn
         about vulnerabilities, test mitigations, and document security outcomes.
       </p>
 
-      <h2>1) Getting Started</h2>
+      <h2 id="getting-started">1) Getting Started</h2>
       <div class="user-manual-figure">
         <img src="assets/img/user_manual/getting_started.webp" alt="Home page for the Prompt Injection Protection platform" />
       </div>
@@ -90,7 +103,7 @@
         <li>Use dark mode toggle if preferred for readability during long sessions.</li>
       </ul>
 
-      <h2>2) Understand a Vulnerability</h2>
+      <h2 id="understand-vulnerability">2) Understand a Vulnerability</h2>
       <div class="user-manual-col-2">
         <div class="user-manual-figure">
           <img src="assets/img/user_manual/vulnerability_select.webp" alt="Choosing a vulnerability from the Home page" />
@@ -106,7 +119,7 @@
         <li>Review the mitigation recommendations linked to that vulnerability.</li>
       </ul>
 
-      <h2>3) Explore Mitigations</h2>
+      <h2 id="explore-mitigations">3) Explore Mitigations</h2>
       <div class="user-manual-figure">
         <img src="assets/img/user_manual/mitigation_detail.webp" alt="Mitigation strategies listed with descriptions and implementation examples" />
       </div>
@@ -116,7 +129,7 @@
         <li>Use pseudocode/Python/Java implementation examples to plan adoption.</li>
       </ul>
 
-      <h2>4) Create and Run a Security Test</h2>
+      <h2 id="security-testing">4) Create and Run a Security Test</h2>
       <div class="user-manual-col-2">
         <div class="user-manual-figure">
           <img src="assets/img/user_manual/create_custom_test.webp" alt="Creating a custom test with prompt input and mitigation selection" />
@@ -133,7 +146,7 @@
         <li>Iterate by trying another attack, changing prompt content or mitigation settings, then rerun.</li>
       </ul>
 
-      <h2>5) Use Prompt Enhancer</h2>
+      <h2 id="prompt-enhancer">5) Use Prompt Enhancer</h2>
       <div class="user-manual-figure">
         <img src="assets/img/user_manual/prompt_enhancer.webp" alt="Prompt Enhancer interface showing mitigation selection and example system prompt" />
       </div>
@@ -143,7 +156,7 @@
         <li>Review the enhanced prompt and apply it in your target testing workflow.</li>
       </ul>
 
-      <h2>6) Use the Security Assistant</h2>
+      <h2 id="security-assistant">6) Use the Security Assistant</h2>
       <div class="user-manual-col-2">
         <div class="user-manual-figure">
           <img src="assets/img/user_manual/chatbot_small.webp" alt="Small chatbot interface showing chatbot responding to user input" />
@@ -158,7 +171,7 @@
         <li>Use responses to decide which mitigations to test first.</li>
       </ul>
 
-      <h2>7) Export and Share Findings</h2>
+      <h2 id="export-findings">7) Export and Share Findings</h2>
       <ul class="styled-list">
         <li>Export vulnerability views and test outputs to PDF where available.</li>
         <li>Attach outputs to audit evidence, stakeholder reports, or implementation tickets.</li>

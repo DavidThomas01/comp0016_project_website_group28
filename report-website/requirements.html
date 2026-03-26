@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
-<body>
+<body class="page-requirements">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -44,7 +44,7 @@
           <a class="nav-link" href="evaluation.html">Evaluation</a>
           </div>
           <div class="nav-item">
-            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <a class="drop-toggle" href="appendices.html">Appendices ▾</a>
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
@@ -71,6 +71,19 @@
 <main id="main">
   <div class="container">
 
+    <nav class="page-local-nav fade-in" aria-label="On this page">
+      <span class="page-local-nav__label" id="req-local-nav-label">On this page</span>
+      <ul class="page-local-nav__list" aria-labelledby="req-local-nav-label">
+        <li><a href="#project-background">Background</a></li>
+        <li><a href="#project-goals">Goals</a></li>
+        <li><a href="#requirements-gathering">Gathering</a></li>
+        <li><a href="#personas">Personas</a></li>
+        <li><a href="#use-cases">Use cases</a></li>
+        <li><a href="#functional">Requirements</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </nav>
+
     <section class="section fade-in" id="project-background">
       <h2>Project Background</h2>
       <div class="project-bg-layout">
@@ -85,65 +98,87 @@
 
     <section class="section fade-in" id="project-goals">
       <h2>Project Goals</h2>
-      <p>With this project we aim to support Avanade's clients in both a technical and non-technical capacity, providing those without extensive AI security knowledge with the core information about the risks and mitigations as well as tools that both support less technical users and present more advanced features for users with experience in AI security.</p>
+      <div class="content-lead-panel">
+        <p>With this project we aim to support Avanade's clients in both a technical and non-technical capacity, providing those without extensive AI security knowledge with the core information about the risks and mitigations as well as tools that both support less technical users and present more advanced features for users with experience in AI security.</p>
+      </div>
     </section>
 
     <section class="section fade-in" id="requirements-gathering">
       <h2>Requirements Gathering</h2>
       <p>Initially, our project partners from Avanade presented us the problem without a clear solution in mind, this allow us to explore existing information about prompt injection attacks and identify key areas for development. We started by conducting research into the vulnerabilities, mitigations, impacts and existing solutions, we used this information to form a report on the current state of prompt injection security. Our research informed the development of our platform and its features by discovering the current gaps in AI security. We decided that the area of our focus should be giving our users space to test their AI models with various mitigations and attacks to understand the potential risks and effectiveness of different mitigation strategies.</p>
       <p>We wanted our platform to be accessible to users with varying levels of AI security knowledge, ensuring that both technical and non-technical users could effectively utilize the tools and information provided. Therefore we believed the platform should contain information about the vulnerabilities and mitigations, as well as testing environments where users can construct tests on popular AI models or supply their own. While testing frameworks already exist like Microsoft's PyRIT and NVIDIA's Garak these are primarily aimed at technical users and may not be accessible to those without extensive AI security knowledge. The solution we've decided upon is easily customisable and far more accessible, which we believe is incredibly important in a world where AI is becoming increasingly prevalent.</p>
-      <h3>Client Requirements</h3>
+      <h3 class="subsection-heading">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Client Requirements
+      </h3>
       <p>After creating the initial report, we had various meetings with our client to discuss and refine the requirements for the platform. This included focusing on the needs of the company and the typical requirements of Avanade's clients. We developed and refined these requirements throughout the early development process with feedback from our client on our first prototypes. The majority of our final requirements were derived from these discussions.</p>
-      <h3>Interview</h3>
+      <h3 class="subsection-heading">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Interview
+      </h3>
       <p>We also conducted a semi-structured interview with a Senior Research Scientist in Agentic AI working for Holistic AI, <a href="https://www.linkedin.com/in/zekun-wu-1190091a3/" target="_blank" rel="noopener noreferrer">Zekun Wu [3]</a>. Holistic AI is an organisation that works in AI security and compliance so we consulted Zekun Wu to ask where he felt AI security was most lacking and where he experienced difficulties in his research.</p>
-      <div class="card-grid cols-2 stagger">
-        <div class="card card-accent">
-          <h3>Industry AI Security Lead</h3>
-          <p><strong>Q:</strong> What do you think is the current biggest issue with prompt injection?</p>
-          <p><strong>A:</strong> Well, the field is still quite new and there's a lack of standardized approaches to addressing these vulnerabilities, especially since attacks are evolving so rapidly. But if we're talking about the most concerning issue I would say indirect prompt injection since it introduces so many new attack vectors to models and agents, and there aren't many tools available to address it effectively.</p>
-          <br>
-          <p><strong>Q:</strong> Where do you feel current mitigations, frameworks, or tools are lacking?</p>
-          <p><strong>A:</strong> I think the current frameworks are very technical and not easily connected, so while testing one framework, it's difficult to integrate and compare insights from another. I personally use Microsoft Foundry[2] a lot in my work, I think it's a great tool for deploying AI models and setting up endpoints, but it lacks seamless integration with other security tools.</p>
-          <br>
-          <p><strong>Q:</strong> What frameworks have you used, or are there any tools we should research?</p>
-          <p><strong>A:</strong> I have used Microsoft Foundry and PyRIT, I think both are great tools for testing prompt injection vulnerabilities. PyRIT is more of a set of comprehensive tests that try to break the model with different vulnerabilities like red-teaming attacks.</p>
-          <br>
-          <p><strong>Q:</strong> Do you think a tool for creating custom test scenarios for prompt injection could be useful for your work?</p>
-          <p><strong>A:</strong> I think it's a great idea and could be really useful for our clients. The customizability sounds interesting, while most of our clients use the GPT or Anthropic models it would be nice to be able to test any model easily too.</p>
-          <br>
-          <p><strong>Q:</strong> How accessible should this tool be?</p>
-          <p><strong>A:</strong> I think with the knowledge you have in the report you could make the tool quite accessible to users with varying levels of AI security knowledge. I can see it being useful for newer members of my team who might not have as much experience with AI security for learning about the vulnerabilities involved. And the testing could be great for all users, technical and non-technical.</p>
-          <br>
-          <p><strong>Q:</strong> What would make you trust a prompt injection protection tool?</p>
-          <p><strong>A:</strong> I would want a tool with lots of transparency and clear control over the testing process.</p>
-        </div>
-        <div class="card card-accent">
-          <h3>AI Security Researcher</h3>
-          <p><strong>Q:</strong> What do you think is the current biggest issue with prompt injection?</p>
-          <p><strong>A:</strong> Prompt injection isn't like traditional software vulnerabilities. Working with non-deterministic behavior makes it challenging to predict and mitigate these threats effectively, especially since these models are fundamentally made to follow instructions so trying to define acceptable behavior is already hard, and detecting and blocking inappropriate behavior is an ongoing challenge.</p>
-          <br>
-          <p><strong>Q:</strong> Where do you feel current mitigations, frameworks, or tools are lacking?</p>
-          <p><strong>A:</strong> There are so many ways prompt injection can occur, and current tools often focus on specific attack vectors rather than providing a comprehensive solution. Indirect prompt injection is particularly lacking in terms of detection and prevention.</p>
-          <br>
-          <p><strong>Q:</strong> What frameworks have you used, or are there any tools we should research?</p>
-          <p><strong>A:</strong> Well, for publically available frameworks, there are some testing frameworks available like NVIDIA's Garak for example. But I'm not too familiar with them, I mostly work with proprietary solutions.</p>
-          <br>
-          <p><strong>Q:</strong> Do you think a tool for creating custom test scenarios for prompt injection could be useful for your work?</p>
-          <p><strong>A:</strong> It depends on how much control we have over the testing process and the ability to customize the scenarios for different use cases. I think it could definitely be useful if it provides a good balance between automation and flexibility.</p>
-          <br>
-          <p><strong>Q:</strong> How accessible should this tool be?</p>
-          <p><strong>A:</strong> I think supporting technical users in testing should be a priority, but making it as accessible as possible would be ideal. I wouldn't want functionality or depth to be sacrificed for accessibility.</p>
-          <br>
-          <p><strong>Q:</strong> What would make you trust a prompt injection protection tool?</p>
-          <p><strong>A:</strong> Reproducible results and transparent reporting of the tool's performance in detecting and preventing prompt injection attacks, with observable changes in behaviour with various defenses.</p>
-        </div>
+      <div class="interview-disclosure-grid">
+        <details class="interview-disclosure card card-accent">
+          <summary class="interview-disclosure__summary">
+            <span class="interview-disclosure__summary-main">
+              <span class="interview-card__kicker interview-disclosure__kicker">
+                <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                Stakeholder · industry security lead
+              </span>
+              <span class="interview-disclosure__title">Industry AI Security Lead</span>
+              <span class="interview-disclosure__hint">Expand transcript</span>
+            </span>
+            <svg class="interview-disclosure__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="interview-disclosure__body">
+            <p><strong>Q:</strong> What do you think is the current biggest issue with prompt injection?</p>
+            <p><strong>A:</strong> Well, the field is still quite new and there's a lack of standardized approaches to addressing these vulnerabilities, especially since attacks are evolving so rapidly. But if we're talking about the most concerning issue I would say indirect prompt injection since it introduces so many new attack vectors to models and agents, and there aren't many tools available to address it effectively.</p>
+            <p><strong>Q:</strong> Where do you feel current mitigations, frameworks, or tools are lacking?</p>
+            <p><strong>A:</strong> I think the current frameworks are very technical and not easily connected, so while testing one framework, it's difficult to integrate and compare insights from another. I personally use Microsoft Foundry[2] a lot in my work, I think it's a great tool for deploying AI models and setting up endpoints, but it lacks seamless integration with other security tools.</p>
+            <p><strong>Q:</strong> What frameworks have you used, or are there any tools we should research?</p>
+            <p><strong>A:</strong> I have used Microsoft Foundry and PyRIT, I think both are great tools for testing prompt injection vulnerabilities. PyRIT is more of a set of comprehensive tests that try to break the model with different vulnerabilities like red-teaming attacks.</p>
+            <p><strong>Q:</strong> Do you think a tool for creating custom test scenarios for prompt injection could be useful for your work?</p>
+            <p><strong>A:</strong> I think it's a great idea and could be really useful for our clients. The customizability sounds interesting, while most of our clients use the GPT or Anthropic models it would be nice to be able to test any model easily too.</p>
+            <p><strong>Q:</strong> How accessible should this tool be?</p>
+            <p><strong>A:</strong> I think with the knowledge you have in the report you could make the tool quite accessible to users with varying levels of AI security knowledge. I can see it being useful for newer members of my team who might not have as much experience with AI security for learning about the vulnerabilities involved. And the testing could be great for all users, technical and non-technical.</p>
+            <p><strong>Q:</strong> What would make you trust a prompt injection protection tool?</p>
+            <p><strong>A:</strong> I would want a tool with lots of transparency and clear control over the testing process.</p>
+          </div>
+        </details>
+        <details class="interview-disclosure card card-accent">
+          <summary class="interview-disclosure__summary">
+            <span class="interview-disclosure__summary-main">
+              <span class="interview-card__kicker interview-disclosure__kicker">
+                <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.04Z"/></svg>
+                Stakeholder · research scientist
+              </span>
+              <span class="interview-disclosure__title">AI Security Researcher</span>
+              <span class="interview-disclosure__hint">Expand transcript</span>
+            </span>
+            <svg class="interview-disclosure__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="interview-disclosure__body">
+            <p><strong>Q:</strong> What do you think is the current biggest issue with prompt injection?</p>
+            <p><strong>A:</strong> Prompt injection isn't like traditional software vulnerabilities. Working with non-deterministic behavior makes it challenging to predict and mitigate these threats effectively, especially since these models are fundamentally made to follow instructions so trying to define acceptable behavior is already hard, and detecting and blocking inappropriate behavior is an ongoing challenge.</p>
+            <p><strong>Q:</strong> Where do you feel current mitigations, frameworks, or tools are lacking?</p>
+            <p><strong>A:</strong> There are so many ways prompt injection can occur, and current tools often focus on specific attack vectors rather than providing a comprehensive solution. Indirect prompt injection is particularly lacking in terms of detection and prevention.</p>
+            <p><strong>Q:</strong> What frameworks have you used, or are there any tools we should research?</p>
+            <p><strong>A:</strong> Well, for publically available frameworks, there are some testing frameworks available like NVIDIA's Garak for example. But I'm not too familiar with them, I mostly work with proprietary solutions.</p>
+            <p><strong>Q:</strong> Do you think a tool for creating custom test scenarios for prompt injection could be useful for your work?</p>
+            <p><strong>A:</strong> It depends on how much control we have over the testing process and the ability to customize the scenarios for different use cases. I think it could definitely be useful if it provides a good balance between automation and flexibility.</p>
+            <p><strong>Q:</strong> How accessible should this tool be?</p>
+            <p><strong>A:</strong> I think supporting technical users in testing should be a priority, but making it as accessible as possible would be ideal. I wouldn't want functionality or depth to be sacrificed for accessibility.</p>
+            <p><strong>Q:</strong> What would make you trust a prompt injection protection tool?</p>
+            <p><strong>A:</strong> Reproducible results and transparent reporting of the tool's performance in detecting and preventing prompt injection attacks, with observable changes in behaviour with various defenses.</p>
+          </div>
+        </details>
       </div>
     </section>
 
     <section class="section fade-in" id="personas">
       <h2>Personas</h2>
       <p>We constructed personas to represent the different types of users who would interact with our platform, considering both the non-technical and technical user groups. This helped us to better understand the different requirements and features that would be necessary to meet the needs of all of our users.</p>
-      <div class="personas-two-col" aria-hidden="true">
+      <div class="personas-two-col persona-showcase" aria-hidden="true">
         <div class="persona">
           <img src="assets/img/personas/sales_representative.webp" alt="Sales Representative persona" />
         </div>
@@ -159,176 +194,299 @@
         <img src="assets/img/use_case_diagram.webp" alt="Use case diagram showing potential workflows for using the platform" />
       </div>
 
-      <h3>Example Use Case Scenarios</h3>
-      <div class="card-grid cols-2">
-        <article class="card">
-          <h3>AI Security Tester (Ama Adeyemi)</h3>
-          <ul class="styled-list">
-            <li><strong>Who:</strong> Internal AI security researcher validating model safety before release.</li>
-            <li><strong>When:</strong> During pre-deployment security reviews and incident follow-up analysis.</li>
-            <li><strong>Why:</strong> To identify prompt injection weaknesses and verify whether mitigations are effective.</li>
-            <li><strong>How:</strong> Uses the vulnerability pages to understand attack patterns, then runs targeted tests in the testing view and compares pass/fail outcomes.</li>
-          </ul>
-        </article>
+      <div class="use-case-scenarios">
+        <h3 class="use-case-scenarios__heading">Example use case scenarios</h3>
+        <p class="use-case-scenarios__lead">Six representative personas (Who / When / Why / How). All scenarios are shown below; you can collapse a row if you want a shorter view.</p>
 
-        <article class="card">
-          <h3>Worried Client (Emma Schutte)</h3>
-          <ul class="styled-list">
-            <li><strong>Who:</strong> Non-technical operations stakeholder evaluating whether AI adoption is safe.</li>
-            <li><strong>When:</strong> Before approving AI-enabled workflow changes within business operations.</li>
-            <li><strong>Why:</strong> To understand risks, gain confidence, and see practical safeguards in plain language.</li>
-            <li><strong>How:</strong> Starts on the home page for high-level context, reviews selected vulnerabilities, and uses chatbot guidance to interpret mitigations and outcomes.</li>
-          </ul>
-        </article>
+        <details class="use-case-disclosure card" open>
+          <summary class="use-case-disclosure__summary">
+            <span class="use-case-disclosure__index" aria-hidden="true">1</span>
+            <span class="use-case-disclosure__titles">
+              <span class="use-case-disclosure__role">AI Security Tester</span>
+              <span class="use-case-disclosure__name">Ama Adeyemi</span>
+            </span>
+            <svg class="use-case-disclosure__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="use-case-disclosure__body">
+            <dl class="use-case-dl">
+              <div class="use-case-dl__row"><dt>Who</dt><dd>Internal AI security researcher validating model safety before release.</dd></div>
+              <div class="use-case-dl__row"><dt>When</dt><dd>During pre-deployment security reviews and incident follow-up analysis.</dd></div>
+              <div class="use-case-dl__row"><dt>Why</dt><dd>To identify prompt injection weaknesses and verify whether mitigations are effective.</dd></div>
+              <div class="use-case-dl__row"><dt>How</dt><dd>Uses the vulnerability pages to understand attack patterns, then runs targeted tests in the testing view and compares pass/fail outcomes.</dd></div>
+            </dl>
+          </div>
+        </details>
 
-        <article class="card">
-          <h3>Technology Sales Representative (Alex Mulwayne)</h3>
-          <ul class="styled-list">
-            <li><strong>Who:</strong> Client-facing sales consultant explaining AI assurance capabilities.</li>
-            <li><strong>When:</strong> During client demos, workshops, and proposal discussions.</li>
-            <li><strong>Why:</strong> To clearly communicate how security controls reduce business risk and support trust.</li>
-            <li><strong>How:</strong> Navigates from vulnerability summaries to in-depth mitigation examples and exports PDF reports as supporting material for stakeholders.</li>
-          </ul>
-        </article>
+        <details class="use-case-disclosure card" open>
+          <summary class="use-case-disclosure__summary">
+            <span class="use-case-disclosure__index" aria-hidden="true">2</span>
+            <span class="use-case-disclosure__titles">
+              <span class="use-case-disclosure__role">Worried Client</span>
+              <span class="use-case-disclosure__name">Emma Schutte</span>
+            </span>
+            <svg class="use-case-disclosure__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="use-case-disclosure__body">
+            <dl class="use-case-dl">
+              <div class="use-case-dl__row"><dt>Who</dt><dd>Non-technical operations stakeholder evaluating whether AI adoption is safe.</dd></div>
+              <div class="use-case-dl__row"><dt>When</dt><dd>Before approving AI-enabled workflow changes within business operations.</dd></div>
+              <div class="use-case-dl__row"><dt>Why</dt><dd>To understand risks, gain confidence, and see practical safeguards in plain language.</dd></div>
+              <div class="use-case-dl__row"><dt>How</dt><dd>Starts on the home page for high-level context, reviews selected vulnerabilities, and uses chatbot guidance to interpret mitigations and outcomes.</dd></div>
+            </dl>
+          </div>
+        </details>
 
-        <article class="card">
-          <h3>AI Systems Developer (Jordan Reyes)</h3>
-          <ul class="styled-list">
-            <li><strong>Who:</strong> Technical stakeholder implementing or refining mitigation logic in production systems.</li>
-            <li><strong>When:</strong> During design iterations, validation cycles, and hardening phases.</li>
-            <li><strong>Why:</strong> To translate security findings into deployable engineering decisions.</li>
-            <li><strong>How:</strong> Uses technical explanations, pseudocode, and testing outputs to compare mitigation combinations and prioritise implementation steps.</li>
-          </ul>
-        </article>
+        <details class="use-case-disclosure card" open>
+          <summary class="use-case-disclosure__summary">
+            <span class="use-case-disclosure__index" aria-hidden="true">3</span>
+            <span class="use-case-disclosure__titles">
+              <span class="use-case-disclosure__role">Technology Sales Representative</span>
+              <span class="use-case-disclosure__name">Alex Mulwayne</span>
+            </span>
+            <svg class="use-case-disclosure__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="use-case-disclosure__body">
+            <dl class="use-case-dl">
+              <div class="use-case-dl__row"><dt>Who</dt><dd>Client-facing sales consultant explaining AI assurance capabilities.</dd></div>
+              <div class="use-case-dl__row"><dt>When</dt><dd>During client demos, workshops, and proposal discussions.</dd></div>
+              <div class="use-case-dl__row"><dt>Why</dt><dd>To clearly communicate how security controls reduce business risk and support trust.</dd></div>
+              <div class="use-case-dl__row"><dt>How</dt><dd>Navigates from vulnerability summaries to in-depth mitigation examples and exports PDF reports as supporting material for stakeholders.</dd></div>
+            </dl>
+          </div>
+        </details>
 
-        <article class="card">
-          <h3>Compliance &amp; Risk Officer (Priya Nair)</h3>
-          <ul class="styled-list">
-            <li><strong>Who:</strong> Governance stakeholder responsible for AI assurance evidence.</li>
-            <li><strong>When:</strong> During audit preparation, policy reviews, and risk committee reporting cycles.</li>
-            <li><strong>Why:</strong> To verify that key prompt injection controls are tested and traceable.</li>
-            <li><strong>How:</strong> Reviews vulnerability coverage, checks test pass/fail history, and exports PDF evidence for governance documentation.</li>
-          </ul>
-        </article>
+        <details class="use-case-disclosure card" open>
+          <summary class="use-case-disclosure__summary">
+            <span class="use-case-disclosure__index" aria-hidden="true">4</span>
+            <span class="use-case-disclosure__titles">
+              <span class="use-case-disclosure__role">AI Systems Developer</span>
+              <span class="use-case-disclosure__name">Jordan Reyes</span>
+            </span>
+            <svg class="use-case-disclosure__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="use-case-disclosure__body">
+            <dl class="use-case-dl">
+              <div class="use-case-dl__row"><dt>Who</dt><dd>Technical stakeholder implementing or refining mitigation logic in production systems.</dd></div>
+              <div class="use-case-dl__row"><dt>When</dt><dd>During design iterations, validation cycles, and hardening phases.</dd></div>
+              <div class="use-case-dl__row"><dt>Why</dt><dd>To translate security findings into deployable engineering decisions.</dd></div>
+              <div class="use-case-dl__row"><dt>How</dt><dd>Uses technical explanations, pseudocode, and testing outputs to compare mitigation combinations and prioritise implementation steps.</dd></div>
+            </dl>
+          </div>
+        </details>
 
-        <article class="card">
-          <h3>Product Manager (Daniel Foster)</h3>
-          <ul class="styled-list">
-            <li><strong>Who:</strong> Product decision-maker balancing usability, risk, and delivery timelines.</li>
-            <li><strong>When:</strong> During sprint planning and release readiness reviews for AI-enabled features.</li>
-            <li><strong>Why:</strong> To prioritise mitigation work based on practical impact and residual risk.</li>
-            <li><strong>How:</strong> Uses summaries from the home and vulnerability views, then consults testing outcomes to decide which mitigation improvements enter the next release.</li>
-          </ul>
-        </article>
+        <details class="use-case-disclosure card" open>
+          <summary class="use-case-disclosure__summary">
+            <span class="use-case-disclosure__index" aria-hidden="true">5</span>
+            <span class="use-case-disclosure__titles">
+              <span class="use-case-disclosure__role">Compliance &amp; Risk Officer</span>
+              <span class="use-case-disclosure__name">Priya Nair</span>
+            </span>
+            <svg class="use-case-disclosure__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="use-case-disclosure__body">
+            <dl class="use-case-dl">
+              <div class="use-case-dl__row"><dt>Who</dt><dd>Governance stakeholder responsible for AI assurance evidence.</dd></div>
+              <div class="use-case-dl__row"><dt>When</dt><dd>During audit preparation, policy reviews, and risk committee reporting cycles.</dd></div>
+              <div class="use-case-dl__row"><dt>Why</dt><dd>To verify that key prompt injection controls are tested and traceable.</dd></div>
+              <div class="use-case-dl__row"><dt>How</dt><dd>Reviews vulnerability coverage, checks test pass/fail history, and exports PDF evidence for governance documentation.</dd></div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="use-case-disclosure card" open>
+          <summary class="use-case-disclosure__summary">
+            <span class="use-case-disclosure__index" aria-hidden="true">6</span>
+            <span class="use-case-disclosure__titles">
+              <span class="use-case-disclosure__role">Product Manager</span>
+              <span class="use-case-disclosure__name">Daniel Foster</span>
+            </span>
+            <svg class="use-case-disclosure__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="use-case-disclosure__body">
+            <dl class="use-case-dl">
+              <div class="use-case-dl__row"><dt>Who</dt><dd>Product decision-maker balancing usability, risk, and delivery timelines.</dd></div>
+              <div class="use-case-dl__row"><dt>When</dt><dd>During sprint planning and release readiness reviews for AI-enabled features.</dd></div>
+              <div class="use-case-dl__row"><dt>Why</dt><dd>To prioritise mitigation work based on practical impact and residual risk.</dd></div>
+              <div class="use-case-dl__row"><dt>How</dt><dd>Uses summaries from the home and vulnerability views, then consults testing outcomes to decide which mitigation improvements enter the next release.</dd></div>
+            </dl>
+          </div>
+        </details>
       </div>
     </section>
 
     <section class="section fade-in" id="functional">
       <h2>Functional Requirements</h2>
 
+      <div class="req-coverage-card" role="region" aria-labelledby="functional-coverage-heading">
+        <p id="functional-coverage-heading" class="req-coverage-card__title">Implementation snapshot</p>
+        <div class="req-coverage-card__stats">
+          <div class="req-coverage-card__stat req-coverage-card__stat--implemented">
+            <span class="req-coverage-card__value"><span class="req-coverage-card__num">41</span><span class="req-coverage-card__sep">/</span><span class="req-coverage-card__den">42</span></span>
+            <span class="req-coverage-card__label">Implemented <span class="req-coverage-card__sublabel">(as specified)</span></span>
+          </div>
+          <div class="req-coverage-card__stat req-coverage-card__stat--not-complete">
+            <span class="req-coverage-card__value"><span class="req-coverage-card__num">1</span><span class="req-coverage-card__sep">/</span><span class="req-coverage-card__den">42</span></span>
+            <span class="req-coverage-card__label">Not completed <span class="req-coverage-card__sublabel">(alternative delivery)</span></span>
+          </div>
+        </div>
+        <p class="req-coverage-card__note">The “not completed” row is the Should Have sandbox requirement, delivered instead via live demo and static before/after mitigation content (see *).</p>
+      </div>
+
+      <div class="req-legend" role="group" aria-label="Requirement status legend">
+        <span class="req-legend__item">
+          <span class="req-status req-status--met req-status--legend" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <span>Met — implemented or satisfied as specified</span>
+        </span>
+        <span class="req-legend__item">
+          <span class="req-status req-status--adjusted req-status--legend" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg></span>
+          <span>Adjusted — alternative delivery (see note)</span>
+        </span>
+      </div>
+
+      <div class="req-moscow-tier req-moscow-tier--must">
       <h3 class="heading-with-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 12 2 2 4-4"/></svg> Must Have</h3>
 
+      <div class="req-subsection">
       <h4>Home Page</h4>
-      <ul class="styled-list">
-        <li>✅ The system provides a home page introducing prompt injection, associated risks, and a high-level explanation of how prompt injection works.</li>
-        <li>✅ The home page displays a clickable list of known prompt injection vulnerabilities.</li>
-        <li>✅ The home page includes a short summary for each vulnerability.</li>
+      <ul class="styled-list req-list">
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system provides a home page introducing prompt injection, associated risks, and a high-level explanation of how prompt injection works.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The home page displays a clickable list of known prompt injection vulnerabilities.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The home page includes a short summary for each vulnerability.</span></li>
       </ul>
+      </div>
 
+      <div class="req-subsection">
       <h4>In-Depth Vulnerability View</h4>
-      <ul class="styled-list">
-        <li>✅ Selecting a vulnerability from the home page navigates to an in-depth vulnerability view.</li>
-        <li>✅ Each in-depth vulnerability view includes a technical vulnerability information panel containing a technical explanation.</li>
-        <li>✅ The in-depth vulnerability view includes an example panel showing model behaviour when faced with that vulnerability.</li>
-        <li>✅ The in-depth vulnerability view includes a clear explanation of at least one mitigation strategy.</li>
-        <li>✅ Each vulnerability includes a technical explanation and a working example demonstrating the vulnerability.</li>
-        <li>✅ A comparison panel shows model behaviour without mitigation and with mitigation applied.</li>
+      <ul class="styled-list req-list">
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Selecting a vulnerability from the home page navigates to an in-depth vulnerability view.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Each in-depth vulnerability view includes a technical vulnerability information panel containing a technical explanation.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The in-depth vulnerability view includes an example panel showing model behaviour when faced with that vulnerability.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The in-depth vulnerability view includes a clear explanation of at least one mitigation strategy.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Each vulnerability includes a technical explanation and a working example demonstrating the vulnerability.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">A comparison panel shows model behaviour without mitigation and with mitigation applied.</span></li>
       </ul>
+      </div>
 
+      <div class="req-subsection">
       <h4>Knowledge Base</h4>
-      <ul class="styled-list">
-        <li>✅ The system provides a knowledge base containing clear examples of prompt injection vulnerabilities.</li>
-        <li>✅ The knowledge base includes technical explanations for each vulnerability.</li>
-        <li>✅ The knowledge base includes working attack examples.</li>
-        <li>✅ The knowledge base includes clear explanations of prompt injection mitigations.</li>
-        <li>✅ The knowledge base includes technical explanations for each mitigation.</li>
+      <ul class="styled-list req-list">
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system provides a knowledge base containing clear examples of prompt injection vulnerabilities.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The knowledge base includes technical explanations for each vulnerability.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The knowledge base includes working attack examples.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The knowledge base includes clear explanations of prompt injection mitigations.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The knowledge base includes technical explanations for each mitigation.</span></li>
       </ul>
+      </div>
 
+      <div class="req-subsection">
       <h4>Testing View</h4>
-      <ul class="styled-list">
-        <li>✅ A testing view is accessible from the main navigation bar.</li>
-        <li>✅ Users can create custom tests for individual mitigations.</li>
-        <li>✅ Users interact with the system via a chat-style interface that processes a single prompt.</li>
-        <li>✅ Users can enable or disable mitigations identified during research (one per test).</li>
-        <li>✅ Custom tests are named by the user.</li>
-        <li>✅ Custom tests are stored in memory during the session.</li>
-        <li>✅ Custom tests clearly indicate a pass/fail result based on predefined security expectations.</li>
-        <li>✅ Test data is preserved locally in an SQL database.</li>
-        <li>✅ All tests run on a fixed model (GPT 5.0).</li>
+      <ul class="styled-list req-list">
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">A testing view is accessible from the main navigation bar.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Users can create custom tests for individual mitigations.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Users interact with the system via a chat-style interface that processes a single prompt.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Users can enable or disable mitigations identified during research (one per test).</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Custom tests are named by the user.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Custom tests are stored in memory during the session.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Custom tests clearly indicate a pass/fail result based on predefined security expectations.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Test data is preserved locally in an SQL database.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">All tests run on a fixed model (GPT 5.0).</span></li>
       </ul>
+      </div>
+      </div>
 
+      <div class="req-moscow-tier req-moscow-tier--should">
       <h3 class="heading-with-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 12 10.76Z"/><path d="M12 12V2"/></svg> Should Have</h3>
-      <ul class="styled-list">
-        <li>➖ The in-depth vulnerability view includes a sandbox input field for testing prompts with and without mitigation enabled.<a href="#explain-requirements">*</a></li>
-        <li>✅ The in-depth vulnerability view includes mitigation implementation templates presented in pseudocode.</li>
-        <li>✅ The in-depth vulnerability view includes references or external sources for further reading.</li>
-        <li>✅ The in-depth vulnerability view supports exporting as a PDF.</li>
-        <li>✅ The testing view supports multi-prompt tests with conversation history.</li>
-        <li>✅ The testing view supports multiple agents.</li>
-        <li>✅ The testing view supports exporting of tests as PDFs.</li>
-        <li>✅ Multiple mitigations can be applied simultaneously in a custom test.</li>
-        <li>✅ The knowledge-base chatbot can answer theoretical prompt injection questions.</li>
-        <li>✅ The knowledge-base chatbot can answer practical prompt injection scenario questions and provide guidance.</li>
+      <ul class="styled-list req-list">
+        <li class="req-list__item"><span class="req-status req-status--adjusted" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg></span><span class="req-list__text">The in-depth vulnerability view includes a sandbox input field for testing prompts with and without mitigation enabled.<a href="#explain-requirements">*</a></span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The in-depth vulnerability view includes mitigation implementation templates presented in pseudocode.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The in-depth vulnerability view includes references or external sources for further reading.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The in-depth vulnerability view supports exporting as a PDF.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The testing view supports multi-prompt tests with conversation history.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The testing view supports multiple agents.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The testing view supports exporting of tests as PDFs.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Multiple mitigations can be applied simultaneously in a custom test.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The knowledge-base chatbot can answer theoretical prompt injection questions.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The knowledge-base chatbot can answer practical prompt injection scenario questions and provide guidance.</span></li>
       </ul>
+      </div>
 
+      <div class="req-moscow-tier req-moscow-tier--could">
       <h3 class="heading-with-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg> Could Have</h3>
-      <ul class="styled-list">
-        <li>✅ The in-depth vulnerability view presents mitigations in multiple programming languages with a tabbed interface.</li>
-        <li>✅ The chatbot can provide links that redirect users to relevant pages within the system.</li>
-        <li>✅ The AI prompt enhancer view includes a fine-tuned model to refine prompts based on selected vulnerabilities and mitigations.</li>
-        <li>✅ The testing view can run interactive tests on custom models connected via API.</li>
-        <li>✅ The testing view can run interactive tests on models with custom system prompts.</li>
-        <li>✅ The testing view can run automated testing pipelines based on NVIDIA Garak and Microsoft PyRIT frameworks.</li>
+      <ul class="styled-list req-list">
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The in-depth vulnerability view presents mitigations in multiple programming languages with a tabbed interface.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The chatbot can provide links that redirect users to relevant pages within the system.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The AI prompt enhancer view includes a fine-tuned model to refine prompts based on selected vulnerabilities and mitigations.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The testing view can run interactive tests on custom models connected via API.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The testing view can run interactive tests on models with custom system prompts.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The testing view can run automated testing pipelines based on NVIDIA Garak and Microsoft PyRIT frameworks.</span></li>
       </ul>
+      </div>
 
+      <div class="req-moscow-tier req-moscow-tier--wont">
       <h3 class="heading-with-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg> Won't Have</h3>
-      <ul class="styled-list">
-        <li>✅ The system does not include authentication.</li>
-        <li>✅ The system does not automatically fix detected prompt injection vulnerabilities or attacks.</li>
-        <li>✅ The system does not modify custom or non-standard models.</li>
+      <ul class="styled-list req-list">
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system does not include authentication.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system does not automatically fix detected prompt injection vulnerabilities or attacks.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system does not modify custom or non-standard models.</span></li>
       </ul>
+      </div>
 
+      <div class="req-moscow-tier req-moscow-tier--nfr">
       <h3 class="heading-with-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Non-Functional Requirements</h3>
 
+      <div class="req-coverage-card req-coverage-card--compact" role="region" aria-labelledby="nfr-coverage-heading">
+        <p id="nfr-coverage-heading" class="req-coverage-card__title">Implementation snapshot</p>
+        <div class="req-coverage-card__stats">
+          <div class="req-coverage-card__stat req-coverage-card__stat--implemented">
+            <span class="req-coverage-card__value"><span class="req-coverage-card__num">14</span><span class="req-coverage-card__sep">/</span><span class="req-coverage-card__den">14</span></span>
+            <span class="req-coverage-card__label">Implemented <span class="req-coverage-card__sublabel">(as specified)</span></span>
+          </div>
+          <div class="req-coverage-card__stat req-coverage-card__stat--not-complete">
+            <span class="req-coverage-card__value"><span class="req-coverage-card__num">0</span><span class="req-coverage-card__sep">/</span><span class="req-coverage-card__den">14</span></span>
+            <span class="req-coverage-card__label">Not completed</span>
+          </div>
+        </div>
+        <p class="req-coverage-card__note">Every non-functional checklist item is satisfied.</p>
+      </div>
+
+      <div class="req-subsection">
       <h4>Must Have</h4>
-      <ul class="styled-list">
-        <li>✅ The system is delivered as a web application.</li>
-        <li>✅ The system presents vulnerabilities, mitigations, and test results in a clear and understandable manner for technical and semi-technical users.</li>
-        <li>✅ The chatbot and testing interfaces provide acceptable interactive response times.</li>
-        <li>✅ The interface is intuitive, clear, and logically structured to conform to standards.</li>
-        <li>✅ The system supports a dark mode interface.</li>
+      <ul class="styled-list req-list">
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system is delivered as a web application.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system presents vulnerabilities, mitigations, and test results in a clear and understandable manner for technical and semi-technical users.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The chatbot and testing interfaces provide acceptable interactive response times.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The interface is intuitive, clear, and logically structured to conform to standards.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system supports a dark mode interface.</span></li>
       </ul>
+      </div>
 
+      <div class="req-subsection">
       <h4>Should Have</h4>
-      <ul class="styled-list">
-        <li>✅ The system uses consistent colour schemes with Avanade style.</li>
-        <li>✅ The system uses standardised icons.</li>
-        <li>✅ The system uses uniform layout conventions across all views.</li>
-        <li>✅ Red is used to represent vulnerabilities and failing tests.</li>
-        <li>✅ Green is used to represent mitigations and passing tests.</li>
+      <ul class="styled-list req-list">
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system uses consistent colour schemes with Avanade style.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system uses standardised icons.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system uses uniform layout conventions across all views.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Red is used to represent vulnerabilities and failing tests.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Green is used to represent mitigations and passing tests.</span></li>
       </ul>
+      </div>
 
+      <div class="req-subsection">
       <h4>Could Have</h4>
-      <ul class="styled-list">
-        <li>✅ Vulnerabilities and mitigations are mapped to established standards such as OWASP Top 10 for LLMs and MITRE ATLAS.</li>
+      <ul class="styled-list req-list">
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Vulnerabilities and mitigations are mapped to established standards such as OWASP Top 10 for LLMs and MITRE ATLAS.</span></li>
       </ul>
+      </div>
 
+      <div class="req-subsection">
       <h4>Won't Have</h4>
-      <ul class="styled-list">
-        <li>✅ The system is not run on a persistent backend server.</li>
-        <li>✅ The system does not ensure compatibility with all LLM providers.</li>
-        <li>✅ The system does not support fully custom automated testing pipelines.</li>
+      <ul class="styled-list req-list">
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system is not run on a persistent backend server.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system does not ensure compatibility with all LLM providers.</span></li>
+        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system does not support fully custom automated testing pipelines.</span></li>
       </ul>
+      </div>
+      </div>
       <div id="explain-requirements" class="callout callout--note mt-2">
         <p>*This requirement was found to not align with the page as it functions as a testing feature which is more aligned with the testing page. To replace the interactive test we featured a live demo and a static section displaying the difference with and without mitigations, meeting the core idea behind the requirement without conflicting with the page's purpose.</p>
       </div>
