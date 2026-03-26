@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
-<body>
+<body class="page-ui-design">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -299,8 +299,8 @@
         organisation helped power users yet felt heavy for coursework-scale demos. These findings motivated
         separating comparison-style learning from dedicated testing and tightening hierarchy before v1.
       </p>
-      <figure class="img-placeholder prototype-shot">
-        <img src="assets/evaluation/evaluation.png" alt="Initial prototype evaluation feedback" loading="lazy" />
+      <figure class="img-placeholder prototype-shot prototype-shot--natural">
+        <img src="assets/evaluation/evaluation.png" alt="Initial prototype evaluation feedback: heuristic findings and proposed solutions" loading="lazy" />
       </figure>
     </section>
 
@@ -345,58 +345,89 @@
 
     <section class="section fade-in" id="final-ui">
       <h2>Final UI</h2>
-      <p>
-        The final implemented UI is a React single-page application with dedicated routes for the
-        major platform workflows. Rather than forcing every feature into one screen, the final design
-        uses a task-oriented structure: the Home page introduces the problem and vulnerability catalogue,
-        the Vulnerability view provides a deep technical breakdown, the Mitigations page focuses on
-        defensive strategies and code, the Testing page supports practical experimentation, the Prompt
-        Enhancer hardens prompts, and the Security Knowledge Assistant supports open-ended Q&amp;A.
-      </p>
+      <div class="final-ui-lead">
+        <div class="final-ui-lead__icon" aria-hidden="true">
+          <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+        </div>
+        <p>
+          The final implemented UI is a React single-page application with dedicated routes for the
+          major platform workflows. Rather than forcing every feature into one screen, the final design
+          uses a task-oriented structure: the Home page introduces the problem and vulnerability catalogue,
+          the Vulnerability view provides a deep technical breakdown, the Mitigations page focuses on
+          defensive strategies and code, the Testing page supports practical experimentation, the Prompt
+          Enhancer hardens prompts, and the Security Knowledge Assistant supports open-ended Q&amp;A.
+        </p>
+      </div>
 
-      <h3>Final design process</h3>
-      <p>
-        The final UI reflects a progression from broad educational structure to task-specific views.
-        The implemented frontend shows that the design prioritised modularity, with each route solving
-        a distinct user need while still sharing a common visual system. This is important because the
-        platform needs to support both learning and action: a user may begin by reading about a
-        vulnerability, then move to mitigations, then run a test, then export a report, then ask the
-        assistant for more help. We also introduced a dedicated dark mode to improve accessibility and
-        visual comfort, making the interface more adaptable to different user preferences and usage
-        environments.
-      </p>
+      <div class="final-ui-prose-band">
+        <h3 class="heading-with-icon">
+          <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          Final design process
+        </h3>
+        <p>
+          The final UI reflects a progression from broad educational structure to task-specific views.
+          The implemented frontend shows that the design prioritised modularity, with each route solving
+          a distinct user need while still sharing a common visual system. This is important because the
+          platform needs to support both learning and action: a user may begin by reading about a
+          vulnerability, then move to mitigations, then run a test, then export a report, then ask the
+          assistant for more help. We also introduced a dedicated dark mode to improve accessibility and
+          visual comfort, making the interface more adaptable to different user preferences and usage
+          environments.
+        </p>
+      </div>
 
-      <h3>Feedback reflected in the final structure</h3>
-      <p>
-        During the mid-stages of development, we received feedback from our TA that the interface felt
-        too static and old-fashioned. In response, we pivoted to a more modern and dynamic visual
-        direction based on widget-style components rather than heavy panel blocks, and refined the color
-        system and overall styling to be clearer and less visually intrusive. This change improved both
-        readability and perceived responsiveness while keeping the workflow structure intact.
-      </p>
+      <div class="final-ui-prose-band final-ui-prose-band--alt">
+        <h3 class="heading-with-icon">
+          <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Feedback reflected in the final structure
+        </h3>
+        <p>
+          During the mid-stages of development, we received feedback from our TA that the interface felt
+          too static and old-fashioned. In response, we pivoted to a more modern and dynamic visual
+          direction based on widget-style components rather than heavy panel blocks, and refined the color
+          system and overall styling to be clearer and less visually intrusive. This change improved both
+          readability and perceived responsiveness while keeping the workflow structure intact.
+        </p>
+      </div>
 
-      <h3>What was added</h3>
-      <ul class="styled-list">
-        <li>Search and filtering on the Home page vulnerability catalogue.</li>
-        <li>A dedicated deep-dive vulnerability page with demo, comparison, mitigation links, and quiz.</li>
-        <li>A separate Mitigations page with implementation language switching and PDF export.</li>
-        <li>A large Testing view with guided setup, advanced setup, risk analysis, and framework scanning.</li>
-        <li>A dedicated Prompt Enhancer workflow.</li>
-        <li>A floating assistant widget plus a full-screen Security Knowledge Assistant page.</li>
-        <li>PDF export support across core learning and testing workflows.</li>
-      </ul>
+      <div class="final-ui-list-panel final-ui-list-panel--added">
+        <h3 class="heading-with-icon">
+          <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+          What was added
+        </h3>
+        <ul class="styled-list final-ui-checklist">
+          <li>Search and filtering on the Home page vulnerability catalogue.</li>
+          <li>A dedicated deep-dive vulnerability page with demo, comparison, mitigation links, and quiz.</li>
+          <li>A separate Mitigations page with implementation language switching and PDF export.</li>
+          <li>A large Testing view with guided setup, advanced setup, risk analysis, and framework scanning.</li>
+          <li>A dedicated Prompt Enhancer workflow.</li>
+          <li>A floating assistant widget plus a full-screen Security Knowledge Assistant page.</li>
+          <li>PDF export support across core learning and testing workflows.</li>
+        </ul>
+      </div>
 
-      <h3>What was reduced or separated</h3>
-      <ul class="styled-list">
-        <li>Vulnerabilities and mitigations are no longer merged into one overloaded screen.</li>
-        <li>Testing is isolated from static explanation pages so experimentation feels intentional.</li>
-        <li>Assistant functionality is available globally but can also expand into its own dedicated page.</li>
-        <li>Complex configuration is hidden inside the Testing workflow instead of cluttering the Home page.</li>
-      </ul>
+      <div class="final-ui-list-panel final-ui-list-panel--reduced">
+        <h3 class="heading-with-icon">
+          <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>
+          What was reduced or separated
+        </h3>
+        <ul class="styled-list final-ui-checklist">
+          <li>Vulnerabilities and mitigations are no longer merged into one overloaded screen.</li>
+          <li>Testing is isolated from static explanation pages so experimentation feels intentional.</li>
+          <li>Assistant functionality is available globally but can also expand into its own dedicated page.</li>
+          <li>Complex configuration is hidden inside the Testing workflow instead of cluttering the Home page.</li>
+        </ul>
+      </div>
 
-      <h3>Implemented views</h3>
+      <h3 class="heading-with-icon final-ui-implemented-heading">
+        <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+        Implemented views
+      </h3>
 
-      <h4>Home</h4>
+      <h4 class="final-ui-view-title">
+        <span class="final-ui-view-title__icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+        Home
+      </h4>
       <p>
         The Home page introduces prompt injection, presents a vulnerability catalogue, and supports search and
         impact filtering. It is designed as the main entry point for both first-time and returning users.
@@ -412,7 +443,10 @@
         </figure>
       </div>
 
-      <h4>Mitigations</h4>
+      <h4 class="final-ui-view-title">
+        <span class="final-ui-view-title__icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+        Mitigations
+      </h4>
       <p>
         The Mitigations page separates defensive content from attack content. Users can browse all mitigations,
         read what each one does, review its strategy and flow, switch between pseudo-code, Python, and Java
@@ -429,7 +463,10 @@
         </figure>
       </div>
 
-      <h4>Testing</h4>
+      <h4 class="final-ui-view-title">
+        <span class="final-ui-view-title__icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+        Testing
+      </h4>
       <p>
         The Testing page is the most complex workflow in the system. It supports creating and editing tests,
         using platform or external models, selecting one or more mitigations, switching between prompt and
@@ -446,7 +483,10 @@
         </figure>
       </div>
 
-      <h4>Prompt Enhancer</h4>
+      <h4 class="final-ui-view-title">
+        <span class="final-ui-view-title__icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+        Prompt Enhancer
+      </h4>
       <p>
         The Prompt Enhancer offers a dedicated workflow for selecting mitigations and strengthening a system prompt.
         It supports model selection, mitigation selection, input prompt editing, and a structured results area for
@@ -463,7 +503,10 @@
         </figure>
       </div>
 
-      <h4>Security Knowledge Assistant</h4>
+      <h4 class="final-ui-view-title">
+        <span class="final-ui-view-title__icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/></svg></span>
+        Security Knowledge Assistant
+      </h4>
       <p>
         The assistant exists both as a floating chat widget and as a full-screen page for longer conversations.
         This dual design supports quick help without interrupting the main workflow, while still allowing deeper

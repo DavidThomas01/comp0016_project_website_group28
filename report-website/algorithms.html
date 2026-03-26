@@ -47,24 +47,53 @@
     .formula-vars__sym { font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 0.82rem; color: #FF6B35; font-weight: 700; flex-shrink: 0; min-width: 3.5rem; }
     .formula-vars__desc { font-size: 0.86rem; color: #555; line-height: 1.45; }
 
-    /* ── Pseudocode ── */
-    .pseudocode-wrap {
-      margin: 1.25rem 0;
+    /* ── Pseudocode (collapsible <details>, open by default) ── */
+    .pseudocode-details {
+      margin: 1.5rem 0       2.25rem;
       border: 1px solid rgba(255,107,53,0.15);
       border-top: 3px solid #FF6B35;
       border-radius: 0.85rem;
       overflow: hidden;
       box-shadow: 0 2px 12px rgba(255,107,53,0.06);
     }
-    .pseudocode-header {
+    .pseudocode-summary {
+      list-style: none;
+      cursor: pointer;
+      display: block;
       background: linear-gradient(135deg, #fff9f7, #fff5f2);
-      padding: 0.6rem 1.25rem;
+      padding: 0.65rem 2.75rem 0.65rem 1.25rem;
       font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 0.09em;
       text-transform: uppercase;
       color: #FF6B35;
       border-bottom: 1px solid rgba(255,107,53,0.12);
+      position: relative;
+      user-select: none;
+    }
+    .pseudocode-summary::-webkit-details-marker { display: none; }
+    .pseudocode-summary::marker { content: ''; }
+    .pseudocode-summary::after {
+      content: '';
+      position: absolute;
+      right: 1.15rem;
+      top: 50%;
+      width: 0.42rem;
+      height: 0.42rem;
+      margin-top: -0.28rem;
+      border-right: 2px solid #FF6B35;
+      border-bottom: 2px solid #FF6B35;
+      transform: rotate(225deg); /* ▲ — open: click to collapse */
+      transition: transform 0.2s ease;
+      opacity: 0.85;
+    }
+    .pseudocode-details:not([open]) .pseudocode-summary::after {
+      margin-top: -0.15rem;
+      transform: rotate(45deg); /* ▼ — show code */
+    }
+    .pseudocode-summary:focus-visible {
+      outline: 2px solid #FF6B35;
+      outline-offset: 2px;
     }
     .pseudocode-body {
       background: #1e1e2e;
@@ -127,10 +156,23 @@
       box-shadow: 0 2px 8px rgba(255,107,53,0.3);
       flex-shrink: 0;
     }
+
+    /* Sleek icon accents (overview + pipeline only) */
+    body.page-algorithms #algorithms-overview .card-icon,
+    body.page-algorithms #enhancement .card-grid.cols-3 .card-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0.75rem;
+    }
+    body.page-algorithms #algorithms-overview .card-icon .ui-icon,
+    body.page-algorithms #enhancement .card-grid.cols-3 .card-icon .ui-icon {
+      width: 1.3rem;
+      height: 1.3rem;
+    }
   </style>
 </head>
 
-<body>
+<body class="page-algorithms">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -211,14 +253,17 @@
     <section class="section fade-in" id="algorithms-overview">
       <div class="card-grid cols-3 stagger">
         <div class="card card-accent">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
           <h3>Knowledge Base Retrieval</h3>
           <p>Ranks knowledge base documents against a user query using term frequency saturation and document length normalisation — no external model required.</p>
         </div>
         <div class="card card-accent">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></div>
           <h3>Hybrid Injection Detection</h3>
           <p>Combines a 33-rule deterministic engine with an AI semantic classifier using a probabilistic formula that prevents strong signals from being diluted.</p>
         </div>
         <div class="card card-accent">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg></div>
           <h3>Verified Prompt Enhancement</h3>
           <p>A three-stage iterative pipeline that improves a system prompt, prepends security mitigations, and verifies correctness — retrying until it passes.</p>
         </div>
@@ -271,8 +316,8 @@
       </div>
 
       <h3>Pseudo-code</h3>
-      <div class="pseudocode-wrap">
-        <div class="pseudocode-header">Algorithm — BM25 Knowledge Base Search</div>
+      <details class="pseudocode-details" open>
+        <summary class="pseudocode-summary">Algorithm — BM25 Knowledge Base Search</summary>
         <div class="pseudocode-body"><pre>
 <span class="pc-kw">function</span> <span class="pc-fn">BM25_SEARCH</span>(query, knowledge_base, k=<span class="pc-nu">3</span>, k1=<span class="pc-nu">1.5</span>, b=<span class="pc-nu">0.75</span>):
     tokens   ← <span class="pc-fn">tokenise</span>(query.<span class="pc-fn">lower</span>())
@@ -294,7 +339,7 @@
 
     <span class="pc-op">return</span> <span class="pc-fn">top_k</span>(scores, k)                              <span class="pc-cm">// top-3 documents by score</span>
 </pre></div>
-      </div>
+      </details>
 
       <h3>Why BM25? Comparison with Alternatives</h3>
       <p>
@@ -427,8 +472,8 @@
       </p>
 
       <h3>Pseudo-code</h3>
-      <div class="pseudocode-wrap">
-        <div class="pseudocode-header">Algorithm — Hybrid Injection Detection</div>
+      <details class="pseudocode-details" open>
+        <summary class="pseudocode-summary">Algorithm — Hybrid Injection Detection</summary>
         <div class="pseudocode-body"><pre>
 <span class="pc-kw">function</span> <span class="pc-fn">ANALYSE</span>(prompt, response, context):
 
@@ -467,7 +512,7 @@
         ai_type    = ai_result.attack_type
     )
 </pre></div>
-      </div>
+      </details>
 
       <h3>Why Hybrid? Comparison with Alternatives</h3>
       <div class="compare-wrap">
@@ -539,22 +584,25 @@
       <h3>Pipeline Stages</h3>
       <div class="card-grid cols-3 stagger">
         <div class="card card-accent">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
           <h3>Stage 1 — Improve</h3>
           <p>An LLM rewrites the original system prompt for clarity, structure, and specificity — without adding any security content. The improved prompt forms the base for stage 2.</p>
         </div>
         <div class="card card-accent">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg></div>
           <h3>Stage 2 — Prepend Mitigations</h3>
           <p>The selected mitigation instructions (resolved from <code>MITIGATION_REGISTRY</code>) are prepended to the improved prompt as a structured "Security Guidelines" block.</p>
         </div>
         <div class="card card-accent">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
           <h3>Stage 3 — Verify</h3>
           <p>A second LLM call evaluates whether: (a) the original intent is preserved, (b) all selected mitigations are present, (c) no unintended changes were introduced. Returns <strong>PASS</strong> or <strong>FAIL</strong> with a reason.</p>
         </div>
       </div>
 
       <h3>Pseudo-code</h3>
-      <div class="pseudocode-wrap">
-        <div class="pseudocode-header">Algorithm — Three-Stage Verified Prompt Enhancement</div>
+      <details class="pseudocode-details" open>
+        <summary class="pseudocode-summary">Algorithm — Three-Stage Verified Prompt Enhancement</summary>
         <div class="pseudocode-body"><pre>
 <span class="pc-kw">function</span> <span class="pc-fn">ENHANCE_PROMPT</span>(original, mitigation_ids, max_attempts=<span class="pc-nu">3</span>):
     attempt  ← <span class="pc-nu">0</span>
@@ -591,7 +639,7 @@
 
     <span class="pc-op">raise</span> MaxAttemptsExceeded(<span class="pc-st">"Verification failed after {max_attempts} attempts"</span>)
 </pre></div>
-      </div>
+      </details>
 
       <h3>Why Verified Iteration?</h3>
       <p>

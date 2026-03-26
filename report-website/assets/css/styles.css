@@ -683,10 +683,10 @@ a.btn-primary:active {
 }
 
 /* ====== Main & Sections ====== */
-main { padding: 2.5rem 0 3rem; }
+main { padding: 2.75rem 0 3.35rem; }
 
 .section {
-  padding: 2rem 0;
+  padding: 2.65rem 0;
   border-bottom: 1px solid var(--border-light);
   transition: all var(--duration-slow) var(--ease);
   scroll-margin-top: 120px;
@@ -715,7 +715,7 @@ main { padding: 2.5rem 0 3rem; }
 #timeline.section:hover {
   background: transparent;
   margin: 0;
-  padding: 2rem 0 0.75rem;
+  padding: 2.65rem 0 0.75rem;
   border-radius: 0;
 }
 
@@ -725,8 +725,29 @@ main { padding: 2.5rem 0 3rem; }
   padding-top: 1rem;
 }
 
+/* Reading rhythm — narrative paragraphs & subsection breaks inside main sections */
+main .section > p:not(:last-child) {
+  margin-bottom: 1.12rem;
+}
+
+main .section > p:last-child {
+  margin-bottom: 0;
+}
+
+main .section > * + h3 {
+  margin-top: 2rem;
+}
+
+main .section > :is(ul, ol).styled-list {
+  margin-bottom: 1.2rem;
+}
+
+main .section > :is(ul, ol).styled-list:last-child {
+  margin-bottom: 0;
+}
+
 h2 {
-  margin: 0 0 1rem;
+  margin: 0 0 1.28rem;
   font-size: 1.45rem;
   font-weight: 800;
   letter-spacing: -0.025em;
@@ -747,7 +768,7 @@ h2::before {
 }
 
 h3 {
-  margin: 1.25rem 0 0.6rem;
+  margin: 1.55rem 0 0.72rem;
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text);
@@ -853,7 +874,7 @@ h3 {
 }
 
 h4 {
-  margin: 1rem 0 0.4rem;
+  margin: 1.35rem 0 0.52rem;
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-secondary);
@@ -884,8 +905,8 @@ h4 {
   border: 1px solid rgba(255,107,53,0.28);
   border-left: 6px solid var(--brand);
   border-radius: var(--radius-lg);
-  padding: 1.2rem 1.3rem;
-  margin: 0.4rem 0 1.2rem;
+  padding: 1.35rem 1.4rem;
+  margin: 0.5rem 0 1.35rem;
   background: linear-gradient(135deg, rgba(255,245,242,0.9), rgba(255,255,255,1));
   box-shadow: var(--shadow-sm);
 }
@@ -896,8 +917,8 @@ h4 {
 }
 
 .section.section-track:hover {
-  margin: 0.4rem 0 1.2rem;
-  padding: 1.2rem 1.3rem;
+  margin: 0.5rem 0 1.35rem;
+  padding: 1.35rem 1.4rem;
   border-radius: var(--radius-lg);
 }
 
@@ -906,7 +927,7 @@ h4 {
 }
 
 .section-track h2 {
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.62rem;
 }
 
 .section-track__label {
@@ -919,9 +940,9 @@ h4 {
 }
 
 .section-track__lead {
-  margin: 0;
+  margin: 0 0 0.25rem;
   font-size: 0.92rem;
-  line-height: 1.6;
+  line-height: 1.68;
   color: var(--text-secondary);
   max-width: 78ch;
 }
@@ -1195,7 +1216,10 @@ h3.heading-with-icon {
   height: 100%;
 }
 
-/* Grow intro so Pros/Cons rows share a top baseline within each grid row */
+/*
+ * Intros vary in length: grow intro so Pros/Cons blocks share one baseline per grid row
+ * (uniform bullet min-heights keep subsection heights similar).
+ */
 .existing-solutions-grid .card-feature-intro {
   flex: 1 1 auto;
   min-height: 0;
@@ -1206,7 +1230,9 @@ h3.heading-with-icon {
 }
 
 .existing-solutions-grid .card.card--feature > .card-subsection {
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
   margin-top: 0.85rem;
 }
 
@@ -1244,6 +1270,7 @@ h3.heading-with-icon {
 /* Research — Backend: FastAPI vs Django Pros/Cons row alignment */
 #backend .card-grid {
   align-items: stretch;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 #backend .card-grid > .card {
@@ -1254,7 +1281,7 @@ h3.heading-with-icon {
 }
 
 #backend .card-grid .card-feature-intro {
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   min-height: 0;
 }
 
@@ -1263,7 +1290,10 @@ h3.heading-with-icon {
 }
 
 #backend .card-grid > .card > .card-subsection {
-  flex-shrink: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
   margin-top: 0.85rem;
 }
 
@@ -1282,7 +1312,7 @@ h3.heading-with-icon {
 }
 
 #frontend .card-grid .card-feature-intro {
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   min-height: 0;
 }
 
@@ -1291,7 +1321,10 @@ h3.heading-with-icon {
 }
 
 #frontend .card-grid > .card > .card-subsection {
-  flex-shrink: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
   margin-top: 0.85rem;
 }
 
@@ -1299,6 +1332,44 @@ h3.heading-with-icon {
   #frontend .card-grid {
     grid-template-columns: 1fr;
   }
+  #backend .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*
+ * Research comparison cards:
+ * - Frontend / Backend: subsection grows (flex: 1) so paired cards match height; spare space sits
+ *   below Cons. Each bullet has a ~2-line min-height so adjacent columns line up.
+ * - Existing Solutions: intro grows so varying blurbs still leave Pros/Cons on one row aligned.
+ */
+#frontend .card-subsection .pros-list > li,
+#frontend .card-subsection .cons-list > li,
+#backend .card-subsection .pros-list > li,
+#backend .card-subsection .cons-list > li,
+.existing-solutions-grid .card-subsection .pros-list > li,
+.existing-solutions-grid .card-subsection .cons-list > li {
+  min-height: calc(2 * 1.65em + 0.08em);
+  margin-bottom: 0.45rem;
+  box-sizing: border-box;
+}
+
+#frontend .card-subsection .pros-list > li:last-child,
+#backend .card-subsection .pros-list > li:last-child,
+.existing-solutions-grid .card-subsection .pros-list > li:last-child {
+  margin-bottom: 0.55rem;
+}
+
+#frontend .card-subsection .cons-list > li:last-child,
+#backend .card-subsection .cons-list > li:last-child,
+.existing-solutions-grid .card-subsection .cons-list > li:last-child {
+  margin-bottom: 0;
+}
+
+#frontend .card-subsection > h4:nth-of-type(2),
+#backend .card-subsection > h4:nth-of-type(2),
+.existing-solutions-grid .card-subsection > h4:nth-of-type(2) {
+  margin-top: 0.3rem;
 }
 
 /* UI Design — accessibility feature grid: fixed 2×2 (not 3+1 from auto-fit cols-2) */
@@ -1343,6 +1414,7 @@ h3.heading-with-icon {
 /* UI Design — implemented view subsections under Final UI */
 #final-ui h4 {
   margin-top: 1.75rem;
+  margin-bottom: 0.9rem;
   font-size: 1.08rem;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -1350,7 +1422,189 @@ h3.heading-with-icon {
 }
 
 #final-ui h3 + h4 {
-  margin-top: 1.1rem;
+  margin-top: 2.15rem;
+}
+
+/* Final UI — Implemented views: breathing room between feature subsections */
+#final-ui p + .implemented-view-shots {
+  margin-top: 1.85rem;
+}
+
+#final-ui .implemented-view-shots {
+  margin-bottom: 1.35rem;
+  gap: 1.15rem;
+}
+
+/* Next feature subsection: clear band before the next view title */
+#final-ui .implemented-view-shots + h4 {
+  margin-top: 4rem;
+  scroll-margin-top: 110px;
+}
+
+section#final-ui.section {
+  padding-bottom: 4.75rem;
+}
+
+/* Final UI — visual rhythm: lead, prose bands, list panels, view icons */
+#final-ui .final-ui-lead {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem;
+  margin: 0.35rem 0 1.85rem;
+  background: linear-gradient(135deg, rgba(255, 245, 242, 0.92), var(--surface) 55%);
+  border: 1px solid rgba(255, 107, 53, 0.14);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--brand);
+  box-shadow: var(--shadow-xs);
+}
+
+#final-ui .final-ui-lead__icon {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  background: linear-gradient(145deg, var(--bg-soft), rgba(255, 107, 53, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#final-ui .final-ui-lead__icon .ui-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--brand);
+}
+
+#final-ui .final-ui-lead p {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-size: 0.98rem;
+  line-height: 1.72;
+  color: var(--text-secondary);
+}
+
+#final-ui .final-ui-prose-band {
+  padding: 1.15rem 1.25rem 1.25rem;
+  margin: 1.4rem 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255, 245, 242, 0.45), rgba(255, 255, 255, 0.5));
+  border: 1px solid rgba(255, 107, 53, 0.11);
+}
+
+#final-ui .final-ui-prose-band--alt {
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.95), rgba(255, 255, 255, 0.65));
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+#final-ui .final-ui-prose-band .heading-with-icon {
+  margin: 0 0 0.65rem;
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+#final-ui .final-ui-prose-band .heading-with-icon .ui-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+#final-ui .final-ui-prose-band p {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.72;
+  color: var(--text-secondary);
+}
+
+#final-ui .final-ui-list-panel {
+  padding: 1.2rem 1.3rem 1.35rem;
+  margin: 1.5rem 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-xs);
+}
+
+#final-ui .final-ui-list-panel .heading-with-icon {
+  margin: 0 0 0.75rem;
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+#final-ui .final-ui-list-panel--added {
+  background: linear-gradient(165deg, rgba(16, 185, 129, 0.07), var(--surface) 42%);
+  border-top: 3px solid rgba(16, 185, 129, 0.5);
+}
+
+#final-ui .final-ui-list-panel--added .heading-with-icon .ui-icon {
+  color: #059669;
+}
+
+#final-ui .final-ui-list-panel--reduced {
+  background: linear-gradient(165deg, rgba(99, 102, 241, 0.07), var(--surface) 42%);
+  border-top: 3px solid rgba(99, 102, 241, 0.45);
+}
+
+#final-ui .final-ui-list-panel--reduced .heading-with-icon .ui-icon {
+  color: #4f46e5;
+}
+
+#final-ui .final-ui-checklist {
+  margin: 0;
+}
+
+#final-ui .final-ui-checklist li {
+  margin-bottom: 0.5rem;
+}
+
+#final-ui .final-ui-checklist li:last-child {
+  margin-bottom: 0;
+}
+
+#final-ui h3.final-ui-implemented-heading {
+  margin-top: 2.25rem;
+  margin-bottom: 0.35rem;
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+#final-ui h3.final-ui-implemented-heading .ui-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+#final-ui h4.final-ui-view-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+#final-ui .final-ui-view-title__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 107, 53, 0.08);
+}
+
+#final-ui .final-ui-view-title__icon .ui-icon {
+  width: 0.98rem;
+  height: 0.98rem;
+  color: var(--brand-dark);
+}
+
+@media (max-width: 540px) {
+  #final-ui .final-ui-lead {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
 }
 
 /* UI Design — Personas: two white cards side by side */
@@ -1796,8 +2050,8 @@ h3.heading-with-icon {
 .styled-list li {
   position: relative;
   padding-left: 1.6rem;
-  margin-bottom: 0.65rem;
-  line-height: 1.65;
+  margin-bottom: 0.75rem;
+  line-height: 1.68;
   color: var(--text-secondary);
   font-size: 0.94rem;
 }
@@ -2151,16 +2405,27 @@ ul:not(.styled-list):not(.tag-list) li strong {
   color: var(--text-secondary);
 }
 
+/* Algorithms page: extra vertical rhythm around sections that include pseudocode */
+body.page-algorithms main > .container > .section#algorithms-overview {
+  padding-bottom: 2.75rem;
+}
+body.page-algorithms main > .container > .section#bm25,
+body.page-algorithms main > .container > .section#detection,
+body.page-algorithms main > .container > .section#enhancement {
+  padding-top: 3rem;
+  padding-bottom: 3.5rem;
+}
+
 /* Evaluation page: clearer rhythm between paragraphs (scoped so other pages unchanged) */
 body.page-evaluation main .section > p + p,
 body.page-evaluation main .section > .section-lead + p {
-  margin-top: 1rem;
+  margin-top: 1.22rem;
 }
 body.page-evaluation main .section > p {
   margin-bottom: 0;
 }
 body.page-evaluation main .evaluation-content p + p {
-  margin-top: 1rem;
+  margin-top: 1.15rem;
 }
 body.page-evaluation main .evaluation-content p.evaluation-rating {
   margin-top: 1.15rem;
@@ -2171,7 +2436,7 @@ body.page-evaluation .achievements-card .achievements-intro {
   margin-bottom: 0.85rem;
 }
 body.page-evaluation .achievements-card .evaluation-content p + p {
-  margin-top: 0.9rem;
+  margin-top: 1rem;
 }
 body.page-evaluation h3.evaluation-inline-heading.heading-with-icon {
   justify-content: flex-start;
@@ -2192,7 +2457,7 @@ body.page-user-manual main img {
 
 /* ====== Requirements & Appendices — in-page nav & section rhythm ====== */
 .page-local-nav {
-  margin: 0 0 2rem;
+  margin: 0 0 2.35rem;
   padding: 1rem 1.15rem;
   background: linear-gradient(135deg, var(--bg-soft) 0%, rgba(255, 255, 255, 0.94) 100%);
   border: 1px solid var(--border-light);
@@ -2248,6 +2513,14 @@ body.page-user-manual main img {
 
 body.page-requirements .section {
   padding: 3rem 0 3.35rem;
+}
+/* Global .section:hover uses negative margin + extra horizontal padding (full-bleed tint).
+   On Requirements that reads as the block "expanding"; keep only the background cue. */
+body.page-requirements .section:hover {
+  margin: 0;
+  padding: 3rem 0 3.35rem;
+  background: rgba(255, 245, 242, 0.5);
+  border-radius: var(--radius-md);
 }
 
 body.page-requirements .content-lead-panel {
@@ -2599,11 +2872,11 @@ body.page-requirements .req-moscow-tier {
   border-radius: var(--radius-lg);
   border-left: 4px solid var(--req-tier-accent);
   box-shadow: var(--shadow-xs);
-  transition: box-shadow var(--duration) var(--ease), transform var(--duration) var(--ease);
+  transition: box-shadow var(--duration) var(--ease), border-color var(--duration) var(--ease);
 }
 body.page-requirements .req-moscow-tier:hover {
   box-shadow: var(--shadow-sm);
-  transform: translateY(-1px);
+  border-color: rgba(255, 107, 53, 0.18);
 }
 body.page-requirements .req-moscow-tier--must {
   --req-tier-accent: var(--brand);
@@ -2622,7 +2895,7 @@ body.page-requirements .req-moscow-tier--nfr {
   background: linear-gradient(165deg, rgba(255, 245, 242, 0.35) 0%, var(--surface) 50%);
 }
 body.page-requirements .req-subsection {
-  margin: 1rem 0 0;
+  margin: 1.2rem 0 0;
   padding: 1rem 1.05rem 1.05rem;
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid var(--border-light);
@@ -3609,7 +3882,8 @@ html:not(.js) .req-status-tooltip__panel {
   color: var(--text-secondary);
 }
 .testing-point-list li {
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.62rem;
+  line-height: 1.68;
 }
 .testing-point-list strong {
   color: var(--text);
@@ -4325,6 +4599,14 @@ html.js .gantt-phase-tooltip {
   cursor: zoom-in;
 }
 
+/* Wide exports (e.g. evaluation table screenshots): don’t force 16∶10 cover — it crops sides */
+.prototype-shot--natural img {
+  aspect-ratio: auto;
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}
+
 .prototype-shot img:focus-visible {
   outline: 3px solid rgba(255,107,53,0.55);
   outline-offset: -3px;
@@ -4344,7 +4626,7 @@ html.js .gantt-phase-tooltip {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.9rem;
   margin-top: 0.9rem;
-  max-width: 760px;
+  width: 100%;
 }
 
 .implemented-views-grid {
@@ -4372,7 +4654,6 @@ html.js .gantt-phase-tooltip {
 
   .implemented-view-shots {
     grid-template-columns: 1fr;
-    max-width: 100%;
   }
 }
 
@@ -4662,8 +4943,8 @@ html.js .gantt-phase-tooltip {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  margin-top: 3rem;
-  padding-top: 2rem;
+  margin-top: 3.35rem;
+  padding-top: 2.2rem;
   border-top: 1px solid var(--border-light);
 }
 .page-nav a {
