@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="User Manual for the Prompt Injection Protection platform — step-by-step guidance for all features." />
+  <title>User Manual – Prompt Injection Protection</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container topbar">
+    <a class="brand" href="index.html">
+      <div>
+        <div class="brand-title">Prompt Injection Protection</div>
+        <div class="brand-sub">COMP0016 · 2025–26 · Team 28 · Client: Avanade</div>
+      </div>
+    </a>
+    <div class="brand-logos" aria-hidden="true">
+      <img src="assets/img/logo-ucl.png" alt="UCL">
+      <img src="assets/img/logo-avanade.webp" alt="Avanade">
+    </div>
+  </div>
+  <div class="container">
+    <label class="burger" for="nav-toggle">Menu</label>
+  </div>
+  <input id="nav-toggle" type="checkbox" />
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-left">
+          <div class="nav-scroll">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="requirements.html">Requirements</a>
+          <a class="nav-link" href="research.html">Research</a>
+          <a class="nav-link" href="algorithms.html">Algorithms</a>
+          <a class="nav-link" href="ui-design.html">UI Design</a>
+          <a class="nav-link" href="system-design.html">System Design</a>
+          <a class="nav-link" href="implementation.html">Implementation</a>
+          <a class="nav-link" href="testing.html">Testing</a>
+          <a class="nav-link" href="evaluation.html">Evaluation</a>
+          </div>
+          <div class="nav-item">
+            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <div class="dropdown" role="menu" aria-label="Appendices">
+              <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#license">License (MIT Open)</a>
+              <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
+              <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly videos</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">Systems Engineering · IXN</div>
+    <h1>User Manual</h1>
+    <p>
+      Step-by-step guidance for using the Prompt Injection Protection platform,
+      from exploring vulnerabilities to running security tests.
+    </p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="container">
+
+    <section class="section fade-in">
+      <p>
+        This manual explains how to use the Prompt Injection Protection platform to learn
+        about vulnerabilities, test mitigations, and document security outcomes.
+      </p>
+
+      <h2>1) Getting Started</h2>
+      <div class="user-manual-figure">
+        <img src="assets/img/user_manual/getting_started.webp" alt="Home page for the Prompt Injection Protection platform" />
+      </div>
+      <ul class="styled-list">
+        <li>Open the platform home page and review the overview of prompt injection risks.</li>
+        <li>Use the top navigation bar to move between <strong>Home</strong>, <strong>Vulnerability Detail</strong>, <strong>Mitigations</strong>, <strong>Testing</strong>, and <strong>Prompt Enhancer</strong>.</li>
+        <li>Click the chat icon in the bottom right corner of any page to access the Security Assistant Chatbot.</li>
+        <li>Use dark mode toggle if preferred for readability during long sessions.</li>
+      </ul>
+
+      <h2>2) Understand a Vulnerability</h2>
+      <div class="user-manual-col-2">
+        <div class="user-manual-figure">
+          <img src="assets/img/user_manual/vulnerability_select.webp" alt="Choosing a vulnerability from the Home page" />
+        </div>
+        <div class="user-manual-figure">
+          <img src="assets/img/user_manual/vulnerability_detail.webp" alt="Vulnerability detail page with technical explanation and example attack" />
+        </div>
+      </div>
+      <ul class="styled-list">
+        <li>From the home page vulnerability catalogue, select a vulnerability card.</li>
+        <li>Read the technical explanation to understand how the attack works.</li>
+        <li>Inspect the example attack and model response behaviour.</li>
+        <li>Review the mitigation recommendations linked to that vulnerability.</li>
+      </ul>
+
+      <h2>3) Explore Mitigations</h2>
+      <div class="user-manual-figure">
+        <img src="assets/img/user_manual/mitigation_detail.webp" alt="Mitigation strategies listed with descriptions and implementation examples" />
+      </div>
+      <ul class="styled-list">
+        <li>Go to the mitigations page to browse available defenses.</li>
+        <li>Compare strategy details and implementation style (process-level or code-based).</li>
+        <li>Use pseudocode/Python/Java implementation examples to plan adoption.</li>
+      </ul>
+
+      <h2>4) Create and Run a Security Test</h2>
+      <div class="user-manual-col-2">
+        <div class="user-manual-figure">
+          <img src="assets/img/user_manual/create_custom_test.webp" alt="Creating a custom test with prompt input and mitigation selection" />
+        </div>
+        <div class="user-manual-figure">
+          <img src="assets/img/user_manual/use_custom_test.webp" alt="Test results showing model configuration, chat for testing." />
+        </div>
+      </div>
+      <ul class="styled-list">
+        <li>Open the <strong>Testing</strong> page and create a named custom test.</li>
+        <li>Choose the target model and select one or more mitigations.</li>
+        <li>Enter a prompt in the chat-style test interface and run the test.</li>
+        <li>Review output, risk analysis, and pass/fail status against expected security behaviour.</li>
+        <li>Iterate by trying another attack, changing prompt content or mitigation settings, then rerun.</li>
+      </ul>
+
+      <h2>5) Use Prompt Enhancer</h2>
+      <div class="user-manual-figure">
+        <img src="assets/img/user_manual/prompt_enhancer.webp" alt="Prompt Enhancer interface showing mitigation selection and example system prompt" />
+      </div>
+      <ul class="styled-list">
+        <li>Open <strong>Prompt Enhancer</strong> to strengthen system prompts.</li>
+        <li>Choose selected mitigations and click generate.</li>
+        <li>Review the enhanced prompt and apply it in your target testing workflow.</li>
+      </ul>
+
+      <h2>6) Use the Security Assistant</h2>
+      <div class="user-manual-col-2">
+        <div class="user-manual-figure">
+          <img src="assets/img/user_manual/chatbot_small.webp" alt="Small chatbot interface showing chatbot responding to user input" />
+        </div>
+        <div class="user-manual-figure">
+          <img src="assets/img/user_manual/chatbot_full.webp" alt="Security Assistant chatbot in a full-screen page providing answer to user query" />
+        </div>
+      </div>
+      <ul class="styled-list">
+        <li>Open the Security Assistant for Q&amp;A on prompt injection theory and practical mitigation guidance.</li>
+        <li>Ask scenario-based questions (for example, model misuse patterns and defense trade-offs).</li>
+        <li>Use responses to decide which mitigations to test first.</li>
+      </ul>
+
+      <h2>7) Export and Share Findings</h2>
+      <ul class="styled-list">
+        <li>Export vulnerability views and test outputs to PDF where available.</li>
+        <li>Attach outputs to audit evidence, stakeholder reports, or implementation tickets.</li>
+        <li>Store final decisions with rationale (selected mitigations, residual risks, and next actions).</li>
+      </ul>
+
+      <div class="callout callout--tip mt-3">
+        <p><strong>Recommended flow:</strong> Home → Vulnerability Detail → Mitigations → Testing → Prompt Enhancer → Re-test → Export PDF.</p>
+      </div>
+    </section>
+
+    <nav class="page-nav fade-in" aria-label="Page navigation">
+      <a href="appendices.html">
+        <span class="page-nav-label">Back</span>
+        <span class="page-nav-title">← Appendices</span>
+      </a>
+      <a href="deployment-manual.html">
+        <span class="page-nav-label">Related</span>
+        <span class="page-nav-title">Deployment Manual →</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<div id="footer-root"></div>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

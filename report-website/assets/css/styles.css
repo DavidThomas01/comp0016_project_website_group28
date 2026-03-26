@@ -68,7 +68,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a { transition: all var(--duration) var(--ease); }
+a {
+  color: var(--brand);
+  transition: all var(--duration) var(--ease);
+}
+
+a:visited {
+  color: var(--brand-dark);
+}
+
+a:hover {
+  color: var(--brand-accent);
+}
+
+a:active {
+  color: var(--brand-light);
+}
 
 p { line-height: 1.75; color: var(--text-secondary); }
 
@@ -219,7 +234,7 @@ nav.site-nav {
   display: inline-block;
   padding: 0.45rem 0.55rem;
   text-decoration: none;
-  color: var(--text);
+  color: var(--brand);
   border-radius: var(--radius-sm);
   font-weight: 600;
   font-size: 0.85rem;
@@ -667,6 +682,7 @@ main { padding: 2.5rem 0 3rem; }
   padding: 2rem 0;
   border-bottom: 1px solid var(--border-light);
   transition: all var(--duration-slow) var(--ease);
+  scroll-margin-top: 120px;
 }
 .section:last-child { border-bottom: none; }
 /* Last content section before page nav: avoid double line (section border-bottom + page-nav border-top) */
@@ -1369,10 +1385,36 @@ h3.heading-with-icon {
   margin-bottom: 0;
 }
 
+#personas .persona img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 @media (max-width: 700px) {
   #personas .personas-two-col {
     grid-template-columns: 1fr;
   }
+}
+
+/* Use Case Diagram*/
+.use-case-diagram-wrap {
+  margin: 1.25rem 0 1.5rem;
+}
+
+.use-case-diagram {
+  width: 100%;
+  max-width: 980px;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.use-case-diagram img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
 }
 
 /* Research — Platform Architecture Summary: light glass cards + icons */
@@ -1773,6 +1815,25 @@ ul:not(.styled-list):not(.tag-list) li::marker {
 }
 ul:not(.styled-list):not(.tag-list) li strong {
   color: var(--text);
+}
+
+/* ====== Project Background Split Layout ====== */
+.project-bg-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.project-bg-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.project-bg-logo img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
 }
 
 /* ====== Tables ====== */
@@ -3933,4 +3994,14 @@ footer .container {
 
   .hero-actions { flex-direction: column; align-items: center; }
   .btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 760px) {
+  .project-bg-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .project-bg-logo {
+    justify-content: flex-start;
+  }
 }

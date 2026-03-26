@@ -47,6 +47,7 @@
             <span class="drop-toggle active" tabindex="0" aria-current="page">Appendices ▾</span>
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
+              <a href="appendices.html#license">License (MIT Open)</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
               <a href="appendices.html#dev-blog">Development blog (external)</a>
               <a href="appendices.html#monthly-video">Monthly video</a>
@@ -74,20 +75,19 @@
 
     <section class="section fade-in" id="user-manual">
       <h2>User &amp; Deployment Manuals</h2>
-      <div class="callout callout--note">
-        <p><strong>Coming soon:</strong> The user manual and deployment guide will be finalised alongside the platform implementation.</p>
-      </div>
       <p>
-        The user manual provides step-by-step guidance for all platform features,
-        while the deployment guide covers installation, configuration, and
-        environment setup requirements.
+        Detailed guides for both end users and technical operators setting up and using the
+        Prompt Injection Protection platform.
       </p>
       <div class="card-grid cols-2 stagger">
         <div class="card card-accent">
           <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
           <h3>User Manual</h3>
-          <p>Comprehensive guide covering the vulnerability explorer, knowledge base, testing interface, and results dashboard. Written for both technical and semi-technical users.</p>
-          <div class="tag-list">
+          <p>Step-by-step walkthrough for exploring vulnerabilities, understanding mitigations, running security tests, using the prompt enhancer, and exporting findings.</p>
+          <div class="mt-2">
+            <a href="user-manual.html" class="btn btn-outline">Read User Manual →</a>
+          </div>
+          <div class="tag-list mt-2">
             <span class="badge badge--green">End Users</span>
             <span class="badge badge--blue">Step-by-Step</span>
           </div>
@@ -96,6 +96,9 @@
           <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
           <h3>Deployment Guide</h3>
           <p>Technical guide for setting up the platform, including system requirements, installation steps, configuration options, and troubleshooting.</p>
+          <div class="mt-2">
+            <a href="deployment-manual.html" class="btn btn-outline">Read Deployment Manual →</a>
+          </div>
           <div class="tag-list">
             <span class="badge badge--brand">Technical</span>
             <span class="badge badge--amber">DevOps</span>
@@ -104,36 +107,32 @@
       </div>
     </section>
 
-    <section class="section fade-in" id="gdpr">
-      <h2>GDPR &amp; Data Privacy</h2>
+    <section class="section fade-in" id="license">
+      <h2>License</h2>
       <p>
-        This section documents data privacy considerations and GDPR compliance
+        This project is released under the MIT License <a href="#references">[1]</a>. The license permits
+        use, copy, modification, merge, publication, distribution, sublicense,
+        and/or sale of the software, subject to inclusion of the copyright and
+        license notice.
+      </p>
+      <div class="callout callout--tip">
+        <p><strong>License note:</strong> Include the full MIT License text in project distributions and derivative works.</p>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="gdpr">
+      <h2>GDPR &amp; Legal Compliance</h2>
+      <p>
+        This section documents data privacy considerations and GDPR <a href="#references">[2]</a>, <a href="#references">[3]</a> compliance
         measures implemented in the platform.
       </p>
-      <div class="card-grid cols-3 stagger">
-        <div class="card card--feature card-accent">
-          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-          <h3>Data Minimisation</h3>
-          <p>The platform collects only the minimum data necessary for testing and does not store personal information.</p>
-        </div>
-        <div class="card card--feature card-accent">
-          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></div>
-          <h3>Local-First Storage</h3>
-          <p>All test data is stored locally on the user's device with no transmission to external servers.</p>
-        </div>
-        <div class="card card--feature card-accent">
-          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg></div>
-          <h3>Right to Erasure</h3>
-          <p>Users can delete all stored test data and configurations at any time through the platform interface.</p>
-        </div>
-      </div>
-      <div class="callout callout--tip mt-3">
-        <p>
-          <strong>Privacy by design:</strong> The platform's local-first architecture inherently minimises
-          data privacy risks by keeping all test data on the user's device. No persistent backend
-          server means no centralised data collection.
-        </p>
-      </div>
+      <ul class="styled-list">
+        <li><strong>Data Minimisation:</strong> The platform collects only the minimum data necessary for testing and does not store personal information.</li>
+        <li><strong>Local-First Storage:</strong> All test data is stored locally on the user's device with no transmission to external servers.</li>
+        <li><strong>Right to Erasure:</strong> Users can delete all stored test data and configurations at any time through the platform interface.</li>
+        <li><strong>External Models:</strong> The platform integrates with external AI models, users are responsible for ensuring compliance with regulations defined by the respective providers.</li>
+        <li><strong>Chatbot:</strong> The platform's chatbot functionality utilizes an OpenAI model, all interactions with the model are subject to the provider's terms and conditions.</li>
+      </ul>
     </section>
 
     <section class="section fade-in" id="dev-blog">
@@ -162,8 +161,8 @@
           <div class="monthly-video-row__media">
             <div class="project-video-embed project-video-embed--monthly">
               <iframe
-                src="https://www.youtube-nocookie.com/embed/U3-BXYPew1E"
-                title="Team 28 monthly progress video — December 2025"
+                src="https://www.youtube-nocookie.com/embed/wjumSW6ueYA"
+                title="December Project Update - COMP0016 - Team 28"
                 referrerpolicy="strict-origin-when-cross-origin"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
@@ -173,12 +172,10 @@
           <div class="monthly-video-row__text">
             <h3 class="monthly-video-row__title">December 2025</h3>
             <p class="monthly-video-row__blurb">
-              Early scope with Avanade: goals for the prompt-injection explorer,
-              first threat-model sketches, and how MCP fits into the platform
-              story.
+              Introduction to the project, works on the Human Computer Interaction (HCI) research and design process, showcasing personas, scenarios, sketches and initial and refined prototypes. Next steps for the project include creating a report on prompt injection.
             </p>
             <p class="monthly-video-row__footnote">
-              <a href="https://www.youtube.com/watch?v=U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+              <a href="https://youtu.be/wjumSW6ueYA" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
             </p>
           </div>
         </article>
@@ -186,8 +183,8 @@
           <div class="monthly-video-row__media">
             <div class="project-video-embed project-video-embed--monthly">
               <iframe
-                src="https://www.youtube-nocookie.com/embed/U3-BXYPew1E"
-                title="Team 28 monthly progress video — January 2026"
+                src="https://www.youtube-nocookie.com/embed/1X90FDJpnUs"
+                title="January Project Update - COMP0016 - Team 28"
                 referrerpolicy="strict-origin-when-cross-origin"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
@@ -197,11 +194,10 @@
           <div class="monthly-video-row__text">
             <h3 class="monthly-video-row__title">January 2026</h3>
             <p class="monthly-video-row__blurb">
-              First walkthrough of the vulnerability catalogue and testing
-              workbench, plus feedback from supervision on evaluation criteria.
+              Interview with AI Security Researcher Zekun Wu <a href="#references">[4]</a> from Holistic AI <a href="#references">[5]</a>, discussing the current landscape of prompt injection vulnerabilities, mitigations and testing frameworks. Also details the prompt injection report based on the team's initial research to understand the problem space and inform the design of our solution. Created initial dashboard based on the prototypes to gather feedback from our project partner. Next steps include finalising requirements, introducing backend functionality to the dashboard and the project website.
             </p>
             <p class="monthly-video-row__footnote">
-              <a href="https://www.youtube.com/watch?v=U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+              <a href="https://youtu.be/1X90FDJpnUs" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
             </p>
           </div>
         </article>
@@ -210,7 +206,7 @@
             <div class="project-video-embed project-video-embed--monthly">
               <iframe
                 src="https://www.youtube-nocookie.com/embed/U3-BXYPew1E"
-                title="Team 28 monthly progress video — February 2026"
+                title="February Project Update - COMP0016 - Team 28"
                 referrerpolicy="strict-origin-when-cross-origin"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
@@ -220,11 +216,10 @@
           <div class="monthly-video-row__text">
             <h3 class="monthly-video-row__title">February 2026</h3>
             <p class="monthly-video-row__blurb">
-              February project update: mitigations coverage, Garak integration
-              progress, and a demo of the Test Prompt Injection flow.
+              Details the development of the backend functionality and integration with the frontend dashboard, including the implementation of the vulnerability and mitigation pages, testing framework, prompt enhancer and chatbot. Details each features capabilities showcasing the functionality. Upgraded user interface to better resemble Avanade's design themes. Next steps include presentations at NTT DATA <a href="#references">[6]</a> headquarters and student showcase, implementing final requirements, enhancing functionality and preparing for final handover.
             </p>
             <p class="monthly-video-row__footnote">
-              <a href="https://www.youtube.com/watch?v=U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+              <a href="https://youtu.be/U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
             </p>
           </div>
         </article>
@@ -232,8 +227,8 @@
           <div class="monthly-video-row__media">
             <div class="project-video-embed project-video-embed--monthly">
               <iframe
-                src="https://www.youtube-nocookie.com/embed/U3-BXYPew1E"
-                title="Team 28 monthly progress video — March 2026"
+                src="https://www.youtube-nocookie.com/embed/LzVv426PLGo"
+                title="March Project Update - COMP0016 - Team 28"
                 referrerpolicy="strict-origin-when-cross-origin"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
@@ -243,16 +238,28 @@
           <div class="monthly-video-row__text">
             <h3 class="monthly-video-row__title">March 2026</h3>
             <p class="monthly-video-row__blurb">
-              Final polish before handover: evaluation results, report website
-              walkthrough, and lessons learned for future MCP security tooling.
+              Final project update, all requirements have been implemented and some extended functionality has been added, and the project is finalised. Explains results of presentations to NTT DATA <a href="#references">[6]</a> and industry partners, feedback received about the project. Creation of project website detailing all aspects of the design and development process, and documentation of the project for future reference. Completion of all deliverables.
             </p>
             <p class="monthly-video-row__footnote">
-              <a href="https://www.youtube.com/watch?v=U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+              <a href="https://youtu.be/LzVv426PLGo" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
             </p>
           </div>
         </article>
       </div>
     </section>
+
+    <section class="section fade-in" id="references">
+      <h2>References</h2>
+      <ul class="styled-list">
+        <li><a href="https://opensource.org/license/mit" target="_blank" rel="noopener noreferrer">[1] MIT License</a></li>
+        <li><a href="https://gdpr.eu/" target="_blank" rel="noopener noreferrer">[2] GDPR Overview</a></li>
+        <li><a href="https://www.gov.uk/data-protection" target="_blank" rel="noopener noreferrer">[3] UK Data Protection</a></li>
+        <li><a href="https://www.linkedin.com/in/zekun-wu-1190091a3/" target="_blank" rel="noopener noreferrer">[4] Zekun Wu on LinkedIn</a></li>
+        <li><a href="http://holisticai.com/" target="_blank" rel="noopener noreferrer">[5] Holistic AI</a></li>
+        <li><a href="https://www.nttdata.com/global/en/" target="_blank" rel="noopener noreferrer">[6] NTT DATA</a></li>
+      </ul>
+    </section>
+
 
     <nav class="page-nav fade-in" aria-label="Page navigation">
       <a href="evaluation.html">
