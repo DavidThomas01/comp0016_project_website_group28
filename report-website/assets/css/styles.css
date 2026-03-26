@@ -1572,10 +1572,45 @@ h3.heading-with-icon {
   font-weight: 700;
   color: var(--text);
 }
+.team-subtitle--after-members {
+  margin-top: 3rem;
+}
 .team-lead {
   margin: 0 0 1.5rem;
   font-size: 0.94rem;
   color: var(--muted);
+}
+.team-lead--tight {
+  margin-bottom: 0.65rem;
+}
+.client-contact-card {
+  max-width: 36rem;
+  margin: 0 0 1.75rem;
+  padding: 1rem 1.15rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--brand);
+  box-shadow: var(--shadow-xs);
+}
+.client-contact-card__name {
+  margin: 0 0 0.35rem;
+  font-size: 0.98rem;
+  color: var(--text);
+}
+.client-contact-card__email {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+}
+.client-contact-card__email a {
+  color: var(--brand-dark);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.client-contact-card__email a:hover {
+  color: var(--brand);
+  text-decoration: underline;
 }
 .team-members {
   display: grid;
@@ -1606,14 +1641,14 @@ h3.heading-with-icon {
   box-shadow: var(--shadow-brand-sm);
 }
 .team-member__name {
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.2rem;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--text);
   flex-shrink: 0;
 }
 .team-member__email {
-  margin: 0.35rem 0 0;
+  margin: 0 0 0.5rem;
   font-size: 0.875rem;
   line-height: 1.45;
   color: var(--muted);
@@ -2757,6 +2792,31 @@ body.page-requirements .req-list__text {
   color: var(--text-secondary);
 }
 
+body.page-requirements .req-moscow-table {
+  margin: 0.35rem 0 1rem;
+}
+body.page-requirements .req-moscow-table th:first-child,
+body.page-requirements .req-moscow-table td.req-moscow-table__status {
+  width: 3.35rem;
+  text-align: center;
+  vertical-align: top;
+}
+body.page-requirements .req-moscow-table td.req-moscow-table__status {
+  padding-top: 0.8rem;
+}
+body.page-requirements .req-moscow-table td.req-moscow-table__status .req-status {
+  margin: 0 auto;
+}
+body.page-requirements .req-moscow-table td:not(.req-moscow-table__status) {
+  font-size: 0.92rem;
+  line-height: 1.62;
+  color: var(--text-secondary);
+  vertical-align: top;
+}
+body.page-requirements .req-subsection .table-wrap {
+  margin-bottom: 0.25rem;
+}
+
 body.page-requirements #references .styled-list {
   padding: 0;
 }
@@ -2823,6 +2883,15 @@ body.page-appendices .license-panel {
 }
 body.page-appendices .license-panel p {
   margin: 0;
+}
+
+/* License note sits in the same column as .license-panel — full text column width */
+body.page-appendices #license .license-note-callout {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
 }
 
 body.page-appendices .principle-grid {

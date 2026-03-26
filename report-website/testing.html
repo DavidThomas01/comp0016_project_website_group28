@@ -95,6 +95,9 @@
       <p>
         We used several types of testing to make sure the platform was reliable both technically and from a user point of view. Our goal was to check the parts of the product that matter most: learning about prompt injection, exploring vulnerabilities, and running tests in the app.
       </p>
+      <p class="text-muted">
+        The product does not ship with authentication or shared test accounts (see requirements, Won’t have). In practice that means there is no login flow to exercise in tests; operators supply their own API keys for LLM-backed features.
+      </p>
       <div class="card-grid stagger">
         <div class="card card-accent">
           <h3>What this included</h3>
