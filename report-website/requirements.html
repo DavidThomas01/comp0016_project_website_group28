@@ -49,8 +49,9 @@
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#license">License</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
-              <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development blog (external)</a>
-              <a href="appendices.html#monthly-video">Monthly videos</a>
+              <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="appendices.html#partner-demo">Partner demo video</a>
+              <a href="appendices.html#monthly-video">Monthly video</a>
             </div>
           </div>
         </div>
@@ -89,7 +90,7 @@
       <h2>Project Background</h2>
       <div class="project-bg-layout">
         <div class="project-bg-text">
-          <p>The modern rise in AI adoption has led to increased concerns about the security and robustness of AI systems, particularly in the context of prompt injection attacks. AI has become increasingly prevalent in various applications, but with this speed many organisations have not fully considered the challenges it presents, making it a critical area for security research. Our project partner from Avanade, <a href="https://www.linkedin.com/in/joshmcdonaldmvp/" target="_blank" rel="noopener noreferrer">Josh McDonald</a><a href="#references"> [1]</a>, an AI Security Lead, has worked with us to explore this issue and develop a solution that informs Avanade's clients about the risks and mitigation strategies for prompt injection attacks. Avanade is a company formed by Accenture and Microsoft, they work with organisations to provide IT consulting and services focused on utilising Microsoft technology in a number of different domains including artificial intelligence, business analytics, digital transformation and cloud computing <a href="#references">[2]</a>.</p>
+          <p>The modern rise in AI adoption has led to increased concerns about the security and robustness of AI systems, particularly in the context of prompt injection attacks. AI has become increasingly prevalent in various applications, but with this speed many organisations have not fully considered the challenges it presents, making it a critical area for security research. Our project partner from Avanade, <a href="https://www.linkedin.com/in/joshmcdonaldmvp/" target="_blank" rel="noopener noreferrer">Josh McDonald</a><a href="#ref-1">[1]</a>, an AI Security Lead, has worked with us to explore this issue and develop a solution that informs Avanade's clients about the risks and mitigation strategies for prompt injection attacks. Avanade is a company formed by Accenture and Microsoft, they work with organisations to provide IT consulting and services focused on utilising Microsoft technology in a number of different domains including artificial intelligence, business analytics, digital transformation and cloud computing <a href="#ref-2">[2]</a>.</p>
         </div>
         <div class="project-bg-logo">
           <img src="assets/img/logo-avanade.webp" alt="Avanade logo" />
@@ -122,7 +123,7 @@
         <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         Interview
       </h3>
-      <p>We conducted a semi-structured interview with a Senior Research Scientist in Agentic AI working for Holistic AI, <a href="https://www.linkedin.com/in/zekun-wu-1190091a3/" target="_blank" rel="noopener noreferrer">Zekun Wu [3]</a>. Holistic AI is an organisation that works in AI security and compliance so we consulted Zekun Wu to ask where he felt AI security was most lacking and where he experienced difficulties in his research. Below is also listed the responses of our industry partner to our interview questions.</p>
+      <p>We conducted a semi-structured interview with a Senior Research Scientist in Agentic AI working for Holistic AI, <a href="https://www.linkedin.com/in/zekun-wu-1190091a3/" target="_blank" rel="noopener noreferrer">Zekun Wu</a><a href="#ref-3">[3]</a>. Holistic AI is an organisation that works in AI security and compliance so we consulted Zekun Wu to ask where he felt AI security was most lacking and where he experienced difficulties in his research. Below is also listed the responses of our industry partner to our interview questions.</p>
       <div class="interview-disclosure-grid">
         <details class="interview-disclosure card card-accent">
           <summary class="interview-disclosure__summary">
@@ -140,7 +141,7 @@
             <p><strong>Q:</strong> What do you think is the current biggest issue with prompt injection?</p>
             <p><strong>A:</strong> Well, the field is still quite new and there's a lack of standardized approaches to addressing these vulnerabilities, especially since attacks are evolving so rapidly. But if we're talking about the most concerning issue I would say indirect prompt injection since it introduces so many new attack vectors to models and agents, and there aren't many tools available to address it effectively.</p>
             <p><strong>Q:</strong> Where do you feel current mitigations, frameworks, or tools are lacking?</p>
-            <p><strong>A:</strong> I think the current frameworks are very technical and not easily connected, so while testing one framework, it's difficult to integrate and compare insights from another. I personally use Microsoft Foundry[2] a lot in my work, I think it's a great tool for deploying AI models and setting up endpoints, but it lacks seamless integration with other security tools.</p>
+            <p><strong>A:</strong> I think the current frameworks are very technical and not easily connected, so while testing one framework, it's difficult to integrate and compare insights from another. I personally use Microsoft Foundry <a href="#ref-4">[4]</a> a lot in my work, I think it's a great tool for deploying AI models and setting up endpoints, but it lacks seamless integration with other security tools.</p>
             <p><strong>Q:</strong> What frameworks have you used, or are there any tools we should research?</p>
             <p><strong>A:</strong> I have used Microsoft Foundry and PyRIT, I think both are great tools for testing prompt injection vulnerabilities. PyRIT is more of a set of comprehensive tests that try to break the model with different vulnerabilities like red-teaming attacks.</p>
             <p><strong>Q:</strong> Do you think a tool for creating custom test scenarios for prompt injection could be useful for your work?</p>
@@ -354,87 +355,283 @@
 
       <div class="req-subsection">
       <h4>Home Page</h4>
-      <ul class="styled-list req-list">
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system provides a home page introducing prompt injection, associated risks, and a high-level explanation of how prompt injection works.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The home page displays a clickable list of known prompt injection vulnerabilities.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The home page includes a short summary for each vulnerability.</span></li>
-      </ul>
+      <div class="table-wrap">
+        <table class="styled-table req-moscow-table">
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system provides a home page introducing prompt injection, associated risks, and a high-level explanation of how prompt injection works.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The home page displays a clickable list of known prompt injection vulnerabilities.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The home page includes a short summary for each vulnerability.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
 
       <div class="req-subsection">
       <h4>In-Depth Vulnerability View</h4>
-      <ul class="styled-list req-list">
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Selecting a vulnerability from the home page navigates to an in-depth vulnerability view.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Each in-depth vulnerability view includes a technical vulnerability information panel containing a technical explanation.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The in-depth vulnerability view includes an example panel showing model behaviour when faced with that vulnerability.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The in-depth vulnerability view includes a clear explanation of at least one mitigation strategy.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Each vulnerability includes a technical explanation and a working example demonstrating the vulnerability.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">A comparison panel shows model behaviour without mitigation and with mitigation applied.</span></li>
-      </ul>
+      <div class="table-wrap">
+        <table class="styled-table req-moscow-table">
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Selecting a vulnerability from the home page navigates to an in-depth vulnerability view.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Each in-depth vulnerability view includes a technical vulnerability information panel containing a technical explanation.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The in-depth vulnerability view includes an example panel showing model behaviour when faced with that vulnerability.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The in-depth vulnerability view includes a clear explanation of at least one mitigation strategy.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Each vulnerability includes a technical explanation and a working example demonstrating the vulnerability.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>A comparison panel shows model behaviour without mitigation and with mitigation applied.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
 
       <div class="req-subsection">
       <h4>Knowledge Base</h4>
-      <ul class="styled-list req-list">
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system provides a knowledge base containing clear examples of prompt injection vulnerabilities.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The knowledge base includes technical explanations for each vulnerability.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The knowledge base includes working attack examples.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The knowledge base includes clear explanations of prompt injection mitigations.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The knowledge base includes technical explanations for each mitigation.</span></li>
-      </ul>
+      <div class="table-wrap">
+        <table class="styled-table req-moscow-table">
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system provides a knowledge base containing clear examples of prompt injection vulnerabilities.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The knowledge base includes technical explanations for each vulnerability.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The knowledge base includes working attack examples.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The knowledge base includes clear explanations of prompt injection mitigations.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The knowledge base includes technical explanations for each mitigation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
 
       <div class="req-subsection">
       <h4>Testing View</h4>
-      <ul class="styled-list req-list">
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">A testing view is accessible from the main navigation bar.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Users can create custom tests for individual mitigations.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Users interact with the system via a chat-style interface that processes a single prompt.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Users can enable or disable mitigations identified during research (one per test).</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Custom tests are named by the user.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Custom tests are stored in memory during the session.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Custom tests clearly indicate a pass/fail result based on predefined security expectations.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Test data is preserved locally in an SQL database.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">All tests run on a fixed model (GPT 5.0).</span></li>
-      </ul>
+      <div class="table-wrap">
+        <table class="styled-table req-moscow-table">
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>A testing view is accessible from the main navigation bar.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Users can create custom tests for individual mitigations.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Users interact with the system via a chat-style interface that processes a single prompt.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Users can enable or disable mitigations identified during research (one per test).</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Custom tests are named by the user.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Custom tests are stored in memory during the session.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Custom tests clearly indicate a pass/fail result based on predefined security expectations.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Test data is preserved locally in an SQL database.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>All tests run on a fixed model (GPT 5.0).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
       </div>
 
       <div class="req-moscow-tier req-moscow-tier--should">
       <h3 class="heading-with-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 12 10.76Z"/><path d="M12 12V2"/></svg> Should Have</h3>
-      <ul class="styled-list req-list">
-        <li class="req-list__item"><span class="req-status req-status--adjusted" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg></span><span class="req-list__text">The in-depth vulnerability view includes a sandbox input field for testing prompts with and without mitigation enabled.<a href="#explain-requirements">*</a></span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The in-depth vulnerability view includes mitigation implementation templates presented in pseudocode.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The in-depth vulnerability view includes references or external sources for further reading.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The in-depth vulnerability view supports exporting as a PDF.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The testing view supports multi-prompt tests with conversation history.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The testing view supports multiple agents.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The testing view supports exporting of tests as PDFs.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Multiple mitigations can be applied simultaneously in a custom test.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The knowledge-base chatbot can answer theoretical prompt injection questions.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The knowledge-base chatbot can answer practical prompt injection scenario questions and provide guidance.</span></li>
-      </ul>
+      <div class="table-wrap">
+        <table class="styled-table req-moscow-table">
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--adjusted" role="img" aria-label="Adjusted — alternative delivery"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg></span></td>
+              <td>The in-depth vulnerability view includes a sandbox input field for testing prompts with and without mitigation enabled.<a href="#explain-requirements">*</a></td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The in-depth vulnerability view includes mitigation implementation templates presented in pseudocode.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The in-depth vulnerability view includes references or external sources for further reading.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The in-depth vulnerability view supports exporting as a PDF.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The testing view supports multi-prompt tests with conversation history.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The testing view supports multiple agents.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The testing view supports exporting of tests as PDFs.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Multiple mitigations can be applied simultaneously in a custom test.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The knowledge-base chatbot can answer theoretical prompt injection questions.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The knowledge-base chatbot can answer practical prompt injection scenario questions and provide guidance.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
 
       <div class="req-moscow-tier req-moscow-tier--could">
       <h3 class="heading-with-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg> Could Have</h3>
-      <ul class="styled-list req-list">
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The in-depth vulnerability view presents mitigations in multiple programming languages with a tabbed interface.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The chatbot can provide links that redirect users to relevant pages within the system.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The AI prompt enhancer view includes a fine-tuned model to refine prompts based on selected vulnerabilities and mitigations.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The testing view can run interactive tests on custom models connected via API.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The testing view can run interactive tests on models with custom system prompts.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The testing view can run automated testing pipelines based on NVIDIA Garak and Microsoft PyRIT frameworks.</span></li>
-      </ul>
+      <div class="table-wrap">
+        <table class="styled-table req-moscow-table">
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The in-depth vulnerability view presents mitigations in multiple programming languages with a tabbed interface.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The chatbot can provide links that redirect users to relevant pages within the system.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The AI prompt enhancer view includes a fine-tuned model to refine prompts based on selected vulnerabilities and mitigations.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The testing view can run interactive tests on custom models connected via API.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The testing view can run interactive tests on models with custom system prompts.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The testing view can run automated testing pipelines based on NVIDIA Garak and Microsoft PyRIT frameworks.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
 
       <div class="req-moscow-tier req-moscow-tier--wont">
       <h3 class="heading-with-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg> Won't Have</h3>
-      <ul class="styled-list req-list">
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system does not include authentication.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system does not automatically fix detected prompt injection vulnerabilities or attacks.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system does not modify custom or non-standard models.</span></li>
-      </ul>
+      <div class="table-wrap">
+        <table class="styled-table req-moscow-table">
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system does not include authentication.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system does not automatically fix detected prompt injection vulnerabilities or attacks.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system does not modify custom or non-standard models.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
 
       <div class="req-moscow-tier req-moscow-tier--nfr">
@@ -457,40 +654,122 @@
 
       <div class="req-subsection">
       <h4>Must Have</h4>
-      <ul class="styled-list req-list">
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system is delivered as a web application.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system presents vulnerabilities, mitigations, and test results in a clear and understandable manner for technical and semi-technical users.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The chatbot and testing interfaces provide acceptable interactive response times.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The interface is intuitive, clear, and logically structured to conform to standards.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system supports a dark mode interface.</span></li>
-      </ul>
+      <div class="table-wrap">
+        <table class="styled-table req-moscow-table">
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system is delivered as a web application.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system presents vulnerabilities, mitigations, and test results in a clear and understandable manner for technical and semi-technical users.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The chatbot and testing interfaces provide acceptable interactive response times.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The interface is intuitive, clear, and logically structured to conform to standards.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system supports a dark mode interface.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
 
       <div class="req-subsection">
       <h4>Should Have</h4>
-      <ul class="styled-list req-list">
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system uses consistent colour schemes with Avanade style.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system uses standardised icons.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system uses uniform layout conventions across all views.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Red is used to represent vulnerabilities and failing tests.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Green is used to represent mitigations and passing tests.</span></li>
-      </ul>
+      <div class="table-wrap">
+        <table class="styled-table req-moscow-table">
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system uses consistent colour schemes with Avanade style.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system uses standardised icons.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system uses uniform layout conventions across all views.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Red is used to represent vulnerabilities and failing tests.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Green is used to represent mitigations and passing tests.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
 
       <div class="req-subsection">
       <h4>Could Have</h4>
-      <ul class="styled-list req-list">
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">Vulnerabilities and mitigations are mapped to established standards such as OWASP Top 10 for LLMs and MITRE ATLAS.</span></li>
-      </ul>
+      <div class="table-wrap">
+        <table class="styled-table req-moscow-table">
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>Vulnerabilities and mitigations are mapped to established standards such as OWASP Top 10 for LLMs and MITRE ATLAS.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
 
       <div class="req-subsection">
       <h4>Won't Have</h4>
-      <ul class="styled-list req-list">
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system is not run on a persistent backend server.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system does not ensure compatibility with all LLM providers.</span></li>
-        <li class="req-list__item"><span class="req-status req-status--met" aria-hidden="true"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="req-list__text">The system does not support fully custom automated testing pipelines.</span></li>
-      </ul>
+      <div class="table-wrap">
+        <table class="styled-table req-moscow-table">
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system is not run on a persistent backend server.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system does not ensure compatibility with all LLM providers.</td>
+            </tr>
+            <tr>
+              <td class="req-moscow-table__status"><span class="req-status req-status--met" role="img" aria-label="Met"><svg class="req-status__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span></td>
+              <td>The system does not support fully custom automated testing pipelines.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
       </div>
       <div id="explain-requirements" class="callout callout--note mt-2">
@@ -499,11 +778,15 @@
     </section>
     <section class="section fade-in" id="references">
       <h2>References</h2>
-      <ul class="styled-list">
-        <li>[1] <a href="https://www.linkedin.com/in/joshmcdonaldmvp/">Josh McDonald</a></li>
-        <li>[2] Avanade. (n.d.). About Avanade. Avanade. Retrieved March 20, 2026, from <a href="https://www.avanade.com/en-gb/about">https://www.avanade.com/en-gb/about</a></li>
-        <li>[3] <a href="https://www.linkedin.com/in/zekun-wu-1190091a3/">Zekun Wu</a></li>
-      </ul>
+      <div class="references-lede">
+        <p>Sources cited on this page, numbered in IEEE style.</p>
+      </div>
+      <ol class="reference-list reference-list--ieee" role="list">
+        <li id="ref-1">J. McDonald, professional profile, LinkedIn. Accessed: Mar. 26, 2026. [Online]. Available: <a href="https://www.linkedin.com/in/joshmcdonaldmvp/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/joshmcdonaldmvp/</a></li>
+        <li id="ref-2">Avanade, &ldquo;About Avanade.&rdquo; Avanade. Accessed: Mar. 20, 2026. [Online]. Available: <a href="https://www.avanade.com/en-gb/about" target="_blank" rel="noopener noreferrer">https://www.avanade.com/en-gb/about</a></li>
+        <li id="ref-3">Z. Wu, professional profile, LinkedIn. Accessed: Mar. 26, 2026. [Online]. Available: <a href="https://www.linkedin.com/in/zekun-wu-1190091a3/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/zekun-wu-1190091a3/</a></li>
+        <li id="ref-4">Microsoft, &ldquo;Azure AI Foundry documentation,&rdquo; Microsoft Learn. Accessed: Mar. 26, 2026. [Online]. Available: <a href="https://learn.microsoft.com/azure/ai-foundry/" target="_blank" rel="noopener noreferrer">https://learn.microsoft.com/azure/ai-foundry/</a></li>
+      </ol>
     </section>
     <nav class="page-nav fade-in" aria-label="Page navigation">
       <a href="index.html">

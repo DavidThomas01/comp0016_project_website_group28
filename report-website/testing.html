@@ -49,8 +49,9 @@
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#license">License</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
-              <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development blog (external)</a>
-              <a href="appendices.html#monthly-video">Monthly videos</a>
+              <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="appendices.html#partner-demo">Partner demo video</a>
+              <a href="appendices.html#monthly-video">Monthly video</a>
             </div>
           </div>
         </div>
@@ -93,12 +94,28 @@
       </h2>
       <p>
         We used several types of testing to make sure the platform was reliable both technically and from a user point of view. Our goal was to check the parts of the product that matter most: learning about prompt injection, exploring vulnerabilities, and running tests in the app.
+        The backbone of technical regression is an <strong>automated</strong> backend suite in
+        <span class="glossary-pop" tabindex="0" aria-describedby="pytest-tip-strategy" aria-expanded="false">
+          <code>pytest</code>
+          <span id="pytest-tip-strategy" class="glossary-pop__panel" role="region" aria-label="What is pytest?">
+            <span class="glossary-pop__title">pytest</span>
+            <span class="glossary-pop__body">
+              A widely used <strong>Python testing framework</strong>: you write plain test functions with assertions, discover and run them with one command, and extend behaviour with plugins (for example <code>pytest-asyncio</code> for async code).
+            </span>
+            <a
+              class="glossary-pop__link"
+              href="https://docs.pytest.org/"
+              target="_blank"
+              rel="noopener noreferrer">pytest documentation</a>
+          </span>
+        </span>
+        — hundreds of unit and integration checks that we can re-run after every change; manual work sits in the browser, with partners, and in short user sessions.
       </p>
       <div class="card-grid stagger">
         <div class="card card-accent">
           <h3>What this included</h3>
           <ul class="testing-point-list">
-            <li><strong>Unit and integration testing:</strong> checking that individual backend components behave correctly and that important flows work properly when connected together.</li>
+            <li><strong>Automated unit and integration testing (pytest):</strong> fast, repeatable checks on isolated modules and on multi-step HTTP/API flows through the real app wiring (mostly mocked LLMs; optional live-provider tests when keys are set).</li>
             <li><strong>Manual browser testing:</strong> checking that the main screens work across common browsers and window sizes.</li>
             <li><strong>Partner feedback:</strong> Avanade gave regular feedback on layout, navigation, and feature placement.</li>
             <li><strong>Light user testing:</strong> seven people outside the team completed core tasks and told us what felt clear or confusing.</li>
@@ -154,7 +171,10 @@
         Unit and integration testing
       </h2>
       <p>
-        The backend test suite is built with <code>pytest</code>, with <code>pytest-asyncio</code> used for async parts of the system. Most tests use mocks rather than real model calls, which keeps the suite fast and practical to run. A smaller set of integration tests can also call live APIs when the right keys are available.
+        The backend test suite uses <code>pytest</code>, with <code>pytest-asyncio</code> for async parts of the system. Here, integration testing means automated tests written in <code>pytest</code>, not manual testing. These tests send requests to the API, check the status codes and JSON responses, and make sure different parts of the backend work properly together.
+      </p>
+      <p>
+        Most tests use mocks instead of real model calls, which keeps the suite fast and practical to run. A smaller set of tests can call live APIs when the right keys are available. If those keys are not present, the tests are skipped.
       </p>
       <div class="testing-two-col">
         <div class="card">
@@ -171,7 +191,6 @@
 
     assert analyser.is_flagged(low) is False
     assert analyser.is_flagged(high) is True</code></div>
-          <p class="testing-prompt-hint">This is only an illustrative example. Exact names may differ slightly in the repository.</p>
         </div>
         <div class="card">
           <h3>Integration tests</h3>
@@ -188,7 +207,6 @@ async def test_create_named_test_returns_id(async_client):
     body = response.json()
     assert "id" in body
     assert body["name"] == "demo"</code></div>
-          <p class="testing-prompt-hint">This is also illustrative only. Exact paths and fields follow the real application API.</p>
         </div>
       </div>
     </section>
@@ -200,12 +218,6 @@ async def test_create_named_test_returns_id(async_client):
       </h2>
       <p>
         The automated backend test suite is where we check that core behaviour stays reliable as the codebase changes. Most tests run quickly because model calls are mocked, while a smaller number can use live APIs when keys are available.
-      </p>
-      <p>
-        In practice, this means testing the main HTTP routes, prompt and mitigation logic, risk scoring, storage, and runners such as the Garak integration. We also check how the system handles invalid input and missing resources.
-      </p>
-      <p>
-        For reporting, we grouped this work into four broad areas:
       </p>
       <div class="card-grid card-grid--2x2 stagger">
         <div class="card card-accent">

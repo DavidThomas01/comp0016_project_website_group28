@@ -50,6 +50,7 @@
               <a href="appendices.html#license">License</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
               <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="appendices.html#partner-demo">Partner demo video</a>
               <a href="appendices.html#monthly-video">Monthly video</a>
             </div>
           </div>
@@ -102,7 +103,7 @@
         instructions and untrusted content through the same natural-language channel.
         This creates ambiguity between “instructions” and “data”, allowing attackers to
         manipulate behaviour through direct prompts, retrieved documents, tool outputs,
-        or even multimodal inputs.
+        or even multimodal inputs <a href="#ref-12">[12]</a>.
       </p>
       <p>
         This matters even more in enterprise environments. Once a model is connected to
@@ -182,7 +183,7 @@
         Prompt injection is not one single attack pattern. It is a family of vulnerabilities
         caused by how LLM systems combine natural-language instructions, external context,
         memory, and tool access. Our taxonomy groups the main classes of risk that appear
-        repeatedly in literature and real deployment scenarios.
+        repeatedly in literature and real deployment scenarios <a href="#ref-1">[1]</a>.
       </p>
 
       <div class="card-grid cols-2 stagger vulnerability-grid">
@@ -266,6 +267,7 @@
         Our research consistently showed that there is no single fix for prompt injection.
         Effective protection requires defence in depth: reducing exposure, checking behaviour,
         constraining actions, and continuously testing the system as it evolves.
+        This layered approach is also reflected in OWASP guidance <a href="#ref-1">[1]</a>.
       </p>
 
       <div class="callout callout--tip">
@@ -407,8 +409,8 @@
         Before deciding what our platform should do, we reviewed both practical security
         tooling and broader enterprise-facing AI platforms. Our goal was not to copy an
         existing product, but to understand how current solutions approach prompt injection,
-        red-teaming, evaluation, and operational safety.
-        <a href="#ref-1">[1]</a><a href="#ref-2">[2]</a><a href="#ref-8">[8]</a><a href="#ref-9">[9]</a>
+        red-teaming, evaluation, and operational safety
+        <a href="#ref-1">[1]</a>, <a href="#ref-2">[2]</a>, <a href="#ref-8">[8]</a>, and <a href="#ref-9">[9]</a>.
       </p>
 
       <div class="card-grid cols-3 stagger existing-solutions-grid">
@@ -418,8 +420,7 @@
             <p>
               Azure AI Foundry is a managed platform for accessing and orchestrating foundation models,
               provider integrations, and enterprise AI workflows. Our industry partner, Josh McDonald,
-              introduced it early in the project as a practical enterprise reference point.
-              <a href="#ref-3">[3]</a>
+              introduced it early in the project as a practical enterprise reference point <a href="#ref-3">[3]</a>.
             </p>
           </div>
           <div class="card-subsection" aria-label="Pros and cons">
@@ -440,8 +441,7 @@
             <p>
               Garak was the most directly reflected external testing framework in the implemented platform.
               It demonstrated the value of repeatable adversarial probing and informed the framework-scan
-              capability exposed through the Testing page.
-              <a href="#ref-2">[2]</a>
+              capability exposed through the Testing page <a href="#ref-2">[2]</a>.
             </p>
           </div>
           <div class="card-subsection" aria-label="Pros and cons">
@@ -463,8 +463,7 @@
               PyRIT was relevant from a research and architecture perspective because it frames prompt
               injection testing as structured red-teaming. The repository includes a PyRIT runner file,
               which shows it was considered in the codebase, but it is not part of the currently active
-              runner registry.
-              <a href="#ref-8">[8]</a>
+              runner registry <a href="#ref-8">[8]</a>.
             </p>
           </div>
           <div class="card-subsection" aria-label="Pros and cons">
@@ -484,7 +483,7 @@
             <h3>PromptBench</h3>
             <p>
               PromptBench informed the importance of adversarial benchmarking and comparing behaviour
-              across prompt variants rather than relying on one or two examples.
+              across prompt variants rather than relying on one or two examples <a href="#ref-10">[10]</a>.
             </p>
           </div>
           <div class="card-subsection" aria-label="Pros and cons">
@@ -504,8 +503,7 @@
             <h3>OWASP PromptMe</h3>
             <p>
               PromptMe was useful because it connects testing to recognised OWASP threat scenarios and
-              reinforces a developer-facing, application-security view of prompt injection.
-              <a href="#ref-1">[1]</a>
+              reinforces a developer-facing, application-security view of prompt injection <a href="#ref-1">[1]</a>.
             </p>
           </div>
           <div class="card-subsection" aria-label="Pros and cons">
@@ -526,8 +524,7 @@
             <p>
               OpenAI Evals, together with benchmark-oriented resources such as AgentHarm, AdvBench, and
               HarmBench, influenced the idea that testing should be reproducible, extensible, and suitable
-              for regression workflows rather than one-off manual checks.
-              <a href="#ref-9">[9]</a>
+              for regression workflows rather than one-off manual checks <a href="#ref-9">[9]</a>, <a href="#ref-11">[11]</a>.
             </p>
           </div>
           <div class="card-subsection" aria-label="Pros and cons">
@@ -556,8 +553,7 @@
           <h3>Foundry</h3>
           <p>
             We used Foundry as the provider layer for model access and credential-managed API integration,
-            which reinforced our multi-provider design instead of locking the system to a single model stack.
-            <a href="#ref-3">[3]</a>
+            which reinforced our multi-provider design instead of locking the system to a single model stack <a href="#ref-3">[3]</a>.
           </p>
         </div>
 
@@ -565,8 +561,7 @@
           <h3>NVIDIA Garak</h3>
           <p>
             It shaped our framework-assisted testing workflow so evaluation is not only manual prompt
-            demonstrations, but also repeatable scan-based security checks.
-            <a href="#ref-2">[2]</a>
+            demonstrations, but also repeatable scan-based security checks <a href="#ref-2">[2]</a>.
           </p>
         </div>
 
@@ -574,8 +569,7 @@
           <h3>OWASP PromptMe</h3>
           <p>
             Although not directly integrated, it guided how we present risk in a developer-facing way and
-            aligns with our OWASP Top 10 references and security-learning resources across the report.
-            <a href="#ref-1">[1]</a>
+            aligns with our OWASP Top 10 references and security-learning resources across the report <a href="#ref-1">[1]</a>.
           </p>
         </div>
       </div>
@@ -669,8 +663,7 @@
         <p>
           We implemented the frontend using React with Vite. React provides a flexible component
           architecture for multi-view interactive features, while Vite supports fast local iteration
-          and straightforward production builds.
-          <a href="#ref-4">[4]</a><a href="#ref-5">[5]</a>
+          and straightforward production builds <a href="#ref-4">[4]</a>, <a href="#ref-5">[5]</a>.
         </p>
       </div>
     </section>
@@ -678,8 +671,7 @@
     <section class="section fade-in" id="backend">
       <h2>Backend</h2>
       <p>
-        For the backend framework choice, we focused on a direct comparison between FastAPI and Django.
-        <a href="#ref-6">[6]</a><a href="#ref-7">[7]</a>
+        For the backend framework choice, we focused on a direct comparison between FastAPI and Django <a href="#ref-6">[6]</a>, <a href="#ref-7">[7]</a>.
       </p>
 
       <div class="card-grid cols-2 stagger">
@@ -726,8 +718,7 @@
         <h3>FastAPI</h3>
         <p>
           We selected FastAPI because the platform is primarily API-driven and benefits from fast iteration,
-          typed schemas, and straightforward integration with model orchestration and streaming endpoints.
-          <a href="#ref-6">[6]</a>
+          typed schemas, and straightforward integration with model orchestration and streaming endpoints <a href="#ref-6">[6]</a>.
         </p>
       </div>
     </section>
@@ -736,7 +727,7 @@
       <h2>Platform Architecture Summary</h2>
       <p>
         The platform combines a React SPA frontend with a Python FastAPI backend, emphasizing flexibility,
-        multi-provider support, and security-focused architecture.
+          multi-provider support, and security-focused architecture <a href="#ref-4">[4]</a>, <a href="#ref-5">[5]</a>, <a href="#ref-6">[6]</a>.
       </p>
 
       <div class="card-grid cols-3 stagger">
@@ -774,8 +765,7 @@
           <p>
             <strong>Frameworks:</strong> Azure AI Foundry and NVIDIA Garak. Foundry supports managed model
             access and credential-based provider integration, while Garak provides repeatable adversarial
-            probing through framework-style scan workflows.
-            <a href="#ref-2">[2]</a><a href="#ref-3">[3]</a>
+            probing through framework-style scan workflows <a href="#ref-2">[2]</a>, <a href="#ref-3">[3]</a>.
           </p>
           <p>
             <strong>Why:</strong> together they support both operational model access and structured security
@@ -789,7 +779,7 @@
       <h2>References</h2>
       <div class="references-lede">
         <p>
-          The following sources were the main references used in our research report and knowledge base.
+          The following sources were the main references used in our research report and knowledge base, numbered in IEEE style.
         </p>
         <p class="references-hint">
           <span class="references-hint__label">Note</span>
@@ -797,18 +787,19 @@
         </p>
       </div>
 
-      <ol class="reference-list" role="list">
-        <li id="ref-1">OWASP GenAI Security Project. <em>LLM01:2025 Prompt Injection</em>, 2025. https://genai.owasp.org/llmrisk/llm01-prompt-injection/</li>
-        <li id="ref-2">NVIDIA. <em>garak: LLM vulnerability scanner</em> (GitHub repository), accessed 2026. https://github.com/NVIDIA/garak</li>
-        <li id="ref-3">Microsoft Azure. <em>Azure AI Foundry Documentation</em>, accessed 2026. https://learn.microsoft.com/azure/ai-foundry/</li>
-        <li id="ref-4">React. <em>React Documentation</em>, accessed 2026. https://react.dev/</li>
-        <li id="ref-5">Vite. <em>Vite Documentation</em>, accessed 2026. https://vite.dev/guide/</li>
-        <li id="ref-6">FastAPI. <em>FastAPI Documentation</em>, accessed 2026. https://fastapi.tiangolo.com/</li>
-        <li id="ref-7">Django Software Foundation. <em>Django Documentation</em>, accessed 2026. https://docs.djangoproject.com/</li>
-        <li id="ref-8">Microsoft. <em>PyRIT: Python Risk Identification Tool for generative AI</em> (GitHub repository), accessed 2026. https://github.com/Azure/PyRIT</li>
-        <li id="ref-9">OpenAI. <em>OpenAI Evals</em> (GitHub repository), accessed 2026. https://github.com/openai/evals</li>
-        <li id="ref-10">PromptBench. <em>PromptBench</em> (GitHub repository), accessed 2026. https://github.com/microsoft/promptbench</li>
-        <li id="ref-11">Mantas Mazeika et al. <em>HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal</em>, 2024. https://arxiv.org/abs/2402.04249</li>
+      <ol class="reference-list reference-list--ieee" role="list">
+        <li id="ref-1">OWASP GenAI Security Project, &ldquo;LLM01:2025 Prompt Injection,&rdquo; OWASP Foundation, 2025. [Online]. Available: <a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener noreferrer">https://genai.owasp.org/llmrisk/llm01-prompt-injection/</a></li>
+        <li id="ref-2">NVIDIA, &ldquo;garak,&rdquo; GitHub repository. Accessed: Mar. 21, 2026. [Online]. Available: <a href="https://github.com/NVIDIA/garak" target="_blank" rel="noopener noreferrer">https://github.com/NVIDIA/garak</a></li>
+        <li id="ref-3">Microsoft, &ldquo;Azure AI Foundry documentation,&rdquo; Microsoft Learn. Accessed: Mar. 21, 2026. [Online]. Available: <a href="https://learn.microsoft.com/azure/ai-foundry/" target="_blank" rel="noopener noreferrer">https://learn.microsoft.com/azure/ai-foundry/</a></li>
+        <li id="ref-4">Meta Platforms, Inc., &ldquo;React documentation,&rdquo; react.dev. Accessed: Mar. 21, 2026. [Online]. Available: <a href="https://react.dev/" target="_blank" rel="noopener noreferrer">https://react.dev/</a></li>
+        <li id="ref-5">Vite, &ldquo;Getting started with Vite,&rdquo; vite.dev. Accessed: Mar. 21, 2026. [Online]. Available: <a href="https://vite.dev/guide/" target="_blank" rel="noopener noreferrer">https://vite.dev/guide/</a></li>
+        <li id="ref-6">Sebasti&aacute;n Ram&iacute;rez, &ldquo;FastAPI documentation,&rdquo; fastapi.tiangolo.com. Accessed: Mar. 21, 2026. [Online]. Available: <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener noreferrer">https://fastapi.tiangolo.com/</a></li>
+        <li id="ref-7">Django Software Foundation, &ldquo;Django documentation,&rdquo; Django Project. Accessed: Mar. 21, 2026. [Online]. Available: <a href="https://docs.djangoproject.com/" target="_blank" rel="noopener noreferrer">https://docs.djangoproject.com/</a></li>
+        <li id="ref-8">Microsoft, &ldquo;PyRIT,&rdquo; GitHub repository. Accessed: Mar. 21, 2026. [Online]. Available: <a href="https://github.com/Azure/PyRIT" target="_blank" rel="noopener noreferrer">https://github.com/Azure/PyRIT</a></li>
+        <li id="ref-9">OpenAI, &ldquo;evals,&rdquo; GitHub repository. Accessed: Mar. 21, 2026. [Online]. Available: <a href="https://github.com/openai/evals" target="_blank" rel="noopener noreferrer">https://github.com/openai/evals</a></li>
+        <li id="ref-10">Microsoft, &ldquo;PromptBench,&rdquo; GitHub repository. Accessed: Mar. 21, 2026. [Online]. Available: <a href="https://github.com/microsoft/promptbench" target="_blank" rel="noopener noreferrer">https://github.com/microsoft/promptbench</a></li>
+        <li id="ref-11">M. Mazeika <em>et al.</em>, &ldquo;HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal,&rdquo; arXiv:2402.04249, 2024. [Online]. Available: <a href="https://arxiv.org/abs/2402.04249" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2402.04249</a></li>
+        <li id="ref-12">Darktrace, &ldquo;What is Prompt Injection?&rdquo; Darktrace Cyber AI Glossary. Accessed: Mar. 21, 2026. [Online]. Available: <a href="https://www.darktrace.com/cyber-ai-glossary/prompt-injections" target="_blank" rel="noopener noreferrer">https://www.darktrace.com/cyber-ai-glossary/prompt-injections</a></li>
       </ol>
     </section>
 
