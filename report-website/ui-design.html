@@ -32,6 +32,7 @@
     <div class="container">
       <nav class="site-nav" aria-label="Primary">
         <div class="nav-left">
+          <div class="nav-scroll">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="requirements.html">Requirements</a>
           <a class="nav-link" href="research.html">Research</a>
@@ -39,8 +40,9 @@
           <a class="nav-link active" href="ui-design.html">UI Design</a>
           <a class="nav-link" href="system-design.html">System Design</a>
           <a class="nav-link" href="implementation.html">Implementation</a>
-          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
-          <a class="nav-link" href="conclusion.html">Conclusion</a>
+          <a class="nav-link" href="testing.html">Testing</a>
+          <a class="nav-link" href="evaluation.html">Evaluation</a>
+          </div>
           <div class="nav-item">
             <span class="drop-toggle" tabindex="0">Appendices ▾</span>
             <div class="dropdown" role="menu" aria-label="Appendices">
@@ -233,17 +235,17 @@
       </p>
       <div class="card-grid cols-3 stagger">
         <div class="card card--feature card-accent">
-          <div class="card-icon">&#x2728;</div>
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg></div>
           <h3>Clarity First</h3>
           <p>Complex security concepts presented through clean, intuitive interfaces with clear visual hierarchy.</p>
         </div>
         <div class="card card--feature card-accent">
-          <div class="card-icon">&#x1F9ED;</div>
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
           <h3>Guided Exploration</h3>
           <p>Users can navigate freely between vulnerabilities, mitigations, and testing tools with logical flow.</p>
         </div>
         <div class="card card--feature card-accent">
-          <div class="card-icon">&#x267F;</div>
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-5.5 3.5L11 11l-7 1 7 5 5-2.5 3 4"/><path d="m8 21 3-6"/><path d="m12 15 3 6"/><path d="M3 3h18"/><path d="M9 7h1"/><path d="M9 11h6"/></svg></div>
           <h3>Accessible by Default</h3>
           <p>WCAG AA compliance, keyboard navigation, screen reader support, and high-contrast mode built in.</p>
         </div>
@@ -506,28 +508,28 @@
       </p>
       <div class="card-grid cols-2 stagger">
         <div class="feature-item">
-          <div class="feature-icon">&#x2328;&#xFE0F;</div>
+          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.001"/><path d="M10 8h.001"/><path d="M14 8h.001"/><path d="M18 8h.001"/><path d="M8 12h.001"/><path d="M12 12h.001"/><path d="M16 12h.001"/><path d="M7 16h10"/></svg></div>
           <div class="feature-content">
             <h3>Keyboard Navigation</h3>
             <p>All interactive elements accessible via keyboard with visible focus indicators and logical tab order.</p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">&#x1F4F1;</div>
+          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
           <div class="feature-content">
             <h3>Responsive Design</h3>
             <p>Fully responsive layouts tested across mobile, tablet, and desktop viewport sizes.</p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">&#x1F441;&#xFE0F;</div>
+          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
           <div class="feature-content">
             <h3>Colour &amp; Contrast</h3>
             <p>Colour is never the sole indicator of meaning; all text meets WCAG AA contrast ratios.</p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">&#x1F50A;</div>
+          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 4.9c-.2.7-.4 1.5-.4 2.3 0 3.9 3.1 7.1 7 7.1h.5"/><path d="M8 8c0 2.8 2.2 5 5 5h2"/><path d="M15.2 10.6a4 4 0 0 1 2.3 2.3"/><path d="M19.1 8.1C19.7 9.2 20 10.5 20 12c0 2.8-2.2 5-5 5"/><path d="M12 12h.01"/><path d="M2 2l20 20"/></svg></div>
           <div class="feature-content">
             <h3>Screen Reader Support</h3>
             <p>Semantic HTML, ARIA labels, and meaningful alt text for full screen reader compatibility.</p>
@@ -568,8 +570,8 @@
           <a href="ui-design.html">UI Design</a>
           <a href="system-design.html">System Design</a>
           <a href="implementation.html">Implementation</a>
-          <a href="evaluation-testing.html">Evaluation &amp; Testing</a>
-          <a href="conclusion.html">Conclusion</a>
+          <a href="testing.html">Testing</a>
+          <a href="evaluation.html">Evaluation</a>
           <a href="appendices.html">Appendices</a>
         </nav>
       </div>

@@ -32,6 +32,7 @@
     <div class="container">
       <nav class="site-nav" aria-label="Primary">
         <div class="nav-left">
+          <div class="nav-scroll">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="requirements.html">Requirements</a>
           <a class="nav-link" href="research.html">Research</a>
@@ -39,10 +40,11 @@
           <a class="nav-link" href="ui-design.html">UI Design</a>
           <a class="nav-link" href="system-design.html">System Design</a>
           <a class="nav-link" href="implementation.html">Implementation</a>
-          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
-          <a class="nav-link" href="conclusion.html">Conclusion</a>
+          <a class="nav-link" href="testing.html">Testing</a>
+          <a class="nav-link" href="evaluation.html">Evaluation</a>
+          </div>
           <div class="nav-item">
-            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
+            <span class="drop-toggle active" tabindex="0" aria-current="page">Appendices ▾</span>
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
@@ -82,7 +84,7 @@
       </p>
       <div class="card-grid cols-2 stagger">
         <div class="card card-accent">
-          <div class="card-icon">&#x1F4D6;</div>
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
           <h3>User Manual</h3>
           <p>Comprehensive guide covering the vulnerability explorer, knowledge base, testing interface, and results dashboard. Written for both technical and semi-technical users.</p>
           <div class="tag-list">
@@ -91,7 +93,7 @@
           </div>
         </div>
         <div class="card card-accent">
-          <div class="card-icon">&#x1F527;</div>
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
           <h3>Deployment Guide</h3>
           <p>Technical guide for setting up the platform, including system requirements, installation steps, configuration options, and troubleshooting.</p>
           <div class="tag-list">
@@ -110,17 +112,17 @@
       </p>
       <div class="card-grid cols-3 stagger">
         <div class="card card--feature card-accent">
-          <div class="card-icon">&#x1F512;</div>
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
           <h3>Data Minimisation</h3>
           <p>The platform collects only the minimum data necessary for testing and does not store personal information.</p>
         </div>
         <div class="card card--feature card-accent">
-          <div class="card-icon">&#x1F4BE;</div>
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></div>
           <h3>Local-First Storage</h3>
           <p>All test data is stored locally on the user's device with no transmission to external servers.</p>
         </div>
         <div class="card card--feature card-accent">
-          <div class="card-icon">&#x1F5D1;&#xFE0F;</div>
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg></div>
           <h3>Right to Erasure</h3>
           <p>Users can delete all stored test data and configurations at any time through the platform interface.</p>
         </div>
@@ -141,39 +143,121 @@
         challenges encountered, and insights gained throughout the project.
       </p>
       <div class="card card-accent">
-        <div class="card-icon">&#x270D;&#xFE0F;</div>
+        <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
         <h3>Visit the Development Blog</h3>
         <p>
           Read about our weekly progress, technical deep-dives, and project reflections.
           The blog is updated regularly throughout the project lifecycle.
         </p>
         <div class="mt-2">
-          <a href="#" class="btn btn-outline">Open Development Blog →</a>
+          <a href="https://team-28.hashnode.dev/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Open Development Blog →</a>
         </div>
       </div>
     </section>
 
     <section class="section fade-in" id="monthly-video">
-      <h2>Monthly Video</h2>
-      <p>
-        Monthly video updates summarising progress, demonstrating features, and
-        reflecting on the project's direction.
-      </p>
-      <div class="video-placeholder">
-        <div class="video-placeholder-inner">
-          <div class="play-icon">&#x25B6;</div>
-          <span>Monthly progress video will be available here</span>
-        </div>
-      </div>
-      <div class="callout mt-3">
-        <p>Additional monthly videos will be linked here as they are produced throughout the project timeline.</p>
+      <h2>Monthly videos</h2>
+      <div class="monthly-video-stack mt-2">
+        <article class="monthly-video-row monthly-video-row--media-left">
+          <div class="monthly-video-row__media">
+            <div class="project-video-embed project-video-embed--monthly">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/U3-BXYPew1E"
+                title="Team 28 monthly progress video — December 2025"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="monthly-video-row__text">
+            <h3 class="monthly-video-row__title">December 2025</h3>
+            <p class="monthly-video-row__blurb">
+              Early scope with Avanade: goals for the prompt-injection explorer,
+              first threat-model sketches, and how MCP fits into the platform
+              story.
+            </p>
+            <p class="monthly-video-row__footnote">
+              <a href="https://www.youtube.com/watch?v=U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+            </p>
+          </div>
+        </article>
+        <article class="monthly-video-row monthly-video-row--media-right">
+          <div class="monthly-video-row__media">
+            <div class="project-video-embed project-video-embed--monthly">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/U3-BXYPew1E"
+                title="Team 28 monthly progress video — January 2026"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="monthly-video-row__text">
+            <h3 class="monthly-video-row__title">January 2026</h3>
+            <p class="monthly-video-row__blurb">
+              First walkthrough of the vulnerability catalogue and testing
+              workbench, plus feedback from supervision on evaluation criteria.
+            </p>
+            <p class="monthly-video-row__footnote">
+              <a href="https://www.youtube.com/watch?v=U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+            </p>
+          </div>
+        </article>
+        <article class="monthly-video-row monthly-video-row--media-left">
+          <div class="monthly-video-row__media">
+            <div class="project-video-embed project-video-embed--monthly">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/U3-BXYPew1E"
+                title="Team 28 monthly progress video — February 2026"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="monthly-video-row__text">
+            <h3 class="monthly-video-row__title">February 2026</h3>
+            <p class="monthly-video-row__blurb">
+              February project update: mitigations coverage, Garak integration
+              progress, and a demo of the Test Prompt Injection flow.
+            </p>
+            <p class="monthly-video-row__footnote">
+              <a href="https://www.youtube.com/watch?v=U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+            </p>
+          </div>
+        </article>
+        <article class="monthly-video-row monthly-video-row--media-right">
+          <div class="monthly-video-row__media">
+            <div class="project-video-embed project-video-embed--monthly">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/U3-BXYPew1E"
+                title="Team 28 monthly progress video — March 2026"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="monthly-video-row__text">
+            <h3 class="monthly-video-row__title">March 2026</h3>
+            <p class="monthly-video-row__blurb">
+              Final polish before handover: evaluation results, report website
+              walkthrough, and lessons learned for future MCP security tooling.
+            </p>
+            <p class="monthly-video-row__footnote">
+              <a href="https://www.youtube.com/watch?v=U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
+            </p>
+          </div>
+        </article>
       </div>
     </section>
 
     <nav class="page-nav fade-in" aria-label="Page navigation">
-      <a href="conclusion.html">
+      <a href="evaluation.html">
         <span class="page-nav-label">Previous</span>
-        <span class="page-nav-title">← Conclusion</span>
+        <span class="page-nav-title">← Evaluation</span>
       </a>
       <div></div>
     </nav>
@@ -181,34 +265,7 @@
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="container site-footer__inner">
-    <div class="site-footer__grid">
-      <div class="site-footer__block site-footer__pages">
-        <h3 class="site-footer__heading">Pages</h3>
-        <nav class="site-footer__nav" aria-label="Report pages">
-          <a href="index.html">Home</a>
-          <a href="requirements.html">Requirements</a>
-          <a href="research.html">Research</a>
-          <a href="algorithms.html">Algorithms</a>
-          <a href="ui-design.html">UI Design</a>
-          <a href="system-design.html">System Design</a>
-          <a href="implementation.html">Implementation</a>
-          <a href="evaluation-testing.html">Evaluation &amp; Testing</a>
-          <a href="conclusion.html">Conclusion</a>
-          <a href="appendices.html">Appendices</a>
-        </nav>
-      </div>
-      <div class="site-footer__block site-footer__project">
-        <h3 class="site-footer__heading">Project</h3>
-        <p class="site-footer__title">Prompt Injection Protection</p>
-        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
-        <a href="appendices.html#dev-blog">Development Blog</a>
-      </div>
-    </div>
-    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
-  </div>
-</footer>
+<div id="footer-root"></div>
 
 <button class="back-to-top" aria-label="Back to top">
   <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
