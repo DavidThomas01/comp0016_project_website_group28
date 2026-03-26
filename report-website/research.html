@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Research into prompt injection vulnerabilities, mitigation strategies, and testing frameworks for AI systems." />
+  <meta name="description" content="Research and technical overview for the Prompt Injection Protection platform." />
   <title>Research – Prompt Injection Protection</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
@@ -32,7 +32,6 @@
     <div class="container">
       <nav class="site-nav" aria-label="Primary">
         <div class="nav-left">
-          <div class="nav-scroll">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="requirements.html">Requirements</a>
           <a class="nav-link active" href="research.html">Research</a>
@@ -40,16 +39,15 @@
           <a class="nav-link" href="ui-design.html">UI Design</a>
           <a class="nav-link" href="system-design.html">System Design</a>
           <a class="nav-link" href="implementation.html">Implementation</a>
-          <a class="nav-link" href="testing.html">Testing</a>
-          <a class="nav-link" href="evaluation.html">Evaluation</a>
-          </div>
+          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a class="nav-link" href="conclusion.html">Conclusion</a>
           <div class="nav-item">
-            <a class="drop-toggle" href="appendices.html">Appendices ▾</a>
+            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
-              <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development blog (external)</a>
-              <a href="appendices.html#monthly-video">Monthly videos</a>
+              <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly video</a>
             </div>
           </div>
         </div>
@@ -60,12 +58,8 @@
 
 <section class="hero">
   <div class="container">
-    <div class="kicker">Research Foundation</div>
-    <h1>Prompt Injection: Vulnerabilities, Mitigations &amp; Testing</h1>
-    <p>
-      A comprehensive summary of the research conducted by Team 28 into prompt injection
-      attacks, forming the theoretical and empirical foundation for the platform design.
-    </p>
+    <div class="kicker">Research and Technical Overview</div>
+    <h1>Prompt Injection Research, Platform Research, and Technical Decisions</h1>
   </div>
 </section>
 
@@ -75,91 +69,171 @@
     <section class="section fade-in" id="introduction">
       <h2>Introduction and Background</h2>
       <p>
-        The rapid adoption of large language models (LLMs) in enterprise systems has
-        introduced new security challenges. Unlike traditional software, LLMs interpret
-        all inputs as natural language, making it difficult to distinguish between trusted
-        instructions and untrusted data.
+        Since the public release of ChatGPT in late 2022, LLMs have moved rapidly
+        from research labs into mainstream products, internal tooling, and enterprise
+        workflows. As these systems become embedded in decision-making, content generation,
+        retrieval, and tool execution, their security properties matter just as much as
+        their usefulness.
       </p>
-      <div class="callout">
+      <p>
+        Prompt injection is a particularly important risk because it exploits how language
+        models fundamentally work. Unlike traditional software, LLMs process trusted
+        instructions and untrusted content through the same natural-language channel.
+        This creates ambiguity between “instructions” and “data”, allowing attackers to
+        manipulate behaviour through direct prompts, retrieved documents, tool outputs,
+        or even multimodal inputs.
+      </p>
+      <p>
+        This matters even more in enterprise environments. Once a model is connected to
+        retrieval pipelines, APIs, internal documents, or tool-calling systems, prompt
+        injection is no longer just a chatbot failure: it becomes a route to data leakage,
+        unsafe automation, and loss of control over downstream actions.
+      </p>
+      <p>
+        Because this is a wide and multi-layered project,
+        we first needed substantial research to understand the true scope and depth of
+        prompt injection risks before defining architecture, features, and evaluation.
+      </p>
+      <!---TODO: the introduction and background, make it look more dynamic (not just a block of plain text)-->
+    </section>
+
+    <section class="section fade-in" id="research-report">
+      <h2>Research Report</h2>
+      <p>
+        To ground the project in evidence rather than assumptions, we produced a dedicated
+        research report on prompt injection protection. This report became the basis of our
+        internal knowledge base and informed how we framed the problem, compared existing
+        approaches, and prioritised the features and evaluation criteria of the platform.
+      </p>
+      <div class="card-grid cols-2 stagger">
+        <div class="card">
+          <h3>What the research covered</h3>
+          <ul class="styled-list">
+            <li>What prompt injection is, why it is a major security risk, and why it matters in enterprise AI systems.</li>
+            <li>Main vulnerability types: direct and indirect injection, obfuscation, tool-use risks, memory/long-horizon issues, multimodal attacks, and workflow contamination.</li>
+            <li>Main mitigation strategies with defence in depth: input validation, prompt structuring, output filtering, sandboxing, and context sanitisation.</li>
+            <li>Testing methods and frameworks for continuous evaluation across prompts, tools, pipelines, and deployments.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>How we used it</h3>
+          <ul class="styled-list">
+            <li>It shaped the platform structure: vulnerabilities, mitigations, and testing are separated but connected in a natural and structured way.</li>
+            <li>It helped us frame prompt injection as a system-level security issue, not just a bad prompt.</li>
+            <li>It guided the knowledge base content, especially the vulnerability and mitigation sections; and also serves as the primary reference for our internal chatbot.</li>
+            <li>It strengthened our focus on testing and comparison as continuous security practices.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout callout--tip">
         <p>
-          <strong>Key insight:</strong> Prompt injection exploits the fundamental ambiguity between
-          instructions and data in LLM systems — embedding adversarial instructions into user input,
-          retrieved content, or tool outputs to cause unintended actions.
+          <strong>Research report:</strong> the full report is embedded below for in-page reading,
+          with dedicated actions to open it in a separate tab or download a local copy.
         </p>
+      </div>
+
+      <div class="pdf-viewer" aria-label="Prompt Injection Protection research report viewer">
+        <div class="pdf-viewer__actions">
+          <a class="btn btn--primary" href="assets/docs/research-report.pdf" target="_blank" rel="noopener">
+            Open Full Report
+          </a>
+        </div>
+
+        <object
+          class="pdf-viewer__frame"
+          data="assets/docs/research-report.pdf"
+          type="application/pdf"
+          aria-label="Prompt Injection Protection research report PDF">
+          <p>
+            Your browser cannot display this PDF inline.
+            <a href="assets/docs/research-report.pdf" target="_blank" rel="noopener">Open the report in a new tab</a>
+            or
+            <a href="assets/docs/research-report.pdf" download="research-report.pdf">download it here</a>.
+          </p>
+        </object>
       </div>
     </section>
 
     <section class="section fade-in" id="vulnerabilities">
-      <h2>Prompt Injection Vulnerabilities</h2>
+      <h2>Vulnerability Taxonomy</h2>
       <p>
-        Prompt injection vulnerabilities arise from fundamental characteristics of LLMs,
-        rather than from conventional implementation bugs. Our research identifies
-        several major classes of vulnerabilities observed in modern AI systems.
+        Prompt injection is not one single attack pattern. It is a family of vulnerabilities
+        caused by how LLM systems combine natural-language instructions, external context,
+        memory, and tool access. Our taxonomy groups the main classes of risk that appear
+        repeatedly in literature and real deployment scenarios.
       </p>
 
-      <div class="card-grid cols-2 stagger">
+      <div class="card-grid cols-2 stagger vulnerability-grid">
         <div class="card card-accent">
           <h3 class="heading-with-icon">
             <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
             Direct prompt injection
           </h3>
-          <p>Explicit attempts by users to override system instructions (e.g. "ignore previous instructions").</p>
+          <p>A user explicitly attempts to override intended behaviour with adversarial instructions, for example by asking the model to ignore system guidance, reveal hidden instructions, or behave outside policy.</p>
           <div class="tag-list"><span class="badge badge--brand">User Input</span></div>
         </div>
+
         <div class="card card-accent">
           <h3 class="heading-with-icon">
             <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             Indirect prompt injection
           </h3>
-          <p>Malicious instructions embedded in external data such as documents, webpages, or emails.</p>
+          <p>Malicious instructions are hidden inside external content such as emails, webpages, database entries, or documents that the model later reads and mistakenly treats as actionable.</p>
           <div class="tag-list"><span class="badge badge--amber">External Data</span></div>
         </div>
+
         <div class="card card-accent">
           <h3 class="heading-with-icon">
             <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-5.01"/><path d="M3 16h5"/><path d="M21 16l-5-5"/><path d="M21 8l-5 5"/><path d="M3 8l5 5"/></svg>
-            Instruction–data confusion
+            Instruction–data boundary confusion
           </h3>
-          <p>Lack of strict separation between instructions and data within the model context.</p>
+          <p>Because system prompts, user input, retrieved text, and tool outputs are processed in a shared text context, the model may fail to maintain a strict distinction between “content” and “instructions”.</p>
           <div class="tag-list"><span class="badge badge--blue">Architecture</span></div>
         </div>
+
         <div class="card card-accent">
           <h3 class="heading-with-icon">
             <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>
-            Obfuscation attacks
+            Obfuscation and encoding attacks
           </h3>
-          <p>Use of Base64, Unicode homoglyphs, or multilingual prompts to bypass input filters.</p>
+          <p>Attackers may disguise malicious instructions through Base64, Unicode homoglyphs, multilingual phrasing, emoji patterns, or fragmented prompts to bypass simple filters.</p>
           <div class="tag-list"><span class="badge badge--amber">Evasion</span></div>
         </div>
+
         <div class="card card-accent">
           <h3 class="heading-with-icon">
             <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-            Tool-use injection
+            Tool-use and action injection
           </h3>
-          <p>Manipulation of tool calls or API arguments generated by the model.</p>
-          <div class="tag-list"><span class="badge badge--brand">MCP Relevant</span></div>
+          <p>If an LLM can call tools or APIs, an injection attack may push it to generate unsafe arguments, perform unintended actions, or trust poisoned tool outputs.</p>
+          <div class="tag-list"><span class="badge badge--brand">MCP / Tools</span></div>
         </div>
+
         <div class="card card-accent">
           <h3 class="heading-with-icon">
             <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
-            Memory vulnerabilities
+            Memory and long-horizon vulnerabilities
           </h3>
-          <p>Gradual injection across multiple turns leading to behavioural drift.</p>
+          <p>Seemingly harmless prompts can accumulate across multiple turns, gradually steering the model’s behaviour and causing safety drift over time.</p>
           <div class="tag-list"><span class="badge badge--blue">Long-Horizon</span></div>
         </div>
+
         <div class="card card-accent">
           <h3 class="heading-with-icon">
             <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
             Multimodal injection
           </h3>
-          <p>Hidden instructions embedded in images or other non-text modalities.</p>
+          <p>Hidden instructions can be embedded in images or other non-text modalities, creating attack paths that bypass text-only validation or filtering strategies.</p>
           <div class="tag-list"><span class="badge badge--amber">Cross-Modal</span></div>
         </div>
+
         <div class="card card-accent">
           <h3 class="heading-with-icon">
             <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98"/><path d="m15.41 6.51-6.82 3.98"/></svg>
-            Multi-agent contamination
+            Multi-agent / workflow contamination
           </h3>
-          <p>Propagation of malicious instructions across interconnected agent workflows.</p>
+          <p>In agentic systems, one compromised step can contaminate shared memory, planning outputs, or downstream agents, turning a local failure into a broader workflow failure.</p>
           <div class="tag-list"><span class="badge badge--brand">Multi-Agent</span></div>
         </div>
       </div>
@@ -167,134 +241,554 @@
 
     <section class="section fade-in" id="mitigations">
       <h2>Mitigation Strategies</h2>
+      <p>
+        Our research consistently showed that there is no single fix for prompt injection.
+        Effective protection requires defence in depth: reducing exposure, checking behaviour,
+        constraining actions, and continuously testing the system as it evolves.
+      </p>
+
       <div class="callout callout--tip">
         <p>
-          <strong>Defence in depth:</strong> No single mitigation can fully eliminate prompt injection.
-          Effective defence requires a layered approach combining multiple complementary strategies.
+          <strong>Defence in depth:</strong> the goal is not to assume that one layer will stop every
+          attack, but to combine preventative, detective, and containment-focused safeguards.
         </p>
       </div>
 
       <div class="card-grid cols-2 stagger">
         <div class="feature-item">
-          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="feature-icon">&#x1F6E1;&#xFE0F;</div>
           <div class="feature-content">
             <h3>Input Validation &amp; Sanitisation</h3>
-            <p>Treating all inputs as untrusted and filtering malicious instructions before model execution.</p>
+            <p>Treating all user input and external content as untrusted, applying filtering, validation, schema checks, or auxiliary classification before the model sees it.</p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+          <div class="feature-icon">&#x1F4DD;</div>
           <div class="feature-content">
-            <h3>Robust Prompt Design</h3>
-            <p>Structuring prompts to clearly separate trusted instructions from untrusted data.</p>
+            <h3>Robust Prompt Design &amp; Context Separation</h3>
+            <p>Structuring prompts so trusted instructions are clearly separated from untrusted data, rather than concatenating everything into one ambiguous block.</p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <div class="feature-icon">&#x1F50D;</div>
           <div class="feature-content">
-            <h3>Output Filtering &amp; Guardrails</h3>
-            <p>Validating model outputs before returning them or executing downstream actions.</p>
+            <h3>Output Filtering, Guardrails &amp; Oversight</h3>
+            <p>Validating outputs before they are shown to users or used in downstream actions, and adding secondary checks or human review for high-risk operations.</p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg></div>
+          <div class="feature-icon">&#x1F916;</div>
           <div class="feature-content">
-            <h3>Multi-Agent Defence</h3>
-            <p>Distributing responsibility across specialised agents to reduce single-point failures.</p>
+            <h3>Multi-Agent Defence Pipelines</h3>
+            <p>Splitting responsibilities across specialised stages such as review, sanitisation, execution, and output checking to reduce single-point compromise.</p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg></div>
+          <div class="feature-icon">&#x1F9F9;</div>
           <div class="feature-content">
-            <h3>Context Sanitisation</h3>
-            <p>Analysing and filtering long or externally sourced context before use.</p>
+            <h3>Context Sanitisation for Long or External Inputs</h3>
+            <p>Analysing retrieved or long-context content before it enters the prompt, especially in RAG systems, browsers, and pipelines that consume untrusted documents.</p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="feature-icon">&#x1F512;</div>
           <div class="feature-content">
             <h3>Sandboxing &amp; Permission Control</h3>
-            <p>Restricting tool access and enforcing strict execution boundaries.</p>
+            <p>Restricting what tools the model can call, validating arguments, and requiring approval for sensitive actions so successful injections have limited real-world impact.</p>
           </div>
         </div>
+        <div class="feature-item">
+          <div class="feature-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg></div>
+          <div class="feature-content">
+            <h3>Model-Level Alignment</h3>
+            <p>Alignment, adversarial fine-tuning, and policy training improve baseline robustness, but should be treated as one layer of defence rather than a full solution.</p>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <section class="section fade-in" id="testing">
-      <h2>Testing Against Prompt Injection</h2>
+  <h2>Testing Methodologies</h2>
+
+  <p>
+    Testing was one of the most important parts of our research because prompt injection cannot be
+    understood from theory alone. The report showed that secure evaluation has to go beyond simple
+    prompt examples and cover the full lifecycle of an LLM system: baseline benchmarking before deployment,
+    integration testing once tools and external components are connected, automated adversarial testing
+    to catch regressions, sandboxed testing for realistic risky scenarios, and continued monitoring as
+    the system evolves.
+  </p>
+
+  <div class="callout">
+    <p>
+      <strong>Research takeaway:</strong> no single framework gives full coverage. The most effective
+      approach is a layered testing strategy combining different approaches.
+    </p>
+  </div>
+
+  <div class="card-grid cols-2 stagger mt-3">
+    <div class="card">
+      <h3>Testing Approaches We Identified</h3>
+      <div class="insight-stack">
+        <article class="insight-item">
+          <h4>Offline Baseline Evaluation</h4>
+          <p>Benchmark model behaviour before connecting tools or external systems.</p>
+        </article>
+        <article class="insight-item">
+          <h4>Integration Testing</h4>
+          <p>Test tools, APIs, retrieval pipelines, and agent workflows in realistic combinations.</p>
+        </article>
+        <article class="insight-item">
+          <h4>Automated Adversarial Regression</h4>
+          <p>Run repeatable hostile prompts continuously to catch regressions early.</p>
+        </article>
+        <article class="insight-item">
+          <h4>Sandboxed Scenario Testing</h4>
+          <p>Simulate risky multi-step interactions without exposing production systems.</p>
+        </article>
+        <article class="insight-item">
+          <h4>Post-Deployment Monitoring</h4>
+          <p>Track safety drift and newly emerging threats as the system evolves.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Why This Matters</h3>
+      <div class="insight-stack">
+        <article class="insight-item insight-item--why">
+          <h4>Context Changes Risk</h4>
+          <p>A model that looks safe in isolated tests can fail once tools and external data are connected.</p>
+        </article>
+        <article class="insight-item insight-item--why">
+          <h4>Single Benchmarks Are Not Enough</h4>
+          <p>One-off results do not represent multi-turn workflows, chained actions, or real deployment pressure.</p>
+        </article>
+        <article class="insight-item insight-item--why">
+          <h4>Testing Must Be Continuous</h4>
+          <p>Reliable security comes from broad, repeated evaluation tied to real system behaviour.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+    <section class="section section-track section-track--break fade-in" id="part-2">
+      <h2>Platform Research and Technical Overview</h2>
+      <p class="section-track__lead">
+        Tooling review, implementation choices, and technical trade-offs behind the delivered system.
+      </p>
+    </section>
+
+    <section class="section fade-in" id="existing-solutions">
+      <h2>Existing Solutions</h2>
       <p>
-        Testing is essential for identifying prompt injection vulnerabilities before
-        deployment. Our research surveys both academic and industry testing methodologies
-        designed to probe the full attack surface of modern AI systems.
+        Before deciding what our platform should do, we reviewed both practical security
+        tooling and broader enterprise-facing AI platforms. Our goal was not to copy an
+        existing product, but to understand how current solutions approach prompt injection,
+        red-teaming, evaluation, and operational safety.
+        <a href="#ref-1">[1]</a><a href="#ref-2">[2]</a><a href="#ref-8">[8]</a><a href="#ref-9">[9]</a>
       </p>
 
-      <h3>Testing Approaches</h3>
-      <ul class="styled-list">
-        <li>Attacker-model testing using adversarial LLMs.</li>
-        <li>Evolutionary search to generate novel adversarial prompts.</li>
-        <li>Black-box and white-box testing methodologies.</li>
-        <li>Red-team templates for social and behavioural manipulation.</li>
-        <li>Testing of RAG pipelines, tool interfaces, and MCP servers.</li>
-        <li>Long-horizon and memory-persistence testing.</li>
-      </ul>
-
-      <h3>Testing Frameworks</h3>
-      <div class="card-grid cols-3 stagger">
+      <div class="card-grid cols-3 stagger existing-solutions-grid">
         <div class="card card--feature">
-          <h3>NVIDIA Garak</h3>
-          <p>Open-source LLM vulnerability scanner with probe-based testing.</p>
+          <div class="card-feature-intro">
+            <h3>Foundry</h3>
+            <p>
+              Azure AI Foundry is a managed platform for accessing and orchestrating foundation models,
+              provider integrations, and enterprise AI workflows. Our industry partner, Josh McDonald,
+              introduced it early in the project as a practical enterprise reference point.
+              <a href="#ref-3">[3]</a>
+            </p>
+          </div>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Supports multi-model and managed-provider workflows in one enterprise environment.</li>
+              <li>Strong credential and API integration model for operational use.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Can add platform-level complexity compared with single-provider setups.</li>
+            </ul>
+          </div>
         </div>
         <div class="card card--feature">
-          <h3>Microsoft PyRIT</h3>
-          <p>Python Risk Identification Tool for generative AI red-teaming.</p>
+          <div class="card-feature-intro">
+            <h3>NVIDIA Garak</h3>
+            <p>
+              Garak was the most directly reflected external testing framework in the implemented platform.
+              It demonstrated the value of repeatable adversarial probing and informed the framework-scan
+              capability exposed through the Testing page.
+              <a href="#ref-2">[2]</a>
+            </p>
+          </div>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Broad automated adversarial probing across multiple risk categories.</li>
+              <li>Good fit for repeatable and regression-oriented security scans.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>More effective for broad scanning than deep root-cause explanation.</li>
+            </ul>
+          </div>
         </div>
         <div class="card card--feature">
-          <h3>PromptBench</h3>
-          <p>Unified benchmarking library for evaluating adversarial prompt robustness.</p>
+          <div class="card-feature-intro">
+            <h3>Microsoft PyRIT</h3>
+            <p>
+              PyRIT was relevant from a research and architecture perspective because it frames prompt
+              injection testing as structured red-teaming. The repository includes a PyRIT runner file,
+              which shows it was considered in the codebase, but it is not part of the currently active
+              runner registry.
+              <a href="#ref-8">[8]</a>
+            </p>
+          </div>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Strong structured red-teaming model for enterprise-style testing pipelines.</li>
+              <li>Useful for governance and repeatable security workflow design.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Not currently active in the production runner registry in this project.</li>
+            </ul>
+          </div>
         </div>
         <div class="card card--feature">
-          <h3>OWASP PromptMe</h3>
-          <p>Framework aligned with OWASP Top 10 for LLM Applications.</p>
+          <div class="card-feature-intro">
+            <h3>PromptBench</h3>
+            <p>
+              PromptBench informed the importance of adversarial benchmarking and comparing behaviour
+              across prompt variants rather than relying on one or two examples.
+            </p>
+          </div>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Strong for systematic adversarial robustness benchmarking at scale.</li>
+              <li>Encourages structured comparison across prompt variants and scenarios.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>More benchmark-oriented than user-facing for interactive teaching experiences.</li>
+            </ul>
+          </div>
         </div>
         <div class="card card--feature">
-          <h3>OpenAI Evals</h3>
-          <p>Evaluation framework for systematic model behaviour assessment.</p>
+          <div class="card-feature-intro">
+            <h3>OWASP PromptMe</h3>
+            <p>
+              PromptMe was useful because it connects testing to recognised OWASP threat scenarios and
+              reinforces a developer-facing, application-security view of prompt injection.
+              <a href="#ref-1">[1]</a>
+            </p>
+          </div>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Directly aligns prompt injection testing with recognised OWASP threat framing.</li>
+              <li>Developer-friendly perspective for communicating application-security risks.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Not directly integrated as an active runner in the current platform.</li>
+            </ul>
+          </div>
         </div>
         <div class="card card--feature">
-          <h3>Custom Pipelines</h3>
-          <p>Project-specific test suites targeting MCP server attack surfaces.</p>
+          <div class="card-feature-intro">
+            <h3>OpenAI Evals and benchmark suites</h3>
+            <p>
+              OpenAI Evals, together with benchmark-oriented resources such as AgentHarm, AdvBench, and
+              HarmBench, influenced the idea that testing should be reproducible, extensible, and suitable
+              for regression workflows rather than one-off manual checks.
+              <a href="#ref-9">[9]</a>
+            </p>
+          </div>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Supports reproducible, extensible, and regression-friendly evaluation workflows.</li>
+              <li>Strong benchmark coverage through complementary safety datasets.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Requires additional adaptation to serve as a standalone educational UI layer.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section fade-in" id="findings">
-      <h2>Key Research Findings</h2>
+    <section class="section fade-in" id="applied-inspirations">
+      <h2>Key Inspirations We Applied</h2>
+      <p>
+        The following ideas most directly shaped the platform that was actually delivered.
+      </p>
+
+      <div class="card-grid cols-3 stagger">
+        <div class="card card--feature">
+          <h3>Foundry</h3>
+          <p>
+            We used Foundry as the provider layer for model access and credential-managed API integration,
+            which reinforced our multi-provider design instead of locking the system to a single model stack.
+            <a href="#ref-3">[3]</a>
+          </p>
+        </div>
+
+        <div class="card card--feature">
+          <h3>NVIDIA Garak</h3>
+          <p>
+            It shaped our framework-assisted testing workflow so evaluation is not only manual prompt
+            demonstrations, but also repeatable scan-based security checks.
+            <a href="#ref-2">[2]</a>
+          </p>
+        </div>
+
+        <div class="card card--feature">
+          <h3>OWASP PromptMe</h3>
+          <p>
+            Although not directly integrated, it guided how we present risk in a developer-facing way and
+            aligns with our OWASP Top 10 references and security-learning resources across the report.
+            <a href="#ref-1">[1]</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="frontend">
+      <h2>Frontend</h2>
+      <p>
+        We focused this comparison on major frontend framework options and then documented the
+        stack we actually applied in the final implementation.
+      </p>
+
       <div class="card-grid cols-2 stagger">
         <div class="card">
-          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 12 2 2 4-4"/></svg></div>
-          <h3>Simple Injections Declining</h3>
-          <p>Modern LLMs are relatively robust to simple direct injections thanks to improved alignment and training.</p>
+          <div class="card-feature-intro">
+            <h3>React</h3>
+          </div>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Large ecosystem and strong community support.</li>
+              <li>Component model works well for complex interactive interfaces.</li>
+              <li>Good fit for incremental growth and long-term maintainability.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Requires choosing and integrating supporting libraries.</li>
+              <li>State and architecture decisions can become complex over time.</li>
+            </ul>
+          </div>
         </div>
+
         <div class="card">
-          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
-          <h3>Obfuscation Remains Dangerous</h3>
-          <p>Obfuscated and indirect prompt injection remains significantly harder to defend against.</p>
+          <div class="card-feature-intro">
+            <h3>Vue</h3>
+          </div>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Lower learning curve and clear single-file component structure.</li>
+              <li>Good built-in conventions for rapid development.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Smaller enterprise footprint in our target context.</li>
+              <li>Less aligned with the existing team familiarity and repo direction.</li>
+            </ul>
+          </div>
         </div>
+
         <div class="card">
-          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
-          <h3>MCP Expands Attack Surface</h3>
-          <p>Tool-mediated and MCP-based systems substantially expand the potential attack surface for injection.</p>
+          <div class="card-feature-intro">
+            <h3>Angular</h3>
+          </div>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Comprehensive framework with strong structure and conventions.</li>
+              <li>Good for large-scale enterprise applications with strict patterns.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Heavier setup and steeper learning curve for this project scope.</li>
+              <li>More framework overhead than needed for a coursework platform.</li>
+            </ul>
+          </div>
         </div>
+
         <div class="card">
-          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12h12"/><path d="M6 9h12"/><path d="M6 15h12"/></svg></div>
-          <h3>Architectural Challenge</h3>
-          <p>Prompt injection is primarily an architectural and operational challenge rather than a model-selection problem.</p>
+          <div class="card-feature-intro">
+            <h3>Svelte</h3>
+          </div>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Very lightweight runtime and concise component syntax.</li>
+              <li>Strong performance characteristics for interactive UI work.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Smaller ecosystem for some advanced integration needs.</li>
+              <li>Less consistent with the project’s existing implementation path.</li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      <div class="callout mt-3">
-        <p>These findings directly inform the design decisions and evaluation criteria used in the Prompt Injection Protection platform.</p>
+      <h3 class="mt-4">Applied Frontend Decision</h3>
+      <div class="card">
+        <h3>React + Vite</h3>
+        <p>
+          We implemented the frontend using React with Vite. React provides a flexible component
+          architecture for multi-view interactive features, while Vite supports fast local iteration
+          and straightforward production builds.
+          <a href="#ref-4">[4]</a><a href="#ref-5">[5]</a>
+        </p>
       </div>
+    </section>
+
+    <section class="section fade-in" id="backend">
+      <h2>Backend</h2>
+      <p>
+        For the backend framework choice, we focused on a direct comparison between FastAPI and Django.
+        <a href="#ref-6">[6]</a><a href="#ref-7">[7]</a>
+      </p>
+
+      <div class="card-grid cols-2 stagger">
+        <div class="card">
+          <div class="card-feature-intro">
+            <h3>FastAPI</h3>
+          </div>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>High development speed for API-first systems.</li>
+              <li>Strong async support and good performance for I/O-heavy endpoints.</li>
+              <li>Automatic docs and schema validation from typed models.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Fewer built-in batteries than full-stack frameworks.</li>
+              <li>Some architecture pieces must be assembled by the team.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-feature-intro">
+            <h3>Django</h3>
+          </div>
+          <div class="card-subsection" aria-label="Pros and cons">
+            <h4>Pros</h4>
+            <ul class="styled-list pros-list">
+              <li>Mature full-stack framework with strong conventions and tooling.</li>
+              <li>Includes admin, auth, and ORM out of the box.</li>
+            </ul>
+            <h4>Cons</h4>
+            <ul class="styled-list cons-list">
+              <li>Heavier framework footprint for an API-centric project.</li>
+              <li>Can introduce extra complexity for this project scope.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-4">Backend Decision</h3>
+      <div class="card">
+        <h3>FastAPI</h3>
+        <p>
+          We selected FastAPI because the platform is primarily API-driven and benefits from fast iteration,
+          typed schemas, and straightforward integration with model orchestration and streaming endpoints.
+          <a href="#ref-6">[6]</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="architecture-summary">
+      <h2>Platform Architecture Summary</h2>
+      <p>
+        The platform combines a React SPA frontend with a Python FastAPI backend, emphasizing flexibility,
+        multi-provider support, and security-focused architecture.
+      </p>
+
+      <div class="card-grid cols-3 stagger">
+        <div class="card card--architecture-glass">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
+          <h3>Frontend</h3>
+          <p>
+            <strong>Stack:</strong> React 18 + TypeScript, bundled with Vite, styled with Tailwind CSS v4
+            and shadcn/ui components. Includes mandatory dark mode, client-side routing, smooth animations,
+            and PDF export capabilities.
+          </p>
+          <p>
+            <strong>Why:</strong> supports interactive multi-view workflows (Testing, Mitigations, Prompt
+            Enhancer, Security Assistant) with responsive, accessible components and consistent design.
+          </p>
+        </div>
+
+        <div class="card card--architecture-glass">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></div>
+          <h3>Backend</h3>
+          <p>
+            <strong>Stack:</strong> Python with FastAPI REST API. SQLite for persistence with SQLAlchemy
+            ORM. httpx for HTTP calls to multiple model providers (OpenAI, Anthropic, OpenAI-compatible).
+            Provider router abstraction keeps vendor-specific logic centralised.
+          </p>
+          <p>
+            <strong>Why:</strong> prioritises flexibility and integration speed. Multi-provider design
+            avoids vendor lock-in. Lightweight database suitable for coursework scale.
+          </p>
+        </div>
+
+        <div class="card card--architecture-glass">
+          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 3h15"/><path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3"/><path d="M6 14h12"/></svg></div>
+          <h3>Testing Framework</h3>
+          <p>
+            <strong>Frameworks:</strong> Azure AI Foundry and NVIDIA Garak. Foundry supports managed model
+            access and credential-based provider integration, while Garak provides repeatable adversarial
+            probing through framework-style scan workflows.
+            <a href="#ref-2">[2]</a><a href="#ref-3">[3]</a>
+          </p>
+          <p>
+            <strong>Why:</strong> together they support both operational model access and structured security
+            evaluation, making testing more consistent than manual prompt checks alone.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-in" id="references">
+      <h2>References</h2>
+      <div class="references-lede">
+        <p>
+          The following sources were the main references used in our research report and knowledge base.
+        </p>
+        <p class="references-hint">
+          <span class="references-hint__label">Note</span>
+          For references to information contained within the report, refer to content in this same report.
+        </p>
+      </div>
+
+      <ol class="reference-list" role="list">
+        <li id="ref-1">OWASP GenAI Security Project. <em>LLM01:2025 Prompt Injection</em>, 2025. https://genai.owasp.org/llmrisk/llm01-prompt-injection/</li>
+        <li id="ref-2">NVIDIA. <em>garak: LLM vulnerability scanner</em> (GitHub repository), accessed 2026. https://github.com/NVIDIA/garak</li>
+        <li id="ref-3">Microsoft Azure. <em>Azure AI Foundry Documentation</em>, accessed 2026. https://learn.microsoft.com/azure/ai-foundry/</li>
+        <li id="ref-4">React. <em>React Documentation</em>, accessed 2026. https://react.dev/</li>
+        <li id="ref-5">Vite. <em>Vite Documentation</em>, accessed 2026. https://vite.dev/guide/</li>
+        <li id="ref-6">FastAPI. <em>FastAPI Documentation</em>, accessed 2026. https://fastapi.tiangolo.com/</li>
+        <li id="ref-7">Django Software Foundation. <em>Django Documentation</em>, accessed 2026. https://docs.djangoproject.com/</li>
+        <li id="ref-8">Microsoft. <em>PyRIT: Python Risk Identification Tool for generative AI</em> (GitHub repository), accessed 2026. https://github.com/Azure/PyRIT</li>
+        <li id="ref-9">OpenAI. <em>OpenAI Evals</em> (GitHub repository), accessed 2026. https://github.com/openai/evals</li>
+        <li id="ref-10">PromptBench. <em>PromptBench</em> (GitHub repository), accessed 2026. https://github.com/microsoft/promptbench</li>
+        <li id="ref-11">Mantas Mazeika et al. <em>HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal</em>, 2024. https://arxiv.org/abs/2402.04249</li>
+      </ol>
     </section>
 
     <nav class="page-nav fade-in" aria-label="Page navigation">
@@ -311,13 +805,41 @@
   </div>
 </main>
 
-<div id="footer-root"></div>
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__block site-footer__pages">
+        <h3 class="site-footer__heading">Pages</h3>
+        <nav class="site-footer__nav" aria-label="Report pages">
+          <a href="index.html">Home</a>
+          <a href="requirements.html">Requirements</a>
+          <a href="research.html">Research</a>
+          <a href="algorithms.html">Algorithms</a>
+          <a href="ui-design.html">UI Design</a>
+          <a href="system-design.html">System Design</a>
+          <a href="implementation.html">Implementation</a>
+          <a href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a href="conclusion.html">Conclusion</a>
+          <a href="appendices.html">Appendices</a>
+        </nav>
+      </div>
+      <div class="site-footer__block site-footer__project">
+        <h3 class="site-footer__heading">Project</h3>
+        <p class="site-footer__title">Prompt Injection Protection</p>
+        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
+        <a href="appendices.html#dev-blog">Development Blog</a>
+      </div>
+    </div>
+    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
+  </div>
+</footer>
 
 <button class="back-to-top" aria-label="Back to top">
   <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M18 15l-6-6-6 6"/>
   </svg>
 </button>
+
 <script src="assets/js/main.js"></script>
 </body>
 </html>

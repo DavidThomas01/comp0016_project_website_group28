@@ -32,7 +32,6 @@
     <div class="container">
       <nav class="site-nav" aria-label="Primary">
         <div class="nav-left">
-          <div class="nav-scroll">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="requirements.html">Requirements</a>
           <a class="nav-link" href="research.html">Research</a>
@@ -40,17 +39,16 @@
           <a class="nav-link" href="ui-design.html">UI Design</a>
           <a class="nav-link" href="system-design.html">System Design</a>
           <a class="nav-link" href="implementation.html">Implementation</a>
-          <a class="nav-link" href="testing.html">Testing</a>
-          <a class="nav-link" href="evaluation.html">Evaluation</a>
-          </div>
+          <a class="nav-link" href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a class="nav-link" href="conclusion.html">Conclusion</a>
           <div class="nav-item">
-            <a class="drop-toggle active" href="appendices.html" aria-current="page">Appendices ▾</a>
+            <span class="drop-toggle" tabindex="0">Appendices ▾</span>
             <div class="dropdown" role="menu" aria-label="Appendices">
               <a href="appendices.html#user-manual">User manual &amp; deployment guide</a>
               <a href="appendices.html#license">License (MIT Open)</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
-              <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development blog (external)</a>
-              <a href="appendices.html#monthly-video">Monthly videos</a>
+              <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="appendices.html#monthly-video">Monthly video</a>
             </div>
           </div>
         </div>
@@ -81,7 +79,7 @@
       </p>
       <div class="card-grid cols-2 stagger">
         <div class="card card-accent">
-          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+          <div class="card-icon">&#x1F4D6;</div>
           <h3>User Manual</h3>
           <p>Step-by-step walkthrough for exploring vulnerabilities, understanding mitigations, running security tests, using the prompt enhancer, and exporting findings.</p>
           <div class="mt-2">
@@ -93,7 +91,7 @@
           </div>
         </div>
         <div class="card card-accent">
-          <div class="card-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <div class="card-icon">&#x1F527;</div>
           <h3>Deployment Guide</h3>
           <p>Technical guide for setting up the platform, including system requirements, installation steps, configuration options, and troubleshooting.</p>
           <div class="mt-2">
@@ -148,7 +146,7 @@
           The blog is updated regularly throughout the project lifecycle.
         </p>
         <div class="mt-2">
-          <a href="https://team-28.hashnode.dev/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Open Development Blog →</a>
+          <a href="#" class="btn btn-outline">Open Development Blog →</a>
         </div>
       </div>
     </section>
@@ -273,9 +271,9 @@
 
 
     <nav class="page-nav fade-in" aria-label="Page navigation">
-      <a href="evaluation.html">
+      <a href="conclusion.html">
         <span class="page-nav-label">Previous</span>
-        <span class="page-nav-title">← Evaluation</span>
+        <span class="page-nav-title">← Conclusion</span>
       </a>
       <div></div>
     </nav>
@@ -283,7 +281,34 @@
   </div>
 </main>
 
-<div id="footer-root"></div>
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__block site-footer__pages">
+        <h3 class="site-footer__heading">Pages</h3>
+        <nav class="site-footer__nav" aria-label="Report pages">
+          <a href="index.html">Home</a>
+          <a href="requirements.html">Requirements</a>
+          <a href="research.html">Research</a>
+          <a href="algorithms.html">Algorithms</a>
+          <a href="ui-design.html">UI Design</a>
+          <a href="system-design.html">System Design</a>
+          <a href="implementation.html">Implementation</a>
+          <a href="evaluation-testing.html">Evaluation &amp; Testing</a>
+          <a href="conclusion.html">Conclusion</a>
+          <a href="appendices.html">Appendices</a>
+        </nav>
+      </div>
+      <div class="site-footer__block site-footer__project">
+        <h3 class="site-footer__heading">Project</h3>
+        <p class="site-footer__title">Prompt Injection Protection</p>
+        <p class="site-footer__meta">Team 28 · UCL COMP0016 · 2025–26 · Client: Avanade</p>
+        <a href="appendices.html#dev-blog">Development Blog</a>
+      </div>
+    </div>
+    <p class="site-footer__credit">© 2025–26 Team 28 · UCL COMP0016</p>
+  </div>
+</footer>
 
 <button class="back-to-top" aria-label="Back to top">
   <svg class="back-to-top__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
