@@ -2008,6 +2008,53 @@ ul:not(.styled-list):not(.tag-list) li strong {
   color: var(--text-secondary);
 }
 
+/* Evaluation page: clearer rhythm between paragraphs (scoped so other pages unchanged) */
+body.page-evaluation main .section > p + p,
+body.page-evaluation main .section > .section-lead + p {
+  margin-top: 1rem;
+}
+body.page-evaluation main .section > p {
+  margin-bottom: 0;
+}
+body.page-evaluation main .evaluation-content p + p {
+  margin-top: 1rem;
+}
+body.page-evaluation main .evaluation-content p.evaluation-rating {
+  margin-top: 1.15rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+}
+body.page-evaluation .achievements-card .achievements-intro {
+  margin-bottom: 0.85rem;
+}
+body.page-evaluation .achievements-card .evaluation-content p + p {
+  margin-top: 0.9rem;
+}
+body.page-evaluation h3.evaluation-inline-heading.heading-with-icon {
+  justify-content: flex-start;
+  margin-bottom: 0.55rem;
+}
+
+/* Critical evaluation accordion — icon + title in summary row */
+.evaluation-summary__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+  flex: 1;
+}
+.evaluation-summary__icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  color: var(--brand);
+  stroke: currentColor;
+}
+.evaluation-summary__text {
+  min-width: 0;
+  text-align: left;
+}
+
 /* Monthly videos stack (appendices) — 70% video / caption, alternating sides */
 .monthly-video-stack {
   display: flex;
