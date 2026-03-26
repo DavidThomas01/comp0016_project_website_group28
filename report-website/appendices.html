@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Appendices for the Prompt Injection Protection project — user manual, GDPR documentation, development blog, and monthly videos." />
+  <meta name="description" content="Appendices for the Prompt Injection Protection project — user manual, GDPR documentation, development blog, partner demo video, and monthly videos." />
   <title>Appendices – Prompt Injection Protection</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
@@ -50,6 +50,7 @@
               <a href="appendices.html#license">License</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
               <a href="appendices.html#dev-blog">Development blog (external)</a>
+              <a href="appendices.html#partner-demo">Partner demo video</a>
               <a href="appendices.html#monthly-video">Monthly video</a>
             </div>
           </div>
@@ -65,7 +66,7 @@
     <h1>Appendices</h1>
     <p>
       Supplementary materials including user manuals, deployment guides, GDPR documentation,
-      development blog links, and monthly video progress updates.
+      development blog links, a partner demo video, and monthly progress updates.
     </p>
   </div>
 </section>
@@ -80,7 +81,8 @@
         <li><a href="#license">License</a></li>
         <li><a href="#gdpr">GDPR</a></li>
         <li><a href="#dev-blog">Blog</a></li>
-        <li><a href="#monthly-video">Videos</a></li>
+        <li><a href="#partner-demo">Partner demo</a></li>
+        <li><a href="#monthly-video">Monthly videos</a></li>
         <li><a href="#references">References</a></li>
       </ul>
     </nav>
@@ -131,7 +133,7 @@
           <h2>License</h2>
           <div class="license-panel">
             <p>
-              This project is released under the MIT License <a href="#references">[1]</a>. The license permits
+              This project is released under the MIT License <a href="#ref-1">[1]</a>. The license permits
               use, copy, modification, merge, publication, distribution, sublicense,
               and/or sale of the software, subject to inclusion of the copyright and
               license notice.
@@ -150,7 +152,7 @@
         <div>
           <h2>GDPR &amp; Legal Compliance</h2>
           <p class="section-lead">
-            This section documents data privacy considerations and GDPR <a href="#references">[2]</a>, <a href="#references">[3]</a> compliance
+            This section documents data privacy considerations and GDPR <a href="#ref-2">[2]</a>, <a href="#ref-3">[3]</a> compliance
             measures implemented in the platform.
           </p>
         </div>
@@ -208,6 +210,31 @@
       </div>
     </section>
 
+    <section class="section fade-in section--partner-spotlight" id="partner-demo">
+      <div class="partner-demo-frame">
+        <div class="partner-demo-frame__chrome" aria-hidden="true"></div>
+        <header class="partner-demo-intro">
+          <p class="partner-demo-eyebrow">Industry partner film</p>
+          <h2 class="partner-demo-heading">Partner demo</h2>
+          <p class="partner-demo-lede">
+            A compact (~2 minute) piece with Avanade — what we built, why prompt injection matters when LLMs call tools and MCP servers, and how the platform supports safer testing and learning.
+          </p>
+        </header>
+        <div class="partner-demo-stage">
+          <div class="partner-demo-stage__glow" aria-hidden="true"></div>
+          <div class="partner-demo-embed">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/5bg-fOY0T7c"
+              title="Partner demo — Prompt Injection Protection, Team 28 with Avanade"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section fade-in" id="monthly-video">
       <div class="section-heading-lockup">
         <span class="section-heading-lockup__icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span>
@@ -254,7 +281,7 @@
           <div class="monthly-video-row__text">
             <h3 class="monthly-video-row__title"><span class="monthly-video-row__badge">Update</span> January 2026</h3>
             <p class="monthly-video-row__blurb">
-              Interview with AI Security Researcher Zekun Wu <a href="#references">[4]</a> from Holistic AI <a href="#references">[5]</a>, discussing the current landscape of prompt injection vulnerabilities, mitigations and testing frameworks. Also details the prompt injection report based on the team's initial research to understand the problem space and inform the design of our solution. Created initial dashboard based on the prototypes to gather feedback from our project partner. Next steps include finalising requirements, introducing backend functionality to the dashboard and the project website.
+              Interview with AI Security Researcher Zekun Wu <a href="#ref-4">[4]</a> (Holistic AI <a href="#ref-5">[5]</a>) on prompt injection vulnerabilities, mitigations, and testing frameworks; our prompt injection report from initial research to map the problem space and inform the solution; and an initial dashboard from prototypes for partner feedback. Next: finalise requirements, add backend to the dashboard, and build out the project website.
             </p>
             <p class="monthly-video-row__footnote">
               <a href="https://youtu.be/1X90FDJpnUs" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
@@ -276,7 +303,7 @@
           <div class="monthly-video-row__text">
             <h3 class="monthly-video-row__title"><span class="monthly-video-row__badge">Update</span> February 2026</h3>
             <p class="monthly-video-row__blurb">
-              Details the development of the backend functionality and integration with the frontend dashboard, including the implementation of the vulnerability and mitigation pages, testing framework, prompt enhancer and chatbot. Details each features capabilities showcasing the functionality. Upgraded user interface to better resemble Avanade's design themes. Next steps include presentations at NTT DATA <a href="#references">[6]</a> headquarters and student showcase, implementing final requirements, enhancing functionality and preparing for final handover.
+              Backend–frontend integration: vulnerability and mitigation pages, testing framework, prompt enhancer, and chatbot, with a walkthrough of each feature. UI updated toward Avanade design themes. Next: presentations at NTT DATA <a href="#ref-6">[6]</a> headquarters and the student showcase, final requirements, further enhancements, and handover preparation.
             </p>
             <p class="monthly-video-row__footnote">
               <a href="https://youtu.be/U3-BXYPew1E" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
@@ -298,7 +325,7 @@
           <div class="monthly-video-row__text">
             <h3 class="monthly-video-row__title"><span class="monthly-video-row__badge">Update</span> March 2026</h3>
             <p class="monthly-video-row__blurb">
-              Final project update, all requirements have been implemented and some extended functionality has been added, and the project is finalised. Explains results of presentations to NTT DATA <a href="#references">[6]</a> and industry partners, feedback received about the project. Creation of project website detailing all aspects of the design and development process, and documentation of the project for future reference. Completion of all deliverables.
+              Final project update, all requirements have been implemented and some extended functionality has been added, and the project is finalised. Explains results of presentations to NTT DATA <a href="#ref-6">[6]</a> and industry partners, feedback received about the project. Creation of project website detailing all aspects of the design and development process, and documentation of the project for future reference. Completion of all deliverables.
             </p>
             <p class="monthly-video-row__footnote">
               <a href="https://youtu.be/LzVv426PLGo" target="_blank" rel="noopener noreferrer">Open on YouTube</a>
@@ -309,21 +336,18 @@
     </section>
 
     <section class="section fade-in" id="references">
-      <div class="section-heading-lockup">
-        <span class="section-heading-lockup__icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h6"/><path d="M8 11h8"/></svg></span>
-        <div>
-          <h2>References</h2>
-          <p class="section-lead">Primary sources and external links cited in this appendix.</p>
-        </div>
+      <h2>References</h2>
+      <div class="references-lede">
+        <p>Primary sources and external links cited in this appendix, numbered in IEEE style.</p>
       </div>
-      <ul class="styled-list">
-        <li><a href="https://opensource.org/license/mit" target="_blank" rel="noopener noreferrer">[1] MIT License</a></li>
-        <li><a href="https://gdpr.eu/" target="_blank" rel="noopener noreferrer">[2] GDPR Overview</a></li>
-        <li><a href="https://www.gov.uk/data-protection" target="_blank" rel="noopener noreferrer">[3] UK Data Protection</a></li>
-        <li><a href="https://www.linkedin.com/in/zekun-wu-1190091a3/" target="_blank" rel="noopener noreferrer">[4] Zekun Wu on LinkedIn</a></li>
-        <li><a href="http://holisticai.com/" target="_blank" rel="noopener noreferrer">[5] Holistic AI</a></li>
-        <li><a href="https://www.nttdata.com/global/en/" target="_blank" rel="noopener noreferrer">[6] NTT DATA</a></li>
-      </ul>
+      <ol class="reference-list reference-list--ieee" role="list">
+        <li id="ref-1">Open Source Initiative, &ldquo;The MIT License,&rdquo; Open Source Initiative. Accessed: Mar. 26, 2026. [Online]. Available: <a href="https://opensource.org/license/mit" target="_blank" rel="noopener noreferrer">https://opensource.org/license/mit</a></li>
+        <li id="ref-2">GDPR.eu, informational resource on the EU General Data Protection Regulation, GDPR.eu. Accessed: Mar. 26, 2026. [Online]. Available: <a href="https://gdpr.eu/" target="_blank" rel="noopener noreferrer">https://gdpr.eu/</a></li>
+        <li id="ref-3">UK Government, &ldquo;Data protection,&rdquo; GOV.UK. Accessed: Mar. 26, 2026. [Online]. Available: <a href="https://www.gov.uk/data-protection" target="_blank" rel="noopener noreferrer">https://www.gov.uk/data-protection</a></li>
+        <li id="ref-4">Z. Wu, professional profile, LinkedIn. Accessed: Mar. 26, 2026. [Online]. Available: <a href="https://www.linkedin.com/in/zekun-wu-1190091a3/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/zekun-wu-1190091a3/</a></li>
+        <li id="ref-5">Holistic AI, corporate website. Accessed: Mar. 26, 2026. [Online]. Available: <a href="https://www.holisticai.com/" target="_blank" rel="noopener noreferrer">https://www.holisticai.com/</a></li>
+        <li id="ref-6">NTT DATA Corporation, corporate website. Accessed: Mar. 26, 2026. [Online]. Available: <a href="https://www.nttdata.com/global/en/" target="_blank" rel="noopener noreferrer">https://www.nttdata.com/global/en/</a></li>
+      </ol>
     </section>
 
 

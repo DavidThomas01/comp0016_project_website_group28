@@ -50,6 +50,7 @@
               <a href="appendices.html#license">License</a>
               <a href="appendices.html#gdpr">GDPR &amp; Privacy of Data</a>
               <a href="https://team-28.hashnode.dev/" target="_blank" rel="noopener noreferrer">Development blog (external)</a>
+              <a href="appendices.html#partner-demo">Partner demo video</a>
               <a href="appendices.html#monthly-video">Monthly videos</a>
             </div>
           </div>
@@ -89,7 +90,7 @@
       <h2>Project Background</h2>
       <div class="project-bg-layout">
         <div class="project-bg-text">
-          <p>The modern rise in AI adoption has led to increased concerns about the security and robustness of AI systems, particularly in the context of prompt injection attacks. AI has become increasingly prevalent in various applications, but with this speed many organisations have not fully considered the challenges it presents, making it a critical area for security research. Our project partner from Avanade, <a href="https://www.linkedin.com/in/joshmcdonaldmvp/" target="_blank" rel="noopener noreferrer">Josh McDonald</a><a href="#references"> [1]</a>, an AI Security Lead, has worked with us to explore this issue and develop a solution that informs Avanade's clients about the risks and mitigation strategies for prompt injection attacks. Avanade is a company formed by Accenture and Microsoft, they work with organisations to provide IT consulting and services focused on utilising Microsoft technology in a number of different domains including artificial intelligence, business analytics, digital transformation and cloud computing <a href="#references">[2]</a>.</p>
+          <p>The modern rise in AI adoption has led to increased concerns about the security and robustness of AI systems, particularly in the context of prompt injection attacks. AI has become increasingly prevalent in various applications, but with this speed many organisations have not fully considered the challenges it presents, making it a critical area for security research. Our project partner from Avanade, <a href="https://www.linkedin.com/in/joshmcdonaldmvp/" target="_blank" rel="noopener noreferrer">Josh McDonald</a><a href="#ref-1">[1]</a>, an AI Security Lead, has worked with us to explore this issue and develop a solution that informs Avanade's clients about the risks and mitigation strategies for prompt injection attacks. Avanade is a company formed by Accenture and Microsoft, they work with organisations to provide IT consulting and services focused on utilising Microsoft technology in a number of different domains including artificial intelligence, business analytics, digital transformation and cloud computing <a href="#ref-2">[2]</a>.</p>
         </div>
         <div class="project-bg-logo">
           <img src="assets/img/logo-avanade.webp" alt="Avanade logo" />
@@ -117,7 +118,7 @@
         <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         Interview
       </h3>
-      <p>We also conducted a semi-structured interview with a Senior Research Scientist in Agentic AI working for Holistic AI, <a href="https://www.linkedin.com/in/zekun-wu-1190091a3/" target="_blank" rel="noopener noreferrer">Zekun Wu [3]</a>. Holistic AI is an organisation that works in AI security and compliance so we consulted Zekun Wu to ask where he felt AI security was most lacking and where he experienced difficulties in his research.</p>
+      <p>We also conducted a semi-structured interview with a Senior Research Scientist in Agentic AI working for Holistic AI, <a href="https://www.linkedin.com/in/zekun-wu-1190091a3/" target="_blank" rel="noopener noreferrer">Zekun Wu</a><a href="#ref-3">[3]</a>. Holistic AI is an organisation that works in AI security and compliance so we consulted Zekun Wu to ask where he felt AI security was most lacking and where he experienced difficulties in his research.</p>
       <div class="interview-disclosure-grid">
         <details class="interview-disclosure card card-accent">
           <summary class="interview-disclosure__summary">
@@ -135,7 +136,7 @@
             <p><strong>Q:</strong> What do you think is the current biggest issue with prompt injection?</p>
             <p><strong>A:</strong> Well, the field is still quite new and there's a lack of standardized approaches to addressing these vulnerabilities, especially since attacks are evolving so rapidly. But if we're talking about the most concerning issue I would say indirect prompt injection since it introduces so many new attack vectors to models and agents, and there aren't many tools available to address it effectively.</p>
             <p><strong>Q:</strong> Where do you feel current mitigations, frameworks, or tools are lacking?</p>
-            <p><strong>A:</strong> I think the current frameworks are very technical and not easily connected, so while testing one framework, it's difficult to integrate and compare insights from another. I personally use Microsoft Foundry[2] a lot in my work, I think it's a great tool for deploying AI models and setting up endpoints, but it lacks seamless integration with other security tools.</p>
+            <p><strong>A:</strong> I think the current frameworks are very technical and not easily connected, so while testing one framework, it's difficult to integrate and compare insights from another. I personally use Microsoft Foundry <a href="#ref-4">[4]</a> a lot in my work, I think it's a great tool for deploying AI models and setting up endpoints, but it lacks seamless integration with other security tools.</p>
             <p><strong>Q:</strong> What frameworks have you used, or are there any tools we should research?</p>
             <p><strong>A:</strong> I have used Microsoft Foundry and PyRIT, I think both are great tools for testing prompt injection vulnerabilities. PyRIT is more of a set of comprehensive tests that try to break the model with different vulnerabilities like red-teaming attacks.</p>
             <p><strong>Q:</strong> Do you think a tool for creating custom test scenarios for prompt injection could be useful for your work?</p>
@@ -494,11 +495,15 @@
     </section>
     <section class="section fade-in" id="references">
       <h2>References</h2>
-      <ul class="styled-list">
-        <li>[1] <a href="https://www.linkedin.com/in/joshmcdonaldmvp/">Josh McDonald</a></li>
-        <li>[2] Avanade. (n.d.). About Avanade. Avanade. Retrieved March 20, 2026, from <a href="https://www.avanade.com/en-gb/about">https://www.avanade.com/en-gb/about</a></li>
-        <li>[3] <a href="https://www.linkedin.com/in/zekun-wu-1190091a3/">Zekun Wu</a></li>
-      </ul>
+      <div class="references-lede">
+        <p>Sources cited on this page, numbered in IEEE style.</p>
+      </div>
+      <ol class="reference-list reference-list--ieee" role="list">
+        <li id="ref-1">J. McDonald, professional profile, LinkedIn. Accessed: Mar. 26, 2026. [Online]. Available: <a href="https://www.linkedin.com/in/joshmcdonaldmvp/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/joshmcdonaldmvp/</a></li>
+        <li id="ref-2">Avanade, &ldquo;About Avanade.&rdquo; Avanade. Accessed: Mar. 20, 2026. [Online]. Available: <a href="https://www.avanade.com/en-gb/about" target="_blank" rel="noopener noreferrer">https://www.avanade.com/en-gb/about</a></li>
+        <li id="ref-3">Z. Wu, professional profile, LinkedIn. Accessed: Mar. 26, 2026. [Online]. Available: <a href="https://www.linkedin.com/in/zekun-wu-1190091a3/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/zekun-wu-1190091a3/</a></li>
+        <li id="ref-4">Microsoft, &ldquo;Azure AI Foundry documentation,&rdquo; Microsoft Learn. Accessed: Mar. 26, 2026. [Online]. Available: <a href="https://learn.microsoft.com/azure/ai-foundry/" target="_blank" rel="noopener noreferrer">https://learn.microsoft.com/azure/ai-foundry/</a></li>
+      </ol>
     </section>
     <nav class="page-nav fade-in" aria-label="Page navigation">
       <a href="index.html">
