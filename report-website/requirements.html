@@ -120,22 +120,22 @@
         <div class="card card-accent">
           <h3>AI Security Researcher</h3>
           <p><strong>Q:</strong> What do you think is the current biggest issue with prompt injection?</p>
-          <p><strong>A:</strong> e</p>
+          <p><strong>A:</strong> Prompt injection isn't like traditional software vulnerabilities. Working with non-deterministic behavior makes it challenging to predict and mitigate these threats effectively, especially since these models are fundamentally made to follow instructions so trying to define acceptable behavior is already hard, and detecting and blocking inappropriate behavior is an ongoing challenge.</p>
           <br>
           <p><strong>Q:</strong> Where do you feel current mitigations, frameworks, or tools are lacking?</p>
-          <p><strong>A:</strong> e</p>
+          <p><strong>A:</strong> There are so many ways prompt injection can occur, and current tools often focus on specific attack vectors rather than providing a comprehensive solution. Indirect prompt injection is particularly lacking in terms of detection and prevention.</p>
           <br>
           <p><strong>Q:</strong> What frameworks have you used, or are there any tools we should research?</p>
-          <p><strong>A:</strong> e</p>
+          <p><strong>A:</strong> Well, for publically available frameworks, there are some testing frameworks available like NVIDIA's Garak for example. But I'm not too familiar with them, I mostly work with proprietary solutions.</p>
           <br>
           <p><strong>Q:</strong> Do you think a tool for creating custom test scenarios for prompt injection could be useful for your work?</p>
-          <p><strong>A:</strong> e</p>
+          <p><strong>A:</strong> It depends on how much control we have over the testing process and the ability to customize the scenarios for different use cases. I think it could definitely be useful if it provides a good balance between automation and flexibility.</p>
           <br>
           <p><strong>Q:</strong> How accessible should this tool be?</p>
-          <p><strong>A:</strong> e</p>
+          <p><strong>A:</strong> I think supporting technical users in testing should be a priority, but making it as accessible as possible would be ideal. I wouldn't want functionality or depth to be sacrificed for accessibility.</p>
           <br>
           <p><strong>Q:</strong> What would make you trust a prompt injection protection tool?</p>
-          <p><strong>A:</strong> e</p>
+          <p><strong>A:</strong> Reproducible results and transparent reporting of the tool's performance in detecting and preventing prompt injection attacks, with observable changes in behaviour with various defenses.</p>
         </div>
       </div>
     </section>
@@ -151,25 +151,9 @@
 
     <section class="section fade-in" id="use-cases">
       <h2>Use Cases</h2>
-      <p>
-        The workflow below breaks down how users interact with our platform.
-        It is structured so it can be converted directly into a use-case diagram.
-      </p>
-
-      <h3>Workflow Breakdown (Diagram Input)</h3>
-      <ul class="styled-list">
-        <li><strong>Start:</strong> User lands on the Home page and chooses a role-based goal (learn, evaluate, test, or report).</li>
-        <li><strong>Discover vulnerabilities:</strong> User reviews the list of known prompt injection vulnerabilities and selects one item.</li>
-        <li><strong>Inspect vulnerability:</strong> System shows technical explanation, attack example, and observed model behaviour.</li>
-        <li><strong>Review mitigation:</strong> User reads mitigation strategy, pseudocode, and references for the selected vulnerability.</li>
-        <li><strong>Compare outcomes:</strong> User checks side-by-side model behaviour with and without mitigation.</li>
-        <li><strong>Create test:</strong> User opens Testing view, names a test, enables mitigation settings, and submits prompts in chat-style flow.</li>
-        <li><strong>Evaluate result:</strong> System returns pass/fail status using predefined security expectations and stores results in local SQL.</li>
-        <li><strong>Refine and rerun:</strong> User adjusts mitigation choices or prompt wording and repeats tests until desired reliability is reached.</li>
-        <li><strong>Report and share:</strong> User exports findings as PDF and uses them for internal documentation, client communication, or implementation planning.</li>
-      </ul>
-
-      <p class="text-muted mt-1"><strong>Suggested branches for your diagram:</strong> Learning path (Home → Vulnerability View), Testing path (Testing View → Pass/Fail), and Reporting path (Export PDF → Stakeholder review).</p>
+      <div class="use-case-diagram">
+        <img src="assets/img/use_case_diagram.webp" alt="Use case diagram showing potential workflows for using the platform" />
+      </div>
 
       <h3>Example Use Case Scenarios</h3>
       <div class="card-grid cols-2">

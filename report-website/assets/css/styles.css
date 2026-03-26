@@ -228,7 +228,7 @@ nav.site-nav {
   display: inline-block;
   padding: 0.45rem 0.55rem;
   text-decoration: none;
-  color: var(--text);
+  color: var(--brand);
   border-radius: var(--radius-sm);
   font-weight: 600;
   font-size: 0.85rem;
@@ -264,6 +264,11 @@ nav.site-nav {
   transform: translateY(-1px);
 }
 
+.nav-link:visited,
+.drop-toggle:visited {
+  color: var(--brand);
+}
+
 .nav-link.active,
 .drop-toggle.active {
   color: #fff;
@@ -280,6 +285,7 @@ nav.site-nav {
   box-shadow: 0 4px 16px rgba(255, 107, 53, 0.35),
               inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
+
 
 /* Dropdown */
 .dropdown {
@@ -2521,6 +2527,12 @@ html.js .gantt-phase-tooltip {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
+}
+.use-case-diagram img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
 }
 
 /* ====== Personas ====== */
