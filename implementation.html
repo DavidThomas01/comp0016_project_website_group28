@@ -995,10 +995,17 @@ headers = {
                 is served statically by FastAPI and its URL is included in the response so the user
                 can open it directly in the browser.
               </p>
-              <p style="margin:0;font-size:0.86rem;color:#888;border-left:3px solid #e0e0e0;padding-left:0.75rem;line-height:1.65;">
+              <p style="margin:0 0 0.65rem;font-size:0.86rem;color:#888;border-left:3px solid #e0e0e0;padding-left:0.75rem;line-height:1.65;">
                 Garak runs as a subprocess rather than a Python import because its large dependency
                 tree conflicts with FastAPI's async event loop. Subprocess isolation also means Garak
                 version upgrades require no changes to the backend's own dependency graph.
+              </p>
+              <p style="margin:0;font-size:0.86rem;color:#888;border-left:3px solid #FF6B35;padding-left:0.75rem;line-height:1.65;">
+                <strong style="color:#c2410c;">Platform note:</strong> Garak is best installed and
+                run on <strong>macOS or Linux</strong>. Windows support is limited and some probe
+                types may not function correctly outside a Unix environment. See the
+                <a href="https://docs.garak.ai/garak/llm-scanning-basics/setting-up/installing-garak" target="_blank" rel="noopener noreferrer">Garak installation guide</a>
+                for setup instructions.
               </p>
             </div>
           </details>
