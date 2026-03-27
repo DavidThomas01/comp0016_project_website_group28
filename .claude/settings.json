@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(find /Users/teo/Documents/Education/ComputerScience/SecondYear/SystemsEngineering/Prototype -name *.py)"
-    ]
-  }
-}

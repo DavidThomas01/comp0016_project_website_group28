@@ -16,7 +16,7 @@
         entry.target.classList.add('is-visible');
       }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.fade-in, .fade-in-left, .stagger').forEach(function (el) {
     observer.observe(el);
