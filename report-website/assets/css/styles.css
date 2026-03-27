@@ -707,6 +707,22 @@ main { padding: 2.75rem 0 3.35rem; }
 #video.section:hover {
   background: transparent;
 }
+#video .video-external-link {
+  margin: 0.85rem auto 0;
+  font-size: 0.88rem;
+  text-align: center;
+  max-width: 840px;
+}
+#video .video-external-link a {
+  color: var(--brand-dark);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+#video .video-external-link a:hover {
+  color: var(--brand);
+  text-decoration: underline;
+}
 
 /* Project timeline: full-width gantt block — no section hover tint or layout shift */
 #timeline.section {
