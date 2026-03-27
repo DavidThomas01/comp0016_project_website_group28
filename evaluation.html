@@ -181,7 +181,10 @@
       <p>
         Where the specification refers to industry frameworks, we align with the OWASP LLM Top 10 for Large Language
         Model Applications and MITRE ATLAS.
-        A could-have requirement also names automated testing pipelines based on NVIDIA Garak and Microsoft PyRIT.
+        A could-have requirement names automated testing pipelines based on NVIDIA Garak and Microsoft PyRIT: in the
+        product, <strong>Garak</strong> is the default scan path in the Testing UI; <strong>PyRIT</strong> is also
+        implemented in the backend (PyRIT runner alongside Garak in the framework layer), so both frameworks are
+        represented in the codebase even though day-to-day automated runs use Garak.
       </p>
       <p class="traceability-hint">
         <strong>Note:</strong> For any requirement marked not completed, hover or focus anywhere on that row — a short explanation appears next to the status.
@@ -492,7 +495,7 @@
                   <tr>
                     <td>Testing view: run automated testing pipeline based on Nvidia Garak and Microsoft PyRIT frameworks.</td>
                     <td class="req-priority">Could</td>
-                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed" aria-label="Completed"></span></td>
+                    <td class="req-cell-status"><span class="req-status req-status--done" title="Completed — Garak is the primary UI workflow; PyRIT runner exists in the backend framework layer (see implementation)." aria-label="Completed"></span></td>
                     <td class="req-contributors">Teo</td>
                   </tr>
                 </tbody>
@@ -867,9 +870,12 @@
           <summary><span class="evaluation-summary__label"><svg class="ui-icon evaluation-summary__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span class="evaluation-summary__text">Functionality</span></span></summary>
           <div class="evaluation-content">
             <p>
-              We delivered all of the required features set out in the MoSCoW specification. Only one requirement was not
-              implemented, as it was redundant in the context of the final system and did not add meaningful value. All other
-              core and optional features were completed as planned.
+              We delivered all must-haves and could-haves in the MoSCoW traceability tables. The only item not implemented
+              as written is one <strong>should-have</strong>: the extra sandbox field on the vulnerability page, which we
+              deliberately skipped because the Testing area already covers with/without mitigation runs (see that row for
+              the rationale). All other core and optional features, including dual-framework automated testing, are
+              reflected in the product: <strong>Garak</strong> is the main scan path in the UI, and <strong>PyRIT</strong> is
+              present in the backend runner layer alongside it for the same pipeline family.
             </p>
             <p>
               In addition, we extended the platform beyond the original scope. We introduced live demonstrations for
